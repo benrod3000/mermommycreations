@@ -3,22 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MerMommy Creations | Coming Soon</title>
+    <title>MerMommy Creations | Premium Party Rentals & Coordination</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="bubbles" id="bubbles-container"></div>
 
-    <div class="content" id="main-content">
-        <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="logo" id="logo">
-        
-        <h1>Making Waves Soon</h1>
-        <p>Get ready for magical, stress-free celebrations! From custom <span class="highlight">children's party rentals</span> to full-service decoration setups and on-site coordination, we bring your child's dream themes to life.</p>
-        <p><em>Drop your anchor. The party starts soon.</em></p>
+    <div class="container">
+        <header class="content main-card" id="main-content">
+            <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="logo" id="logo">
+            <h1>Making Waves Soon</h1>
+            <p>Get ready for magical, stress-free celebrations! From custom <span class="highlight">children's party rentals</span> to full-service decoration setups and on-site coordination, we bring your child's dream themes to life.</p>
+            <p class="sub-anchor"><em>Drop your anchor. The party starts soon.</em></p>
+        </header>
+
+        <section class="themes-section" id="themes-section">
+            <h2 class="section-title">Choose Your Magical Theme</h2>
+            <div class="themes-grid">
+                <div class="theme-card">
+                    <div class="theme-icon">🧜‍♀️</div>
+                    <h3>Under the Sea</h3>
+                    <p>A magical aquatic paradise complete with shimmering scales, ocean hues, and mermaid majesty.</p>
+                </div>
+                <div class="theme-card">
+                    <div class="theme-icon">👑</div>
+                    <h3>Fairytale Royalty</h3>
+                    <p>Transform your space into a majestic castle setting perfect for princes, princesses, and royal court gatherings.</p>
+                </div>
+                <div class="theme-card">
+                    <div class="theme-icon">🦕</div>
+                    <h3>Dino Discovery</h3>
+                    <p>Prehistoric adventure awaits with lush jungle elements, safari setups, and giant prehistoric friends.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content contact-card" id="contact-section">
+            <h2>Plan a Celebration</h2>
+            <p class="form-intro">Have an upcoming party? Let us know the details and be the first to book our custom setups when we officially launch.</p>
+            
+            <form action="https://formspree.io/f/your-form-id" method="POST" class="inquiry-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Parents Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="name@example.com" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Event Date</label>
+                        <input type="date" id="date" name="event-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="theme">Preferred Theme</label>
+                        <select id="theme" name="theme">
+                            <option value="under-the-sea">Under the Sea</option>
+                            <option value="fairytale">Fairytale Royalty</option>
+                            <option value="dino">Dino Discovery</option>
+                            <option value="custom">Custom Theme Idea</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Party Details / Requests</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your coordination needs, estimated guest count, or venue details..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Inquiry</button>
+            </form>
+        </section>
     </div>
 
     <script src="script.js"></script>
