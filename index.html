@@ -44,51 +44,51 @@
                     <p>A swirling rainbow explosion. Funky, creative decor layouts complete with interactive crafting table aesthetics.</p>
                 </div>
                 <div class="theme-block block-mermaid">
-                    <div class="theme-icon">🧜‍♀️</div>
-                    <h3>Mermaid Kingdom</h3>
+                    <div class="theme-icon">🐚</div>
+                    <h3>Sea Shell Spa</h3>
                     <p>Her signature masterpiece. Glimmering oceanic frames, pastel scales, and enchanting sea treasures.</p>
                 </div>
             </div>
         </section>
 
         <section class="animation-card contact-card" id="contact-section">
-            <h2 class="font-signature" style="font-size: 3.5rem; color: #26a69a;">Book a Setup</h2>
-            <p class="form-intro">Secure your celebration coordinates ahead of our official brand launch.</p>
-            
-            <form action="https://formspree.io/f/mrewgzkg" method="POST" class="inquiry-form">
-                <div class="form-group">
-                    <label for="name">Parent's Name</label>
-                    <input type="text" id="name" name="name" required placeholder="YOUR NAME">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="NAME@EMAIL.COM">
-                </div>
-                <div class="form-row">
+            <div id="form-container">
+                <h2 class="font-signature" style="font-size: 3.5rem; color: #26a69a;">Book a Setup</h2>
+                <p class="form-intro">Secure your celebration coordinates ahead of our official brand launch.</p>
+                
+                <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="inquiry-form">
                     <div class="form-group">
-                        <label for="date">Target Date</label>
-                        <input type="date" id="date" name="event-date">
+                        <label for="name">Parent's Name</label>
+                        <input type="text" id="name" name="name" required placeholder="YOUR NAME">
                     </div>
                     <div class="form-group">
-                        <label for="theme">The Party Curation</label>
-                        <select id="theme" name="theme">
-                            <option value="mermaid">Mermaid Kingdom</option>
-                            <option value="lemonade">Lemonade Stand</option>
-                            <option value="burger">In-N-Out Burger</option>
-                            <option value="tie-dye">Tie-Dye Studio</option>
-                            <option value="custom">Something Custom</option>
-                        </select>
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="NAME@EMAIL.COM">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="message">Party Size & Setup Goals</label>
-                    <textarea id="message" name="message" rows="4" placeholder="WHAT CAN WE CREATE FOR YOU?"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">SEND INQUIRY ➔</button>
-            </form>
-        </section>
-    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Target Date</label>
+                            <input type="date" id="date" name="event-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="theme">The Party Curation</label>
+                            <select id="theme" name="theme">
+                                <option value="sea-shell-spa">Sea Shell Spa</option>
+                                <option value="lemonade">Lemonade Stand</option>
+                                <option value="burger">In-N-Out Burger</option>
+                                <option value="tie-dye">Tie-Dye Studio</option>
+                                <option value="custom">Something Custom</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Party Size & Setup Goals</label>
+                        <textarea id="message" name="message" rows="4" placeholder="WHAT CAN WE CREATE FOR YOU?"></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn" class="submit-btn">SEND INQUIRY ➔</button>
+                </form>
+            </div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+            <div id="success-message" style="display: none; text-align: center; padding: 2rem 0;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">✨🐚✨</div>
+                <h2 class="font-signature" style="font-size: 3.5rem
