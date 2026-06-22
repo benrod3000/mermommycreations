@@ -72,3 +72,48 @@ for (let i = 0; i < particleCount; i++) {
         ease: "none"
     });
 }
+
+// --- Asynchronous Formspree AJAX Submission Handler ---
+const form = document.getElementById("inquiry-form");
+if (form) {
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault();
+        const submitBtn = document.getElementById("submit-btn");
+        submitBtn.textContent = "SENDING... 🌊";
+        submitBtn.disabled = true;
+
+        const data = new FormData(event.target);
+        
+        try {
+            const response = await fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Fade out form elements container smoothly, flip card layout context to success block
+                gsap.to("#form-container", {
+                    duration: 0.4,
+                    opacity: 0,
+                    onComplete: () => {
+                        document.getElementById("form-container").style.display = "none";
+                        const successMsg = document.getElementById("success-message");
+                        successMsg.style.display = "block";
+                        gsap.fromTo(successMsg, { opacity: 0, y: 20 }, { duration: 0.5, opacity: 1, y: 0 });
+                    }
+                });
+            } else {
+                alert("Oops! There was a problem processing your choice. Please verify field coordinates.");
+                submitBtn.textContent = "SEND INQUIRY ➔";
+                submitBtn.disabled = false;
+            }
+        } catch (error) {
+            alert("Network connection error. Please try sending your curation choice again.");
+            submitBtn.textContent = "SEND INQUIRY ➔";
+            submitBtn.disabled = false;
+        }
+    });
+}
