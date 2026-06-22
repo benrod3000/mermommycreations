@@ -5,32 +5,44 @@
 }
 
 body {
-    /* Deep dark gradient to match the logo's background */
     background: radial-gradient(circle at center, #1a0b2e 0%, #000000 100%);
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
     position: relative;
+    padding-bottom: 5rem;
 }
 
+/* Master Layout Wrapper */
+.container {
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* Base Glassmorphism Card Style */
 .content {
     text-align: center;
-    z-index: 10;
     padding: 3rem 2rem;
-    /* Frosted glass effect for an elite feel */
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    max-width: 600px;
-    width: 90%;
-    opacity: 0; /* Hidden initially for GSAP fade-in */
-    transform: translateY(30px); /* Pushed down initially for GSAP slide-up */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    opacity: 0; 
+    transform: translateY(30px);
+}
+
+.main-card {
+    margin-top: 4rem;
+    margin-bottom: 3rem;
 }
 
 .logo {
@@ -50,7 +62,10 @@ p {
     font-size: 1.1rem;
     line-height: 1.6;
     color: #e0e0e0;
-    margin-bottom: 1.5rem;
+}
+
+.sub-anchor {
+    margin-top: 1.5rem;
 }
 
 .highlight {
@@ -58,9 +73,154 @@ p {
     font-weight: 700;
 }
 
-/* Container for the animated bubbles */
+/* Section 1: Themes Styling */
+.themes-section {
+    width: 100%;
+    margin-bottom: 4rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #26a69a;
+    margin-bottom: 2rem;
+}
+
+.themes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.theme-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.theme-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(38, 166, 154, 0.3);
+}
+
+.theme-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.theme-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+}
+
+.theme-card p {
+    font-size: 0.95rem;
+    color: #b0bec5;
+}
+
+/* Section 2: Form Design */
+.contact-card {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.contact-card h2 {
+    font-size: 1.8rem;
+    color: #26a69a;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.form-intro {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+    color: #b0bec5;
+}
+
+.inquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #26a69a;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+input, select, textarea {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.85rem;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #ab47bc;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 8px rgba(171, 71, 188, 0.2);
+}
+
+select option {
+    background: #1a0b2e;
+    color: #ffffff;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #26a69a 0%, #ab47bc 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.submit-btn:hover {
+    transform: scale(1.01);
+    opacity: 0.95;
+}
+
+/* Background Bubbles */
 .bubbles {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -72,7 +232,7 @@ p {
 .bubble {
     position: absolute;
     bottom: -50px;
-    background: rgba(38, 166, 154, 0.15);
-    border: 1px solid rgba(38, 166, 154, 0.4);
+    background: rgba(38, 166, 154, 0.12);
+    border: 1px solid rgba(38, 166, 154, 0.3);
     border-radius: 50%;
 }
