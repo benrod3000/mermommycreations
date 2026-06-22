@@ -1,60 +1,74 @@
-// --- GSAP Entrances with Snappy Kinetic Velocity ---
+// --- Smooth Cartoon Reveal Timeline ---
 const tl = gsap.timeline();
 
 tl.to("#main-content", {
-    duration: 0.9,
+    duration: 1.1,
     opacity: 1,
     y: 0,
-    ease: "back.out(1.2)"
+    ease: "back.out(1.5)" // Gives a fun cartoon bounce upon entrance
 });
 
 tl.to("#themes-section", {
-    duration: 0.7,
+    duration: 0.8,
     opacity: 1,
     y: 0,
     ease: "power2.out"
-}, "-=0.4");
+}, "-=0.5");
 
 tl.to("#contact-section", {
-    duration: 0.7,
+    duration: 0.8,
     opacity: 1,
     y: 0,
     ease: "power2.out"
-}, "-=0.4");
+}, "-=0.5");
 
-// Dynamic ambient logo bobbing
-gsap.to("#logo", {
-    y: -8,
-    duration: 2.4,
+
+// Gentle float loop for the main logo bubble
+gsap.to(".logo-bubble", {
+    y: -14,
+    duration: 2.5,
     repeat: -1,
     yoyo: true,
     ease: "sine.inOut"
 });
 
-// --- Graphical Ambient Bubble Engine ---
-const bubbleContainer = document.getElementById('bubbles-container');
-const bubbleCount = 18; 
 
-for (let i = 0; i < bubbleCount; i++) {
-    let bubble = document.createElement('div');
-    bubble.classList.add('bubble');
-    
-    let size = Math.random() * 45 + 10; 
-    bubble.style.width = `${size}px`;
-    bubble.style.height = `${size}px`;
-    bubble.style.left = `${Math.random() * 100}vw`;
-    
-    // Asynchronously randomize framing hue accents
-    bubble.style.borderColor = Math.random() > 0.5 ? 'rgba(38, 166, 154, 0.25)' : 'rgba(171, 71, 188, 0.25)';
-    
-    bubbleContainer.appendChild(bubble);
+// --- Playful Cartoon Bubble & Star Particle Spawner ---
+const decorContainer = document.getElementById('decor-container');
+const particleCount = 20; 
 
-    gsap.to(bubble, {
+for (let i = 0; i < particleCount; i++) {
+    let element = document.createElement('div');
+    element.classList.add('bubble-pop');
+    
+    // Mix bubbles and little floating sea sparkles
+    let isSparkle = Math.random() > 0.7;
+    let size = Math.random() * 30 + 8;
+    
+    if (isSparkle) {
+        element.innerText = "✨";
+        element.style.background = "none";
+        element.style.border = "none";
+        element.style.fontSize = `${Math.random() * 15 + 12}px`;
+    } else {
+        element.style.width = `${size}px`;
+        element.style.height = `${size}px`;
+        // Shiny accent point inside the cartoon bubble
+        element.style.boxShadow = "inset -3px -3px 0px rgba(255,255,255,0.15)";
+    }
+    
+    element.style.left = `${Math.random() * 100}vw`;
+    element.style.bottom = `-50px`;
+    decorContainer.appendChild(element);
+
+    // Dynamic drifting animation
+    gsap.to(element, {
         y: -(window.innerHeight + 150),
-        x: `+=${Math.random() * 70 - 35}`,
-        duration: Math.random() * 8 + 6,
+        x: `+=${Math.random() * 100 - 50}`,
+        rotation: isSparkle ? 360 : 0,
+        duration: Math.random() * 9 + 7,
         repeat: -1,
-        delay: Math.random() * 8,
+        delay: Math.random() * 10,
         ease: "none"
     });
 }
