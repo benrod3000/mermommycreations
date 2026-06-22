@@ -5,22 +5,19 @@
 }
 
 body {
-    background-color: #0d061a;
-    /* Subtle geometric oceanic print instead of dots */
-    background-image: linear-gradient(30deg, #160c2b 12%, transparent 12.5%, transparent 87%, #160c2b 87.5%, #160c2b),
-                      linear-gradient(150deg, #160c2b 12%, transparent 12.5%, transparent 87%, #160c2b 87.5%, #160c2b),
-                      linear-gradient(30deg, #160c2b 12%, transparent 12.5%, transparent 87%, #160c2b 87.5%, #160c2b);
-    background-size: 30px 52px;
+    /* Rich, layered cartoon-animation underwater palette */
+    background: linear-gradient(180deg, #1d093a 0%, #110524 50%, #080212 100%);
     color: #ffffff;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
-    padding-bottom: 5rem;
+    padding-bottom: 6rem;
+    position: relative;
 }
 
 .container {
     max-width: 950px;
-    width: 90%;
+    width: 92%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -29,155 +26,151 @@ body {
     z-index: 10;
 }
 
-/* Frameless Colored Shadow Cards */
-.ocean-brutal-card {
-    background: #150b24;
+/* --- Magnolia Sky Custom Integration --- */
+.font-signature {
+    /* Looks first for her installed Magnolia Sky font, falls back to whimsical script alternative */
+    font-family: 'Magnolia Sky', 'Grand Hotel', cursive;
+    font-weight: 400;
+    font-size: 4rem;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-shadow: 4px 4px 0px rgba(171, 71, 188, 0.4);
+    margin-bottom: 1rem;
+}
+
+/* Playful Pop-Up 3D Cards (Brutalist layout physics with soft animation curves) */
+.animation-card {
+    background: #190c30;
     border: none;
-    /* Using her signature teal and purple for crisp, thick offset geometric glow shadows */
-    box-shadow: 12px 12px 0px #26a69a; 
-    padding: 3.5rem 2rem;
+    border-radius: 28px;
+    /* Soft, colorful 3D pop effect instead of hard black lines */
+    box-shadow: 0px 16px 0px #26a69a; 
+    padding: 4rem 2.5rem;
     width: 100%;
     text-align: center;
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
 }
 
 .main-card {
-    margin-top: 4rem;
+    margin-top: 5rem;
     margin-bottom: 4rem;
 }
 
-.logo-wrapper {
+.logo-bubble {
     display: inline-block;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: 50% 50% 40% 40%;
+    margin-bottom: 1.5rem;
 }
 
 .logo {
-    max-width: 340px;
+    max-width: 320px;
     width: 100%;
-}
-
-h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-    color: #ffffff;
-    margin-bottom: 1.5rem;
 }
 
 p {
     font-size: 1.2rem;
     line-height: 1.6;
-    color: #e2dcf0;
+    color: #e5def2;
 }
 
-/* Creative Geometric Badge */
-.glow-badge {
+/* Animated Floating Ribbon Badge */
+.floating-badge {
     display: inline-block;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     background: #ab47bc;
     color: #ffffff;
     font-weight: 700;
-    letter-spacing: 1px;
-    padding: 0.6rem 1.5rem;
-    box-shadow: -6px 6px 0px #26a69a;
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    box-shadow: -5px 5px 0px #26a69a;
+    font-size: 1.1rem;
 }
 
-/* Themes Layout Framework */
+/* Theme Block Framework */
 .themes-section {
     width: 100%;
     margin-bottom: 5rem;
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
 }
 
 .section-title {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
     color: #ffffff;
-    letter-spacing: 1px;
 }
 
 .themes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
     width: 100%;
 }
 
-/* Color-Blocked Theme Containers without black frames */
-.theme-card {
+/* Vibrant 3D Cartoon Pop-up Boxes */
+.theme-block {
+    border-radius: 24px;
     padding: 2.5rem 1.5rem;
-    color: #000000;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #0c031a;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Custom creative palettes replacing the standard thick outlines */
 .block-lemon {
     background-color: #ffd54f;
-    box-shadow: 8px 8px 0px #ffffff;
+    box-shadow: 0px 10px 0px #b28900;
 }
 .block-burger {
-    background-color: #e53935;
+    background-color: #ff4d4d;
     color: #ffffff;
-    box-shadow: 8px 8px 0px #ffd54f;
+    box-shadow: 0px 10px 0px #b31414;
 }
 .block-dye {
-    background-color: #ff4081;
+    background-color: #ff5c93;
     color: #ffffff;
-    box-shadow: 8px 8px 0px #ab47bc;
+    box-shadow: 0px 10px 0px #b31a4f;
 }
 .block-mermaid {
-    background-color: #1a0b2e;
+    background-color: #26a69a;
     color: #ffffff;
-    box-shadow: 8px 8px 0px #26a69a;
+    box-shadow: 0px 10px 0px #13635b;
 }
 
-.theme-card:hover {
-    transform: translate(-6px, -6px);
+.theme-block:hover {
+    transform: translateY(-8px);
 }
-
-.block-lemon:hover { box-shadow: 14px 14px 0px #ffffff; }
-.block-burger:hover { box-shadow: 14px 14px 0px #ffd54f; }
-.block-dye:hover { box-shadow: 14px 14px 0px #ab47bc; }
-.block-mermaid:hover { box-shadow: 14px 14px 0px #26a69a; }
 
 .theme-icon {
-    font-size: 3rem;
-    margin-bottom: 1.25rem;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
 }
 
-.theme-card h3 {
+.theme-block h3 {
     font-size: 1.4rem;
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.6rem;
 }
 
-.theme-card p {
-    font-size: 1rem;
+.theme-block p {
+    font-size: 0.95rem;
     color: inherit;
-    opacity: 0.9;
+    opacity: 0.95;
+    line-height: 1.5;
 }
 
-/* Form Layout Styling */
+/* Form Styles */
 .contact-card {
     text-align: left;
-    box-shadow: 12px 12px 0px #ab47bc; /* Inverse shadow to purple */
-}
-
-.contact-card h2 {
-    font-size: 2.4rem;
-    color: #ffffff;
-    margin-bottom: 0.5rem;
+    box-shadow: 0px 16px 0px #ab47bc; /* Lavender-purple thick pop shadow */
 }
 
 .form-intro {
     margin-bottom: 2.5rem;
-    color: #bcaaa4;
+    color: #b9adc7;
 }
 
 .inquiry-form {
@@ -205,57 +198,89 @@ p {
 }
 
 label {
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 600;
     color: #26a69a;
-    letter-spacing: 1px;
 }
 
 input, select, textarea {
-    background: #1f1235;
+    background: #23143d;
     border: none;
-    padding: 1rem;
+    border-radius: 14px;
+    padding: 1.1rem;
     color: #ffffff;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     font-size: 1rem;
-    box-shadow: 4px 4px 0px #26a69a;
+    box-shadow: inset 0px -4px 0px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease;
 }
 
 input:focus, select:focus, textarea:focus {
     outline: none;
-    box-shadow: 4px 4px 0px #ab47bc;
-    background: #251642;
+    background: #2d1b4e;
+    box-shadow: inset 0px -4px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 3px #ab47bc;
 }
 
-/* Custom Dropdown Option Container Styling */
 select option {
-    background: #150b24;
+    background: #190c30;
     color: #ffffff;
 }
 
 .submit-btn {
-    background: #26a69a;
+    background: linear-gradient(135deg, #26a69a 0%, #00bfa5 100%);
     color: #ffffff;
     border: none;
-    font-family: 'Space Grotesk', sans-serif;
+    border-radius: 16px;
+    font-family: 'Fredoka', sans-serif;
     padding: 1.2rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 6px 6px 0px #ffffff;
+    box-shadow: 0px 8px 0px #13635b;
     margin-top: 1rem;
     transition: all 0.15s ease;
 }
 
 .submit-btn:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0px #ffffff;
-    background: #219186;
+    transform: translateY(-2px);
+    box-shadow: 0px 10px 0px #13635b;
 }
 
-/* Ambient Floating Background Graphic Bubbles */
-.bubbles {
+.submit-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0px 4px 0px #13635b;
+}
+
+/* --- Soft Cartoon Animation Waves & Decor --- */
+.wave-layer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 140px;
+    background-repeat: repeat-x;
+    background-position: 0 bottom;
+    transform: translate3d(0, 0, 0);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.wave-back {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C150,100 350,20 500,60 C650,100 850,20 1000,60 C1150,100 1300,60 1450,60 L1450,120 L0,120 Z" fill="%2326a69a" opacity="0.15"/></svg>');
+    animation: waveMove 20s linear infinite;
+}
+
+.wave-front {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,50 C150,90 300,30 450,60 C600,90 750,30 900,60 C1050,90 1200,50 1350,50 L1350,120 L0,120 Z" fill="%23ab47bc" opacity="0.1"/></svg>');
+    animation: waveMove 12s linear infinite;
+}
+
+@keyframes waveMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.sky-decor {
     position: fixed;
     top: 0;
     left: 0;
@@ -265,10 +290,9 @@ select option {
     pointer-events: none;
 }
 
-.bubble {
+.bubble-pop {
     position: absolute;
-    bottom: -60px;
-    background: rgba(38, 166, 154, 0.05);
-    border: 2px solid rgba(38, 166, 154, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.25);
     border-radius: 50%;
 }
