@@ -11,7 +11,7 @@ body {
     font-family: 'Fredoka', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
-    padding-bottom: 6rem;
+    padding-bottom: 12rem; /* Provides comfortable scrolling space at the page base */
     position: relative;
 }
 
@@ -45,7 +45,7 @@ body {
     border-radius: 28px;
     /* Soft, colorful 3D pop effect instead of hard black lines */
     box-shadow: 0px 16px 0px #26a69a; 
-    padding: 4rem 2.5rem;
+    padding: 4rem 2.5rem 6rem 2.5rem; /* Expanded bottom padding prevents form element spillover */
     width: 100%;
     text-align: center;
     opacity: 0;
