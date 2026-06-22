@@ -1,74 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MerMommy Creations · Coming Soon</title>
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet" />
-  
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MerMommy Creations | Coming Soon</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="bubbles" id="bubbles-container"></div>
 
-<div class="coming-soon-card" id="mainCard">
-  
-  <!-- LOGO -->
-  <div class="logo-wrapper" id="logoWrap">
-    <div class="logo-merry">
-      <span>M</span>er<span>r</span>y
+    <div class="content" id="main-content">
+        <img src="MMClogoNoGold.jpg" alt="MerMommy Creations Logo" class="logo" id="logo">
+        
+        <h1>Making Waves Soon</h1>
+        <p>Get ready for magical, stress-free celebrations! From custom <span class="highlight">children's party rentals</span> to full-service decoration setups and on-site coordination, we bring your child's dream themes to life.</p>
+        <p><em>Drop your anchor. The party starts soon.</em></p>
     </div>
-    <div class="logo-creations">
-      CREATIONS
-    </div>
-  </div>
 
-  <!-- TAGLINE -->
-  <div class="tagline" id="tagline">
-    <i>✦ children's party rentals · themes & decor ✦</i>
-  </div>
-
-  <!-- MAIN COMING SOON -->
-  <h1 class="hero-coming" id="heroText">
-    COMING SOON
-    <small>something magical is swimming this way</small>
-  </h1>
-
-  <div class="divider"></div>
-
-  <!-- DESCRIPTION -->
-  <p class="description" id="descText">
-    <strong>MerMommy Creations</strong> brings enchanting themed parties to your doorstep.  
-    From mermaid lagoons to unicorn meadows — we set up, style, and coordinate so you can 
-    simply <strong>enjoy the magic</strong>.
-  </p>
-
-  <!-- THEME PILLS -->
-  <div class="theme-pills" id="pillContainer">
-    <span class="theme-pill">🧜‍♀️ mermaid</span>
-    <span class="theme-pill">🦄 unicorn</span>
-    <span class="theme-pill">🌟 fairy</span>
-    <span class="theme-pill">🌿 jungle</span>
-    <span class="theme-pill">🎈 &amp; more</span>
-  </div>
-
-  <!-- NOTIFY BUTTON -->
-  <button class="notify-btn" id="notifyBtn">📬 notify me</button>
-
-  <div class="footer-note">
-    <span>✨ stay tuned · merMommy magic ✨</span>
-  </div>
-</div>
-
-<!-- JAVASCRIPT -->
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
