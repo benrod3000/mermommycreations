@@ -3,38 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MerMommy Creations | Premium Curation</title>
+    <title>MerMommy Creations | Magical Event Curation</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Grand+Hotel&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bubbles" id="bubbles-container"></div>
+    <div class="sky-decor" id="decor-container"></div>
+    <div class="wave-layer wave-back"></div>
+    <div class="wave-layer wave-front"></div>
 
     <div class="container">
-        <header class="ocean-brutal-card main-card" id="main-content">
-            <div class="logo-wrapper">
+        <header class="animation-card main-card" id="main-content">
+            <div class="logo-bubble">
                 <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="logo" id="logo">
             </div>
-            <h1>MAKING WAVES SOON</h1>
-            <p>Radical children's celebration styling. We drop anchor anywhere, build premium structural event decor, and coordinate flawless luxury setups.</p>
-            <div class="glow-badge">LAUNCHING SOON</div>
+            <h1 class="font-signature">Making Waves Soon</h1>
+            <p>Whimsical children's party setups and luxury decor rentals. We bring the magic straight to your celebration and coordinate everything flawlessly! ✨</p>
+            <div class="floating-badge">The Party Starts Soon!</div>
         </header>
 
         <section class="themes-section" id="themes-section">
-            <h2 class="section-title">CHOOSE YOUR VIBE</h2>
+            <h2 class="section-title">Pick Your Adventure</h2>
             <div class="themes-grid">
-                <div class="theme-card block-lemon">
+                <div class="theme-block block-lemon">
                     <div class="theme-icon">🍋</div>
                     <h3>Lemonade Stand</h3>
-                    <p>High-contrast citrus yellow, crisp layout frames, and fresh summer textures tailored for sunny backyard events.</p>
+                    <p>Sunny yellow palettes, picnic textures, and sweet country-fair vibes tailored for bright backyard celebrations.</p>
                 </div>
-                <div class="theme-card block-burger">
+                <div class="theme-block block-burger">
                     <div class="theme-icon">🍔</div>
                     <h3>In-N-Out Burger</h3>
-                    <p>Retro diner charm. Palm tree backdrops, bold crimson checkers, and iconic California pop-up aesthetics.</p>
+                    <p>Retro California diner magic! Bright neon checkers, custom palm trees, and iconic drive-in styling.</p>
+                </div>
+                <div class="theme-block block-dye">
+                    <div class="theme-icon">🎨</div>
+                    <h3>Tie-Dye Studio</h3>
+                    <p>A swirling rainbow explosion. Funky, creative decor layouts complete with interactive crafting table aesthetics.</p>
+                </div>
+                <div class="theme-block block-mermaid">
+                    <div class="theme-icon">🧜‍♀️</div>
+                    <h3>Mermaid Kingdom</h3>
+                    <p>Her signature masterpiece. Glimmering oceanic frames, pastel scales, and enchanting sea treasures.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="animation-card contact-card" id="contact-section">
+            <h2 class="font-signature" style="font-size: 3.5rem; color: #26a69a;">Book a Setup</h2>
+            <p class="form-intro">Drop your anchor here to reserve your party coordinates before our official launch!</p>
+            
+            <form action="https://formspree.io/f/your-form-id" method="POST" class="inquiry-form">
+                <div class="form-group">
+                    <label for="name">Parent's Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="hello@example.com">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Celebration Date</label>
+                        <input type="date" id="date" name="event-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="theme">The Party Vibe</label>
+                        <select id="theme" name="theme">
+                            <option value="mermaid">Mermaid Kingdom</option>
+                            <option value="lemonade">Lemonade Stand</option>
+                            <option value="burger">In-N-Out Burger</option>
+                            <option value="tie-dye">Tie-Dye Studio</option>
+                            <option value="custom">Something Custom</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell us about your dream setup!</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Share guest count ideas, themes, or special coordination requests..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Magic ➔</button>
+            </form>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>                    <p>Retro diner charm. Palm tree backdrops, bold crimson checkers, and iconic California pop-up aesthetics.</p>
                 </div>
                 <div class="theme-card block-dye">
                     <div class="theme-icon">🎨</div>
