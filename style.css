@@ -5,18 +5,21 @@
 }
 
 body {
-    background: radial-gradient(circle at center, #1a0b2e 0%, #000000 100%);
+    background-color: #0d061a;
+    /* Subtle geometric oceanic print instead of dots */
+    background-image: linear-gradient(30deg, #160c2b 12%, transparent 12.5%, transparent 87%, #160c2b 87.5%, #160c2b),
+                      linear-gradient(150deg, #160c2b 12%, transparent 12.5%, transparent 87%, #160c2b 87.5%, #160c2b),
+                      linear-gradient(30deg, #160c2b 12%, transparent 12.5%, transparent 87%, #160c2b 87.5%, #160c2b);
+    background-size: 30px 52px;
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
-    position: relative;
     padding-bottom: 5rem;
 }
 
-/* Master Layout Wrapper */
 .container {
-    max-width: 900px;
+    max-width: 950px;
     width: 90%;
     margin: 0 auto;
     display: flex;
@@ -26,135 +29,167 @@ body {
     z-index: 10;
 }
 
-/* Base Glassmorphism Card Style */
-.content {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+/* Frameless Colored Shadow Cards */
+.ocean-brutal-card {
+    background: #150b24;
+    border: none;
+    /* Using her signature teal and purple for crisp, thick offset geometric glow shadows */
+    box-shadow: 12px 12px 0px #26a69a; 
+    padding: 3.5rem 2rem;
     width: 100%;
-    opacity: 0; 
-    transform: translateY(30px);
-}
-
-.main-card {
-    margin-top: 4rem;
-    margin-bottom: 3rem;
-}
-
-.logo {
-    max-width: 350px;
-    width: 100%;
-    margin-bottom: 2rem;
-}
-
-h1 {
-    font-size: 2.2rem;
-    color: #26a69a; /* Teal matching the logo */
-    margin-bottom: 1rem;
-    letter-spacing: 1px;
-}
-
-p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #e0e0e0;
-}
-
-.sub-anchor {
-    margin-top: 1.5rem;
-}
-
-.highlight {
-    color: #ab47bc; /* Purple matching the logo */
-    font-weight: 700;
-}
-
-/* Section 1: Themes Styling */
-.themes-section {
-    width: 100%;
-    margin-bottom: 4rem;
     text-align: center;
     opacity: 0;
     transform: translateY(30px);
 }
 
+.main-card {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.logo-wrapper {
+    display: inline-block;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.logo {
+    max-width: 340px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #e2dcf0;
+}
+
+/* Creative Geometric Badge */
+.glow-badge {
+    display: inline-block;
+    margin-top: 2.5rem;
+    background: #ab47bc;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 0.6rem 1.5rem;
+    box-shadow: -6px 6px 0px #26a69a;
+}
+
+/* Themes Layout Framework */
+.themes-section {
+    width: 100%;
+    margin-bottom: 5rem;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
 .section-title {
-    font-size: 1.8rem;
-    color: #26a69a;
-    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #ffffff;
+    letter-spacing: 1px;
 }
 
 .themes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 2rem;
     width: 100%;
 }
 
+/* Color-Blocked Theme Containers without black frames */
 .theme-card {
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    padding: 2rem 1.5rem;
-    transition: transform 0.3s ease, background 0.3s ease;
+    padding: 2.5rem 1.5rem;
+    color: #000000;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom creative palettes replacing the standard thick outlines */
+.block-lemon {
+    background-color: #ffd54f;
+    box-shadow: 8px 8px 0px #ffffff;
+}
+.block-burger {
+    background-color: #e53935;
+    color: #ffffff;
+    box-shadow: 8px 8px 0px #ffd54f;
+}
+.block-dye {
+    background-color: #ff4081;
+    color: #ffffff;
+    box-shadow: 8px 8px 0px #ab47bc;
+}
+.block-mermaid {
+    background-color: #1a0b2e;
+    color: #ffffff;
+    box-shadow: 8px 8px 0px #26a69a;
 }
 
 .theme-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(38, 166, 154, 0.3);
+    transform: translate(-6px, -6px);
 }
 
+.block-lemon:hover { box-shadow: 14px 14px 0px #ffffff; }
+.block-burger:hover { box-shadow: 14px 14px 0px #ffd54f; }
+.block-dye:hover { box-shadow: 14px 14px 0px #ab47bc; }
+.block-mermaid:hover { box-shadow: 14px 14px 0px #26a69a; }
+
 .theme-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-bottom: 1.25rem;
 }
 
 .theme-card h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    font-weight: 700;
     margin-bottom: 0.75rem;
-    color: #ffffff;
 }
 
 .theme-card p {
-    font-size: 0.95rem;
-    color: #b0bec5;
+    font-size: 1rem;
+    color: inherit;
+    opacity: 0.9;
 }
 
-/* Section 2: Form Design */
+/* Form Layout Styling */
 .contact-card {
     text-align: left;
-    margin-bottom: 2rem;
+    box-shadow: 12px 12px 0px #ab47bc; /* Inverse shadow to purple */
 }
 
 .contact-card h2 {
-    font-size: 1.8rem;
-    color: #26a69a;
+    font-size: 2.4rem;
+    color: #ffffff;
     margin-bottom: 0.5rem;
-    text-align: center;
 }
 
 .form-intro {
-    text-align: center;
     margin-bottom: 2.5rem;
-    font-size: 1rem;
-    color: #b0bec5;
+    color: #bcaaa4;
 }
 
 .inquiry-form {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.5rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.6rem;
 }
 
 .form-row {
@@ -170,55 +205,56 @@ p {
 }
 
 label {
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 700;
     color: #26a69a;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 input, select, textarea {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 0.85rem;
+    background: #1f1235;
+    border: none;
+    padding: 1rem;
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px #26a69a;
+    transition: all 0.2s ease;
 }
 
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: #ab47bc;
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 8px rgba(171, 71, 188, 0.2);
+    box-shadow: 4px 4px 0px #ab47bc;
+    background: #251642;
 }
 
+/* Custom Dropdown Option Container Styling */
 select option {
-    background: #1a0b2e;
+    background: #150b24;
     color: #ffffff;
 }
 
 .submit-btn {
-    background: linear-gradient(135deg, #26a69a 0%, #ab47bc 100%);
+    background: #26a69a;
     color: #ffffff;
     border: none;
-    border-radius: 8px;
-    padding: 1rem;
-    font-size: 1.1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 1.2rem;
+    font-size: 1.2rem;
     font-weight: 700;
     cursor: pointer;
+    box-shadow: 6px 6px 0px #ffffff;
     margin-top: 1rem;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 .submit-btn:hover {
-    transform: scale(1.01);
-    opacity: 0.95;
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px #ffffff;
+    background: #219186;
 }
 
-/* Background Bubbles */
+/* Ambient Floating Background Graphic Bubbles */
 .bubbles {
     position: fixed;
     top: 0;
@@ -231,8 +267,8 @@ select option {
 
 .bubble {
     position: absolute;
-    bottom: -50px;
-    background: rgba(38, 166, 154, 0.12);
-    border: 1px solid rgba(38, 166, 154, 0.3);
+    bottom: -60px;
+    background: rgba(38, 166, 154, 0.05);
+    border: 2px solid rgba(38, 166, 154, 0.2);
     border-radius: 50%;
 }
