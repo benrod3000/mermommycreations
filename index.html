@@ -33,12 +33,24 @@
 
         body {
             font-family: 'Fredoka', sans-serif;
-            background: linear-gradient(180deg, #0a2a3a 0%, #0f3b4a 30%, #1a5a6a 60%, #0d3d4a 100%);
-            color: #e8e6e3;
+            background: linear-gradient(180deg, #f5edf8 0%, #f0eaf5 30%, #e8f5f4 60%, #e0f7fa 100%);
+            color: #4a4a4a;
             min-height: 100vh;
             overflow-x: hidden;
             padding-bottom: 2rem;
             position: relative;
+        }
+
+        /* ===== BRAND COLORS ===== */
+        :root {
+            --purple: #8B6C9E;
+            --teal: #69DBD3;
+            --purple-light: #a88bb8;
+            --teal-light: #8ee5de;
+            --pink-light: #f5edf8;
+            --text-dark: #3a3a4a;
+            --text-medium: #6a6a7a;
+            --text-light: #9a8aaa;
         }
 
         /* ===== TYPOGRAPHY ===== */
@@ -46,8 +58,8 @@
             font-family: 'Grand Hotel', cursive;
             font-weight: 400;
             letter-spacing: 1px;
-            color: #fff;
-            text-shadow: 4px 4px 0 rgba(77, 208, 199, 0.25);
+            color: var(--purple);
+            text-shadow: 2px 2px 0 rgba(139, 108, 158, 0.15);
         }
 
         .section-title {
@@ -55,13 +67,12 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 1.5rem;
-            color: #fff;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            color: var(--text-dark);
         }
 
         .section-sub {
             text-align: center;
-            color: #b0d4d8;
+            color: var(--text-medium);
             font-size: 1.1rem;
             max-width: 650px;
             margin: -0.5rem auto 2rem;
@@ -76,302 +87,78 @@
             z-index: 10;
         }
 
-        /* ===== NAVIGATION ===== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 0.7rem 2rem;
-            background: rgba(10, 42, 58, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: rgba(10, 42, 58, 0.95);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #b0d4d8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #4dd0c7;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            background: linear-gradient(135deg, #26a69a, #00bfa5);
-            padding: 0.4rem 1.5rem;
-            border-radius: 50px;
-            color: #fff !important;
-            font-weight: 600 !important;
-            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-        }
-
-        .nav-cta::after {
-            display: none !important;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(38, 166, 154, 0.4);
-        }
-
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        .nav-toggle span {
-            display: block;
-            width: 28px;
-            height: 3px;
-            background: #fff;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
+        /* ===== SPLASH HEADER ===== */
+        .splash-header {
             text-align: center;
-            padding: 8rem 0 1rem;
-            margin-top: 1rem;
+            padding: 6rem 0 1rem;
         }
 
-        .hero-bubble {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 1.5rem;
-            border-radius: 50% 50% 40% 40%;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-logo {
-            max-width: 280px;
+        .splash-logo {
+            max-width: 240px;
             width: 100%;
+            margin-bottom: 1rem;
         }
 
-        .hero-title {
-            font-size: 3.8rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
+        .splash-title {
+            font-size: 4.5rem;
+            margin-bottom: 0.3rem;
+            color: var(--purple);
         }
 
-        .hero-sub {
-            font-size: 1.15rem;
-            color: #c5d0d4;
-            max-width: 700px;
+        .splash-sub {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            max-width: 600px;
             margin: 0 auto 1.5rem;
             line-height: 1.7;
         }
 
-        .hero-badge {
+        .splash-badge {
             display: inline-block;
-            background: #ab47bc;
+            background: var(--teal);
             color: #fff;
             font-weight: 700;
             padding: 0.5rem 2rem;
             border-radius: 50px;
-            box-shadow: -4px 4px 0 #26a69a;
+            box-shadow: 0 4px 15px rgba(105, 219, 211, 0.35);
             font-size: 1rem;
+            letter-spacing: 0.5px;
         }
 
-        /* ===== STATISTICS COUNTERS ===== */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 1.5rem 1rem;
+        /* ===== SCROLL INDICATOR ===== */
+        .scroll-indicator {
             text-align: center;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #4dd0c7;
-            display: block;
-            line-height: 1.2;
-        }
-
-        .stat-label {
-            font-size: 0.95rem;
-            color: #b0d4d8;
-            margin-top: 0.2rem;
-            display: block;
-        }
-
-        /* ===== BANNER ===== */
-        .banner {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px;
-            padding: 2.5rem 3rem;
-            margin: 1rem 0 3rem;
-            text-align: center;
-            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
-        }
-
-        .banner p {
-            font-size: 1.2rem;
-            color: #d4ecf0;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .banner .highlight {
-            color: #4dd0c7;
-            font-weight: 600;
-        }
-
-        /* ===== FOUNDING FAMILIES ===== */
-        .founding-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-top: 5px solid #ab47bc;
-            border-radius: 24px;
-            padding: 2.5rem 3rem;
-            margin: 1rem 0 3rem;
-            text-align: center;
-            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
-        }
-
-        .founding-card h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        .founding-card p {
-            font-size: 1rem;
-            color: #d4ecf0;
-            line-height: 1.7;
-            max-width: 700px;
-            margin: 0 auto 1.2rem;
-        }
-
-        .founding-benefits {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .founding-benefit {
-            background: rgba(255, 255, 255, 0.04);
-            padding: 0.8rem 0.5rem;
-            border-radius: 12px;
+            padding: 2rem 0 1rem;
+            color: var(--text-light);
             font-size: 0.85rem;
-            color: #b0d4d8;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .founding-benefit span {
+        .scroll-indicator .arrow {
             display: block;
-            font-size: 1.4rem;
-            margin-bottom: 0.2rem;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
         }
 
-        /* ===== WHY MERMOMMY EXISTS ===== */
-        .why-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px;
-            padding: 3rem 2.5rem;
-            margin: 1rem 0 3rem;
-            text-align: center;
-            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
-        }
-
-        .why-card h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 1.5rem;
-        }
-
-        .why-card .why-text {
-            font-size: 1.1rem;
-            color: #d4ecf0;
-            line-height: 2;
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        .why-card .why-text .highlight {
-            color: #4dd0c7;
-            font-weight: 600;
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
         }
 
         /* ===== SECTION ===== */
         .section {
             margin-bottom: 4rem;
             width: 100%;
+        }
+
+        /* ===== GLASS CARDS ===== */
+        .glass {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
         }
 
         /* ===== GRIDS ===== */
@@ -393,6 +180,117 @@
             gap: 1.5rem;
         }
 
+        /* ===== BANNER ===== */
+        .banner {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 2.5rem 3rem;
+            margin: 1rem 0 3rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .banner .highlight {
+            color: var(--purple);
+            font-weight: 600;
+        }
+
+        /* ===== FOUNDING FAMILIES ===== */
+        .founding-card {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-top: 5px solid var(--teal);
+            border-radius: 24px;
+            padding: 2.5rem 3rem;
+            margin: 1rem 0 3rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+
+        .founding-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .founding-card p {
+            font-size: 1rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto 1.2rem;
+        }
+
+        .founding-benefits {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .founding-benefit {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 0.8rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .founding-benefit span {
+            display: block;
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+        }
+
+        /* ===== WHY MERMOMMY EXISTS ===== */
+        .why-card {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            margin: 1rem 0 3rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+
+        .why-card h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .why-card .why-text {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            line-height: 2;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .why-card .why-text .highlight {
+            color: var(--purple);
+            font-weight: 600;
+        }
+
         /* ===== ADVENTURE CARDS ===== */
         .adventure-card {
             border-radius: 24px;
@@ -401,14 +299,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #fff;
-            min-height: 400px;
+            color: var(--text-dark);
+            min-height: 380px;
             position: relative;
             overflow: hidden;
             transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s ease;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
         }
 
         .adventure-card::before {
@@ -425,18 +325,18 @@
             background: #f9d342;
         }
         .card-burger::before {
-            background: #ff5e5e;
+            background: #ff8a8a;
         }
         .card-dye::before {
-            background: #ff7eb3;
+            background: var(--purple-light);
         }
         .card-mermaid::before {
-            background: #4dd0c7;
+            background: var(--teal);
         }
 
         .adventure-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
         }
 
         .adventure-card .card-icon {
@@ -448,27 +348,27 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 0.2rem;
-            color: #fff;
+            color: var(--text-dark);
         }
 
         .adventure-card .card-tag {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.4);
             padding: 0.1rem 1rem;
             border-radius: 40px;
             font-size: 0.6rem;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #c8e6e8;
+            color: var(--text-medium);
             margin-bottom: 0.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .adventure-card p {
             font-size: 0.9rem;
             line-height: 1.5;
-            color: #d4ecf0;
+            color: var(--text-medium);
             flex: 1;
             max-width: 95%;
             min-height: 60px;
@@ -483,23 +383,24 @@
         }
 
         .card-features span {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.4);
             padding: 0.1rem 0.7rem;
             border-radius: 30px;
             font-size: 0.6rem;
             font-weight: 500;
-            color: #b0d4d8;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            color: var(--text-medium);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .card-price {
             font-size: 0.8rem;
             font-weight: 600;
-            background: rgba(0, 0, 0, 0.25);
+            background: var(--teal);
             padding: 0.2rem 1.4rem;
             border-radius: 40px;
-            color: #e8f4f5;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 10px rgba(105, 219, 211, 0.3);
         }
 
         /* ===== DREAM THEMES ===== */
@@ -508,8 +409,8 @@
             padding: 1.2rem 1rem;
             text-align: center;
             transition: transform 0.25s ease;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             min-height: 100px;
             display: flex;
             flex-direction: column;
@@ -519,7 +420,7 @@
 
         .dream-card:hover {
             transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.6);
         }
 
         .dream-card .dream-icon {
@@ -531,25 +432,25 @@
         .dream-card h4 {
             font-size: 0.95rem;
             font-weight: 600;
-            color: #fff;
+            color: var(--text-dark);
         }
 
         .dream-cta {
             text-align: center;
             margin-top: 2rem;
             padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 16px;
-            border: 1px dashed rgba(255, 255, 255, 0.08);
+            border: 1px dashed rgba(139, 108, 158, 0.2);
         }
 
         .dream-cta p {
             font-size: 1.05rem;
-            color: #b0d4d8;
+            color: var(--text-medium);
         }
 
         .dream-cta .highlight {
-            color: #4dd0c7;
+            color: var(--purple);
             font-weight: 600;
         }
 
@@ -558,15 +459,17 @@
             padding: 2rem;
             border-radius: 20px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
         }
 
         .step-number {
             width: 46px;
             height: 46px;
-            background: #26a69a;
+            background: var(--teal);
             color: #fff;
             border-radius: 50%;
             display: flex;
@@ -575,16 +478,16 @@
             font-size: 1.3rem;
             font-weight: 700;
             margin: 0 auto 1rem;
-            box-shadow: 0px 4px 0px #13635b;
+            box-shadow: 0 4px 12px rgba(105, 219, 211, 0.3);
         }
 
         .process-step h3 {
-            color: #4dd0c7;
+            color: var(--purple);
             margin-bottom: 0.5rem;
         }
 
         .process-step p {
-            color: #d4ecf0;
+            color: var(--text-medium);
             font-size: 0.95rem;
         }
 
@@ -594,9 +497,11 @@
             padding: 1.5rem 1rem;
             text-align: center;
             transition: transform 0.25s ease;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
         }
 
         .included-card:hover {
@@ -612,13 +517,13 @@
         .included-card h4 {
             font-size: 0.95rem;
             font-weight: 600;
-            color: #fff;
+            color: var(--text-dark);
             margin-bottom: 0.1rem;
         }
 
         .included-card p {
             font-size: 0.75rem;
-            color: #b0d4d8;
+            color: var(--text-medium);
         }
 
         /* ===== TAIL (ABOUT) ===== */
@@ -626,16 +531,18 @@
             border-radius: 24px;
             padding: 3rem 2.5rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
             max-width: 900px;
             margin: 0 auto;
         }
 
         .tail-tagline {
             font-size: 1.3rem;
-            color: #4dd0c7;
+            color: var(--purple);
             font-weight: 600;
             font-style: italic;
             margin-bottom: 0.5rem;
@@ -643,7 +550,7 @@
 
         .tail-sub {
             font-size: 0.9rem;
-            color: #b0d4d8;
+            color: var(--text-light);
             margin-bottom: 1.5rem;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -651,7 +558,7 @@
 
         .tail-story {
             font-size: 1rem;
-            color: #d4ecf0;
+            color: var(--text-medium);
             line-height: 1.8;
             max-width: 700px;
             margin: 0 auto 1.5rem;
@@ -665,10 +572,10 @@
         }
 
         .tail-feature {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.4);
             padding: 1.2rem 1rem;
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .tail-feature .tf-icon {
@@ -680,64 +587,14 @@
         .tail-feature h4 {
             font-size: 0.9rem;
             font-weight: 600;
-            color: #fff;
+            color: var(--text-dark);
             margin-bottom: 0.1rem;
         }
 
         .tail-feature p {
             font-size: 0.75rem;
-            color: #b0d4d8;
+            color: var(--text-medium);
             line-height: 1.4;
-        }
-
-        /* ===== TIMELINE - FIXED ===== */
-        .timeline-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .timeline-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 1rem 0.6rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item.done {
-            border-color: rgba(77, 208, 199, 0.25);
-            background: rgba(77, 208, 199, 0.05);
-        }
-
-        .timeline-item .tl-icon {
-            font-size: 1.4rem;
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-
-        .timeline-item .tl-status {
-            font-size: 0.65rem;
-            font-weight: 600;
-            color: #4dd0c7;
-            display: block;
-            margin-bottom: 0.2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .timeline-item .tl-status.pending {
-            color: #6b8a92;
-        }
-
-        .timeline-item h4 {
-            font-size: 0.75rem;
-            color: #fff;
-            font-weight: 500;
-            line-height: 1.3;
         }
 
         /* ===== GALLERY ===== */
@@ -745,8 +602,8 @@
             border-radius: 20px;
             padding: 2rem 1.5rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             min-height: 160px;
             display: flex;
             flex-direction: column;
@@ -757,7 +614,7 @@
 
         .gallery-card:hover {
             transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.6);
         }
 
         .gallery-card .gallery-placeholder {
@@ -770,19 +627,19 @@
         .gallery-card h4 {
             font-size: 1rem;
             font-weight: 600;
-            color: #fff;
+            color: var(--text-dark);
             margin-bottom: 0.1rem;
         }
 
         .gallery-card p {
             font-size: 0.75rem;
-            color: #6b8a92;
+            color: var(--text-light);
         }
 
         /* ===== SOCIAL PROOF ===== */
         .social-proof-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 16px;
             padding: 2rem 1.5rem;
             text-align: center;
@@ -797,13 +654,13 @@
 
         .social-proof-card h4 {
             font-size: 1rem;
-            color: #b0d4d8;
+            color: var(--text-medium);
             font-weight: 400;
         }
 
         .social-proof-card p {
             font-size: 0.8rem;
-            color: #6b8a92;
+            color: var(--text-light);
             margin-top: 0.4rem;
         }
 
@@ -815,14 +672,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #fff;
+            color: var(--text-dark);
             min-height: 260px;
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
         }
 
         .addon-card::before {
@@ -836,21 +695,21 @@
         }
 
         .addon-mermaid::before {
-            background: #4dd0c7;
+            background: var(--teal);
         }
         .addon-pearl::before {
-            background: #ff7eb3;
+            background: var(--purple-light);
         }
         .addon-shell::before {
             background: #f9d342;
         }
         .addon-cake::before {
-            background: #ff9a9e;
+            background: #ff8a8a;
         }
 
         .addon-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
         }
 
         .addon-card .addon-icon {
@@ -861,26 +720,26 @@
         .addon-card h3 {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-dark);
         }
 
         .addon-card .addon-tag {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.4);
             padding: 0.1rem 1rem;
             border-radius: 40px;
             font-size: 0.55rem;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #c8e6e8;
+            color: var(--text-medium);
             margin-bottom: 0.6rem;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .addon-card p {
             font-size: 0.85rem;
-            color: #d4ecf0;
+            color: var(--text-medium);
             line-height: 1.5;
             flex: 1;
         }
@@ -888,21 +747,24 @@
         .addon-price {
             font-size: 0.8rem;
             font-weight: 600;
-            background: rgba(0, 0, 0, 0.25);
+            background: var(--teal);
             padding: 0.2rem 1.4rem;
             border-radius: 40px;
-            color: #e8f4f5;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 10px rgba(105, 219, 211, 0.3);
         }
 
         /* ===== WAITLIST ===== */
         .waitlist-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             border-radius: 24px;
             padding: 2.5rem 2.5rem;
             text-align: center;
-            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
             max-width: 700px;
             margin: 0 auto;
         }
@@ -910,12 +772,12 @@
         .waitlist-card h3 {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-dark);
             margin-bottom: 0.3rem;
         }
 
         .waitlist-card p {
-            color: #b0d4d8;
+            color: var(--text-medium);
             margin-bottom: 1.2rem;
         }
 
@@ -928,22 +790,26 @@
 
         .waitlist-form input {
             flex: 1;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 12px;
             padding: 0.8rem 1rem;
-            color: #fff;
+            color: var(--text-dark);
             font-family: 'Fredoka', sans-serif;
             font-size: 0.9rem;
         }
 
+        .waitlist-form input::placeholder {
+            color: var(--text-light);
+        }
+
         .waitlist-form input:focus {
             outline: none;
-            border-color: rgba(77, 208, 199, 0.3);
+            border-color: var(--purple);
         }
 
         .waitlist-form .waitlist-btn {
-            background: linear-gradient(135deg, #26a69a, #00bfa5);
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
             color: #fff;
             border: none;
             border-radius: 12px;
@@ -969,11 +835,11 @@
         }
 
         .instagram-placeholder {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 16px;
             padding: 2rem 1rem;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             aspect-ratio: 1;
             display: flex;
             flex-direction: column;
@@ -990,21 +856,41 @@
 
         .instagram-placeholder p {
             font-size: 0.75rem;
-            color: #6b8a92;
+            color: var(--text-light);
+        }
+
+        .instagram-placeholder .ig-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.4rem 1.2rem;
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .instagram-placeholder .ig-link:hover {
+            transform: scale(1.05);
         }
 
         /* ===== CONTACT ===== */
         .contact-card {
             border-radius: 24px;
             padding: 3rem 2.5rem 4rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
         }
 
         .contact-intro {
             text-align: center;
-            color: #d4ecf0;
+            color: var(--text-medium);
             margin-bottom: 2rem;
         }
 
@@ -1035,7 +921,7 @@
         label {
             font-size: 0.75rem;
             font-weight: 600;
-            color: #4dd0c7;
+            color: var(--purple);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -1043,28 +929,33 @@
         input,
         select,
         textarea {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 12px;
             padding: 0.8rem 1rem;
-            color: #fff;
+            color: var(--text-dark);
             font-family: 'Fredoka', sans-serif;
             font-size: 0.9rem;
             transition: all 0.2s ease;
             width: 100%;
         }
 
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--text-light);
+        }
+
         input:focus,
         select:focus,
         textarea:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(77, 208, 199, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--purple);
         }
 
         select option {
-            background: #0f3b4a;
-            color: #fff;
+            background: #f5edf8;
+            color: var(--text-dark);
         }
 
         .checkbox-grid {
@@ -1077,7 +968,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #d4ecf0;
+            color: var(--text-medium);
             font-size: 0.85rem;
             cursor: pointer;
         }
@@ -1085,13 +976,13 @@
         .checkbox-item input[type="checkbox"] {
             width: 16px;
             height: 16px;
-            accent-color: #4dd0c7;
+            accent-color: var(--purple);
             cursor: pointer;
             flex-shrink: 0;
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #26a69a, #00bfa5);
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
             color: #fff;
             border: none;
             border-radius: 14px;
@@ -1099,7 +990,7 @@
             font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0px 6px 0px #13635b;
+            box-shadow: 0 4px 15px rgba(139, 108, 158, 0.3);
             transition: all 0.15s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -1107,12 +998,11 @@
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0px 8px 0px #13635b;
+            box-shadow: 0 8px 25px rgba(139, 108, 158, 0.4);
         }
 
         .submit-btn:active {
-            transform: translateY(4px);
-            box-shadow: 0px 3px 0px #13635b;
+            transform: translateY(2px);
         }
 
         /* ===== CREDIBILITY ===== */
@@ -1126,7 +1016,7 @@
 
         .credibility-item {
             font-size: 0.8rem;
-            color: #b0d4d8;
+            color: var(--text-light);
         }
 
         .credibility-item .cred-icon {
@@ -1140,42 +1030,45 @@
         footer {
             text-align: center;
             padding: 2rem 0 1rem;
-            color: #5a7a82;
+            color: var(--text-light);
             font-size: 0.85rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
             margin-top: 2rem;
         }
 
-        /* ===== BACKGROUND WAVES ===== */
-        .wave-layer {
+        /* ===== BACKGROUND DECOR ===== */
+        .bg-blob {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 100px;
-            background-repeat: repeat-x;
-            background-position: 0 bottom;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.25;
             pointer-events: none;
-            z-index: 2;
+            z-index: 0;
         }
 
-        .wave-back {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C150,100 350,20 500,60 C650,100 850,20 1000,60 C1150,100 1300,60 1450,60 L1450,120 L0,120 Z' fill='%2326a69a' opacity='0.08'/%3E%3C/svg%3E");
-            animation: waveMove 22s linear infinite;
+        .bg-blob-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--purple);
+            top: -100px;
+            right: -100px;
         }
 
-        .wave-front {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,50 C150,90 300,30 450,60 C600,90 750,30 900,60 C1050,90 1200,50 1350,50 L1350,120 L0,120 Z' fill='%234dd0c7' opacity='0.04'/%3E%3C/svg%3E");
-            animation: waveMove 14s linear infinite;
+        .bg-blob-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--teal);
+            bottom: -150px;
+            left: -150px;
         }
 
-        @keyframes waveMove {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+        .bg-blob-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--purple-light);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         /* ===== PARTICLES ===== */
@@ -1192,9 +1085,18 @@
 
         .bubble-pop {
             position: absolute;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 50%;
+            background: rgba(139, 108, 158, 0.08);
+            border: 1px solid rgba(139, 108, 158, 0.12);
+        }
+
+        .bubble-pop.sparkle {
+            background: none !important;
+            border: none !important;
+            font-size: 18px;
+            width: auto !important;
+            height: auto !important;
+            opacity: 0.6;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -1211,37 +1113,18 @@
             .founding-benefits {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .timeline-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
             .instagram-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .credibility-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+            .splash-title {
+                font-size: 3.5rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem 0;
-                width: 100%;
-            }
-            .nav-links.open {
-                display: flex;
-            }
-            .nav-toggle {
-                display: flex;
-            }
-            .nav-container {
-                flex-wrap: wrap;
-            }
             .form-row-3 {
                 grid-template-columns: 1fr;
             }
@@ -1260,13 +1143,7 @@
             .founding-benefits {
                 grid-template-columns: 1fr 1fr;
             }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .timeline-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .hero-title {
+            .splash-title {
                 font-size: 2.8rem;
             }
             .banner p {
@@ -1280,6 +1157,12 @@
             }
             .credibility-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .instagram-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .splash-header {
+                padding: 4rem 0 1rem;
             }
         }
 
@@ -1304,8 +1187,8 @@
             .why-card {
                 padding: 2rem 1.2rem;
             }
-            .hero-title {
-                font-size: 2.2rem;
+            .splash-title {
+                font-size: 2.4rem;
             }
             .banner {
                 padding: 1.5rem;
@@ -1316,12 +1199,6 @@
             .founding-benefits {
                 grid-template-columns: 1fr;
             }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .timeline-grid {
-                grid-template-columns: 1fr 1fr;
-            }
             .instagram-grid {
                 grid-template-columns: 1fr;
             }
@@ -1331,62 +1208,40 @@
             .waitlist-card {
                 padding: 1.5rem;
             }
+            .splash-logo {
+                max-width: 180px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== BACKGROUND LAYERS ===== -->
-    <div class="sky-decor" id="decor-container"></div>
-    <div class="wave-layer wave-back"></div>
-    <div class="wave-layer wave-front"></div>
+    <!-- ===== BACKGROUND BLOBS ===== -->
+    <div class="bg-blob bg-blob-1"></div>
+    <div class="bg-blob bg-blob-2"></div>
+    <div class="bg-blob bg-blob-3"></div>
 
-    <!-- ===== NAVIGATION ===== -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">MerMommy</a>
-            <ul class="nav-links">
-                <li><a href="#adventure">Adventures</a></li>
-                <li><a href="#dreams">Dreams</a></li>
-                <li><a href="#tail">About</a></li>
-                <li><a href="#contact" class="nav-cta">Book Now</a></li>
-            </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
+    <!-- ===== PARTICLES ===== -->
+    <div class="sky-decor" id="decor-container"></div>
 
     <!-- ===== MAIN WRAPPER ===== -->
     <div class="container">
 
-        <!-- ===== HERO ===== -->
-        <header class="hero" id="hero">
-            <div class="hero-bubble">
-                <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="hero-logo" loading="lazy" />
-            </div>
-            <h1 class="hero-title font-signature">Creating Magical Celebrations Across San Diego</h1>
-            <p class="hero-sub">
+        <!-- ===== SPLASH HEADER ===== -->
+        <header class="splash-header" id="hero">
+            <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="splash-logo" loading="lazy" />
+            <h1 class="splash-title font-signature">Creating Magical Celebrations</h1>
+            <p class="splash-sub">
                 Curated children's parties, themed celebrations,<br />
-                luxury decor rentals, and unforgettable memories.
+                luxury decor rentals, and unforgettable memories across San Diego.
             </p>
-            <div class="hero-badge">The Party Starts Soon!</div>
+            <div class="splash-badge">The Party Starts Soon!</div>
         </header>
 
-        <!-- ===== STATISTICS COUNTERS ===== -->
-        <div class="stats-grid" id="stats">
-            <div class="stat-card">
-                <span class="stat-number" data-count="4">0</span>
-                <span class="stat-label">Signature Themes</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number" data-count="100">0</span>
-                <span class="stat-label">Heart &amp; Soul</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">∞</span>
-                <span class="stat-label">Imagination</span>
-            </div>
+        <!-- ===== SCROLL INDICATOR ===== -->
+        <div class="scroll-indicator">
+            <span>Explore Our World</span>
+            <span class="arrow">↓</span>
         </div>
 
         <!-- ===== EXPERIENCE BANNER ===== -->
@@ -1424,7 +1279,7 @@
                     Exclusive Themes
                 </div>
             </div>
-            <p style="margin-top:1.2rem;font-size:0.85rem;color:#6b8a92;">
+            <p style="margin-top:1.2rem;font-size:0.85rem;color:var(--text-light);">
                 In exchange, we ask permission to photograph portions of the event for our portfolio.
             </p>
         </section>
@@ -1436,7 +1291,7 @@
                 <p>
                     MerMommy Creations started with a simple belief:
                 </p>
-                <p style="font-size:1.3rem;color:#4dd0c7;font-weight:600;margin:0.5rem 0;">
+                <p style="font-size:1.3rem;color:var(--purple);font-weight:600;margin:0.5rem 0;">
                     Childhood moves too fast.
                 </p>
                 <p>
@@ -1467,7 +1322,7 @@
                         <span>lemon bar</span>
                         <span>floral accents</span>
                     </div>
-                    <div class="card-price">from $290</div>
+                    <div class="card-price">Included</div>
                 </div>
 
                 <div class="adventure-card card-burger">
@@ -1480,7 +1335,7 @@
                         <span>fry cones</span>
                         <span>shake station</span>
                     </div>
-                    <div class="card-price">from $340</div>
+                    <div class="card-price">Included</div>
                 </div>
 
                 <div class="adventure-card card-dye">
@@ -1493,7 +1348,7 @@
                         <span>splatter zone</span>
                         <span>glow accents</span>
                     </div>
-                    <div class="card-price">from $380</div>
+                    <div class="card-price">Included</div>
                 </div>
 
                 <div class="adventure-card card-mermaid">
@@ -1506,10 +1361,13 @@
                         <span>pearl accents</span>
                         <span>wave backdrop</span>
                     </div>
-                    <div class="card-price">from $420</div>
+                    <div class="card-price">Included</div>
                 </div>
 
             </div>
+            <p style="text-align:center;margin-top:1.5rem;color:var(--text-medium);font-size:0.95rem;">
+                ✨ All decor, tableware, and setup included. Just bring your guests and the cake!
+            </p>
         </section>
 
         <!-- ===== DREAM THEMES ===== -->
@@ -1673,63 +1531,6 @@
             </div>
         </section>
 
-        <!-- ===== THE JOURNEY (TIMELINE) - VISIBLE NOW ===== -->
-        <section class="section" id="journey" style="display:block !important;">
-            <h2 class="section-title">The Journey</h2>
-            <div class="timeline-grid">
-                <div class="timeline-item done">
-                    <span class="tl-icon">✓</span>
-                    <span class="tl-status">Done</span>
-                    <h4>Business Name Created</h4>
-                </div>
-                <div class="timeline-item done">
-                    <span class="tl-icon">✓</span>
-                    <span class="tl-status">Done</span>
-                    <h4>Branding Designed</h4>
-                </div>
-                <div class="timeline-item done">
-                    <span class="tl-icon">✓</span>
-                    <span class="tl-status">Done</span>
-                    <h4>Website Launched</h4>
-                </div>
-                <div class="timeline-item done">
-                    <span class="tl-icon">✓</span>
-                    <span class="tl-status">Done</span>
-                    <h4>Packages Created</h4>
-                </div>
-                <div class="timeline-item">
-                    <span class="tl-icon">📸</span>
-                    <span class="tl-status pending">Next</span>
-                    <h4>First Photoshoot</h4>
-                </div>
-                <div class="timeline-item">
-                    <span class="tl-icon">👨‍👩‍👧‍👦</span>
-                    <span class="tl-status pending">Next</span>
-                    <h4>First Founding Family</h4>
-                </div>
-                <div class="timeline-item">
-                    <span class="tl-icon">🎉</span>
-                    <span class="tl-status pending">Next</span>
-                    <h4>First Official Event</h4>
-                </div>
-                <div class="timeline-item">
-                    <span class="tl-icon">🔟</span>
-                    <span class="tl-status pending">Next</span>
-                    <h4>10 Parties</h4>
-                </div>
-                <div class="timeline-item">
-                    <span class="tl-icon">🎯</span>
-                    <span class="tl-status pending">Next</span>
-                    <h4>50 Parties</h4>
-                </div>
-                <div class="timeline-item">
-                    <span class="tl-icon">⭐</span>
-                    <span class="tl-status pending">Next</span>
-                    <h4>100 Celebrations</h4>
-                </div>
-            </div>
-        </section>
-
         <!-- ===== ADD-ONS ===== -->
         <section class="section" id="addons">
             <h2 class="section-title">Add-On Services</h2>
@@ -1781,7 +1582,7 @@
                     <input type="email" placeholder="Your email" required />
                     <button type="submit" class="waitlist-btn">Join List</button>
                 </form>
-                <p style="font-size:0.75rem;color:#6b8a92;margin-top:0.8rem;">
+                <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.8rem;">
                     First 25 subscribers get a special launch surprise.
                 </p>
             </div>
@@ -1795,26 +1596,29 @@
                 <div class="instagram-placeholder">
                     <span class="ig-icon">📷</span>
                     <p>@mermommycreations</p>
-                    <p style="font-size:0.65rem;color:#4a6a72;">Coming soon</p>
+                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow on Instagram</a>
                 </div>
                 <div class="instagram-placeholder">
                     <span class="ig-icon">📷</span>
                     <p>@mermommycreations</p>
-                    <p style="font-size:0.65rem;color:#4a6a72;">Coming soon</p>
+                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow on Instagram</a>
                 </div>
                 <div class="instagram-placeholder">
                     <span class="ig-icon">📷</span>
                     <p>@mermommycreations</p>
-                    <p style="font-size:0.65rem;color:#4a6a72;">Coming soon</p>
+                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow on Instagram</a>
                 </div>
             </div>
+            <p style="text-align:center;margin-top:1.5rem;color:var(--text-light);font-size:0.9rem;">
+                📸 Real photos, behind-the-scenes, and new themes coming soon!
+            </p>
         </section>
 
         <!-- ===== CONTACT / BOOKING ===== -->
         <section class="section" id="contact">
             <div class="contact-card" id="form-container">
-                <h2 class="font-signature" style="font-size:3rem;color:#4dd0c7;text-align:center;">Book a Setup</h2>
-                <p class="contact-intro">Secure your celebration coordinates ahead of our official brand launch.</p>
+                <h2 class="font-signature" style="font-size:3rem;color:var(--purple);text-align:center;">Book a Setup</h2>
+                <p class="contact-intro">Let's chat about your celebration! Tell us what you need and we'll handle the rest.</p>
 
                 <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="contact-form">
                     <div class="form-row">
@@ -1873,8 +1677,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Party Size &amp; Setup Goals</label>
-                        <textarea id="message" name="message" rows="3" placeholder="How many guests? What can we create for you?"></textarea>
+                        <label for="message">Tell us about your celebration</label>
+                        <textarea id="message" name="message" rows="3" placeholder="How many guests? What's your vision? Need tables and chairs? We have everything — just let us know what you need!"></textarea>
                     </div>
 
                     <button type="submit" class="submit-btn">Send Inquiry</button>
@@ -1882,8 +1686,8 @@
 
                 <div id="success-message" style="display:none;text-align:center;padding:2rem 0;">
                     <div style="font-size:3rem;">🐚</div>
-                    <h2 class="font-signature" style="font-size:3rem;color:#4dd0c7;">Inquiry Splashed!</h2>
-                    <p style="font-size:1.1rem;color:#d4ecf0;">Thank you! Your party coordinates have drifted safely into our inbox.</p>
+                    <h2 class="font-signature" style="font-size:3rem;color:var(--purple);">Inquiry Splashed!</h2>
+                    <p style="font-size:1.1rem;color:var(--text-medium);">Thank you! Your party coordinates have drifted safely into our inbox.</p>
                 </div>
             </div>
         </section>
@@ -1915,7 +1719,7 @@
         <!-- ===== FOOTER ===== -->
         <footer>
             <p>&copy; 2026 MerMommy Creations. All rights reserved.</p>
-            <p style="font-size:0.7rem;color:#4a6a72;margin-top:0.3rem;">*When applicable</p>
+            <p style="font-size:0.7rem;color:var(--text-light);margin-top:0.3rem;">*When applicable</p>
         </footer>
 
     </div><!-- /container -->
@@ -1925,65 +1729,49 @@
         document.addEventListener('DOMContentLoaded', function() {
 
             // =========================================
-            // 1. NAVIGATION
-            // =========================================
-            const navToggle = document.getElementById('navToggle');
-            const navLinks = document.querySelector('.nav-links');
-            const navbar = document.getElementById('navbar');
-
-            if (navToggle) {
-                navToggle.addEventListener('click', function() {
-                    navLinks.classList.toggle('open');
-                });
-            }
-
-            document.querySelectorAll('.nav-links a').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    navLinks.classList.remove('open');
-                });
-            });
-
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // =========================================
-            // 2. PARTICLES
+            // 1. PARTICLES WITH SPARKLES
             // =========================================
             const decorContainer = document.getElementById('decor-container');
-            const particleCount = 15;
+            const particleCount = 20;
 
             for (let i = 0; i < particleCount; i++) {
                 const element = document.createElement('div');
-                element.classList.add('bubble-pop');
-                const size = Math.random() * 20 + 6;
-                element.style.width = size + 'px';
-                element.style.height = size + 'px';
+                const isSparkle = Math.random() > 0.6;
+
+                if (isSparkle) {
+                    element.classList.add('bubble-pop', 'sparkle');
+                    element.textContent = '✨';
+                    element.style.fontSize = (Math.random() * 10 + 14) + 'px';
+                    element.style.opacity = 0.3 + Math.random() * 0.3;
+                } else {
+                    element.classList.add('bubble-pop');
+                    const size = Math.random() * 20 + 8;
+                    element.style.width = size + 'px';
+                    element.style.height = size + 'px';
+                }
+
                 element.style.left = Math.random() * 100 + 'vw';
                 element.style.bottom = '-50px';
                 decorContainer.appendChild(element);
 
                 gsap.to(element, {
                     y: -(window.innerHeight + 200),
-                    x: '+= ' + (Math.random() * 80 - 40),
-                    duration: Math.random() * 12 + 10,
+                    x: '+= ' + (Math.random() * 100 - 50),
+                    rotation: isSparkle ? 360 : 0,
+                    duration: Math.random() * 14 + 10,
                     repeat: -1,
-                    delay: Math.random() * 15,
+                    delay: Math.random() * 18,
                     ease: 'none',
                 });
             }
 
             // =========================================
-            // 3. GSAP ANIMATIONS
+            // 2. GSAP ANIMATIONS
             // =========================================
             gsap.registerPlugin(ScrollTrigger);
 
-            // Hero
-            gsap.from('.hero-title, .hero-sub, .hero-badge, .hero-bubble', {
+            // Hero / Splash
+            gsap.from('.splash-title, .splash-sub, .splash-badge, .splash-logo', {
                 opacity: 0,
                 y: 30,
                 duration: 0.9,
@@ -1992,46 +1780,12 @@
                 delay: 0.2,
             });
 
-            // Stats
-            gsap.from('.stat-card', {
+            // Scroll Indicator
+            gsap.from('.scroll-indicator', {
                 opacity: 0,
-                y: 25,
-                duration: 0.7,
-                stagger: 0.08,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '#stats',
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
-            });
-
-            // Animated Counters
-            document.querySelectorAll('.stat-number[data-count]').forEach(function(el) {
-                const target = parseInt(el.getAttribute('data-count'));
-                const duration = 2000;
-                const startTime = performance.now();
-
-                function updateCounter(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    const current = Math.round(eased * target);
-                    el.textContent = current + (target === 100 ? '%' : '');
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        el.textContent = target + (target === 100 ? '%' : '');
-                    }
-                }
-
-                const observer = new IntersectionObserver(function(entries) {
-                    if (entries[0].isIntersecting) {
-                        requestAnimationFrame(updateCounter);
-                        observer.disconnect();
-                    }
-                }, { threshold: 0.5 });
-                observer.observe(el);
+                duration: 0.8,
+                delay: 0.8,
+                ease: 'power2.out',
             });
 
             // Banner
@@ -2184,20 +1938,6 @@
                 },
             });
 
-            // Timeline - FIXED: Now visible
-            gsap.from('.timeline-item', {
-                opacity: 0,
-                y: 15,
-                duration: 0.5,
-                stagger: 0.05,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '.timeline-grid',
-                    start: 'top 90%',
-                    toggleActions: 'play none none none',
-                },
-            });
-
             // Add-on Cards
             gsap.from('.addon-card', {
                 opacity: 0,
@@ -2253,7 +1993,7 @@
             });
 
             // =========================================
-            // 4. FLOATING ICONS - SUBTLE
+            // 3. FLOATING ICONS
             // =========================================
             document.querySelectorAll('.adventure-card .card-icon, .addon-card .addon-icon, .included-card .inc-icon, .dream-card .dream-icon').forEach(function(icon) {
                 gsap.to(icon, {
@@ -2267,7 +2007,7 @@
             });
 
             // =========================================
-            // 5. WAITLIST FORM
+            // 4. WAITLIST FORM
             // =========================================
             const waitlistForm = document.getElementById('waitlist-form');
             if (waitlistForm) {
@@ -2276,7 +2016,7 @@
                     const btn = this.querySelector('.waitlist-btn');
                     const original = btn.textContent;
                     btn.textContent = 'Added!';
-                    btn.style.background = '#4dd0c7';
+                    btn.style.background = '#69DBD3';
                     setTimeout(function() {
                         btn.textContent = original;
                         btn.style.background = '';
@@ -2286,7 +2026,7 @@
             }
 
             // =========================================
-            // 6. INQUIRY FORM
+            // 5. INQUIRY FORM
             // =========================================
             const form = document.getElementById('inquiry-form');
 
