@@ -14,7 +14,9 @@
         .adventure-card,
         .process-step,
         .main-card,
-        .contact-card {
+        .contact-card,
+        .addon-card,
+        .included-card {
             background: rgba(255, 255, 255, 0.05) !important;
             backdrop-filter: blur(8px) !important;
             -webkit-backdrop-filter: blur(8px) !important;
@@ -137,6 +139,175 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
 
+        /* ===== WHAT'S INCLUDED SECTION ===== */
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin: 1.5rem 0 0.5rem;
+            width: 100%;
+        }
+
+        .included-card {
+            border-radius: 24px;
+            padding: 1.5rem 1rem;
+            transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            min-height: 140px;
+        }
+
+        .included-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .included-card .included-icon {
+            font-size: 2.5rem;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .included-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+
+        .included-card p {
+            font-size: 0.8rem;
+            color: #b0d4d8;
+            line-height: 1.3;
+            max-width: 90%;
+        }
+
+        /* ===== ADD-ONS SECTION ===== */
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0 1rem;
+            width: 100%;
+        }
+
+        .addon-card {
+            border-radius: 32px 32px 28px 28px;
+            padding: 2rem 1.5rem;
+            transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            min-height: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .addon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            border-radius: 32px 32px 0 0;
+        }
+
+        .addon-mermaid::before { background: #4dd0c7; }
+        .addon-shell::before { background: #f9d342; }
+        .addon-pearl::before { background: #ff7eb3; }
+        .addon-cake::before { background: #ff9a9e; }
+
+        .addon-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 0 rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .addon-card .addon-icon {
+            font-size: 3.5rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 6px 8px rgba(0,0,0,0.3));
+        }
+
+        .addon-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: #fff;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .addon-card .addon-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.06);
+            padding: 0.15rem 1rem;
+            border-radius: 40px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: #c8e6e8;
+            margin-bottom: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .addon-card p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #d4ecf0;
+            margin-bottom: 0.5rem;
+            flex: 1;
+        }
+
+        .addon-card .addon-price {
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(0,0,0,0.25);
+            padding: 0.25rem 1.4rem;
+            border-radius: 40px;
+            color: #e8f4f5;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ===== EXPERIENCE BANNER ===== */
+        .experience-banner {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 28px;
+            padding: 2.5rem 3rem;
+            margin-bottom: 3rem;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-banner .wave-emoji {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-banner p {
+            font-size: 1.3rem;
+            color: #d4ecf0;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-banner .highlight {
+            color: #4dd0c7;
+            font-weight: 600;
+        }
+
         /* ===== PROCESS SECTION ===== */
         .process-grid {
             display: grid;
@@ -232,6 +403,18 @@
             gap: 1.5rem; 
         }
 
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row-3 { grid-template-columns: 1fr; }
+            .included-grid { grid-template-columns: repeat(2, 1fr); }
+            .addons-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 600px) {
             .form-row { grid-template-columns: 1fr; }
             .adventure-grid { 
@@ -242,11 +425,23 @@
                 gap: 1.5rem; 
             }
             .adventure-card { min-height: 350px; }
+            .addons-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .addon-card { min-height: 240px; }
+            .included-grid { grid-template-columns: 1fr 1fr; }
+            .experience-banner { padding: 1.5rem; }
+            .experience-banner p { font-size: 1.1rem; }
         }
 
         @media (max-width: 1024px) {
             .adventure-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
             .adventure-card { min-height: 380px; }
+            .addons-grid { grid-template-columns: repeat(2, 1fr); }
+            .included-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         label { 
@@ -313,8 +508,21 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        .themes-section {
+        .section-subtitle {
+            text-align: center;
+            color: #d4ecf0;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .themes-section,
+        .addons-section,
+        .included-section {
             margin-bottom: 3rem;
+            width: 100%;
         }
 
         .animation-card {
@@ -353,7 +561,7 @@
         p { font-size: 1.1rem; line-height: 1.6; }
 
         .container {
-            max-width: 950px;
+            max-width: 1100px;
             width: 92%;
             margin: 0 auto;
             display: flex;
@@ -369,6 +577,39 @@
                 padding: 2rem 1.2rem;
             }
             .process-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== CHECKBOX STYLING ===== */
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #d4ecf0;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #4dd0c7;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 600px) {
+            .checkbox-group {
                 grid-template-columns: 1fr;
             }
         }
@@ -389,6 +630,17 @@
                 <p>Whimsical children's party setups and luxury decor rentals. We bring the magic straight to your celebration and coordinate everything flawlessly! ✨</p>
                 <div class="floating-badge">The Party Starts Soon!</div>
             </header>
+
+            <!-- EXPERIENCE BANNER -->
+            <div class="experience-banner" id="experience-banner">
+                <span class="wave-emoji">🏄‍♀️</span>
+                <p>
+                    We've been <span class="highlight">catching the party waves</span> for years, 
+                    turning everyday celebrations into <span class="highlight">extraordinary memories</span>! 
+                    Let us <span class="highlight">sail through the details</span> you wish you'd planned for— 
+                    so you can <span class="highlight">swim right into</span> every magical moment.
+                </p>
+            </div>
 
             <section class="animation-card process-section" id="process-section">
                 <h2 class="section-title">How We Make Magic</h2>
@@ -411,7 +663,7 @@
                 </div>
             </section>
 
-            <!-- ENHANCED PICK YOUR ADVENTURE SECTION -->
+            <!-- PICK YOUR ADVENTURE SECTION -->
             <section class="themes-section" id="themes-section">
                 <h2 class="section-title">Pick Your Adventure</h2>
                 <div class="adventure-grid">
@@ -474,40 +726,186 @@
                 </div>
             </section>
 
+            <!-- WHAT'S INCLUDED SECTION -->
+            <section class="included-section" id="included-section">
+                <h2 class="section-title">🫧 Every Party Includes</h2>
+                <p class="section-subtitle">All of our curated packages come fully stocked with everything you need to create a magical celebration.</p>
+                <div class="included-grid">
+
+                    <div class="included-card">
+                        <div class="included-icon">🎭</div>
+                        <h4>Photo Backdrop</h4>
+                        <p>Custom themed backdrop for picture-perfect moments</p>
+                    </div>
+
+                    <div class="included-card">
+                        <div class="included-icon">🏳️</div>
+                        <h4>Banners &amp; Bunting</h4>
+                        <p>Matching banners, garlands, and hanging decor</p>
+                    </div>
+
+                    <div class="included-card">
+                        <div class="included-icon">📸</div>
+                        <h4>Photo Props</h4>
+                        <p>Fun, themed props for guest photo ops</p>
+                    </div>
+
+                    <div class="included-card">
+                        <div class="included-icon">🍽️</div>
+                        <h4>Serving Wear</h4>
+                        <p>Plates, cups, napkins, and tableware</p>
+                    </div>
+
+                    <div class="included-card">
+                        <div class="included-icon">🧁</div>
+                        <h4>Cake Display</h4>
+                        <p>Beautiful cake stands and dessert tables</p>
+                    </div>
+
+                    <div class="included-card">
+                        <div class="included-icon">🪑</div>
+                        <h4>Seating Decor</h4>
+                        <p>Chair covers, sashes, or themed seating</p>
+                    </div>
+
+                    <div class="included-card">
+                        <div class="included-icon">🎁</div>
+                        <h4>Favor Station</h4>
+                        <p>Display setup for party favors and goodie bags</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- MERMOMMY ADD-ONS SECTION -->
+            <section class="addons-section" id="addons-section">
+                <h2 class="section-title">✨ MerMommy Add-Ons</h2>
+                <p class="section-subtitle">Make your celebration completely stress-free with our signature add-on services. We've got every detail covered so you can truly enjoy the magic!</p>
+                <div class="addons-grid">
+
+                    <!-- The MerMommy Stay -->
+                    <div class="addon-card addon-mermaid">
+                        <div class="addon-icon">🧜‍♀️</div>
+                        <h3>The MerMommy Stay</h3>
+                        <div class="addon-tag">✨ full-service coordination</div>
+                        <p>We stay throughout the entire party! From cake cutting and photography to managing the flow, we handle everything so you can relax and celebrate with your little one.</p>
+                        <div class="addon-price">from $150</div>
+                    </div>
+
+                    <!-- Pearl Package (Setup + Breakdown) -->
+                    <div class="addon-card addon-pearl">
+                        <div class="addon-icon">🪸</div>
+                        <h3>Pearl Package</h3>
+                        <div class="addon-tag">🫧 setup + breakdown</div>
+                        <p>Full setup and teardown of your entire party vision. We arrive early, build the magic, and stay after to pack it all away — you just show up and enjoy!</p>
+                        <div class="addon-price">from $100</div>
+                    </div>
+
+                    <!-- Treasure Trove (Goodie Bags) -->
+                    <div class="addon-card addon-shell">
+                        <div class="addon-icon">🎁</div>
+                        <h3>Treasure Trove</h3>
+                        <div class="addon-tag">🐚 custom goodie bags</div>
+                        <p>Curated goodie bags filled with ocean-themed treasures and treats for every little guest. A magical take-home memory they'll absolutely adore!</p>
+                        <div class="addon-price">from $8/guest</div>
+                    </div>
+
+                    <!-- Vintage High Chair Cakesmash -->
+                    <div class="addon-card addon-cake">
+                        <div class="addon-icon">🧁</div>
+                        <h3>Cakesmash Setup</h3>
+                        <div class="addon-tag">🍰 vintage high chair</div>
+                        <p>A beautifully styled vintage high chair with a custom cake smash setup. Includes backdrop, props, and a dreamy smash station for that perfect first birthday memory.</p>
+                        <div class="addon-price">from $75</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- CONTACT / BOOKING SECTION -->
             <section class="animation-card contact-card" id="contact-section">
                 <div id="form-container">
                     <h2 class="font-signature" style="font-size: 3.5rem; color: #4dd0c7;">Book a Setup</h2>
                     <p class="form-intro">Secure your celebration coordinates ahead of our official brand launch.</p>
                     
                     <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="inquiry-form">
+                        <!-- Parent Name -->
                         <div class="form-group">
                             <label for="name">Parent's Name</label>
                             <input type="text" id="name" name="name" required placeholder="YOUR NAME">
                         </div>
+
+                        <!-- Email -->
                         <div class="form-group">
                             <label for="email">Email Address</label>
                             <input type="email" id="email" name="email" required placeholder="NAME@EMAIL.COM">
                         </div>
-                        <div class="form-row">
+
+                        <!-- 3-Column Row: Date, Age, Location -->
+                        <div class="form-row-3">
                             <div class="form-group">
                                 <label for="date">Target Date</label>
                                 <input type="date" id="date" name="event-date">
                             </div>
                             <div class="form-group">
-                                <label for="theme">The Party Curation</label>
-                                <select id="theme" name="theme">
-                                    <option value="sea-shell-spa">Sea Shell Spa</option>
-                                    <option value="lemonade">Lemonade Stand</option>
-                                    <option value="burger">Palm Trees & Cheeseburgers</option>
-                                    <option value="tie-dye">Tie-Dye Studio</option>
-                                    <option value="custom">Something Custom</option>
+                                <label for="age">Average Age</label>
+                                <select id="age" name="age">
+                                    <option value="1-2">1-2 years</option>
+                                    <option value="3-4">3-4 years</option>
+                                    <option value="5-6">5-6 years</option>
+                                    <option value="7-8">7-8 years</option>
+                                    <option value="9-10">9-10 years</option>
+                                    <option value="10+">10+ years</option>
+                                    <option value="mixed">Mixed ages</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="location">Location (San Diego County)</label>
+                                <input type="text" id="location" name="location" placeholder="CITY, ZIP CODE" required>
+                            </div>
                         </div>
+
+                        <!-- Theme Selection -->
                         <div class="form-group">
-                            <label for="message">Party Size & Setup Goals</label>
-                            <textarea id="message" name="message" rows="4" placeholder="WHAT CAN WE CREATE FOR YOU?"></textarea>
+                            <label for="theme">The Party Curation</label>
+                            <select id="theme" name="theme">
+                                <option value="sea-shell-spa">Sea Shell Spa</option>
+                                <option value="lemonade">Lemonade Stand</option>
+                                <option value="burger">Palm Trees & Cheeseburgers</option>
+                                <option value="tie-dye">Tie-Dye Studio</option>
+                                <option value="custom">Something Custom</option>
+                            </select>
                         </div>
+
+                        <!-- Add-Ons (Checkboxes) -->
+                        <div class="form-group">
+                            <label>MerMommy Add-Ons</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="addons" value="mermommy-stay">
+                                    🧜‍♀️ The MerMommy Stay
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="addons" value="pearl-package">
+                                    🪸 Pearl Package
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="addons" value="treasure-trove">
+                                    🎁 Treasure Trove
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="addons" value="cakesmash">
+                                    🧁 Cakesmash Setup
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="form-group">
+                            <label for="message">Party Size &amp; Setup Goals</label>
+                            <textarea id="message" name="message" rows="4" placeholder="HOW MANY GUESTS? WHAT CAN WE CREATE FOR YOU?"></textarea>
+                        </div>
+
                         <button type="submit" id="submit-btn" class="submit-btn">SEND INQUIRY ➔</button>
                     </form>
                 </div>
@@ -533,7 +931,7 @@
             // Override body background to water colors
             document.body.style.background = "linear-gradient(180deg, #0a2a3a 0%, #0f3b4a 30%, #1a5a6a 60%, #0d3d4a 100%)";
             
-            // Also update wave colors to be more oceanic
+            // Update wave colors to be more oceanic
             const waveBack = document.querySelector('.wave-back');
             const waveFront = document.querySelector('.wave-front');
             
@@ -544,7 +942,7 @@
                 waveFront.style.backgroundImage = "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 120\" preserveAspectRatio=\"none\"><path d=\"M0,50 C150,90 300,30 450,60 C600,90 750,30 900,60 C1050,90 1200,50 1350,50 L1350,120 L0,120 Z\" fill=\"%234dd0c7\" opacity=\"0.08\"/></svg>')";
             }
 
-            // Animate all cards with GSAP
+            // Animate main cards with GSAP
             const cards = document.querySelectorAll('.animation-card');
             gsap.from(cards, {
                 opacity: 0,
@@ -555,7 +953,16 @@
                 delay: 0.2
             });
 
-            // Animate adventure cards with GSAP
+            // Animate experience banner
+            gsap.from('#experience-banner', {
+                opacity: 0,
+                y: 30,
+                duration: 0.9,
+                ease: "back.out(1.6)",
+                delay: 0.1
+            });
+
+            // Animate adventure cards
             const adventureCards = document.querySelectorAll('.adventure-card');
             gsap.from(adventureCards, {
                 opacity: 0,
@@ -564,6 +971,28 @@
                 stagger: 0.12,
                 ease: "back.out(1.6)",
                 delay: 0.4
+            });
+
+            // Animate included cards
+            const includedCards = document.querySelectorAll('.included-card');
+            gsap.from(includedCards, {
+                opacity: 0,
+                y: 30,
+                duration: 0.7,
+                stagger: 0.08,
+                ease: "back.out(1.6)",
+                delay: 0.5
+            });
+
+            // Animate add-on cards
+            const addonCards = document.querySelectorAll('.addon-card');
+            gsap.from(addonCards, {
+                opacity: 0,
+                y: 40,
+                duration: 0.8,
+                stagger: 0.12,
+                ease: "back.out(1.6)",
+                delay: 0.6
             });
 
             // Subtle floating icons for adventure cards
@@ -577,6 +1006,36 @@
                         yoyo: true,
                         ease: "sine.inOut",
                         delay: Math.random() * 0.6
+                    });
+                }
+            });
+
+            // Subtle floating icons for add-on cards
+            addonCards.forEach((card) => {
+                const icon = card.querySelector('.addon-icon');
+                if (icon) {
+                    gsap.to(icon, {
+                        y: -6,
+                        duration: 2.6,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: "sine.inOut",
+                        delay: Math.random() * 0.6
+                    });
+                }
+            });
+
+            // Subtle floating for included icons
+            includedCards.forEach((card) => {
+                const icon = card.querySelector('.included-icon');
+                if (icon) {
+                    gsap.to(icon, {
+                        y: -4,
+                        duration: 2.8,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: "sine.inOut",
+                        delay: Math.random() * 0.5
                     });
                 }
             });
