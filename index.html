@@ -3,12 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MerMommy Creations | Premium Curation</title>
+    <title>MerMommy Creations | Premium Party Curation</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Grand+Hotel&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== GLOBAL CARD STYLES ===== */
+        .animation-card,
+        .adventure-card,
+        .process-step,
+        .main-card,
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.06) !important;
+            box-shadow: 0 10px 0 rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.04) !important;
+        }
+
+        /* ===== ADVENTURE GRID ===== */
+        .adventure-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0 1rem;
+            width: 100%;
+        }
+
+        .adventure-card {
+            border-radius: 32px 32px 28px 28px;
+            padding: 1.8rem 1.2rem 1.8rem;
+            transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            min-height: 420px;
+        }
+
+        .adventure-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            border-radius: 32px 32px 0 0;
+        }
+
+        .card-lemon::before { background: #f9d342; }
+        .card-burger::before { background: #ff5e5e; }
+        .card-dye::before { background: #ff7eb3; }
+        .card-mermaid::before { background: #4dd0c7; }
+
+        .adventure-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 0 rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .adventure-card .card-icon {
+            font-size: 3.8rem;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+            filter: drop-shadow(0 6px 8px rgba(0,0,0,0.3));
+        }
+
+        .adventure-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.2rem;
+            color: #fff;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .adventure-card .theme-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.06);
+            padding: 0.15rem 1rem;
+            border-radius: 40px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: #c8e6e8;
+            margin-bottom: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .adventure-card p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #d4ecf0;
+            margin-bottom: 1rem;
+            flex: 1;
+            max-width: 95%;
+            min-height: 65px;
+        }
+
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 0.5rem;
+            justify-content: center;
+            margin: 0.3rem 0 0.6rem;
+        }
+
+        .card-features span {
+            background: rgba(255,255,255,0.04);
+            padding: 0.15rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: #b0d4d8;
+            letter-spacing: 0.2px;
+            border: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .adventure-card .price-badge {
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(0,0,0,0.25);
+            padding: 0.25rem 1.4rem;
+            border-radius: 40px;
+            color: #e8f4f5;
+            margin-top: 0.2rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ===== PROCESS SECTION ===== */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .process-step {
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #26a69a;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem auto;
+            box-shadow: 0px 4px 0px #13635b;
+        }
+
+        .process-step h3 { 
+            margin-bottom: 0.5rem; 
+            color: #4dd0c7; 
+        }
+        .process-step p { 
+            font-size: 0.95rem; 
+            color: #d4ecf0;
+        }
+
+        /* ===== MAIN CARD ===== */
+        .main-card {
+            margin-top: 5rem;
+        }
+
+        .logo-bubble {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 50% 50% 40% 40%;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo { max-width: 320px; width: 100%; }
+
+        .floating-badge {
+            display: inline-block;
+            margin-top: 2rem;
+            background: #ab47bc;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            box-shadow: -5px 5px 0px #26a69a;
+            font-size: 1.1rem;
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-card {
+            text-align: left;
+            padding-bottom: 5rem;
+        }
+
+        .form-intro { 
+            margin-bottom: 2.5rem; 
+            color: #d4ecf0; 
+        }
+
+        .inquiry-form { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1.5rem; 
+        }
+
+        .form-group { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.6rem; 
+        }
+
+        .form-row { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 1.5rem; 
+        }
+
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+            .adventure-grid { 
+                grid-template-columns: 1fr; 
+                max-width: 400px; 
+                margin-left: auto; 
+                margin-right: auto; 
+                gap: 1.5rem; 
+            }
+            .adventure-card { min-height: 350px; }
+        }
+
+        @media (max-width: 1024px) {
+            .adventure-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .adventure-card { min-height: 380px; }
+        }
+
+        label { 
+            font-size: 1rem; 
+            font-weight: 600; 
+            color: #4dd0c7; 
+        }
+
+        input, select, textarea {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 1.1rem;
+            color: #ffffff;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(77, 208, 199, 0.3);
+            box-shadow: 0px 0px 0px 3px rgba(77, 208, 199, 0.1);
+        }
+
+        select option { 
+            background: #0f3b4a; 
+            color: #ffffff; 
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #26a69a 0%, #00bfa5 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 16px;
+            padding: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0px 8px 0px #13635b;
+            margin-top: 1rem;
+            transition: all 0.15s ease;
+        }
+
+        .submit-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0px 10px 0px #13635b; 
+        }
+
+        .submit-btn:active { 
+            transform: translateY(4px); 
+            box-shadow: 0px 4px 0px #13635b; 
+        }
+
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .themes-section {
+            margin-bottom: 3rem;
+        }
+
+        .animation-card {
+            padding: 3rem 2.5rem;
+            border-radius: 28px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            margin-bottom: 4rem;
+        }
+
+        .process-section {
+            padding: 2.5rem 2rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #6b8a92;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        /* ===== FONT SIGNATURE ===== */
+        .font-signature {
+            font-family: 'Grand Hotel', cursive;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-shadow: 4px 4px 0 rgba(77, 208, 199, 0.3);
+        }
+
+        h1, h2, h3 { line-height: 1.2; }
+        p { font-size: 1.1rem; line-height: 1.6; }
+
+        .container {
+            max-width: 950px;
+            width: 92%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .animation-card {
+                padding: 2rem 1.2rem;
+            }
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="sky-decor" id="decor-container"></div>
@@ -16,89 +380,207 @@
     <div class="wave-layer wave-front"></div>
 
     <div class="container">
-        <header class="animation-card main-card" id="main-content">
-            <div class="logo-bubble">
-                <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="logo" id="logo">
-            </div>
-            <h1 class="font-signature">Making Waves Soon</h1>
-            <p>Whimsical children's party setups and luxury decor rentals. We bring the magic straight to your celebration and coordinate everything flawlessly! ✨</p>
-            <div class="floating-badge">The Party Starts Soon!</div>
-        </header>
+        <main>
+            <header class="animation-card main-card" id="main-content">
+                <div class="logo-bubble">
+                    <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="logo" id="logo">
+                </div>
+                <h1 class="font-signature">Making Waves Soon</h1>
+                <p>Whimsical children's party setups and luxury decor rentals. We bring the magic straight to your celebration and coordinate everything flawlessly! ✨</p>
+                <div class="floating-badge">The Party Starts Soon!</div>
+            </header>
 
-        <section class="themes-section" id="themes-section">
-            <h2 class="section-title">Pick Your Adventure</h2>
-            <div class="themes-grid">
-                <div class="theme-block block-lemon">
-                    <div class="theme-icon">🍋</div>
-                    <h3>Lemonade Stand</h3>
-                    <p>Sunny yellow palettes, picnic textures, and sweet country-fair vibes tailored for bright backyard celebrations.</p>
+            <section class="animation-card process-section" id="process-section">
+                <h2 class="section-title">How We Make Magic</h2>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3>Pick a Vibe</h3>
+                        <p>Choose from our premium, fully-curated theme packages.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3>We Drop Anchor</h3>
+                        <p>We arrive at your venue and build out the entire magical setup.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3>You Celebrate</h3>
+                        <p>Enjoy a stress-free party while we handle the coordination!</p>
+                    </div>
                 </div>
-                <div class="theme-block block-burger">
-                    <div class="theme-icon">🍔</div>
-                    <h3>In-N-Out Burger</h3>
-                    <p>Retro California diner magic! Bright neon checkers, custom palm trees, and iconic drive-in styling.</p>
-                </div>
-                <div class="theme-block block-dye">
-                    <div class="theme-icon">🎨</div>
-                    <h3>Tie-Dye Studio</h3>
-                    <p>A swirling rainbow explosion. Funky, creative decor layouts complete with interactive crafting table aesthetics.</p>
-                </div>
-                <div class="theme-block block-mermaid">
-                    <div class="theme-icon">🐚</div>
-                    <h3>Sea Shell Spa</h3>
-                    <p>Her signature masterpiece. Glimmering oceanic frames, pastel scales, and enchanting sea treasures.</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="animation-card contact-card" id="contact-section">
-            <div id="form-container">
-                <h2 class="font-signature" style="font-size: 3.5rem; color: #26a69a;">Book a Setup</h2>
-                <p class="form-intro">Secure your celebration coordinates ahead of our official brand launch.</p>
-                
-                <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="inquiry-form">
-                    <div class="form-group">
-                        <label for="name">Parent's Name</label>
-                        <input type="text" id="name" name="name" required placeholder="YOUR NAME">
+            <!-- ENHANCED PICK YOUR ADVENTURE SECTION -->
+            <section class="themes-section" id="themes-section">
+                <h2 class="section-title">Pick Your Adventure</h2>
+                <div class="adventure-grid">
+
+                    <!-- Lemonade Stand -->
+                    <div class="adventure-card card-lemon">
+                        <div class="card-icon">🍋</div>
+                        <h3>Lemonade Stand</h3>
+                        <div class="theme-tag">🌞 sunny · picnic</div>
+                        <p>Hand-painted crates, gingham textiles, and fresh citrus garlands for bright backyard celebrations.</p>
+                        <div class="card-features">
+                            <span>🧺 picnic styling</span>
+                            <span>🍋 lemon bar</span>
+                            <span>🌼 floral accents</span>
+                        </div>
+                        <div class="price-badge">from $290</div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="NAME@EMAIL.COM">
+
+                    <!-- Palm Trees & Cheeseburgers -->
+                    <div class="adventure-card card-burger">
+                        <div class="card-icon">🍔</div>
+                        <h3>Palm Trees &amp; Cheeseburgers</h3>
+                        <div class="theme-tag">🌴 retro · diner</div>
+                        <p>Neon checkers, custom palm trees, and a vintage drive-in feel with a classic burger bar.</p>
+                        <div class="card-features">
+                            <span>🎰 checker floor</span>
+                            <span>🍟 fry cones</span>
+                            <span>🥤 shake station</span>
+                        </div>
+                        <div class="price-badge">from $340</div>
                     </div>
-                    <div class="form-row">
+
+                    <!-- Tie-Dye Studio -->
+                    <div class="adventure-card card-dye">
+                        <div class="card-icon">🎨</div>
+                        <h3>Tie-Dye Studio</h3>
+                        <div class="theme-tag">🌈 psychedelic · crafty</div>
+                        <p>Rainbow swirls, splatter paint walls, and interactive dye tables for creative fun.</p>
+                        <div class="card-features">
+                            <span>🧴 dye kits</span>
+                            <span>🖌️ splatter zone</span>
+                            <span>✨ glow accents</span>
+                        </div>
+                        <div class="price-badge">from $380</div>
+                    </div>
+
+                    <!-- Sea Shell Spa -->
+                    <div class="adventure-card card-mermaid">
+                        <div class="card-icon">🐚</div>
+                        <h3>Sea Shell Spa</h3>
+                        <div class="theme-tag">🧜‍♀️ signature · oceanic</div>
+                        <p>Shimmering oyster shells, pastel scales, and pearl centerpieces in a magical mermaid cove.</p>
+                        <div class="card-features">
+                            <span>🪸 coral decor</span>
+                            <span>✨ pearl accents</span>
+                            <span>🌊 wave backdrop</span>
+                        </div>
+                        <div class="price-badge">from $420</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="animation-card contact-card" id="contact-section">
+                <div id="form-container">
+                    <h2 class="font-signature" style="font-size: 3.5rem; color: #4dd0c7;">Book a Setup</h2>
+                    <p class="form-intro">Secure your celebration coordinates ahead of our official brand launch.</p>
+                    
+                    <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="inquiry-form">
                         <div class="form-group">
-                            <label for="date">Target Date</label>
-                            <input type="date" id="date" name="event-date">
+                            <label for="name">Parent's Name</label>
+                            <input type="text" id="name" name="name" required placeholder="YOUR NAME">
                         </div>
                         <div class="form-group">
-                            <label for="theme">The Party Curation</label>
-                            <select id="theme" name="theme">
-                                <option value="sea-shell-spa">Sea Shell Spa</option>
-                                <option value="lemonade">Lemonade Stand</option>
-                                <option value="burger">In-N-Out Burger</option>
-                                <option value="tie-dye">Tie-Dye Studio</option>
-                                <option value="custom">Something Custom</option>
-                            </select>
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="NAME@EMAIL.COM">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Party Size & Setup Goals</label>
-                        <textarea id="message" name="message" rows="4" placeholder="WHAT CAN WE CREATE FOR YOU?"></textarea>
-                    </div>
-                    <button type="submit" id="submit-btn" class="submit-btn">SEND INQUIRY ➔</button>
-                </form>
-            </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Target Date</label>
+                                <input type="date" id="date" name="event-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="theme">The Party Curation</label>
+                                <select id="theme" name="theme">
+                                    <option value="sea-shell-spa">Sea Shell Spa</option>
+                                    <option value="lemonade">Lemonade Stand</option>
+                                    <option value="burger">Palm Trees & Cheeseburgers</option>
+                                    <option value="tie-dye">Tie-Dye Studio</option>
+                                    <option value="custom">Something Custom</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Party Size & Setup Goals</label>
+                            <textarea id="message" name="message" rows="4" placeholder="WHAT CAN WE CREATE FOR YOU?"></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="submit-btn">SEND INQUIRY ➔</button>
+                    </form>
+                </div>
 
-            <div id="success-message" style="display: none; text-align: center; padding: 2rem 0;">
-                <div style="font-size: 4rem; margin-bottom: 1rem;">✨🐚✨</div>
-                <h2 class="font-signature" style="font-size: 3.5rem; color: #26a69a; margin-bottom: 1rem;">Inquiry Splashed!</h2>
-                <p style="font-size: 1.3rem; color: #e5def2; max-width: 500px; margin: 0 auto;">
-                    Thank you! Your party coordinates have drifted safely into our inbox. We will reach out soon to start crafting your magical layout!
-                </p>
-            </div>
-        </section>
+                <div id="success-message" style="display: none; text-align: center; padding: 2rem 0;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">✨🐚✨</div>
+                    <h2 class="font-signature" style="font-size: 3.5rem; color: #4dd0c7; margin-bottom: 1rem;">Inquiry Splashed!</h2>
+                    <p style="font-size: 1.3rem; color: #d4ecf0; max-width: 500px; margin: 0 auto;">
+                        Thank you! Your party coordinates have drifted safely into our inbox. We will reach out soon to start crafting your magical layout!
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 MerMommy Creations. All rights reserved.</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Override body background to water colors
+            document.body.style.background = "linear-gradient(180deg, #0a2a3a 0%, #0f3b4a 30%, #1a5a6a 60%, #0d3d4a 100%)";
+            
+            // Also update wave colors to be more oceanic
+            const waveBack = document.querySelector('.wave-back');
+            const waveFront = document.querySelector('.wave-front');
+            
+            if (waveBack) {
+                waveBack.style.backgroundImage = "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 120\" preserveAspectRatio=\"none\"><path d=\"M0,60 C150,100 350,20 500,60 C650,100 850,20 1000,60 C1150,100 1300,60 1450,60 L1450,120 L0,120 Z\" fill=\"%2326a69a\" opacity=\"0.15\"/></svg>')";
+            }
+            if (waveFront) {
+                waveFront.style.backgroundImage = "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 120\" preserveAspectRatio=\"none\"><path d=\"M0,50 C150,90 300,30 450,60 C600,90 750,30 900,60 C1050,90 1200,50 1350,50 L1350,120 L0,120 Z\" fill=\"%234dd0c7\" opacity=\"0.08\"/></svg>')";
+            }
+
+            // Animate all cards with GSAP
+            const cards = document.querySelectorAll('.animation-card');
+            gsap.from(cards, {
+                opacity: 0,
+                y: 40,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: "back.out(1.6)",
+                delay: 0.2
+            });
+
+            // Animate adventure cards with GSAP
+            const adventureCards = document.querySelectorAll('.adventure-card');
+            gsap.from(adventureCards, {
+                opacity: 0,
+                y: 40,
+                duration: 0.8,
+                stagger: 0.12,
+                ease: "back.out(1.6)",
+                delay: 0.4
+            });
+
+            // Subtle floating icons for adventure cards
+            adventureCards.forEach((card) => {
+                const icon = card.querySelector('.card-icon');
+                if (icon) {
+                    gsap.to(icon, {
+                        y: -6,
+                        duration: 2.6,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: "sine.inOut",
+                        delay: Math.random() * 0.6
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
