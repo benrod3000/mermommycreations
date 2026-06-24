@@ -3,42 +3,33 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MerMommy Creations | Luxury Children's Party Curation</title>
-    <meta name="description" content="Luxury children's party styling and event curation throughout San Diego County. Creating magical celebrations with themed decor, custom designs, and unforgettable memories." />
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="MerMommy Creations | Luxury Children's Party Curation" />
-    <meta property="og:description" content="Luxury children's party styling and event curation throughout San Diego County." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mermommycreations.com" />
+    <title>MerMommy Creations | Storybook Celebration</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600;700&family=Grand+Hotel&display=swap" rel="stylesheet" />
 
-    <!-- GSAP -->
+    <!-- GSAP + Plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
 
     <style>
-        /* ===== RESET & BASE ===== */
+        /* ===== STORYBOOK RESET ===== */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
         html {
             scroll-behavior: smooth;
         }
-
         body {
             font-family: 'Fredoka', sans-serif;
-            background: linear-gradient(180deg, #f5edf8 0%, #f0eaf5 30%, #e8f5f4 60%, #e0f7fa 100%);
-            color: #4a4a4a;
+            background: linear-gradient(180deg, #f5edf8 0%, #f0eaf5 25%, #e8f5f4 55%, #d4ecea 80%, #c5e3e0 100%);
+            color: #3a3a4a;
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 2rem;
-            position: relative;
+            padding-bottom: 0;
         }
 
         /* ===== BRAND COLORS ===== */
@@ -47,29 +38,27 @@
             --teal: #69DBD3;
             --purple-light: #a88bb8;
             --teal-light: #8ee5de;
-            --pink-light: #f5edf8;
             --text-dark: #3a3a4a;
             --text-medium: #6a6a7a;
             --text-light: #9a8aaa;
+            --paper: #fcf8f0;
+            --ink: #2d2a3a;
         }
 
-        /* ===== TYPOGRAPHY ===== */
         .font-signature {
             font-family: 'Grand Hotel', cursive;
             font-weight: 400;
             letter-spacing: 1px;
             color: var(--purple);
-            text-shadow: 2px 2px 0 rgba(139, 108, 158, 0.15);
+            text-shadow: 2px 2px 0 rgba(139, 108, 158, 0.12);
         }
-
         .section-title {
             font-size: 2.8rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--text-dark);
         }
-
         .section-sub {
             text-align: center;
             color: var(--text-medium);
@@ -78,7 +67,6 @@
             margin: -0.5rem auto 2rem;
         }
 
-        /* ===== CONTAINER ===== */
         .container {
             max-width: 1200px;
             width: 92%;
@@ -87,33 +75,122 @@
             z-index: 10;
         }
 
-        /* ===== SPLASH HEADER ===== */
-        .splash-header {
-            text-align: center;
-            padding: 6rem 0 1rem;
+        /* ===== MOTION PATH GUIDE ===== */
+        #mermommy-guide {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s ease;
         }
-
-        .splash-logo {
-            max-width: 240px;
+        #mermommy-guide.visible {
+            opacity: 1;
+        }
+        #mermommy-guide svg {
             width: 100%;
-            margin-bottom: 1rem;
+            height: 100%;
+            filter: drop-shadow(0 4px 12px rgba(139, 108, 158, 0.2));
+        }
+        #story-path {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
         }
 
-        .splash-title {
-            font-size: 4.5rem;
+        /* ===== HERO - BIG LOGO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 1rem 3rem;
+            overflow: hidden;
+        }
+        .hero-layer {
+            position: absolute;
+            pointer-events: none;
+        }
+        .hero-layer-1 {
+            top: 10%;
+            left: 5%;
+            width: 120px;
+            opacity: 0.08;
+        }
+        .hero-layer-2 {
+            bottom: 15%;
+            right: 8%;
+            width: 80px;
+            opacity: 0.06;
+        }
+        .hero-layer-3 {
+            top: 20%;
+            right: 12%;
+            width: 60px;
+            opacity: 0.05;
+        }
+        .hero-layer-4 {
+            bottom: 25%;
+            left: 10%;
+            width: 100px;
+            opacity: 0.07;
+        }
+
+        .hero-swimmer {
+            position: absolute;
+            top: 30%;
+            right: 10%;
+            width: 80px;
+            animation: swimFloat 6s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        @keyframes swimFloat {
+            0%,
+            100% {
+                transform: translateY(0) rotate(-2deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        /* BIG LOGO */
+        .hero-logo-wrapper {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 1.5rem;
+        }
+        .hero-logo {
+            max-width: 500px;
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 4.2rem;
             margin-bottom: 0.3rem;
             color: var(--purple);
+            position: relative;
+            z-index: 2;
         }
-
-        .splash-sub {
+        .hero-sub {
             font-size: 1.2rem;
             color: var(--text-medium);
             max-width: 600px;
             margin: 0 auto 1.5rem;
             line-height: 1.7;
+            position: relative;
+            z-index: 2;
         }
-
-        .splash-badge {
+        .hero-badge {
             display: inline-block;
             background: var(--teal);
             color: #fff;
@@ -123,9 +200,9 @@
             box-shadow: 0 4px 15px rgba(105, 219, 211, 0.35);
             font-size: 1rem;
             letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
         }
-
-        /* ===== SCROLL INDICATOR ===== */
         .scroll-indicator {
             text-align: center;
             padding: 2rem 0 1rem;
@@ -133,66 +210,51 @@
             font-size: 0.85rem;
             letter-spacing: 2px;
             text-transform: uppercase;
+            position: relative;
+            z-index: 2;
         }
-
         .scroll-indicator .arrow {
             display: block;
             font-size: 1.5rem;
             animation: bounce 2s infinite;
         }
-
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(8px); }
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(8px);
+            }
         }
 
-        /* ===== SECTION ===== */
+        /* ===== STORYBOOK SECTIONS ===== */
         .section {
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
             width: 100%;
+            position: relative;
         }
-
-        /* ===== GLASS CARDS ===== */
-        .glass {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-        }
-
-        /* ===== GRIDS ===== */
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+        .section-divider {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-light);
+            opacity: 0.3;
+            margin: 1rem 0 2rem;
+            letter-spacing: 8px;
         }
 
         /* ===== BANNER ===== */
         .banner {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 32px;
             padding: 2.5rem 3rem;
-            margin: 1rem 0 3rem;
+            margin: 2rem 0 3rem;
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
         }
-
         .banner p {
             font-size: 1.2rem;
             color: var(--text-medium);
@@ -200,7 +262,6 @@
             max-width: 800px;
             margin: 0 auto;
         }
-
         .banner .highlight {
             color: var(--purple);
             font-weight: 600;
@@ -208,25 +269,23 @@
 
         /* ===== FOUNDING FAMILIES ===== */
         .founding-card {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-top: 5px solid var(--teal);
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 2.5rem 3rem;
             margin: 1rem 0 3rem;
             text-align: center;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
         }
-
         .founding-card h2 {
             font-size: 2rem;
             font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
         }
-
         .founding-card p {
             font-size: 1rem;
             color: var(--text-medium);
@@ -234,7 +293,6 @@
             max-width: 700px;
             margin: 0 auto 1.2rem;
         }
-
         .founding-benefits {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -242,85 +300,120 @@
             max-width: 700px;
             margin: 0 auto;
         }
-
         .founding-benefit {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.3);
             padding: 0.8rem 0.5rem;
-            border-radius: 12px;
+            border-radius: 16px;
             font-size: 0.85rem;
             color: var(--text-medium);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
         .founding-benefit span {
             display: block;
             font-size: 1.4rem;
             margin-bottom: 0.2rem;
         }
 
-        /* ===== WHY MERMOMMY EXISTS ===== */
-        .why-card {
+        /* ===== DESTINATION POSTERS (Adventures) ===== */
+        .poster-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+        }
+        .poster-card {
+            position: relative;
+            border-radius: 24px;
+            padding: 2rem 1.2rem 1.8rem;
+            text-align: center;
             background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 24px;
-            padding: 3rem 2.5rem;
-            margin: 1rem 0 3rem;
-            text-align: center;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
-        }
-
-        .why-card h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-        }
-
-        .why-card .why-text {
-            font-size: 1.1rem;
-            color: var(--text-medium);
-            line-height: 2;
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        .why-card .why-text .highlight {
-            color: var(--purple);
-            font-weight: 600;
-        }
-
-        /* ===== ADVENTURE CARDS ===== */
-        .adventure-card {
-            border-radius: 24px;
-            padding: 1.8rem 1.2rem;
-            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s ease;
+            min-height: 380px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: var(--text-dark);
-            min-height: 380px;
-            position: relative;
+            justify-content: space-between;
             overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s ease;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
         }
-
-        .adventure-card::before {
+        .poster-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
+            height: 5px;
             border-radius: 24px 24px 0 0;
         }
-
+        .poster-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+        }
+        .poster-card .poster-stamp {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            font-size: 1.2rem;
+            opacity: 0.25;
+            transform: rotate(12deg);
+        }
+        .poster-card .poster-icon {
+            font-size: 4rem;
+            margin-bottom: 0.3rem;
+        }
+        .poster-card .poster-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.1rem 1rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .poster-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0.2rem 0;
+        }
+        .poster-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+            flex: 1;
+            max-width: 95%;
+        }
+        .poster-card .poster-price {
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: var(--teal);
+            padding: 0.2rem 1.4rem;
+            border-radius: 40px;
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 10px rgba(105, 219, 211, 0.3);
+            margin-top: 0.5rem;
+        }
+        .poster-card .poster-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 0.5rem;
+            justify-content: center;
+            margin: 0.5rem 0;
+        }
+        .poster-card .poster-features span {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.6rem;
+            font-weight: 500;
+            color: var(--text-medium);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
         .card-lemon::before {
             background: #f9d342;
         }
@@ -334,337 +427,179 @@
             background: var(--teal);
         }
 
-        .adventure-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+        /* ===== INFINITE SLIDER (Treasures) ===== */
+        .slider-section {
+            overflow: hidden;
+            padding: 2rem 0;
         }
-
-        .adventure-card .card-icon {
-            font-size: 3.5rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .adventure-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-            color: var(--text-dark);
-        }
-
-        .adventure-card .card-tag {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.4);
-            padding: 0.1rem 1rem;
-            border-radius: 40px;
-            font-size: 0.6rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--text-medium);
-            margin-bottom: 0.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .adventure-card p {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: var(--text-medium);
-            flex: 1;
-            max-width: 95%;
-            min-height: 60px;
-        }
-
-        .card-features {
+        .slider-track {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.3rem 0.5rem;
-            justify-content: center;
-            margin: 0.5rem 0;
+            gap: 2rem;
+            width: max-content;
+            animation: slideTreasures 30s linear infinite;
         }
-
-        .card-features span {
-            background: rgba(255, 255, 255, 0.4);
-            padding: 0.1rem 0.7rem;
-            border-radius: 30px;
-            font-size: 0.6rem;
-            font-weight: 500;
-            color: var(--text-medium);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .slider-track:hover {
+            animation-play-state: paused;
         }
-
-        .card-price {
-            font-size: 0.8rem;
-            font-weight: 600;
-            background: var(--teal);
-            padding: 0.2rem 1.4rem;
-            border-radius: 40px;
-            color: #fff;
-            border: none;
-            box-shadow: 0 2px 10px rgba(105, 219, 211, 0.3);
-        }
-
-        /* ===== DREAM THEMES ===== */
-        .dream-card {
-            border-radius: 16px;
-            padding: 1.2rem 1rem;
-            text-align: center;
-            transition: transform 0.25s ease;
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            min-height: 100px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .dream-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.6);
-        }
-
-        .dream-card .dream-icon {
-            font-size: 2.2rem;
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-
-        .dream-card h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .dream-cta {
-            text-align: center;
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 16px;
-            border: 1px dashed rgba(139, 108, 158, 0.2);
-        }
-
-        .dream-cta p {
-            font-size: 1.05rem;
-            color: var(--text-medium);
-        }
-
-        .dream-cta .highlight {
-            color: var(--purple);
-            font-weight: 600;
-        }
-
-        /* ===== PROCESS ===== */
-        .process-step {
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
+        .treasure-card {
+            flex: 0 0 220px;
+            padding: 1.8rem 1.2rem;
             background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
-        }
-
-        .step-number {
-            width: 46px;
-            height: 46px;
-            background: var(--teal);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin: 0 auto 1rem;
-            box-shadow: 0 4px 12px rgba(105, 219, 211, 0.3);
-        }
-
-        .process-step h3 {
-            color: var(--purple);
-            margin-bottom: 0.5rem;
-        }
-
-        .process-step p {
-            color: var(--text-medium);
-            font-size: 0.95rem;
-        }
-
-        /* ===== INCLUDED ===== */
-        .included-card {
-            border-radius: 20px;
-            padding: 1.5rem 1rem;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 28px;
             text-align: center;
-            transition: transform 0.25s ease;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease;
         }
-
-        .included-card:hover {
-            transform: translateY(-4px);
+        .treasure-card:hover {
+            transform: scale(1.04) translateY(-4px);
         }
-
-        .included-card .inc-icon {
-            font-size: 2.2rem;
+        .treasure-card .tc-icon {
+            font-size: 2.8rem;
             display: block;
             margin-bottom: 0.3rem;
         }
-
-        .included-card h4 {
-            font-size: 0.95rem;
+        .treasure-card h4 {
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 0.1rem;
         }
-
-        .included-card p {
+        .treasure-card p {
             font-size: 0.75rem;
             color: var(--text-medium);
+            margin: 0.2rem 0 0;
+        }
+        @keyframes slideTreasures {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
-        /* ===== TAIL (ABOUT) ===== */
-        .tail-card {
-            border-radius: 24px;
-            padding: 3rem 2.5rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+        /* ===== STORYBOOK "MY TAIL" ===== */
+        .storybook {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2.5rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
-            max-width: 900px;
-            margin: 0 auto;
         }
-
-        .tail-tagline {
-            font-size: 1.3rem;
+        .storybook-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .storybook-illustration svg {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            filter: drop-shadow(0 8px 32px rgba(139, 108, 158, 0.08));
+        }
+        .storybook-text {
+            padding: 0.5rem 0;
+        }
+        .storybook-text .sb-tagline {
+            font-size: 1.2rem;
             color: var(--purple);
             font-weight: 600;
             font-style: italic;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
         }
-
-        .tail-sub {
-            font-size: 0.9rem;
+        .storybook-text .sb-sub {
+            font-size: 0.75rem;
             color: var(--text-light);
-            margin-bottom: 1.5rem;
             letter-spacing: 2px;
             text-transform: uppercase;
+            margin-bottom: 1rem;
         }
-
-        .tail-story {
-            font-size: 1rem;
+        .storybook-text .sb-story {
+            font-size: 0.95rem;
             color: var(--text-medium);
             line-height: 1.8;
-            max-width: 700px;
-            margin: 0 auto 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .storybook-text .sb-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.8rem;
+        }
+        .storybook-text .sb-feature {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.8rem 0.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        .storybook-text .sb-feature .sbf-icon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 0.1rem;
+        }
+        .storybook-text .sb-feature h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .storybook-text .sb-feature p {
+            font-size: 0.65rem;
+            color: var(--text-medium);
+            margin: 0;
         }
 
-        .tail-features {
+        /* ===== WHY CHOOSE ===== */
+        .why-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            margin-top: 0.5rem;
         }
-
-        .tail-feature {
-            background: rgba(255, 255, 255, 0.4);
-            padding: 1.2rem 1rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .why-item {
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease;
         }
-
-        .tail-feature .tf-icon {
-            font-size: 1.8rem;
+        .why-item:hover {
+            transform: translateY(-4px);
+        }
+        .why-item .wi-icon {
+            font-size: 2.8rem;
             display: block;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.5rem;
         }
-
-        .tail-feature h4 {
-            font-size: 0.9rem;
+        .why-item h4 {
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 0.1rem;
+            margin-bottom: 0.2rem;
         }
-
-        .tail-feature p {
-            font-size: 0.75rem;
+        .why-item p {
+            font-size: 0.85rem;
             color: var(--text-medium);
             line-height: 1.4;
         }
 
-        /* ===== GALLERY ===== */
-        .gallery-card {
-            border-radius: 20px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            min-height: 160px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.6);
-        }
-
-        .gallery-card .gallery-placeholder {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 0.4rem;
-            opacity: 0.5;
-        }
-
-        .gallery-card h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.1rem;
-        }
-
-        .gallery-card p {
-            font-size: 0.75rem;
-            color: var(--text-light);
-        }
-
-        /* ===== SOCIAL PROOF ===== */
-        .social-proof-card {
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 16px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-        }
-
-        .social-proof-card .stars {
-            font-size: 1.8rem;
-            color: #f9d342;
-            display: block;
-            margin-bottom: 0.4rem;
-        }
-
-        .social-proof-card h4 {
-            font-size: 1rem;
-            color: var(--text-medium);
-            font-weight: 400;
-        }
-
-        .social-proof-card p {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-top: 0.4rem;
-        }
-
         /* ===== ADD-ONS ===== */
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
         .addon-card {
             border-radius: 24px;
             padding: 2rem 1.5rem;
@@ -678,12 +613,11 @@
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
         }
-
         .addon-card::before {
             content: '';
             position: absolute;
@@ -693,39 +627,22 @@
             height: 4px;
             border-radius: 24px 24px 0 0;
         }
-
-        .addon-mermaid::before {
-            background: var(--teal);
-        }
-        .addon-pearl::before {
-            background: var(--purple-light);
-        }
-        .addon-shell::before {
-            background: #f9d342;
-        }
-        .addon-cake::before {
-            background: #ff8a8a;
-        }
-
         .addon-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
         }
-
         .addon-card .addon-icon {
             font-size: 3rem;
             margin-bottom: 0.4rem;
         }
-
         .addon-card h3 {
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--text-dark);
         }
-
         .addon-card .addon-tag {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.3);
             padding: 0.1rem 1rem;
             border-radius: 40px;
             font-size: 0.55rem;
@@ -736,14 +653,12 @@
             margin-bottom: 0.6rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
         .addon-card p {
             font-size: 0.85rem;
             color: var(--text-medium);
             line-height: 1.5;
             flex: 1;
         }
-
         .addon-price {
             font-size: 0.8rem;
             font-weight: 600;
@@ -758,56 +673,49 @@
         /* ===== WAITLIST ===== */
         .waitlist-card {
             background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 24px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 28px;
             padding: 2.5rem 2.5rem;
             text-align: center;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
             max-width: 700px;
             margin: 0 auto;
         }
-
         .waitlist-card h3 {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 0.3rem;
         }
-
         .waitlist-card p {
             color: var(--text-medium);
             margin-bottom: 1.2rem;
         }
-
         .waitlist-form {
             display: flex;
             gap: 0.8rem;
             max-width: 500px;
             margin: 0 auto;
         }
-
         .waitlist-form input {
             flex: 1;
             background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 12px;
             padding: 0.8rem 1rem;
             color: var(--text-dark);
             font-family: 'Fredoka', sans-serif;
             font-size: 0.9rem;
         }
-
         .waitlist-form input::placeholder {
             color: var(--text-light);
         }
-
         .waitlist-form input:focus {
             outline: none;
             border-color: var(--purple);
         }
-
         .waitlist-form .waitlist-btn {
             background: linear-gradient(135deg, var(--purple), var(--purple-light));
             color: #fff;
@@ -820,46 +728,86 @@
             transition: transform 0.2s ease;
             white-space: nowrap;
         }
-
         .waitlist-form .waitlist-btn:hover {
             transform: translateY(-2px);
         }
 
+        /* ===== HIDDEN DISCOVERIES ===== */
+        .hidden-treasure {
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+            font-size: 1.8rem;
+            margin: 0 0.2rem;
+        }
+        .hidden-treasure:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+        .hidden-treasure .treasure-popup {
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            white-space: nowrap;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(-50%) translateY(8px);
+            font-family: 'Fredoka', sans-serif;
+            max-width: 250px;
+            white-space: normal;
+            text-align: center;
+        }
+        .hidden-treasure:hover .treasure-popup {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .hidden-treasure .treasure-popup.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
         /* ===== INSTAGRAM ===== */
-        .instagram-grid {
+        .ig-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             max-width: 600px;
             margin: 0 auto;
         }
-
-        .instagram-placeholder {
-            background: rgba(255, 255, 255, 0.4);
+        .ig-placeholder {
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 16px;
             padding: 2rem 1rem;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             aspect-ratio: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
-
-        .instagram-placeholder .ig-icon {
+        .ig-placeholder .ig-icon {
             font-size: 2rem;
             display: block;
             margin-bottom: 0.3rem;
             opacity: 0.5;
         }
-
-        .instagram-placeholder p {
+        .ig-placeholder p {
             font-size: 0.75rem;
             color: var(--text-light);
         }
-
-        .instagram-placeholder .ig-link {
+        .ig-placeholder .ig-link {
             display: inline-block;
             margin-top: 0.5rem;
             padding: 0.4rem 1.2rem;
@@ -872,52 +820,45 @@
             transition: transform 0.2s ease;
             font-family: 'Fredoka', sans-serif;
         }
-
-        .instagram-placeholder .ig-link:hover {
+        .ig-placeholder .ig-link:hover {
             transform: scale(1.05);
         }
 
         /* ===== CONTACT ===== */
         .contact-card {
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 3rem 2.5rem 4rem;
             background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
         }
-
         .contact-intro {
             text-align: center;
             color: var(--text-medium);
             margin-bottom: 2rem;
         }
-
         .contact-form {
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
         }
-
         .form-group {
             display: flex;
             flex-direction: column;
             gap: 0.4rem;
         }
-
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.2rem;
         }
-
         .form-row-3 {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 1.2rem;
         }
-
         label {
             font-size: 0.75rem;
             font-weight: 600;
@@ -925,12 +866,11 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
         input,
         select,
         textarea {
             background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 12px;
             padding: 0.8rem 1rem;
             color: var(--text-dark);
@@ -939,12 +879,10 @@
             transition: all 0.2s ease;
             width: 100%;
         }
-
         input::placeholder,
         textarea::placeholder {
             color: var(--text-light);
         }
-
         input:focus,
         select:focus,
         textarea:focus {
@@ -952,18 +890,15 @@
             background: rgba(255, 255, 255, 0.9);
             border-color: var(--purple);
         }
-
         select option {
             background: #f5edf8;
             color: var(--text-dark);
         }
-
         .checkbox-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.4rem 1.5rem;
         }
-
         .checkbox-item {
             display: flex;
             align-items: center;
@@ -972,7 +907,6 @@
             font-size: 0.85rem;
             cursor: pointer;
         }
-
         .checkbox-item input[type="checkbox"] {
             width: 16px;
             height: 16px;
@@ -980,7 +914,6 @@
             cursor: pointer;
             flex-shrink: 0;
         }
-
         .submit-btn {
             background: linear-gradient(135deg, var(--purple), var(--purple-light));
             color: #fff;
@@ -995,78 +928,206 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
         .submit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(139, 108, 158, 0.4);
         }
-
         .submit-btn:active {
             transform: translateY(2px);
         }
 
-        /* ===== CREDIBILITY ===== */
-        .credibility-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
+        /* ===== PARTY GUIDE ===== */
+        .guide-cta {
             text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 28px;
+            border: 2px solid rgba(139, 108, 158, 0.12);
+        }
+        .guide-cta h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .guide-cta p {
+            color: var(--text-medium);
+            margin-bottom: 1.2rem;
+        }
+        .guide-cta .guide-btn {
+            display: inline-block;
+            background: var(--purple);
+            color: #fff;
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(139, 108, 158, 0.3);
+        }
+        .guide-cta .guide-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 108, 158, 0.4);
         }
 
+        /* ===== CREDIBILITY - CLEAN & ORGANIZED ===== */
+        .credibility-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem 3rem;
+            margin: 2rem 0;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
         .credibility-item {
-            font-size: 0.8rem;
-            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: var(--text-medium);
         }
-
         .credibility-item .cred-icon {
-            font-size: 1.6rem;
-            display: block;
-            margin-bottom: 0.2rem;
+            font-size: 1.4rem;
+            line-height: 1;
             opacity: 0.7;
+            flex-shrink: 0;
+        }
+        .credibility-item .cred-text {
+            font-weight: 500;
+        }
+        .credibility-item .cred-sub {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            font-weight: 400;
         }
 
         /* ===== FOOTER ===== */
-        footer {
-            text-align: center;
-            padding: 2rem 0 1rem;
-            color: var(--text-light);
-            font-size: 0.85rem;
+        .footer {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-top: 1px solid rgba(255, 255, 255, 0.3);
-            margin-top: 2rem;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            width: 92%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+        }
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 0.5rem;
+            font-family: 'Grand Hotel', cursive;
+        }
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            max-width: 280px;
+        }
+        .footer-brand .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .footer-brand .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(139, 108, 158, 0.08);
+            color: var(--purple);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .footer-brand .footer-social a:hover {
+            background: var(--purple);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 108, 158, 0.2);
+        }
+        .footer-col h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+        .footer-col ul li a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+        .footer-col ul li a:hover {
+            color: var(--purple);
+            transform: translateX(4px);
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            width: 92%;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
         }
 
         /* ===== BACKGROUND DECOR ===== */
         .bg-blob {
             position: fixed;
             border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.25;
+            filter: blur(120px);
+            opacity: 0.15;
             pointer-events: none;
             z-index: 0;
         }
-
         .bg-blob-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--purple);
-            top: -100px;
-            right: -100px;
-        }
-
-        .bg-blob-2 {
             width: 500px;
             height: 500px;
-            background: var(--teal);
-            bottom: -150px;
-            left: -150px;
+            background: var(--purple);
+            top: -150px;
+            right: -150px;
         }
-
+        .bg-blob-2 {
+            width: 600px;
+            height: 600px;
+            background: var(--teal);
+            bottom: -200px;
+            left: -200px;
+        }
         .bg-blob-3 {
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             background: var(--purple-light);
-            top: 50%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
@@ -1082,45 +1143,53 @@
             pointer-events: none;
             overflow: hidden;
         }
-
         .bubble-pop {
             position: absolute;
             border-radius: 50%;
-            background: rgba(139, 108, 158, 0.08);
-            border: 1px solid rgba(139, 108, 158, 0.12);
-        }
-
-        .bubble-pop.sparkle {
-            background: none !important;
-            border: none !important;
-            font-size: 18px;
-            width: auto !important;
-            height: auto !important;
-            opacity: 0.6;
+            background: rgba(139, 108, 158, 0.05);
+            border: 1px solid rgba(139, 108, 158, 0.08);
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .grid-4 {
+            .poster-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .grid-2 {
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .addon-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .storybook {
                 grid-template-columns: 1fr;
+                text-align: center;
+                padding: 2rem;
             }
-            .tail-features {
+            .storybook-text .sb-features {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .storybook-illustration svg {
+                max-width: 200px;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
             }
             .founding-benefits {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .instagram-grid {
+            .ig-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .credibility-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .hero-title {
+                font-size: 3.2rem;
             }
-            .splash-title {
-                font-size: 3.5rem;
+            .hero-logo {
+                max-width: 380px;
+            }
+            .credibility-wrap {
+                gap: 1rem 2rem;
             }
         }
 
@@ -1131,85 +1200,106 @@
             .form-row {
                 grid-template-columns: 1fr;
             }
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-            .checkbox-grid {
-                grid-template-columns: 1fr;
-            }
-            .tail-features {
-                grid-template-columns: 1fr;
-            }
-            .founding-benefits {
-                grid-template-columns: 1fr 1fr;
-            }
-            .splash-title {
-                font-size: 2.8rem;
-            }
-            .banner p {
-                font-size: 1.1rem;
-            }
-            .why-card h2 {
-                font-size: 2rem;
-            }
-            .waitlist-form {
-                flex-direction: column;
-            }
-            .credibility-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .instagram-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .splash-header {
-                padding: 4rem 0 1rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .grid-4 {
+            .poster-grid {
                 grid-template-columns: 1fr;
                 max-width: 400px;
                 margin: 0 auto;
             }
-            .grid-2 {
+            .why-grid {
                 grid-template-columns: 1fr;
             }
-            .contact-card {
-                padding: 2rem 1.2rem;
+            .addon-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
             }
-            .tail-card {
+            .footer-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-brand p {
+                max-width: 100%;
+            }
+            .footer-brand .footer-social {
+                justify-content: center;
+            }
+            .founding-benefits {
+                grid-template-columns: 1fr 1fr;
+            }
+            .storybook-text .sb-features {
+                grid-template-columns: 1fr;
+            }
+            .ig-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 2.6rem;
+            }
+            .hero-logo {
+                max-width: 300px;
+            }
+            .banner p {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .waitlist-form {
+                flex-direction: column;
+            }
+            .contact-card {
                 padding: 2rem 1.2rem;
             }
             .founding-card {
                 padding: 2rem 1.2rem;
             }
-            .why-card {
-                padding: 2rem 1.2rem;
-            }
-            .splash-title {
-                font-size: 2.4rem;
-            }
             .banner {
                 padding: 1.5rem;
             }
-            .section-title {
-                font-size: 2rem;
+            .storybook {
+                padding: 1.5rem;
+            }
+            .guide-cta {
+                padding: 1.5rem;
+            }
+            .guide-cta h3 {
+                font-size: 1.4rem;
+            }
+            #mermommy-guide {
+                width: 40px;
+                height: 40px;
+            }
+            .credibility-wrap {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+                padding: 1rem 1.5rem;
+            }
+            .credibility-item {
+                width: 100%;
+            }
+        }
+        @media (max-width: 600px) {
+            .poster-grid {
+                max-width: 100%;
             }
             .founding-benefits {
                 grid-template-columns: 1fr;
             }
-            .instagram-grid {
+            .checkbox-grid {
                 grid-template-columns: 1fr;
             }
-            .credibility-grid {
-                grid-template-columns: 1fr 1fr;
+            .addon-grid {
+                max-width: 100%;
             }
-            .waitlist-card {
-                padding: 1.5rem;
+            .hero-title {
+                font-size: 2.2rem;
             }
-            .splash-logo {
-                max-width: 180px;
+            .hero-logo {
+                max-width: 240px;
+            }
+            .credibility-wrap {
+                padding: 0.8rem 1rem;
             }
         }
     </style>
@@ -1224,32 +1314,90 @@
     <!-- ===== PARTICLES ===== -->
     <div class="sky-decor" id="decor-container"></div>
 
+    <!-- ===== MERMOMMY GUIDE (MotionPath) ===== -->
+    <div id="mermommy-guide">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 10 C45 10 38 18 34 30 C30 42 28 55 30 65 C32 72 36 78 40 82 C44 86 48 88 50 90 C52 88 56 86 60 82 C64 78 68 72 70 65 C72 55 70 42 66 30 C62 18 55 10 50 10Z"
+            fill="rgba(139,108,158,0.7)" stroke="rgba(139,108,158,0.3)" stroke-width="1.5"/>
+            <path d="M30 65 C20 72 12 82 10 90 C8 96 12 100 18 98 C24 96 32 88 36 80"
+            fill="rgba(139,108,158,0.6)" stroke="rgba(139,108,158,0.2)" stroke-width="1"/>
+            <path d="M70 65 C80 72 88 82 90 90 C92 96 88 100 82 98 C76 96 68 88 64 80"
+            fill="rgba(139,108,158,0.6)" stroke="rgba(139,108,158,0.2)" stroke-width="1"/>
+            <circle cx="50" cy="22" r="6" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="50" cy="30" r="2" fill="rgba(255,255,255,0.15)"/>
+            <text x="75" y="20" font-size="10" fill="rgba(139,108,158,0.3)">✦</text>
+            <text x="15" y="45" font-size="8" fill="rgba(139,108,158,0.2)">✦</text>
+        </svg>
+    </div>
+
+    <!-- ===== HIDDEN MOTION PATH ===== -->
+    <svg id="story-path" viewBox="0 0 100 2000" xmlns="http://www.w3.org/2000/svg">
+        <path id="pathLine" d="M50 0
+            C50 100, 80 150, 60 250
+            C40 350, 20 400, 50 500
+            C80 600, 90 650, 60 750
+            C30 850, 10 900, 50 1000
+            C90 1100, 100 1150, 60 1250
+            C20 1350, 0 1400, 50 1500
+            C80 1600, 90 1650, 50 1750
+            C10 1850, 0 1900, 50 2000"
+        fill="none" stroke="none" />
+    </svg>
+
+    <!-- ===== NO NAVIGATION - REMOVED ===== -->
+
     <!-- ===== MAIN WRAPPER ===== -->
     <div class="container">
 
-        <!-- ===== SPLASH HEADER ===== -->
-        <header class="splash-header" id="hero">
-            <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="splash-logo" loading="lazy" />
-            <h1 class="splash-title font-signature">Creating Magical Celebrations</h1>
-            <p class="splash-sub">
+        <!-- ===== HERO - LAYERS OF DISCOVERY WITH BIG LOGO ===== -->
+        <section class="hero" id="hero">
+            <!-- Layer 1: Floating shells -->
+            <svg class="hero-layer hero-layer-1" viewBox="0 0 100 120">
+                <path d="M50 10 C70 10 85 30 88 55 C90 75 80 100 50 110 C20 100 10 75 12 55 C15 30 30 10 50 10Z"
+                fill="rgba(139,108,158,0.15)" stroke="rgba(139,108,158,0.05)" stroke-width="1"/>
+                <path d="M50 25 C60 25 70 40 72 55 C73 68 67 85 50 90 C33 85 27 68 28 55 C30 40 40 25 50 25Z"
+                fill="rgba(255,255,255,0.1)"/>
+            </svg>
+            <svg class="hero-layer hero-layer-2" viewBox="0 0 80 100">
+                <path d="M40 8 C55 8 67 22 70 42 C72 58 65 78 40 85 C15 78 8 58 10 42 C13 22 25 8 40 8Z"
+                fill="rgba(105,219,211,0.12)" stroke="rgba(105,219,211,0.05)" stroke-width="1"/>
+            </svg>
+            <div class="hero-layer hero-layer-3" style="font-size:2rem;opacity:0.06;">🐠</div>
+            <div class="hero-layer hero-layer-4" style="font-size:2.5rem;opacity:0.05;">⭐</div>
+
+            <!-- MerMommy swimming across -->
+            <div class="hero-swimmer">
+                <svg viewBox="0 0 80 60" width="100%">
+                    <path d="M40 10 C35 10 28 18 24 28 C20 38 18 48 20 55 C22 60 26 62 30 60 C34 58 36 50 38 45 C40 42 42 40 44 42 C46 45 48 52 50 58 C52 62 56 60 58 55 C60 48 58 38 54 28 C50 18 45 10 40 10Z"
+                    fill="rgba(139,108,158,0.15)" stroke="rgba(139,108,158,0.05)" stroke-width="1"/>
+                    <circle cx="40" cy="18" r="5" fill="rgba(139,108,158,0.08)"/>
+                </svg>
+            </div>
+
+            <!-- BIG LOGO -->
+            <div class="hero-logo-wrapper">
+                <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="hero-logo" loading="lazy" />
+            </div>
+
+            <h1 class="hero-title font-signature">Creating Magical Celebrations</h1>
+            <p class="hero-sub">
                 Curated children's parties, themed celebrations,<br />
-                luxury decor rentals, and unforgettable memories across San Diego.
+                luxury decor rentals, and unforgettable memories across North County San Diego.
             </p>
-            <div class="splash-badge">The Party Starts Soon!</div>
-        </header>
+            <div class="hero-badge">The Party Starts Soon!</div>
 
-        <!-- ===== SCROLL INDICATOR ===== -->
-        <div class="scroll-indicator">
-            <span>Explore Our World</span>
-            <span class="arrow">↓</span>
-        </div>
+            <div class="scroll-indicator">
+                <span>Explore Our World</span>
+                <span class="arrow">↓</span>
+            </div>
+        </section>
 
-        <!-- ===== EXPERIENCE BANNER ===== -->
+        <!-- ===== BANNER ===== -->
         <section class="banner" id="banner">
             <p>
                 We've been <span class="highlight">catching the party waves</span> for years,
                 turning everyday celebrations into <span class="highlight">extraordinary memories</span>.
-                Let us <span class="highlight">sail through the details</span> you wish you'd planned for 
+                Let us <span class="highlight">sail through the details</span> you wish you'd planned for—
                 so you can <span class="highlight">swim right into</span> every magical moment.
             </p>
         </section>
@@ -1262,276 +1410,196 @@
                 of founding families who would like to help us bring our first season of magical celebrations to life.
             </p>
             <div class="founding-benefits">
-                <div class="founding-benefit">
-                    <span>💰</span>
-                    Launch Pricing
-                </div>
-                <div class="founding-benefit">
-                    <span>📅</span>
-                    Priority Booking
-                </div>
-                <div class="founding-benefit">
-                    <span>🎁</span>
-                    Future Discounts
-                </div>
-                <div class="founding-benefit">
-                    <span>✨</span>
-                    Exclusive Themes
-                </div>
+                <div class="founding-benefit"><span>💰</span>Launch Pricing</div>
+                <div class="founding-benefit"><span>📅</span>Priority Booking</div>
+                <div class="founding-benefit"><span>🎁</span>Future Discounts</div>
+                <div class="founding-benefit"><span>✨</span>Exclusive Themes</div>
             </div>
             <p style="margin-top:1.2rem;font-size:0.85rem;color:var(--text-light);">
                 In exchange, we ask permission to photograph portions of the event for our portfolio.
             </p>
         </section>
 
-        <!-- ===== WHY MERMOMMY EXISTS ===== -->
-        <section class="why-card" id="why">
-            <h2>Why MerMommy Exists</h2>
-            <div class="why-text">
-                <p>
-                    MerMommy Creations started with a simple belief:
-                </p>
-                <p style="font-size:1.3rem;color:var(--purple);font-weight:600;margin:0.5rem 0;">
-                    Childhood moves too fast.
-                </p>
-                <p>
-                    The decorations come down. The cake gets eaten. The gifts get packed away.
-                </p>
-                <p style="font-size:1.1rem;margin-top:0.5rem;">
-                    But the <span class="highlight">memories</span> stay forever.
-                </p>
-                <p style="margin-top:0.5rem;">
-                    We create celebrations that help families <span class="highlight">slow down</span>,
-                    <span class="highlight">be present</span>, and enjoy the moments that matter most.
-                </p>
-            </div>
-        </section>
-
-                <!-- ===== ADVENTURES ===== -->
+        <!-- ===== ADVENTURES - DESTINATION POSTERS ===== -->
         <section class="section" id="adventure">
             <h2 class="section-title">Pick Your Adventure</h2>
-            <div class="grid-4" id="adventureGrid">
+            <div class="poster-grid">
 
-                <div class="adventure-card card-lemon">
-                    <div class="card-icon">🍋</div>
+                <div class="poster-card card-lemon">
+                    <span class="poster-stamp">✧</span>
+                    <div class="poster-icon">🍋</div>
+                    <span class="poster-label">sunny · picnic</span>
                     <h3>Lemonade Stand</h3>
-                    <span class="card-tag">sunny · picnic</span>
                     <p>Hand-painted crates, gingham textiles, and fresh citrus garlands for bright backyard celebrations.</p>
-                    <div class="card-features">
+                    <div class="poster-features">
                         <span>picnic styling</span>
                         <span>lemon bar</span>
                         <span>floral accents</span>
                     </div>
-                    <div class="card-price">Included</div>
+                    <div class="poster-price">Included</div>
                 </div>
 
-                <div class="adventure-card card-burger">
-                    <div class="card-icon">🍔</div>
+                <div class="poster-card card-burger">
+                    <span class="poster-stamp">✧</span>
+                    <div class="poster-icon">🍔</div>
+                    <span class="poster-label">retro · diner</span>
                     <h3>Palm Trees &amp; Cheeseburgers</h3>
-                    <span class="card-tag">retro · diner</span>
                     <p>Neon checkers, custom palm trees, and a vintage drive-in feel with a classic burger bar.</p>
-                    <div class="card-features">
+                    <div class="poster-features">
                         <span>checker floor</span>
                         <span>fry cones</span>
                         <span>shake station</span>
                     </div>
-                    <div class="card-price">Included</div>
+                    <div class="poster-price">Included</div>
                 </div>
 
-                <div class="adventure-card card-dye">
-                    <div class="card-icon">🎨</div>
+                <div class="poster-card card-dye">
+                    <span class="poster-stamp">✧</span>
+                    <div class="poster-icon">🎨</div>
+                    <span class="poster-label">colorful · crafty</span>
                     <h3>Tie-Dye Studio</h3>
-                    <span class="card-tag">colorful · crafty</span>
                     <p>Rainbow swirls, splatter paint walls, and interactive dye tables for creative fun.</p>
-                    <div class="card-features">
+                    <div class="poster-features">
                         <span>dye kits</span>
                         <span>splatter zone</span>
                         <span>glow accents</span>
                     </div>
-                    <div class="card-price">Included</div>
+                    <div class="poster-price">Included</div>
                 </div>
 
-                <div class="adventure-card card-mermaid">
-                    <div class="card-icon">🐚</div>
+                <div class="poster-card card-mermaid">
+                    <span class="poster-stamp">✧</span>
+                    <div class="poster-icon">🐚</div>
+                    <span class="poster-label">oceanic · signature</span>
                     <h3>Sea Shell Spa</h3>
-                    <span class="card-tag">oceanic · signature</span>
                     <p>Shimmering oyster shells, pastel scales, and pearl centerpieces in a magical mermaid cove.</p>
-                    <div class="card-features">
+                    <div class="poster-features">
                         <span>coral decor</span>
                         <span>pearl accents</span>
                         <span>wave backdrop</span>
                     </div>
-                    <div class="card-price">Included</div>
+                    <div class="poster-price">Included</div>
                 </div>
 
             </div>
-            
-            <!-- ===== INCLUSION NOTE - NOW VISIBLE ===== -->
-            <div style="text-align:center;margin-top:2rem;padding:1.2rem 2rem;background:rgba(105,219,211,0.12);border-radius:16px;border:2px solid rgba(105,219,211,0.25);max-width:700px;margin-left:auto;margin-right:auto;">
-                <p style="color:#4a4a4a;font-size:1.05rem;font-weight:600;margin:0;">
-                    ✨ All decor, tableware, and setup included. Just bring your guests and the cake!
-                </p>
+            <!-- Hidden Discovery: Pearl -->
+            <div style="text-align:center;margin-top:1.5rem;">
+                <span class="hidden-treasure" onclick="showTreasurePopup(this)">
+                    🪸
+                    <span class="treasure-popup">✨ You found a magic pearl! ✨</span>
+                </span>
+                <span class="hidden-treasure" onclick="showTreasurePopup(this)">
+                    ⭐
+                    <span class="treasure-popup">🌟 A wish upon a star! 🌟</span>
+                </span>
             </div>
         </section>
 
-        <!-- ===== DREAM THEMES ===== -->
-        <section class="section" id="dreams">
-            <h2 class="section-title">Dreaming Up New Adventures</h2>
-            <p class="section-sub">Themes we're dreaming of bringing to life soon.</p>
-            <div class="grid-4">
-                <div class="dream-card"><span class="dream-icon">🦄</span><h4>Unicorn Garden Party</h4></div>
-                <div class="dream-card"><span class="dream-icon">🌸</span><h4>Fairy Forest</h4></div>
-                <div class="dream-card"><span class="dream-icon">🚀</span><h4>Space Explorer Camp</h4></div>
-                <div class="dream-card"><span class="dream-icon">🍓</span><h4>Berry Sweet Picnic</h4></div>
-                <div class="dream-card"><span class="dream-icon">🏖️</span><h4>Beach Bonfire Bash</h4></div>
-                <div class="dream-card"><span class="dream-icon">🎪</span><h4>Vintage Carnival</h4></div>
-                <div class="dream-card"><span class="dream-icon">🌮</span><h4>Taco Fiesta</h4></div>
-                <div class="dream-card"><span class="dream-icon">🧚</span><h4>Enchanted Tea Party</h4></div>
+        <!-- ===== INFINITE SLIDER - TREASURES ===== -->
+        <section class="section slider-section" id="treasures">
+            <h2 class="section-title">Treasures In Every Adventure</h2>
+            <p class="section-sub">Each celebration is filled with magical discoveries.</p>
+            <div class="slider-track" id="sliderTrack">
+                <div class="treasure-card"><span class="tc-icon">🫧</span><h4>Personalized Details</h4><p>Every little touch tells your story</p></div>
+                <div class="treasure-card"><span class="tc-icon">🎁</span><h4>Magical Surprises</h4><p>Unexpected moments of joy</p></div>
+                <div class="treasure-card"><span class="tc-icon">🎨</span><h4>Creative Styling</h4><p>Artful design that delights</p></div>
+                <div class="treasure-card"><span class="tc-icon">📸</span><h4>Picture Perfect</h4><p>Moments you'll treasure forever</p></div>
+                <div class="treasure-card"><span class="tc-icon">✨</span><h4>Stress-Free Planning</h4><p>We handle everything so you don't have to</p></div>
+                <div class="treasure-card"><span class="tc-icon">🧜</span><h4>Mom-Approved</h4><p>Designed with love and care</p></div>
+                <div class="treasure-card"><span class="tc-icon">🎉</span><h4>Celebration Setup</h4><p>We arrive early and build the magic</p></div>
+                <div class="treasure-card"><span class="tc-icon">💜</span><h4>Thoughtful Touches</h4><p>Little details that mean so much</p></div>
             </div>
-            <div class="dream-cta">
-                <p>Don't see your theme? <span class="highlight">Let's build something magical together.</span></p>
-            </div>
-        </section>
-
-        <!-- ===== HOW WE MAKE MAGIC ===== -->
-        <section class="section" id="process">
-            <h2 class="section-title">How We Make Magic</h2>
-            <div class="grid-3">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Pick a Vibe</h3>
-                    <p>Choose from our premium, fully-curated theme packages.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>We Drop Anchor</h3>
-                    <p>We arrive at your venue and build out the entire magical setup.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>You Celebrate</h3>
-                    <p>Enjoy a stress-free party while we handle the coordination!</p>
-                </div>
+            <div style="text-align:center;margin-top:1rem;color:var(--text-light);font-size:0.8rem;opacity:0.6;">
+                🪸 Hover to pause • Let the treasures drift by
             </div>
         </section>
 
-        <!-- ===== WHAT'S INCLUDED ===== -->
-        <section class="section" id="included">
-            <h2 class="section-title">Every Party Includes</h2>
-            <p class="section-sub">All of our curated packages come fully stocked with everything you need.</p>
-            <div class="grid-4" id="includedGrid">
-                <div class="included-card">
-                    <span class="inc-icon">🎭</span>
-                    <h4>Photo Backdrop</h4>
-                    <p>Custom themed backdrop</p>
-                </div>
-                <div class="included-card">
-                    <span class="inc-icon">🏳️</span>
-                    <h4>Banners &amp; Bunting</h4>
-                    <p>Matching banners &amp; garlands</p>
-                </div>
-                <div class="included-card">
-                    <span class="inc-icon">📸</span>
-                    <h4>Photo Props</h4>
-                    <p>Fun themed props for guests</p>
-                </div>
-                <div class="included-card">
-                    <span class="inc-icon">🍽️</span>
-                    <h4>Serving Wear</h4>
-                    <p>Plates, cups, napkins &amp; more</p>
-                </div>
-                <div class="included-card">
-                    <span class="inc-icon">🧁</span>
-                    <h4>Cake Display</h4>
-                    <p>Beautiful cake stands &amp; tables</p>
-                </div>
-                <div class="included-card">
-                    <span class="inc-icon">🪑</span>
-                    <h4>Seating Decor</h4>
-                    <p>Chair covers &amp; themed seating</p>
-                </div>
-                <div class="included-card">
-                    <span class="inc-icon">🎁</span>
-                    <h4>Favor Station</h4>
-                    <p>Display for party favors &amp; bags</p>
-                </div>
+        <!-- ===== MORE THAN PARTY DECOR ===== -->
+        <section class="section" id="more-than-decor">
+            <h2 class="section-title">More Than Party Decor</h2>
+            <p class="section-sub">Every celebration is an opportunity to create something special.</p>
+            <div class="why-grid">
+                <div class="why-item"><span class="wi-icon">👗</span><h4>Custom Apparel</h4><p>Personalized outfits for the birthday star</p></div>
+                <div class="why-item"><span class="wi-icon">📋</span><h4>Party Signage</h4><p>Hand-crafted signs and welcome boards</p></div>
+                <div class="why-item"><span class="wi-icon">🎂</span><h4>Birthday Outfits</h4><p>Styled looks for the celebration</p></div>
+                <div class="why-item"><span class="wi-icon">🎨</span><h4>Personalized Decor</h4><p>Custom details that tell your story</p></div>
+                <div class="why-item"><span class="wi-icon">✨</span><h4>Creative Styling</h4><p>Art direction and design expertise</p></div>
+                <div class="why-item"><span class="wi-icon">🖌️</span><h4>Event Design</h4><p>Full creative vision and execution</p></div>
             </div>
         </section>
 
-        <!-- ===== INSPIRATION GALLERY ===== -->
-        <section class="section" id="gallery">
-            <h2 class="section-title">Inspiration Gallery</h2>
-            <p class="section-sub">Real photos coming soon. Here's what we're dreaming up.</p>
-            <div class="grid-3">
-                <div class="gallery-card">
-                    <span class="gallery-placeholder">🐚</span>
-                    <h4>Sea Shell Spa</h4>
-                    <p>Photo Coming Soon</p>
-                </div>
-                <div class="gallery-card">
-                    <span class="gallery-placeholder">🍋</span>
-                    <h4>Lemonade Stand</h4>
-                    <p>Photo Coming Soon</p>
-                </div>
-                <div class="gallery-card">
-                    <span class="gallery-placeholder">🍔</span>
-                    <h4>Palm Trees &amp; Burgers</h4>
-                    <p>Photo Coming Soon</p>
-                </div>
+        <!-- ===== WHY FAMILIES CHOOSE MERMOMMY - FIXED ===== -->
+        <section class="section" id="why-choose">
+            <h2 class="section-title">Why Families Choose MerMommy</h2>
+            <div class="why-grid">
+                <div class="why-item"><span class="wi-icon">💜</span><h4>Designed By A Mom</h4><p>Every detail is crafted with love and understanding of what families truly need</p></div>
+                <div class="why-item"><span class="wi-icon">🎯</span><h4>Personalized Details</h4><p>Your celebration, your style — we bring your vision to life</p></div>
+                <div class="why-item"><span class="wi-icon">🧘</span><h4>Stress-Free Planning</h4><p>We handle everything so you can actually enjoy the party</p></div>
+                <div class="why-item"><span class="wi-icon">🎨</span><h4>Creative Event Styling</h4><p>Artful design that transforms any space into magic</p></div>
+                <div class="why-item"><span class="wi-icon">👕</span><h4>Custom Apparel Available</h4><p>Personalized outfits and shirts for the birthday star and guests</p></div>
+                <div class="why-item"><span class="wi-icon">🔄</span><h4>Setup &amp; Breakdown Options</h4><p>Full-service coordination from start to finish</p></div>
             </div>
         </section>
 
-        <!-- ===== SOCIAL PROOF ===== -->
-        <section class="section" id="social-proof">
-            <div class="grid-3">
-                <div class="social-proof-card">
-                    <span class="stars">★★★★★</span>
-                    <h4>Your review could be featured here.</h4>
-                    <p>Become one of our founding families.</p>
-                </div>
-                <div class="social-proof-card">
-                    <span class="stars">★★★★★</span>
-                    <h4>Your review could be featured here.</h4>
-                    <p>Become one of our founding families.</p>
-                </div>
-                <div class="social-proof-card">
-                    <span class="stars">★★★★★</span>
-                    <h4>Your review could be featured here.</h4>
-                    <p>Become one of our founding families.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== MY TAIL (ABOUT) ===== -->
+        <!-- ===== STORYBOOK "MY TAIL" ===== -->
         <section class="section" id="tail">
-            <div class="tail-card">
-                <h2 class="section-title">My Tail</h2>
-                <p class="tail-tagline">"I show up like a friend, plan like a pro, and care like a mom."</p>
-                <p class="tail-sub">MOM · CREATIVE · PARTY STYLIST</p>
-                <p class="tail-story">
-                    I believe every celebration deserves a touch of magic. As a mom and creative at heart,
-                    I've turned my passion for party curation into a full-service experience that takes the
-                    stress off your shoulders and puts the joy front and center. From themed wardrobes that
-                    bring your vision to life to custom-made shirts for every little guest, I pour my heart
-                    into every detail so you can soak in every moment.
-                </p>
-                <div class="tail-features">
-                    <div class="tail-feature">
-                        <span class="tf-icon">👗</span>
-                        <h4>Themed Wardrobes</h4>
-                        <p>Matching outfits that bring your party theme to life</p>
-                    </div>
-                    <div class="tail-feature">
-                        <span class="tf-icon">👕</span>
-                        <h4>Custom Shirts</h4>
-                        <p>Cricut &amp; heat press creations for personalized party wear</p>
-                    </div>
-                    <div class="tail-feature">
-                        <span class="tf-icon">🎉</span>
-                        <h4>Full-Service Magic</h4>
-                        <p>Setup, coordination, breakdown — we handle it all</p>
+            <h2 class="section-title" style="margin-bottom:1.5rem;">My Tail</h2>
+            <div class="storybook">
+                <div class="storybook-illustration">
+                    <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M150 60 C130 60 110 85 100 130 C90 175 88 220 95 260 C100 290 110 320 125 345 C135 365 145 380 150 390 C155 380 165 365 175 345 C190 320 200 290 205 260 C212 220 210 175 200 130 C190 85 170 60 150 60Z"
+                        fill="rgba(139,108,158,0.12)" stroke="rgba(139,108,158,0.15)" stroke-width="2"/>
+                        <path d="M100 260 C75 285 50 315 35 350 C25 370 20 385 30 390 C40 395 60 385 75 365 C90 345 100 320 110 300"
+                        fill="rgba(139,108,158,0.10)" stroke="rgba(139,108,158,0.12)" stroke-width="1.5"/>
+                        <path d="M200 260 C225 285 250 315 265 350 C275 370 280 385 270 390 C260 395 240 385 225 365 C210 345 200 320 190 300"
+                        fill="rgba(139,108,158,0.10)" stroke="rgba(139,108,158,0.12)" stroke-width="1.5"/>
+                        <path d="M120 170 C130 155 150 150 150 150 C150 150 170 155 180 170" stroke="rgba(139,108,158,0.06)" stroke-width="1.5" fill="none"/>
+                        <path d="M115 200 C125 185 150 180 150 180 C150 180 175 185 185 200" stroke="rgba(139,108,158,0.06)" stroke-width="1.5" fill="none"/>
+                        <path d="M118 230 C130 215 150 210 150 210 C150 210 170 215 182 230" stroke="rgba(139,108,158,0.06)" stroke-width="1.5" fill="none"/>
+                        <circle cx="130" cy="110" r="22" fill="rgba(139,108,158,0.06)" stroke="rgba(139,108,158,0.05)" stroke-width="1"/>
+                        <circle cx="130" cy="110" r="12" fill="rgba(139,108,158,0.04)"/>
+                        <circle cx="130" cy="105" r="5" fill="rgba(255,255,255,0.15)"/>
+                        <text x="60" y="30" font-size="24" fill="rgba(139,108,158,0.08)">🧜‍♀️</text>
+                        <text x="230" y="50" font-size="18" fill="rgba(139,108,158,0.06)">✦</text>
+                        <text x="250" y="130" font-size="14" fill="rgba(139,108,158,0.05)">✦</text>
+                        <text x="30" y="180" font-size="16" fill="rgba(139,108,158,0.05)">✦</text>
+                    </svg>
+                </div>
+                <div class="storybook-text">
+                    <p class="sb-tagline">"I show up like a friend, plan like a pro, and care like a mom."</p>
+                    <p class="sb-sub">MOM · CREATIVE · PARTY STYLIST</p>
+                    <p class="sb-story">
+                        I believe every celebration deserves a touch of magic. As a mom and creative at heart,
+                        I've turned my passion for party curation into a full-service experience that takes the
+                        stress off your shoulders and puts the joy front and center. From themed wardrobes that
+                        bring your vision to life to custom-made shirts for every little guest, I pour my heart
+                        into every detail so you can soak in every moment.
+                    </p>
+                    <div class="sb-features">
+                        <div class="sb-feature">
+                            <span class="sbf-icon">👗</span>
+                            <h4>Themed Wardrobes</h4>
+                            <p>Matching outfits that bring your party theme to life</p>
+                        </div>
+                        <div class="sb-feature">
+                            <span class="sbf-icon">👕</span>
+                            <h4>Custom Shirts</h4>
+                            <p>Cricut &amp; heat press creations for personalized party wear</p>
+                        </div>
+                        <div class="sb-feature">
+                            <span class="sbf-icon">🎉</span>
+                            <h4>Full-Service Magic</h4>
+                            <p>Setup, coordination, breakdown — we handle it all</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <!-- Hidden Discovery: Starfish -->
+            <div style="text-align:center;margin-top:1.5rem;">
+                <span class="hidden-treasure" onclick="showTreasurePopup(this)">
+                    ⭐
+                    <span class="treasure-popup">🌟 Every star is a wish waiting to come true! 🌟</span>
+                </span>
             </div>
         </section>
 
@@ -1539,8 +1607,7 @@
         <section class="section" id="addons">
             <h2 class="section-title">Add-On Services</h2>
             <p class="section-sub">Make your celebration completely stress-free with our signature add-on services.</p>
-            <div class="grid-4" id="addonGrid">
-
+            <div class="addon-grid">
                 <div class="addon-card addon-mermaid">
                     <div class="addon-icon">🧜‍♀️</div>
                     <h3>The MerMommy Stay</h3>
@@ -1548,7 +1615,6 @@
                     <p>We stay throughout the entire party! From cake cutting to photography, we handle everything.</p>
                     <div class="addon-price">from $150</div>
                 </div>
-
                 <div class="addon-card addon-pearl">
                     <div class="addon-icon">🪸</div>
                     <h3>Pearl Package</h3>
@@ -1556,7 +1622,6 @@
                     <p>Full setup and teardown of your entire party vision — you just show up and enjoy!</p>
                     <div class="addon-price">from $100</div>
                 </div>
-
                 <div class="addon-card addon-shell">
                     <div class="addon-icon">🎁</div>
                     <h3>Treasure Trove</h3>
@@ -1564,7 +1629,6 @@
                     <p>Curated ocean-themed treasures and treats for every little guest to take home.</p>
                     <div class="addon-price">from $8/guest</div>
                 </div>
-
                 <div class="addon-card addon-cake">
                     <div class="addon-icon">🧁</div>
                     <h3>Cakesmash Setup</h3>
@@ -1572,7 +1636,6 @@
                     <p>Styled vintage high chair with backdrop and props for that perfect first birthday memory.</p>
                     <div class="addon-price">from $75</div>
                 </div>
-
             </div>
         </section>
 
@@ -1590,35 +1653,42 @@
                     First 25 subscribers get a special launch surprise.
                 </p>
             </div>
+            <!-- Hidden Discovery: Treasure Chest -->
+            <div style="text-align:center;margin-top:1.5rem;">
+                <span class="hidden-treasure" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}); showTreasurePopup(this);">
+                    🗝️
+                    <span class="treasure-popup">🗺️ Follow the map to join our launch list! 🗺️</span>
+                </span>
+            </div>
         </section>
 
         <!-- ===== INSTAGRAM ===== -->
         <section class="section" id="instagram">
             <h2 class="section-title">Follow Our Journey</h2>
-            <p class="section-sub">Behind the scenes, new themes, and launch progress.</p>
-            <div class="instagram-grid">
-                <div class="instagram-placeholder">
+            <p class="section-sub">Every magical business starts somewhere. Follow along as we build MerMommy.</p>
+            <div class="ig-grid">
+                <div class="ig-placeholder">
                     <span class="ig-icon">📷</span>
                     <p>@mermommycreations</p>
-                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow on Instagram</a>
+                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a>
                 </div>
-                <div class="instagram-placeholder">
+                <div class="ig-placeholder">
                     <span class="ig-icon">📷</span>
                     <p>@mermommycreations</p>
-                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow on Instagram</a>
+                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a>
                 </div>
-                <div class="instagram-placeholder">
+                <div class="ig-placeholder">
                     <span class="ig-icon">📷</span>
                     <p>@mermommycreations</p>
-                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow on Instagram</a>
+                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a>
                 </div>
             </div>
             <p style="text-align:center;margin-top:1.5rem;color:var(--text-light);font-size:0.9rem;">
-                📸 Real photos, behind-the-scenes, and new themes coming soon!
+                Follow the journey as we design themes, build experiences, and prepare for our first season.
             </p>
         </section>
 
-        <!-- ===== CONTACT / BOOKING ===== -->
+        <!-- ===== CONTACT ===== -->
         <section class="section" id="contact">
             <div class="contact-card" id="form-container">
                 <h2 class="font-signature" style="font-size:3rem;color:var(--purple);text-align:center;">Book a Setup</h2>
@@ -1635,7 +1705,6 @@
                             <input type="email" id="email" name="email" required placeholder="name@email.com" />
                         </div>
                     </div>
-
                     <div class="form-row-3">
                         <div class="form-group">
                             <label for="date">Target Date</label>
@@ -1654,11 +1723,10 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="location">Location (San Diego County)</label>
+                            <label for="location">Location (North County San Diego)</label>
                             <input type="text" id="location" name="location" placeholder="City, ZIP" required />
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="theme">The Party Curation</label>
                         <select id="theme" name="theme">
@@ -1669,7 +1737,6 @@
                             <option value="custom">Something Custom</option>
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label>Add-On Services</label>
                         <div class="checkbox-grid">
@@ -1679,12 +1746,10 @@
                             <label class="checkbox-item"><input type="checkbox" name="addons" value="cakesmash" /> Cakesmash Setup</label>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="message">Tell us about your celebration</label>
                         <textarea id="message" name="message" rows="3" placeholder="How many guests? What's your vision? Need tables and chairs? We have everything — just let us know what you need!"></textarea>
                     </div>
-
                     <button type="submit" class="submit-btn">Send Inquiry</button>
                 </form>
 
@@ -1696,72 +1761,182 @@
             </div>
         </section>
 
-        <!-- ===== CREDIBILITY ===== -->
-        <div class="credibility-grid">
+        <!-- ===== PARTY GUIDE ===== -->
+        <section class="section" id="guide">
+            <div class="guide-cta">
+                <h3>Party Guide</h3>
+                <p>Get inspired and start planning your magical celebration.</p>
+                <a href="#" class="guide-btn">Download Now</a>
+            </div>
+        </section>
+
+        <!-- ===== HOW THE MAGIC HAPPENS ===== -->
+        <section class="section" id="how-it-works">
+            <h2 class="section-title">How The Magic Happens</h2>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:0.5rem;position:relative;padding:1rem 0;" class="wave-path">
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">01</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Submit Inquiry</h4>
+                </div>
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">02</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Dream Together</h4>
+                </div>
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">03</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Design &amp; Plan</h4>
+                </div>
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">04</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Setup Day</h4>
+                </div>
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">05</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Celebrate</h4>
+                </div>
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">06</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">We Handle Cleanup</h4>
+                </div>
+                <div style="position:absolute;top:50%;left:8%;right:8%;height:2px;background:repeating-linear-gradient(90deg,var(--teal-light) 0px,var(--teal-light) 6px,transparent 6px,transparent 12px);opacity:0.3;z-index:0;"></div>
+            </div>
+        </section>
+
+        <!-- ===== CREDIBILITY - CLEAN & ORGANIZED ===== -->
+        <div class="credibility-wrap">
             <div class="credibility-item">
                 <span class="cred-icon">📍</span>
-                Serving San Diego County
+                <span class="cred-text">North County San Diego</span>
             </div>
             <div class="credibility-item">
                 <span class="cred-icon">📋</span>
-                Licensed &amp; Insured*
+                <span class="cred-text">Licensed &amp; Insured</span>
+                <span class="cred-sub">*</span>
             </div>
             <div class="credibility-item">
                 <span class="cred-icon">🎨</span>
-                Custom Event Design
+                <span class="cred-text">Custom Event Design</span>
             </div>
             <div class="credibility-item">
                 <span class="cred-icon">🔄</span>
-                Setup &amp; Breakdown
+                <span class="cred-text">Setup &amp; Breakdown</span>
             </div>
             <div class="credibility-item">
                 <span class="cred-icon">👨‍👩‍👧‍👦</span>
-                Family Owned
+                <span class="cred-text">Family Owned</span>
             </div>
         </div>
 
-        <!-- ===== FOOTER ===== -->
-        <footer>
-            <p>&copy; 2026 MerMommy Creations. All rights reserved.</p>
-            <p style="font-size:0.7rem;color:var(--text-light);margin-top:0.3rem;">*When applicable</p>
-        </footer>
-
     </div><!-- /container -->
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>MerMommy Creations</h3>
+                <p>Luxury children's party styling and event curation throughout North County San Diego. Creating magical celebrations with love.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/mermommycreations" target="_blank" aria-label="Instagram">📸</a>
+                    <a href="#" target="_blank" aria-label="Pinterest">📌</a>
+                    <a href="#" target="_blank" aria-label="Facebook">👍</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#adventure">Adventures</a></li>
+                    <li><a href="#tail">My Tail</a></li>
+                    <li><a href="#addons">Add-Ons</a></li>
+                    <li><a href="#contact">Book Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#more-than-decor">Custom Apparel</a></li>
+                    <li><a href="#more-than-decor">Event Design</a></li>
+                    <li><a href="#more-than-decor">Party Signage</a></li>
+                    <li><a href="#more-than-decor">Creative Styling</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://instagram.com/mermommycreations" target="_blank">Instagram</a></li>
+                    <li><a href="#">Email Us</a></li>
+                    <li><a href="#guide">Party Guide</a></li>
+                    <li><a href="#waitlist">Launch List</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MerMommy Creations. All rights reserved.</p>
+            <p style="font-size:0.65rem;color:var(--text-light);margin-top:0.3rem;">*When applicable</p>
+        </div>
+    </footer>
 
     <!-- ===== SCRIPTS ===== -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
             // =========================================
-            // 1. PARTICLES WITH SPARKLES
+            // 1. REGISTER GSAP PLUGINS
+            // =========================================
+            gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+            // =========================================
+            // 2. MERMOMMY GUIDE - MOTION PATH
+            // =========================================
+            const guide = document.getElementById('mermommy-guide');
+            const pathLine = document.getElementById('pathLine');
+
+            if (guide && pathLine) {
+                setTimeout(function() {
+                    guide.classList.add('visible');
+                }, 800);
+
+                gsap.to(guide, {
+                    motionPath: {
+                        path: pathLine,
+                        align: pathLine,
+                        autoRotate: true,
+                        alignOrigin: [0.5, 0.5]
+                    },
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: 'body',
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: 1.2,
+                        invalidateOnRefresh: true
+                    }
+                });
+
+                gsap.to(guide, {
+                    scale: 1.08,
+                    duration: 1.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+            }
+
+            // =========================================
+            // 3. PARTICLES
             // =========================================
             const decorContainer = document.getElementById('decor-container');
-            const particleCount = 20;
-
-            for (let i = 0; i < particleCount; i++) {
+            for (let i = 0; i < 18; i++) {
                 const element = document.createElement('div');
-                const isSparkle = Math.random() > 0.6;
-
-                if (isSparkle) {
-                    element.classList.add('bubble-pop', 'sparkle');
-                    element.textContent = '✨';
-                    element.style.fontSize = (Math.random() * 10 + 14) + 'px';
-                    element.style.opacity = 0.3 + Math.random() * 0.3;
-                } else {
-                    element.classList.add('bubble-pop');
-                    const size = Math.random() * 20 + 8;
-                    element.style.width = size + 'px';
-                    element.style.height = size + 'px';
-                }
-
+                element.classList.add('bubble-pop');
+                const size = Math.random() * 20 + 6;
+                element.style.width = size + 'px';
+                element.style.height = size + 'px';
                 element.style.left = Math.random() * 100 + 'vw';
                 element.style.bottom = '-50px';
                 decorContainer.appendChild(element);
-
                 gsap.to(element, {
                     y: -(window.innerHeight + 200),
-                    x: '+= ' + (Math.random() * 100 - 50),
-                    rotation: isSparkle ? 360 : 0,
+                    x: '+= ' + (Math.random() * 80 - 40),
                     duration: Math.random() * 14 + 10,
                     repeat: -1,
                     delay: Math.random() * 18,
@@ -1770,12 +1945,42 @@
             }
 
             // =========================================
-            // 2. GSAP ANIMATIONS
+            // 4. INFINITE SLIDER - DUPLICATE ITEMS
             // =========================================
-            gsap.registerPlugin(ScrollTrigger);
+            const track = document.getElementById('sliderTrack');
+            if (track) {
+                const items = track.innerHTML;
+                track.innerHTML = items + items + items;
+            }
 
-            // Hero / Splash
-            gsap.from('.splash-title, .splash-sub, .splash-badge, .splash-logo', {
+            // =========================================
+            // 5. HIDDEN TREASURE POPUP FUNCTION
+            // =========================================
+            window.showTreasurePopup = function(el) {
+                const popup = el.querySelector('.treasure-popup');
+                if (popup) {
+                    popup.classList.add('show');
+                    setTimeout(function() {
+                        popup.classList.remove('show');
+                    }, 2500);
+                }
+            };
+
+            // =========================================
+            // 6. GSAP SCROLL ANIMATIONS
+            // =========================================
+
+            // Hero layers
+            gsap.from('.hero-layer, .hero-swimmer', {
+                opacity: 0,
+                duration: 1.2,
+                stagger: 0.3,
+                delay: 0.4,
+                ease: 'power2.out',
+            });
+
+            // Hero text and logo
+            gsap.from('.hero-title, .hero-sub, .hero-badge, .hero-logo', {
                 opacity: 0,
                 y: 30,
                 duration: 0.9,
@@ -1783,8 +1988,6 @@
                 ease: 'back.out(1.6)',
                 delay: 0.2,
             });
-
-            // Scroll Indicator
             gsap.from('.scroll-indicator', {
                 opacity: 0,
                 duration: 0.8,
@@ -1798,162 +2001,76 @@
                 y: 40,
                 duration: 0.9,
                 ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '#banner',
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
+                scrollTrigger: { trigger: '#banner', start: 'top 85%', toggleActions: 'play none none none' },
             });
 
-            // Founding Families
+            // Founding
             gsap.from('#founding', {
                 opacity: 0,
                 y: 40,
                 duration: 0.9,
                 ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '#founding',
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
+                scrollTrigger: { trigger: '#founding', start: 'top 85%', toggleActions: 'play none none none' },
             });
 
-            // Why Section
-            gsap.from('#why', {
-                opacity: 0,
-                y: 40,
-                duration: 0.9,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '#why',
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
-            });
-
-            // Adventure Cards
-            gsap.from('.adventure-card', {
+            // Poster cards
+            gsap.from('.poster-card', {
                 opacity: 0,
                 y: 50,
                 duration: 0.8,
                 stagger: 0.1,
                 ease: 'back.out(1.6)',
-                scrollTrigger: {
-                    trigger: '#adventureGrid',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none',
-                },
+                scrollTrigger: { trigger: '.poster-grid', start: 'top 80%', toggleActions: 'play none none none' },
             });
 
-            // Dream Themes
-            gsap.from('.dream-card', {
+            // Treasure slider
+            gsap.from('.slider-track', {
                 opacity: 0,
-                y: 25,
-                duration: 0.6,
-                stagger: 0.06,
-                ease: 'back.out(1.6)',
-                scrollTrigger: {
-                    trigger: '#dreams .grid-4',
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
-            });
-
-            // Process Steps
-            gsap.from('.process-step', {
-                opacity: 0,
-                y: 35,
-                duration: 0.7,
-                stagger: 0.12,
+                y: 30,
+                duration: 0.8,
                 ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '#process',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none',
-                },
+                scrollTrigger: { trigger: '.slider-section', start: 'top 85%', toggleActions: 'play none none none' },
             });
 
-            // Included Cards
-            gsap.from('.included-card', {
+            // More than decor
+            gsap.from('#more-than-decor .why-item', {
                 opacity: 0,
-                y: 25,
-                duration: 0.6,
-                stagger: 0.06,
-                ease: 'back.out(1.6)',
-                scrollTrigger: {
-                    trigger: '#includedGrid',
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
-            });
-
-            // Gallery
-            gsap.from('.gallery-card', {
-                opacity: 0,
-                y: 25,
-                duration: 0.6,
+                y: 30,
+                duration: 0.7,
                 stagger: 0.08,
                 ease: 'back.out(1.6)',
-                scrollTrigger: {
-                    trigger: '#gallery .grid-3',
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
+                scrollTrigger: { trigger: '#more-than-decor .why-grid', start: 'top 85%',
+                toggleActions: 'play none none none' },
             });
 
-            // Social Proof
-            gsap.from('.social-proof-card', {
+            // Why choose
+            gsap.from('#why-choose .why-item', {
                 opacity: 0,
-                y: 25,
-                duration: 0.6,
+                y: 30,
+                duration: 0.7,
                 stagger: 0.08,
                 ease: 'back.out(1.6)',
-                scrollTrigger: {
-                    trigger: '#social-proof .grid-3',
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
+                scrollTrigger: { trigger: '#why-choose .why-grid', start: 'top 85%',
+                toggleActions: 'play none none none' },
             });
 
-            // Tail (About)
-            gsap.from('#tail .tail-card', {
+            // Storybook
+            gsap.from('.storybook', {
                 opacity: 0,
                 y: 40,
                 duration: 0.9,
                 ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '#tail',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none',
-                },
+                scrollTrigger: { trigger: '#tail .storybook', start: 'top 80%', toggleActions: 'play none none none' },
             });
 
-            // Tail Features
-            gsap.from('.tail-feature', {
-                opacity: 0,
-                y: 25,
-                duration: 0.6,
-                stagger: 0.08,
-                ease: 'back.out(1.6)',
-                scrollTrigger: {
-                    trigger: '.tail-features',
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
-            });
-
-            // Add-on Cards
+            // Add-ons
             gsap.from('.addon-card', {
                 opacity: 0,
                 y: 35,
                 duration: 0.7,
                 stagger: 0.1,
                 ease: 'back.out(1.6)',
-                scrollTrigger: {
-                    trigger: '#addonGrid',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none',
-                },
+                scrollTrigger: { trigger: '.addon-grid', start: 'top 80%', toggleActions: 'play none none none' },
             });
 
             // Waitlist
@@ -1962,44 +2079,60 @@
                 y: 35,
                 duration: 0.8,
                 ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '#waitlist',
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
+                scrollTrigger: { trigger: '#waitlist', start: 'top 85%', toggleActions: 'play none none none' },
             });
 
             // Instagram
-            gsap.from('.instagram-placeholder', {
+            gsap.from('.ig-placeholder', {
                 opacity: 0,
                 y: 25,
                 duration: 0.6,
                 stagger: 0.08,
                 ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '.instagram-grid',
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
+                scrollTrigger: { trigger: '.ig-grid', start: 'top 85%', toggleActions: 'play none none none' },
             });
 
-            // Contact Form
+            // Contact
             gsap.from('.contact-card', {
                 opacity: 0,
                 y: 35,
                 duration: 0.8,
                 ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '#contact',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none',
-                },
+                scrollTrigger: { trigger: '#contact', start: 'top 80%', toggleActions: 'play none none none' },
+            });
+
+            // Guide
+            gsap.from('#guide .guide-cta', {
+                opacity: 0,
+                y: 35,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '#guide', start: 'top 85%', toggleActions: 'play none none none' },
+            });
+
+            // Wave path
+            gsap.from('.wave-path > div', {
+                opacity: 0,
+                y: 30,
+                duration: 0.6,
+                stagger: 0.08,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '.wave-path', start: 'top 85%', toggleActions: 'play none none none' },
+            });
+
+            // Footer
+            gsap.from('#footer', {
+                opacity: 0,
+                y: 40,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '#footer', start: 'top 90%', toggleActions: 'play none none none' },
             });
 
             // =========================================
-            // 3. FLOATING ICONS
+            // 7. FLOATING ICONS
             // =========================================
-            document.querySelectorAll('.adventure-card .card-icon, .addon-card .addon-icon, .included-card .inc-icon, .dream-card .dream-icon').forEach(function(icon) {
+            document.querySelectorAll('.poster-icon, .addon-icon, .tc-icon, .wi-icon, .sbf-icon').forEach(function(icon) {
                 gsap.to(icon, {
                     y: -4,
                     duration: 2.8 + Math.random() * 0.6,
@@ -2011,7 +2144,27 @@
             });
 
             // =========================================
-            // 4. WAITLIST FORM
+            // 8. ADVENTURE CARD HOVER
+            // =========================================
+            document.querySelectorAll('.poster-card').forEach(function(card) {
+                const icon = card.querySelector('.poster-icon');
+                const price = card.querySelector('.poster-price');
+                if (icon && price) {
+                    card.addEventListener('mouseenter', function() {
+                        gsap.to(icon, { scale: 1.2, rotation: 8, duration: 0.4, ease: 'back.out(1.7)' });
+                        gsap.to(price, { scale: 1.05, backgroundColor: '#8B6C9E', duration: 0.3,
+                            ease: 'power2.out' });
+                    });
+                    card.addEventListener('mouseleave', function() {
+                        gsap.to(icon, { scale: 1, rotation: 0, duration: 0.3, ease: 'power2.out' });
+                        gsap.to(price, { scale: 1, backgroundColor: '#69DBD3', duration: 0.3,
+                            ease: 'power2.out' });
+                    });
+                }
+            });
+
+            // =========================================
+            // 9. WAITLIST FORM
             // =========================================
             const waitlistForm = document.getElementById('waitlist-form');
             if (waitlistForm) {
@@ -2030,10 +2183,9 @@
             }
 
             // =========================================
-            // 5. INQUIRY FORM
+            // 10. INQUIRY FORM
             // =========================================
             const form = document.getElementById('inquiry-form');
-
             if (form) {
                 form.addEventListener('submit', async function(event) {
                     event.preventDefault();
@@ -2041,16 +2193,13 @@
                     const originalText = submitBtn.textContent;
                     submitBtn.textContent = 'Sending...';
                     submitBtn.disabled = true;
-
                     const data = new FormData(this);
-
                     try {
                         const response = await fetch(this.action, {
                             method: this.method,
                             body: data,
                             headers: { Accept: 'application/json' },
                         });
-
                         if (response.ok) {
                             gsap.to('#form-container', {
                                 duration: 0.4,
@@ -2059,8 +2208,8 @@
                                     document.getElementById('form-container').style.display = 'none';
                                     var successMsg = document.getElementById('success-message');
                                     successMsg.style.display = 'block';
-                                    gsap.fromTo(successMsg, { opacity: 0, y: 20 }, { duration: 0.5, opacity: 1,
-                                        y: 0 });
+                                    gsap.fromTo(successMsg, { opacity: 0, y: 20 }, { duration: 0.5,
+                                        opacity: 1, y: 0 });
                                 },
                             });
                         } else {
