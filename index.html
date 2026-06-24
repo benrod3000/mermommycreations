@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MerMommy Creations | Luxury Children's Party Curation</title>
 
-    <!-- Google Fonts (minimal) -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Grand+Hotel&display=swap" rel="stylesheet" />
 
     <!-- GSAP -->
@@ -14,10 +14,8 @@
 
     <style>
         /* ============================================
-           MERMOMMY — BOUTIQUE REFINEMENT
+           RESET & BASE (Brutalist-lite)
            ============================================ */
-
-        /* ---------- RESET & BASE ---------- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -30,7 +28,8 @@
 
         body {
             font-family: 'Fredoka', sans-serif;
-            background: #f7f3f0;
+            /* Restored gradient background */
+            background: linear-gradient(180deg, #f5edf8 0%, #f0eaf5 25%, #e8f5f4 55%, #d4ecea 80%, #c5e3e0 100%);
             color: #2d2a3a;
             min-height: 100vh;
             overflow-x: hidden;
@@ -38,7 +37,7 @@
             line-height: 1.6;
         }
 
-        /* ---------- TYPOGRAPHY ---------- */
+        /* ---------- TYPOGRAPHY (Bold & Structured) ---------- */
         .font-signature {
             font-family: 'Magnolia Sky', 'Grand Hotel', cursive;
             font-weight: 400;
@@ -47,20 +46,22 @@
         }
 
         .section-title {
-            font-size: 2.6rem;
-            font-weight: 600;
+            font-size: 2.8rem;
+            font-weight: 700;
             text-align: center;
             margin-bottom: 1.2rem;
             color: #2d2a3a;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
+            text-transform: uppercase;
         }
 
         .section-sub {
             text-align: center;
-            color: #6a6a7a;
+            color: #5a5a6a;
             font-size: 1.05rem;
             max-width: 600px;
             margin: -0.3rem auto 2rem;
+            font-weight: 300;
         }
 
         .container {
@@ -71,21 +72,30 @@
             z-index: 10;
         }
 
-        /* ---------- NO HEAVY BORDERS / CARDS ---------- */
-        .card-soft {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
-            padding: 2rem 2.5rem;
+        /* ---------- BRUTALIST CARD BASE (No rounded corners, no heavy borders) ---------- */
+        .card-soft,
+        .banner,
+        .founding-card,
+        .poster-card,
+        .treasure-card,
+        .masonry-item,
+        .why-item,
+        .addon-card,
+        .waitlist-card,
+        .contact-card,
+        .guide-cta,
+        .ig-placeholder,
+        .footer,
+        .footer-bottom {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            border: none !important;
         }
 
         /* ---------- HERO ---------- */
         .hero {
             position: relative;
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -105,9 +115,10 @@
         }
 
         .hero-title {
-            font-size: 3.8rem;
+            font-size: 4.2rem;
             margin-bottom: 0.2rem;
             color: #8B6C9E;
+            letter-spacing: -1px;
         }
 
         .hero-sub {
@@ -124,11 +135,11 @@
             background: #69DBD3;
             color: #fff;
             font-weight: 600;
-            padding: 0.5rem 2rem;
-            border-radius: 40px;
-            font-size: 0.95rem;
+            padding: 0.5rem 2.5rem;
+            font-size: 1rem;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 20px rgba(105, 219, 211, 0.25);
+            border: 2px solid #2d2a3a;
+            text-transform: uppercase;
         }
 
         .scroll-indicator {
@@ -161,43 +172,43 @@
             width: 100%;
         }
 
-        /* ---------- BANNER ---------- */
+        /* ---------- BANNER (Brutalist Stripes) ---------- */
         .banner {
-            padding: 2.5rem 2rem;
+            padding: 2rem 0;
             text-align: center;
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
-            border-radius: 0;
+            background: transparent;
             margin: 1rem 0 3rem;
+            border-top: 6px solid #8B6C9E !important;
+            border-bottom: 6px solid #69DBD3 !important;
         }
         .banner p {
             font-size: 1.15rem;
-            color: #5a5a6a;
+            color: #4a4a5a;
             line-height: 1.8;
             max-width: 750px;
             margin: 0 auto;
-            font-weight: 300;
+            font-weight: 400;
         }
         .banner .highlight {
             color: #8B6C9E;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* ---------- FOUNDING FAMILIES ---------- */
         .founding-card {
             padding: 2.5rem 2rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
-            border-top: 4px solid #69DBD3;
-            border-radius: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-top: 8px solid #69DBD3 !important;
             margin: 1rem 0 3rem;
         }
         .founding-card h2 {
             font-size: 1.8rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #2d2a3a;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
         }
         .founding-card p {
             font-size: 1rem;
@@ -217,10 +228,10 @@
         .founding-benefit {
             padding: 0.6rem 0.3rem;
             font-size: 0.85rem;
-            color: #5a5a6a;
-            border: 1px solid rgba(139, 108, 158, 0.08);
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 0;
+            color: #2d2a3a;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid #2d2a3a;
+            font-weight: 500;
         }
         .founding-benefit span {
             display: block;
@@ -228,7 +239,7 @@
             margin-bottom: 0.1rem;
         }
 
-        /* ---------- ADVENTURE POSTERS (editorial) ---------- */
+        /* ---------- ADVENTURE POSTERS ---------- */
         .poster-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -238,12 +249,12 @@
             padding: 1.5rem 1rem;
             text-align: center;
             background: transparent;
-            border: none;
-            box-shadow: none;
-            transition: transform 0.3s ease;
+            border-bottom: 4px solid rgba(45, 42, 58, 0.08) !important;
+            transition: transform 0.2s ease;
         }
         .poster-card:hover {
             transform: translateY(-4px);
+            border-bottom-color: #8B6C9E !important;
         }
         .poster-card .poster-icon {
             font-size: 3.5rem;
@@ -261,7 +272,7 @@
         }
         .poster-card h3 {
             font-size: 1.4rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #2d2a3a;
             margin-bottom: 0.2rem;
         }
@@ -281,21 +292,21 @@
         }
         .poster-card .poster-features span {
             font-size: 0.6rem;
-            font-weight: 400;
-            color: #7a7a8a;
+            font-weight: 500;
+            color: #4a4a5a;
             background: rgba(255, 255, 255, 0.3);
             padding: 0.1rem 0.8rem;
-            border-radius: 20px;
+            border: 1px solid rgba(45, 42, 58, 0.1);
         }
         .poster-card .poster-price {
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #8B6C9E;
             display: inline-block;
             padding: 0.2rem 1.2rem;
-            border: 1px solid rgba(139, 108, 158, 0.15);
-            border-radius: 30px;
+            border: 2px solid #8B6C9E;
             margin-top: 0.3rem;
+            text-transform: uppercase;
         }
 
         /* ---------- INFINITE SLIDER ---------- */
@@ -316,10 +327,8 @@
             flex: 0 0 200px;
             padding: 1.5rem 1rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(45, 42, 58, 0.05) !important;
         }
         .treasure-card .tc-icon {
             font-size: 2.2rem;
@@ -328,8 +337,10 @@
         }
         .treasure-card h4 {
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #2d2a3a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .treasure-card p {
             font-size: 0.7rem;
@@ -346,7 +357,7 @@
             }
         }
 
-        /* ---------- MORE THAN PARTY DECOR (masonry-style) ---------- */
+        /* ---------- MORE THAN PARTY DECOR ---------- */
         .masonry-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -355,13 +366,13 @@
         .masonry-item {
             padding: 1.8rem 1.2rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.25);
-            border: none;
-            border-radius: 0;
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            border-left: 4px solid rgba(139, 108, 158, 0.2) !important;
+            transition: transform 0.2s ease;
         }
         .masonry-item:hover {
             transform: translateY(-4px);
+            border-left-color: #8B6C9E !important;
         }
         .masonry-item .masonry-icon {
             font-size: 2.2rem;
@@ -370,8 +381,10 @@
         }
         .masonry-item h4 {
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #2d2a3a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .masonry-item p {
             font-size: 0.8rem;
@@ -389,13 +402,13 @@
         .why-item {
             padding: 2rem 1.5rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.25);
-            border: none;
-            border-radius: 0;
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            border-bottom: 4px solid rgba(45, 42, 58, 0.05) !important;
+            transition: transform 0.2s ease;
         }
         .why-item:hover {
             transform: translateY(-4px);
+            border-bottom-color: #69DBD3 !important;
         }
         .why-item .wi-icon {
             font-size: 2.4rem;
@@ -404,8 +417,10 @@
         }
         .why-item h4 {
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #2d2a3a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .why-item p {
             font-size: 0.8rem;
@@ -460,8 +475,8 @@
         .storybook-text .sb-feature {
             padding: 0.8rem 0.3rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-left: 4px solid rgba(139, 108, 158, 0.2);
         }
         .storybook-text .sb-feature .sbf-icon {
             font-size: 1.4rem;
@@ -470,8 +485,9 @@
         }
         .storybook-text .sb-feature h4 {
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #2d2a3a;
+            text-transform: uppercase;
         }
         .storybook-text .sb-feature p {
             font-size: 0.65rem;
@@ -488,13 +504,13 @@
         .addon-card {
             padding: 2rem 1.2rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.25);
-            border: none;
-            border-radius: 0;
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            border-top: 4px solid rgba(45, 42, 58, 0.05) !important;
+            transition: transform 0.2s ease;
         }
         .addon-card:hover {
             transform: translateY(-4px);
+            border-top-color: #8B6C9E !important;
         }
         .addon-card .addon-icon {
             font-size: 2.8rem;
@@ -503,7 +519,7 @@
         }
         .addon-card h3 {
             font-size: 1.2rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #2d2a3a;
         }
         .addon-card .addon-tag {
@@ -523,27 +539,29 @@
         }
         .addon-price {
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #69DBD3;
             display: inline-block;
             margin-top: 0.3rem;
+            border-bottom: 2px solid #69DBD3;
         }
 
         /* ---------- WAITLIST ---------- */
         .waitlist-card {
             padding: 2.5rem 2rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
-            border-radius: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #2d2a3a !important;
             max-width: 650px;
             margin: 0 auto;
         }
         .waitlist-card h3 {
             font-size: 1.6rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #2d2a3a;
             margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
         }
         .waitlist-card p {
             color: #5a5a6a;
@@ -559,31 +577,33 @@
         .waitlist-form input {
             flex: 1;
             background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(139, 108, 158, 0.1);
-            border-radius: 0;
+            border: 2px solid #2d2a3a;
             padding: 0.8rem 1rem;
             color: #2d2a3a;
             font-family: 'Fredoka', sans-serif;
             font-size: 0.9rem;
+            border-radius: 0;
         }
         .waitlist-form input:focus {
             outline: none;
             border-color: #8B6C9E;
         }
         .waitlist-form .waitlist-btn {
-            background: #8B6C9E;
+            background: #2d2a3a;
             color: #fff;
-            border: none;
-            border-radius: 0;
+            border: 2px solid #2d2a3a;
             padding: 0.8rem 1.8rem;
             font-weight: 600;
             cursor: pointer;
             font-family: 'Fredoka', sans-serif;
             transition: background 0.2s ease;
-            white-space: nowrap;
+            border-radius: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .waitlist-form .waitlist-btn:hover {
-            background: #7a5a8a;
+            background: #8B6C9E;
+            border-color: #8B6C9E;
         }
 
         /* ---------- INSTAGRAM ---------- */
@@ -598,7 +618,7 @@
             padding: 2rem 1rem;
             text-align: center;
             background: rgba(255, 255, 255, 0.2);
-            border: none;
+            border: 2px solid rgba(45, 42, 58, 0.05) !important;
             aspect-ratio: 1;
             display: flex;
             flex-direction: column;
@@ -619,25 +639,27 @@
             display: inline-block;
             margin-top: 0.4rem;
             padding: 0.3rem 1.2rem;
-            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            background: #2d2a3a;
             color: #fff;
             text-decoration: none;
             font-size: 0.7rem;
             font-weight: 600;
-            border-radius: 0;
-            transition: transform 0.2s ease;
+            border: 2px solid #2d2a3a;
+            transition: background 0.2s ease;
             font-family: 'Fredoka', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .ig-placeholder .ig-link:hover {
-            transform: scale(1.04);
+            background: #8B6C9E;
+            border-color: #8B6C9E;
         }
 
         /* ---------- CONTACT ---------- */
         .contact-card {
             padding: 3rem 2.5rem;
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
-            border-radius: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(45, 42, 58, 0.05) !important;
         }
         .contact-intro {
             text-align: center;
@@ -667,8 +689,8 @@
         }
         label {
             font-size: 0.7rem;
-            font-weight: 600;
-            color: #8B6C9E;
+            font-weight: 700;
+            color: #2d2a3a;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -676,14 +698,14 @@
         select,
         textarea {
             background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(139, 108, 158, 0.08);
-            border-radius: 0;
+            border: 2px solid rgba(45, 42, 58, 0.2);
             padding: 0.8rem 1rem;
             color: #2d2a3a;
             font-family: 'Fredoka', sans-serif;
             font-size: 0.9rem;
             width: 100%;
             transition: border 0.2s ease;
+            border-radius: 0;
         }
         input:focus,
         select:focus,
@@ -717,21 +739,22 @@
             flex-shrink: 0;
         }
         .submit-btn {
-            background: #8B6C9E;
+            background: #2d2a3a;
             color: #fff;
-            border: none;
-            border-radius: 0;
+            border: 2px solid #2d2a3a;
             padding: 1rem;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: background 0.2s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-family: 'Fredoka', sans-serif;
+            border-radius: 0;
         }
         .submit-btn:hover {
-            background: #7a5a8a;
+            background: #8B6C9E;
+            border-color: #8B6C9E;
         }
         .submit-btn:active {
             transform: scale(0.98);
@@ -742,14 +765,15 @@
             text-align: center;
             padding: 2.5rem;
             background: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-radius: 0;
+            border: 2px solid rgba(45, 42, 58, 0.05) !important;
         }
         .guide-cta h3 {
             font-size: 1.6rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #2d2a3a;
             margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
         }
         .guide-cta p {
             color: #5a5a6a;
@@ -758,16 +782,21 @@
         }
         .guide-cta .guide-btn {
             display: inline-block;
-            background: #8B6C9E;
+            background: #2d2a3a;
             color: #fff;
             padding: 0.7rem 2.5rem;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
+            border: 2px solid #2d2a3a;
             transition: background 0.2s ease;
             font-family: 'Fredoka', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 0;
         }
         .guide-cta .guide-btn:hover {
-            background: #7a5a8a;
+            background: #8B6C9E;
+            border-color: #8B6C9E;
         }
 
         /* ---------- HOW THE MAGIC HAPPENS ---------- */
@@ -781,8 +810,8 @@
         .wave-step {
             padding: 1.2rem 0.3rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-top: 4px solid rgba(45, 42, 58, 0.05);
             position: relative;
             z-index: 1;
         }
@@ -794,8 +823,10 @@
         }
         .wave-step h4 {
             font-size: 0.75rem;
-            font-weight: 500;
+            font-weight: 600;
             color: #2d2a3a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .wave-path::before {
             content: '';
@@ -803,9 +834,9 @@
             top: 50%;
             left: 10%;
             right: 10%;
-            height: 1px;
-            background: repeating-linear-gradient(90deg, #8ee5de 0px, #8ee5de 6px, transparent 6px, transparent 12px);
-            opacity: 0.25;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #8B6C9E 0px, #8B6C9E 6px, transparent 6px, transparent 12px);
+            opacity: 0.2;
             z-index: 0;
         }
 
@@ -1156,7 +1187,8 @@
             background: rgba(255, 255, 255, 0.3);
             padding: 2.5rem 0 1.5rem;
             margin-top: 3rem;
-            border-top: 1px solid rgba(139, 108, 158, 0.06);
+            border-top: 6px solid #8B6C9E !important;
+            border-bottom: 6px solid #69DBD3 !important;
         }
         .footer-inner {
             max-width: 1100px;
@@ -1191,12 +1223,12 @@
             justify-content: center;
             width: 36px;
             height: 36px;
-            border-radius: 50%;
-            background: rgba(139, 108, 158, 0.06);
+            border: 2px solid #8B6C9E;
             color: #8B6C9E;
             text-decoration: none;
             font-size: 1rem;
             transition: all 0.3s ease;
+            font-weight: 700;
         }
         .footer-brand .footer-social a:hover {
             background: #8B6C9E;
@@ -1221,21 +1253,25 @@
             color: #5a5a6a;
             text-decoration: none;
             font-size: 0.8rem;
-            font-weight: 300;
+            font-weight: 400;
             transition: color 0.2s ease;
+            border-bottom: 1px solid transparent;
         }
         .footer-col ul li a:hover {
             color: #8B6C9E;
+            border-bottom-color: #8B6C9E;
         }
+
+        /* ---------- CREDIBILITY (in footer) ---------- */
         .footer-bottom {
             max-width: 1100px;
             width: 92%;
             margin: 1.5rem auto 0;
             padding-top: 1.2rem;
-            border-top: 1px solid rgba(139, 108, 158, 0.06);
+            border-top: 4px solid rgba(45, 42, 58, 0.08) !important;
             text-align: center;
             font-size: 0.7rem;
-            color: #9a8aaa;
+            color: #5a5a6a;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -1245,15 +1281,23 @@
             display: flex;
             align-items: center;
             gap: 0.4rem;
-            font-weight: 300;
+            font-weight: 500;
+            font-size: 0.75rem;
         }
         .footer-bottom .footer-cred .fc-icon {
             font-size: 1.1rem;
-            opacity: 0.5;
+            opacity: 0.6;
         }
         .footer-bottom .footer-cred .fc-sub {
             font-size: 0.6rem;
-            color: #b0a0b8;
+            color: #9a8aaa;
+        }
+        .footer-copy {
+            text-align: center;
+            font-size: 0.65rem;
+            color: #9a8aaa;
+            margin-top: 1rem;
+            padding-bottom: 0.5rem;
         }
 
         /* ---------- HIDDEN TREASURES ---------- */
@@ -1273,20 +1317,18 @@
             bottom: 120%;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.92);
+            background: #fff;
             padding: 0.4rem 1rem;
-            border-radius: 0;
             font-size: 0.75rem;
             color: #2d2a3a;
             white-space: nowrap;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(139, 108, 158, 0.06);
+            border: 2px solid #2d2a3a;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s ease, transform 0.3s ease;
             transform: translateX(-50%) translateY(6px);
             font-family: 'Fredoka', sans-serif;
-            font-weight: 300;
+            font-weight: 500;
         }
         .hidden-treasure:hover .treasure-popup {
             opacity: 1;
@@ -1295,6 +1337,34 @@
         .hidden-treasure .treasure-popup.show {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
+        }
+
+        /* ===== PARTICLES (positioned) ===== */
+        .sky-decor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bubble-el {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(139, 108, 158, 0.06);
+            border: 1px solid rgba(139, 108, 158, 0.08);
+            bottom: -30px;
+            pointer-events: none;
+        }
+        .sparkle-el {
+            position: absolute;
+            bottom: -30px;
+            pointer-events: none;
+            font-size: 18px;
+            opacity: 0.5;
+            line-height: 1;
         }
 
         /* ---------- RESPONSIVE ---------- */
@@ -1446,10 +1516,10 @@
                 grid-template-columns: 1fr;
             }
             .hero-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             .hero-logo {
-                max-width: 220px;
+                max-width: 200px;
             }
             .backdrop {
                 width: 190px;
@@ -1476,7 +1546,7 @@
 </head>
 <body>
 
-    <!-- ===== PARTICLES (minimal) ===== -->
+    <!-- ===== PARTICLES (Bubbles + ✨) ===== -->
     <div class="sky-decor" id="decor-container"></div>
 
     <!-- ===== MAIN WRAPPER ===== -->
@@ -1597,8 +1667,8 @@
                 </span>
             </div>
             <!-- Included note -->
-            <div style="text-align:center;margin-top:1.5rem;padding:0.8rem 1.5rem;background:rgba(105,219,211,0.08);max-width:550px;margin-left:auto;margin-right:auto;">
-                <p style="color:#4a4a5a;font-size:0.95rem;font-weight:400;margin:0;">
+            <div style="text-align:center;margin-top:1.5rem;padding:0.8rem 1.5rem;border:2px solid rgba(45,42,58,0.05);max-width:550px;margin-left:auto;margin-right:auto;">
+                <p style="color:#4a4a5a;font-size:0.95rem;font-weight:500;margin:0;">
                     ✦ All decor, tableware, and setup included. Just bring your guests and the cake!
                 </p>
             </div>
@@ -1618,7 +1688,7 @@
                 <div class="treasure-card"><span class="tc-icon">🎉</span><h4>Celebration Setup</h4><p>We arrive early and build the magic</p></div>
                 <div class="treasure-card"><span class="tc-icon">💜</span><h4>Thoughtful Touches</h4><p>Little details that mean so much</p></div>
             </div>
-            <p style="text-align:center;margin-top:0.8rem;color:#9a8aaa;font-size:0.7rem;opacity:0.5;">Hover to pause • Let the treasures drift by</p>
+            <p style="text-align:center;margin-top:0.8rem;color:#9a8aaa;font-size:0.7rem;opacity:0.6;font-weight:500;">Hover to pause • Let the treasures drift by</p>
         </section>
 
         <!-- ===== MORE THAN PARTY DECOR ===== -->
@@ -1780,7 +1850,7 @@
                     <input type="email" placeholder="Your email" required />
                     <button type="submit" class="waitlist-btn">Join List</button>
                 </form>
-                <p style="font-size:0.7rem;color:#9a8aaa;margin-top:0.6rem;">
+                <p style="font-size:0.7rem;color:#9a8aaa;margin-top:0.6rem;font-weight:500;">
                     First 25 subscribers get a special launch surprise.
                 </p>
             </div>
@@ -1975,7 +2045,7 @@
             </div>
         </div>
 
-        <!-- ===== CREDIBILITY (formerly a standalone section) ===== -->
+        <!-- ===== CREDIBILITY ===== -->
         <div class="footer-bottom">
             <span class="footer-cred">
                 <span class="fc-icon">📍</span>
@@ -2000,9 +2070,9 @@
             </span>
         </div>
 
-        <div style="text-align:center;font-size:0.65rem;color:#b0a0b8;margin-top:1rem;">
+        <div class="footer-copy">
             &copy; 2026 MerMommy Creations. All rights reserved.
-            <span style="display:block;font-size:0.6rem;color:#c0b0c8;">*When applicable</span>
+            <span style="display:block;font-size:0.6rem;color:#b0a0b8;">*When applicable</span>
         </div>
     </footer>
 
@@ -2016,7 +2086,7 @@
             gsap.registerPlugin(ScrollTrigger);
 
             // =========================================
-            // 1. HERO ENTRANCE (fade up only)
+            // 1. HERO ENTRANCE
             // =========================================
             gsap.from('.hero-title, .hero-sub, .hero-badge, .hero-logo', {
                 opacity: 0,
@@ -2068,7 +2138,7 @@
             });
 
             // =========================================
-            // 3. MERMAID ILLUSTRATION - one gentle float
+            // 3. MERMAID ILLUSTRATION - gentle float
             // =========================================
             const mermaid = document.getElementById('mermaidIllustration');
             if (mermaid) {
@@ -2082,28 +2152,31 @@
             }
 
             // =========================================
-            // 4. PARTICLES (minimal, no sparkle emojis to reduce clutter)
+            // 4. PARTICLES (Bubbles + ✨)
             // =========================================
             const decorContainer = document.getElementById('decor-container');
             if (decorContainer) {
-                decorContainer.style.position = 'fixed';
-                decorContainer.style.top = '0';
-                decorContainer.style.left = '0';
-                decorContainer.style.width = '100%';
-                decorContainer.style.height = '100%';
-                decorContainer.style.pointerEvents = 'none';
-                decorContainer.style.zIndex = '1';
-                decorContainer.style.overflow = 'hidden';
-
-                for (let i = 0; i < 12; i++) {
+                for (let i = 0; i < 25; i++) {
                     const el = document.createElement('div');
-                    const size = Math.random() * 12 + 4;
-                    el.style.cssText =
-                        `position:absolute;border-radius:50%;background:rgba(139,108,158,0.04);border:1px solid rgba(139,108,158,0.06);width:${size}px;height:${size}px;left:${Math.random()*100}vw;bottom:-30px;`;
+                    const isSparkle = Math.random() > 0.6;
+                    if (isSparkle) {
+                        el.className = 'sparkle-el';
+                        el.textContent = '✨';
+                        const size = Math.random() * 14 + 16;
+                        el.style.fontSize = size + 'px';
+                        el.style.opacity = 0.3 + Math.random() * 0.4;
+                    } else {
+                        el.className = 'bubble-el';
+                        const size = Math.random() * 12 + 6;
+                        el.style.width = size + 'px';
+                        el.style.height = size + 'px';
+                    }
+                    el.style.left = Math.random() * 100 + 'vw';
                     decorContainer.appendChild(el);
+
                     gsap.to(el, {
                         y: -(window.innerHeight + 100),
-                        x: '+= ' + (Math.random() * 60 - 30),
+                        x: '+= ' + (Math.random() * 80 - 40),
                         duration: Math.random() * 18 + 14,
                         repeat: -1,
                         delay: Math.random() * 20,
@@ -2145,9 +2218,11 @@
                     const original = btn.textContent;
                     btn.textContent = 'Added!';
                     btn.style.background = '#69DBD3';
+                    btn.style.borderColor = '#69DBD3';
                     setTimeout(function() {
                         btn.textContent = original;
-                        btn.style.background = '#8B6C9E';
+                        btn.style.background = '#2d2a3a';
+                        btn.style.borderColor = '#2d2a3a';
                         waitlistForm.reset();
                     }, 3000);
                 });
