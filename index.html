@@ -28,7 +28,6 @@
 
         body {
             font-family: 'Fredoka', sans-serif;
-            /* Restored gradient background */
             background: linear-gradient(180deg, #f5edf8 0%, #f0eaf5 25%, #e8f5f4 55%, #d4ecea 80%, #c5e3e0 100%);
             color: #2d2a3a;
             min-height: 100vh;
@@ -37,7 +36,7 @@
             line-height: 1.6;
         }
 
-        /* ---------- TYPOGRAPHY (Bold & Structured) ---------- */
+        /* ---------- TYPOGRAPHY ---------- */
         .font-signature {
             font-family: 'Magnolia Sky', 'Grand Hotel', cursive;
             font-weight: 400;
@@ -72,7 +71,7 @@
             z-index: 10;
         }
 
-        /* ---------- BRUTALIST CARD BASE (No rounded corners, no heavy borders) ---------- */
+        /* ---------- BRUTALIST CARD BASE ---------- */
         .card-soft,
         .banner,
         .founding-card,
@@ -172,7 +171,7 @@
             width: 100%;
         }
 
-        /* ---------- BANNER (Brutalist Stripes) ---------- */
+        /* ---------- BANNER ---------- */
         .banner {
             padding: 2rem 0;
             text-align: center;
@@ -442,9 +441,17 @@
             justify-content: center;
             align-items: center;
         }
-        .storybook-illustration .mermaid-wrapper {
+        /* === IMAGE SCALED DOWN & NO BORDER === */
+        .storybook-illustration .mommy-image {
+            max-width: 180px;
             width: 100%;
-            max-width: 320px;
+            height: auto;
+            display: block;
+            filter: grayscale(0%);
+            transition: filter 0.3s ease;
+        }
+        .storybook-illustration .mommy-image:hover {
+            filter: grayscale(0%);
         }
         .storybook-text .sb-tagline {
             font-size: 1.2rem;
@@ -840,348 +847,6 @@
             z-index: 0;
         }
 
-        /* ===== MERMAID ILLUSTRATION ===== */
-        .mermaid-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            max-width: 320px;
-            margin: 0 auto;
-        }
-        .backdrop {
-            background-color: #F5F5F5;
-            box-shadow: inset 0 0 0 4px #D6E6E5;
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            position: relative;
-            margin: 0 auto;
-        }
-        .backdrop:before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: linear-gradient(#EDE1B4, pink);
-        }
-        .backdrop:after {
-            content: '';
-            position: absolute;
-            background-color: #F5F5F5;
-            bottom: 0;
-            height: 80px;
-            width: 100%;
-            z-index: 0;
-        }
-        .water {
-            position: absolute;
-            bottom: 72px;
-            width: 100%;
-            height: 6px;
-            background-color: #D6E6E5;
-            z-index: 1;
-            border-radius: 10px;
-        }
-        .water:before,
-        .water:after {
-            content: '';
-            background-color: #D6E6E5;
-            position: absolute;
-            top: 12px;
-            height: 6px;
-            border-radius: 10px;
-        }
-        .water:before {
-            left: 10px;
-            width: 50%;
-        }
-        .water:after {
-            right: 10px;
-            width: 25%;
-        }
-        .mermaid {
-            width: 150px;
-            height: 110px;
-            position: absolute;
-            left: 50%;
-            bottom: 178px;
-            transform: translateX(-50%) translateY(0) translateZ(0);
-        }
-
-        /* Hair - brand colors */
-        .hair {
-            background: linear-gradient(135deg, #8B6C9E 0%, #69DBD3 100%);
-            height: 200px;
-            width: 150px;
-            border-radius: 90% 90% 0 0;
-            position: relative;
-        }
-        .hair:after {
-            content: '';
-            background: linear-gradient(135deg, #7a5a8a 0%, #4fc4bc 100%);
-            position: absolute;
-            top: 38px;
-            left: 3%;
-            width: 140px;
-            height: 140%;
-            border-radius: 80% 80% 0 0;
-        }
-        .hair--left {
-            position: absolute;
-            left: 42px;
-            top: 38px;
-            width: 6px;
-            background-color: #8B6C9E;
-            border-radius: 0 0 0 50px;
-            height: 12px;
-            z-index: 5;
-        }
-        .hair--left:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 6px;
-            width: 6px;
-            height: 6px;
-            background-color: #8B6C9E;
-            border-radius: 0 0 50px 0;
-        }
-        .hair--right {
-            position: absolute;
-            right: 42px;
-            top: 38px;
-            width: 6px;
-            border-radius: 0 0 50px 0;
-            background-color: #8B6C9E;
-            height: 12px;
-            z-index: 5;
-        }
-        .hair--right:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 6px;
-            width: 16px;
-            height: 6px;
-            background-color: #8B6C9E;
-            border-radius: 0 0 0 50px;
-        }
-        .hair--middle {
-            position: absolute;
-            top: 12px;
-            left: 40%;
-            width: 70px;
-            height: 34px;
-            border-radius: 0 90%;
-            z-index: 6;
-            background-color: #69DBD3;
-            transform: translateX(-50%) rotate(-10deg);
-        }
-        .hair--middle:after {
-            content: '';
-            position: absolute;
-            top: 26px;
-            right: 0;
-            width: 40px;
-            height: 12px;
-            border-radius: 0 90%;
-            background-color: #4fc4bc;
-            transform: rotate(-10deg);
-        }
-
-        .ear--left,
-        .ear--right {
-            position: absolute;
-            top: 42px;
-            width: 14px;
-            height: 20px;
-            background-color: #F9CCB1;
-        }
-        .ear--left {
-            left: 34px;
-            border-radius: 50px 0 0 50px;
-        }
-        .ear--right {
-            right: 34px;
-            border-radius: 0 50px 50px 0;
-        }
-
-        .face {
-            background-color: #F9CCB1;
-            width: 68px;
-            border-radius: 0 0 50px 50px;
-            height: 50px;
-            position: absolute;
-            bottom: 22px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .face:after {
-            background-color: #FCD9C4;
-            width: 58px;
-            border-radius: 0 0 50px 50px;
-            height: 44px;
-            content: '';
-            left: 50%;
-            transform: translateX(-50%);
-            position: absolute;
-        }
-
-        .eye {
-            width: 10px;
-            height: 10px;
-            background-color: black;
-            position: absolute;
-            left: 12px;
-            top: 12px;
-            z-index: 5;
-            border-radius: 50px;
-        }
-        .eye+.eye {
-            left: auto;
-            right: 12px;
-        }
-        .cheek {
-            position: absolute;
-            top: 24px;
-            width: 14px;
-            left: 10px;
-            height: 12px;
-            background-color: pink;
-            border-radius: 50%;
-            z-index: 5;
-        }
-        .cheek+.cheek {
-            left: auto;
-            right: 10px;
-        }
-        .nose {
-            background-color: #efc2a3;
-            position: absolute;
-            top: 22px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px;
-            height: 4px;
-            z-index: 5;
-            border-radius: 10px;
-        }
-        .mouth {
-            width: 16px;
-            height: 6px;
-            border-radius: 0 0 50px 50px;
-            background-color: #E292A1;
-            position: absolute;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 12;
-        }
-        .neck {
-            width: 22px;
-            height: 22px;
-            background-color: #F9CCB1;
-            border-radius: 0 0 50px 50px;
-            bottom: 4px;
-            z-index: 4;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .body {
-            background-color: #F9CCB1;
-            position: absolute;
-            bottom: -50px;
-            width: 60px;
-            height: 66px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 50px 50px 0 0;
-            z-index: 1;
-        }
-        .body:after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            transform: translateX(-50%);
-            left: 50%;
-            border-radius: 0 0 50px 50px;
-            background: radial-gradient(#9FECF4, #3AC1CC);
-            top: 60px;
-        }
-        .arm {
-            background-color: #efc2a3;
-            position: absolute;
-            top: 96px;
-            width: 16px;
-            height: 68px;
-            left: 21%;
-            transform: rotate(45deg);
-            border-radius: 50px;
-            z-index: 0;
-        }
-        .arm+.arm {
-            top: 68px;
-            left: 70%;
-            transform: rotate(60deg);
-        }
-        .bra--cup {
-            position: absolute;
-            top: 16px;
-            width: 30px;
-            left: 2px;
-            height: 26px;
-            background-color: #b079d1;
-            border-radius: 50%;
-        }
-        .bra--cup:after {
-            content: '';
-            position: absolute;
-            left: 2px;
-            width: 26px;
-            height: 22px;
-            background-color: #C69AF4;
-            border-radius: 50%;
-        }
-        .bra--cup+.bra--cup {
-            left: auto;
-            right: 2px;
-        }
-        .tail {
-            background: #31adb8;
-            position: absolute;
-            top: 86px;
-            left: 60px;
-            border-radius: 5px 90%;
-            height: 20px;
-            width: 16px;
-            transform: rotate(95deg);
-        }
-        .fin {
-            background: #9FECF4;
-            position: absolute;
-            top: 42px;
-            left: 78px;
-            border-radius: 5px 90%;
-            border-style: solid;
-            border-width: 3px;
-            border-color: #7fdae2;
-            height: 50px;
-            width: 50px;
-            transform: translateX(90%) rotate(95deg);
-            z-index: 1;
-        }
-        .fin+.fin {
-            top: 32px;
-            left: 52px;
-            transform: translateX(20%) rotate(45deg);
-        }
-
         /* ---------- FOOTER ---------- */
         .footer {
             background: rgba(255, 255, 255, 0.3);
@@ -1262,7 +927,7 @@
             border-bottom-color: #8B6C9E;
         }
 
-        /* ---------- CREDIBILITY (in footer) ---------- */
+        /* ---------- CREDIBILITY ---------- */
         .footer-bottom {
             max-width: 1100px;
             width: 92%;
@@ -1339,7 +1004,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* ===== PARTICLES (positioned) ===== */
+        /* ===== PARTICLES ===== */
         .sky-decor {
             position: fixed;
             top: 0;
@@ -1414,19 +1079,8 @@
             .hero-logo {
                 max-width: 340px;
             }
-            .backdrop {
-                width: 260px;
-                height: 260px;
-            }
-            .backdrop:before {
-                width: 240px;
-                height: 240px;
-                top: 10px;
-                left: 10px;
-            }
-            .mermaid {
-                transform: translateX(-50%) translateY(0) translateZ(0) scale(0.8);
-                bottom: 148px;
+            .storybook-illustration .mommy-image {
+                max-width: 150px;
             }
         }
 
@@ -1493,22 +1147,8 @@
             .contact-card {
                 padding: 2rem 1.2rem;
             }
-            .backdrop {
-                width: 220px;
-                height: 220px;
-            }
-            .backdrop:before {
-                width: 200px;
-                height: 200px;
-                top: 10px;
-                left: 10px;
-            }
-            .mermaid {
-                transform: translateX(-50%) translateY(0) translateZ(0) scale(0.65);
-                bottom: 128px;
-            }
-            .water {
-                bottom: 62px;
+            .storybook-illustration .mommy-image {
+                max-width: 130px;
             }
         }
         @media (max-width: 600px) {
@@ -1521,25 +1161,11 @@
             .hero-logo {
                 max-width: 200px;
             }
-            .backdrop {
-                width: 190px;
-                height: 190px;
-            }
-            .backdrop:before {
-                width: 170px;
-                height: 170px;
-                top: 10px;
-                left: 10px;
-            }
-            .mermaid {
-                transform: translateX(-50%) translateY(0) translateZ(0) scale(0.55);
-                bottom: 110px;
-            }
-            .water {
-                bottom: 54px;
-            }
             .poster-card .poster-icon {
                 font-size: 2.8rem;
+            }
+            .storybook-illustration .mommy-image {
+                max-width: 100px;
             }
         }
     </style>
@@ -1723,48 +1349,7 @@
             <h2 class="section-title" style="margin-bottom:1rem;">My Tail</h2>
             <div class="storybook">
                 <div class="storybook-illustration">
-                    <div class="mermaid-wrapper">
-                        <div class="backdrop">
-                            <div class="water"></div>
-                            <div class="mermaid" id="mermaidIllustration">
-                                <div class="hair">
-                                    <div class="hair--left"></div>
-                                    <div class="hair--middle"></div>
-                                    <div class="hair--right"></div>
-                                </div>
-                                <div class="ear--left"></div>
-                                <div class="ear--right"></div>
-                                <div class="face">
-                                    <div class="eyes">
-                                        <div class="eye"></div>
-                                        <div class="eye"></div>
-                                    </div>
-                                    <div class="cheeks">
-                                        <div class="cheek"></div>
-                                        <div class="cheek"></div>
-                                    </div>
-                                    <div class="nose"></div>
-                                    <div class="mouth"></div>
-                                </div>
-                                <div class="neck"></div>
-                                <div class="body">
-                                    <div class="bra">
-                                        <div class="bra--cup"></div>
-                                        <div class="bra--cup"></div>
-                                    </div>
-                                    <div class="tail"></div>
-                                    <div class="fins">
-                                        <div class="fin"></div>
-                                        <div class="fin"></div>
-                                    </div>
-                                </div>
-                                <div class="arms">
-                                    <div class="arm"></div>
-                                    <div class="arm"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <img src="images/mommy.png" alt="MerMommy" class="mommy-image" loading="lazy" />
                 </div>
                 <div class="storybook-text">
                     <p class="sb-tagline">"I show up like a friend, plan like a pro, and care like a mom."</p>
@@ -2004,7 +1589,7 @@
 
     </div><!-- /container -->
 
-    <!-- ===== FOOTER (credibility moved here) ===== -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer" id="footer">
         <div class="footer-inner">
             <div class="footer-brand">
@@ -2138,21 +1723,7 @@
             });
 
             // =========================================
-            // 3. MERMAID ILLUSTRATION - gentle float
-            // =========================================
-            const mermaid = document.getElementById('mermaidIllustration');
-            if (mermaid) {
-                gsap.to(mermaid, {
-                    y: -6,
-                    duration: 3.5,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: 'sine.inOut',
-                });
-            }
-
-            // =========================================
-            // 4. PARTICLES (Bubbles + ✨)
+            // 3. PARTICLES (Bubbles + ✨)
             // =========================================
             const decorContainer = document.getElementById('decor-container');
             if (decorContainer) {
@@ -2186,7 +1757,7 @@
             }
 
             // =========================================
-            // 5. INFINITE SLIDER
+            // 4. INFINITE SLIDER
             // =========================================
             const track = document.getElementById('sliderTrack');
             if (track) {
@@ -2195,7 +1766,7 @@
             }
 
             // =========================================
-            // 6. HIDDEN TREASURE POPUP
+            // 5. HIDDEN TREASURE POPUP
             // =========================================
             window.showTreasurePopup = function(el) {
                 const popup = el.querySelector('.treasure-popup');
@@ -2208,7 +1779,7 @@
             };
 
             // =========================================
-            // 7. WAITLIST FORM
+            // 6. WAITLIST FORM
             // =========================================
             const waitlistForm = document.getElementById('waitlist-form');
             if (waitlistForm) {
@@ -2229,7 +1800,7 @@
             }
 
             // =========================================
-            // 8. INQUIRY FORM
+            // 7. INQUIRY FORM
             // =========================================
             const form = document.getElementById('inquiry-form');
             if (form) {
