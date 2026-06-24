@@ -1,0 +1,2758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MerMommy Creations | Storybook Celebration</title>
+
+    <!-- Google Fonts (fallback) -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600;700&family=Grand+Hotel&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet" />
+
+    <!-- GSAP + Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+
+    <style>
+        /* ===== CUSTOM FONT ===== */
+        @font-face {
+            font-family: 'Magnolia Sky';
+            src: url('Magnolia Sky/magnolia_sky.woff2') format('woff2'),
+                 url('Magnolia Sky/magnolia_sky.woff') format('woff'),
+                 url('Magnolia Sky/magnolia_sky.ttf') format('truetype'),
+                 url('Magnolia Sky/magnolia_sky.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Magnolia Sky Alt';
+            src: url('Magnolia Sky/magnolia_sky_alt.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* ===== STORYBOOK RESET ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(180deg, #f5edf8 0%, #f0eaf5 25%, #e8f5f4 55%, #d4ecea 80%, #c5e3e0 100%);
+            color: #3a3a4a;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 0;
+        }
+
+        /* ===== BRAND COLORS ===== */
+        :root {
+            --purple: #8B6C9E;
+            --teal: #69DBD3;
+            --purple-light: #a88bb8;
+            --teal-light: #8ee5de;
+            --text-dark: #3a3a4a;
+            --text-medium: #6a6a7a;
+            --text-light: #9a8aaa;
+            --paper: #fcf8f0;
+            --ink: #2d2a3a;
+        }
+
+        .font-signature {
+            font-family: 'Magnolia Sky', 'Grand Hotel', cursive;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: var(--purple);
+            text-shadow: 2px 2px 0 rgba(139, 108, 158, 0.12);
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        .section-sub {
+            text-align: center;
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: -0.5rem auto 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 92%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ===== MOTION PATH GUIDE ===== */
+        #mermommy-guide {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        #mermommy-guide.visible {
+            opacity: 1;
+        }
+        #mermommy-guide svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 4px 12px rgba(139, 108, 158, 0.2));
+        }
+
+        /* ===== HERO - BIG LOGO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 1rem 3rem;
+            overflow: hidden;
+        }
+        .hero-layer {
+            position: absolute;
+            pointer-events: none;
+        }
+        .hero-layer-1 {
+            top: 10%;
+            left: 5%;
+            width: 120px;
+            opacity: 0.08;
+        }
+        .hero-layer-2 {
+            bottom: 15%;
+            right: 8%;
+            width: 80px;
+            opacity: 0.06;
+        }
+        .hero-layer-3 {
+            top: 20%;
+            right: 12%;
+            width: 60px;
+            opacity: 0.05;
+        }
+        .hero-layer-4 {
+            bottom: 25%;
+            left: 10%;
+            width: 100px;
+            opacity: 0.07;
+        }
+
+        .hero-swimmer {
+            position: absolute;
+            top: 30%;
+            right: 10%;
+            width: 80px;
+            animation: swimFloat 6s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        @keyframes swimFloat {
+            0%,
+            100% {
+                transform: translateY(0) rotate(-2deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        .hero-logo-wrapper {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 1.5rem;
+        }
+        .hero-logo {
+            max-width: 500px;
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 4.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--purple);
+            position: relative;
+            z-index: 2;
+        }
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--teal);
+            color: #fff;
+            font-weight: 700;
+            padding: 0.5rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(105, 219, 211, 0.35);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
+        }
+        .scroll-indicator {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+        .scroll-indicator .arrow {
+            display: block;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(8px);
+            }
+        }
+
+        /* ===== STORYBOOK SECTIONS ===== */
+        .section {
+            margin-bottom: 5rem;
+            width: 100%;
+            position: relative;
+        }
+        .section-divider {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-light);
+            opacity: 0.3;
+            margin: 1rem 0 2rem;
+            letter-spacing: 8px;
+        }
+
+        /* ===== BANNER ===== */
+        .banner {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 2.5rem 3rem;
+            margin: 2rem 0 3rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+        .banner p {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .banner .highlight {
+            color: var(--purple);
+            font-weight: 600;
+        }
+
+        /* ===== FOUNDING FAMILIES ===== */
+        .founding-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-top: 5px solid var(--teal);
+            border-radius: 28px;
+            padding: 2.5rem 3rem;
+            margin: 1rem 0 3rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+        .founding-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .founding-card p {
+            font-size: 1rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto 1.2rem;
+        }
+        .founding-benefits {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .founding-benefit {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.8rem 0.5rem;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .founding-benefit span {
+            display: block;
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+        }
+
+        /* ===== DESTINATION POSTERS (Adventures) ===== */
+        .poster-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+        }
+        .poster-card {
+            position: relative;
+            border-radius: 24px;
+            padding: 2rem 1.2rem 1.8rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+            transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s ease;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+        .poster-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            border-radius: 24px 24px 0 0;
+        }
+        .poster-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+        }
+        .poster-card .poster-stamp {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            font-size: 1.2rem;
+            opacity: 0.25;
+            transform: rotate(12deg);
+        }
+        .poster-card .poster-icon {
+            font-size: 4rem;
+            margin-bottom: 0.3rem;
+        }
+        .poster-card .poster-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.1rem 1rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .poster-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0.2rem 0;
+        }
+        .poster-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+            flex: 1;
+            max-width: 95%;
+        }
+        .poster-card .poster-price {
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: var(--teal);
+            padding: 0.2rem 1.4rem;
+            border-radius: 40px;
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 10px rgba(105, 219, 211, 0.3);
+            margin-top: 0.5rem;
+        }
+        .poster-card .poster-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 0.5rem;
+            justify-content: center;
+            margin: 0.5rem 0;
+        }
+        .poster-card .poster-features span {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.6rem;
+            font-weight: 500;
+            color: var(--text-medium);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .card-lemon::before {
+            background: #f9d342;
+        }
+        .card-burger::before {
+            background: #ff8a8a;
+        }
+        .card-dye::before {
+            background: var(--purple-light);
+        }
+        .card-mermaid::before {
+            background: var(--teal);
+        }
+
+        /* ===== INFINITE SLIDER (Treasures) ===== */
+        .slider-section {
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+        .slider-track {
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+            animation: slideTreasures 30s linear infinite;
+        }
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
+        .treasure-card {
+            flex: 0 0 220px;
+            padding: 1.8rem 1.2rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease;
+        }
+        .treasure-card:hover {
+            transform: scale(1.04) translateY(-4px);
+        }
+        .treasure-card .tc-icon {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .treasure-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .treasure-card p {
+            font-size: 0.75rem;
+            color: var(--text-medium);
+            margin: 0.2rem 0 0;
+        }
+        @keyframes slideTreasures {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ===== MERMAID ILLUSTRATION ===== */
+        .mermaid-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .backdrop {
+            background-color: #F5F5F5;
+            box-shadow: inset 0 0 0 4px #D6E6E5;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+        }
+        .backdrop:before,
+        .backdrop:after {
+            content: '';
+            position: absolute;
+        }
+        .backdrop:before {
+            top: 10px;
+            left: 10px;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: linear-gradient(#EDE1B4, pink);
+        }
+        .backdrop:after {
+            background-color: #F5F5F5;
+            bottom: 0;
+            height: 100px;
+            width: 100%;
+            z-index: 0;
+        }
+        .water {
+            position: absolute;
+            bottom: 92px;
+            width: 100%;
+            height: 8px;
+            background-color: #D6E6E5;
+            z-index: 1;
+            border-radius: 20px;
+        }
+        .water:before,
+        .water:after {
+            content: '';
+            background-color: #D6E6E5;
+            position: absolute;
+            top: 15px;
+            height: 8px;
+            border-radius: 20px;
+        }
+        .water:before {
+            left: 10px;
+            width: 50%;
+        }
+        .water:after {
+            right: 10px;
+            width: 25%;
+        }
+
+        .mermaid {
+            width: 174px;
+            height: 130px;
+            position: absolute;
+            left: 50%;
+            bottom: 198px;
+            transform: translateX(-50%) translateY(0) translateZ(0);
+            animation: mermaid-motion 3500ms cubic-bezier(0.4, 0, 1, 1) infinite alternate;
+        }
+
+        @keyframes mermaid-motion {
+            0% {
+                transform: translateX(-50%) translateY(45px) translateZ(0);
+            }
+            15% {
+                transform: translateX(-50%) translateY(50px) translateZ(0);
+            }
+            30% {
+                transform: translateX(-50%) translateY(45px) translateZ(0);
+            }
+            45% {
+                transform: translateX(-50%) translateY(50px) translateZ(0);
+            }
+            60% {
+                transform: translateX(-50%) translateY(0px) translateZ(0);
+            }
+            100% {
+                transform: translateX(-50%) translateY(0px) translateZ(0);
+            }
+        }
+
+        @keyframes eyes {
+            0% {
+                transform: translateY(16px) translateZ(0);
+            }
+            15% {
+                transform: translateY(16px) translateZ(0);
+            }
+            30% {
+                transform: translateY(16px) translateZ(0);
+            }
+            45% {
+                transform: translateY(16px) translateZ(0);
+            }
+            60% {
+                transform: translateY(4px) translateZ(0);
+            }
+            100% {
+                transform: translateY(4px) translateZ(0);
+            }
+        }
+
+        /* ===== UPDATED HAIR ===== */
+        .hair {
+            background: linear-gradient(135deg, #8B6C9E 0%, #69DBD3 100%);
+            height: 230px;
+            width: 170px;
+            border-radius: 90% 90% 0 0;
+            position: relative;
+        }
+        .hair:after {
+            content: '';
+            background: linear-gradient(135deg, #7a5a8a 0%, #4fc4bc 100%);
+            position: absolute;
+            top: 45px;
+            left: 3%;
+            width: 160px;
+            height: 140%;
+            border-radius: 80% 80% 0 0;
+        }
+        .hair [class^="hair--"] {
+            position: absolute;
+        }
+        .hair--left {
+            left: 48px;
+            top: 45px;
+            width: 8px;
+            background-color: #8B6C9E;
+            border-radius: 0 0 0 50px;
+            height: 14px;
+            z-index: 5;
+        }
+        .hair--left:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 8px;
+            width: 8px;
+            height: 8px;
+            background-color: #8B6C9E;
+            border-radius: 0 0 50px 0;
+        }
+        .hair--right {
+            right: 48px;
+            top: 45px;
+            width: 8px;
+            border-radius: 0 0 50px 0;
+            background-color: #8B6C9E;
+            height: 14px;
+            z-index: 5;
+        }
+        .hair--right:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 8px;
+            width: 20px;
+            height: 8px;
+            background-color: #8B6C9E;
+            border-radius: 0 0 0 50px;
+        }
+        .hair--middle {
+            top: 14px;
+            left: 40%;
+            width: 80px;
+            height: 40px;
+            border-radius: 0 90%;
+            z-index: 6;
+            background-color: #69DBD3;
+            transform: translateX(-50%) rotate(-10deg);
+        }
+        .hair--middle:after {
+            content: '';
+            position: absolute;
+            top: 32px;
+            right: 0;
+            width: 50px;
+            height: 14px;
+            border-radius: 0 90%;
+            background-color: #4fc4bc;
+            transform: rotate(-10deg);
+        }
+
+        .ear--left,
+        .ear--right {
+            position: absolute;
+            top: 50px;
+            width: 16px;
+            height: 24px;
+            background-color: #F9CCB1;
+        }
+        .ear--left {
+            left: 40px;
+            border-radius: 50px 0 0 50px;
+        }
+        .ear--right {
+            right: 40px;
+            border-radius: 0 50px 50px 0;
+        }
+
+        .face {
+            background-color: #F9CCB1;
+            width: 78px;
+            border-radius: 0 0 50px 50px;
+            height: 58px;
+            position: absolute;
+            bottom: 26px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .face:after {
+            background-color: #FCD9C4;
+            width: 68px;
+            border-radius: 0 0 50px 50px;
+            height: 52px;
+            content: '';
+            left: 50%;
+            transform: translateX(-50%);
+            position: absolute;
+        }
+
+        .eye {
+            width: 12px;
+            height: 12px;
+            background-color: black;
+            position: absolute;
+            left: 15px;
+            top: 14px;
+            z-index: 5;
+            border-radius: 50px;
+        }
+        .eye+.eye {
+            left: auto;
+            right: 15px;
+        }
+        .eye:after {
+            content: '';
+            width: 16px;
+            left: -2px;
+            height: 14px;
+            background-color: #FCD9C4;
+            border-radius: 50%;
+            position: absolute;
+            animation: eyes 3500ms cubic-bezier(0.4, 0, 1, 1) infinite alternate;
+        }
+
+        .cheek {
+            content: '';
+            position: absolute;
+            top: 28px;
+            width: 16px;
+            left: 12px;
+            height: 14px;
+            background-color: pink;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 5;
+        }
+        .cheek+.cheek {
+            left: auto;
+            right: 12px;
+        }
+
+        .nose {
+            background-color: #efc2a3;
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 5px;
+            z-index: 5;
+            border-radius: 20px;
+        }
+
+        .mouth {
+            width: 18px;
+            height: 8px;
+            border-radius: 0 0 50px 50px;
+            background-color: #E292A1;
+            position: absolute;
+            bottom: 11px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 12;
+        }
+
+        .neck {
+            width: 26px;
+            height: 26px;
+            background-color: #F9CCB1;
+            border-radius: 0 0 50px 50px;
+            bottom: 4px;
+            z-index: 4;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .body {
+            background-color: #F9CCB1;
+            position: absolute;
+            bottom: -60px;
+            width: 70px;
+            height: 78px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50px 50px 0 0;
+            z-index: 1;
+        }
+        .body:before {
+            content: '';
+            background-color: #dbb08d;
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            border-radius: 100%;
+        }
+        .body:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            transform: translateX(-50%);
+            left: 50%;
+            border-radius: 0 0 50px 50px;
+            background: radial-gradient(#9FECF4, #3AC1CC);
+            top: 70px;
+        }
+
+        .arm {
+            background-color: #efc2a3;
+            position: absolute;
+            top: 112px;
+            width: 20px;
+            height: 80px;
+            left: 21%;
+            transform: rotate(45deg);
+            border-radius: 50px;
+            z-index: 0;
+        }
+        .arm:after {
+            content: '';
+            background-color: #e6879e;
+            position: absolute;
+            top: 10px;
+            left: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .arm+.arm {
+            top: 80px;
+            left: 70%;
+            transform: rotate(60deg);
+        }
+
+        .bra--cup {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 35px;
+            left: 2px;
+            height: 30px;
+            background-color: #b079d1;
+            border-radius: 50%;
+        }
+        .bra--cup:after {
+            content: '';
+            position: absolute;
+            left: 3px;
+            width: 30px;
+            height: 25px;
+            background-color: #C69AF4;
+            border-radius: 50%;
+        }
+        .bra--cup+.bra--cup {
+            left: auto;
+            right: 2px;
+        }
+
+        .tail {
+            background: #31adb8;
+            position: absolute;
+            top: 100px;
+            left: 70px;
+            border-radius: 5px 90%;
+            height: 25px;
+            width: 20px;
+            transform: rotate(95deg);
+        }
+
+        .fin {
+            background: #9FECF4;
+            position: absolute;
+            top: 50px;
+            left: 90px;
+            border-radius: 5px 90%;
+            border-style: solid;
+            border-width: 4px;
+            border-color: #7fdae2;
+            height: 60px;
+            width: 60px;
+            transform: translateX(90%) rotate(95deg);
+            z-index: 1;
+        }
+        .fin+.fin {
+            top: 37px;
+            left: 60px;
+            transform: translateX(20%) rotate(45deg);
+        }
+
+        /* ===== STORYBOOK "MY TAIL" ===== */
+        .storybook {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2.5rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+        .storybook-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .storybook-text {
+            padding: 0.5rem 0;
+        }
+        .storybook-text .sb-tagline {
+            font-size: 1.2rem;
+            color: var(--purple);
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 0.2rem;
+        }
+        .storybook-text .sb-sub {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .storybook-text .sb-story {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .storybook-text .sb-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.8rem;
+        }
+        .storybook-text .sb-feature {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.8rem 0.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        .storybook-text .sb-feature .sbf-icon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 0.1rem;
+        }
+        .storybook-text .sb-feature h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .storybook-text .sb-feature p {
+            font-size: 0.65rem;
+            color: var(--text-medium);
+            margin: 0;
+        }
+
+        /* ===== WHY CHOOSE ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .why-item {
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease;
+        }
+        .why-item:hover {
+            transform: translateY(-4px);
+        }
+        .why-item .wi-icon {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .why-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.2rem;
+        }
+        .why-item p {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            line-height: 1.4;
+        }
+
+        /* ===== ADD-ONS ===== */
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .addon-card {
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-dark);
+            min-height: 260px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+        .addon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            border-radius: 24px 24px 0 0;
+        }
+        .addon-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+        }
+        .addon-card .addon-icon {
+            font-size: 3rem;
+            margin-bottom: 0.4rem;
+        }
+        .addon-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .addon-card .addon-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.1rem 1rem;
+            border-radius: 40px;
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-medium);
+            margin-bottom: 0.6rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .addon-card p {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+            flex: 1;
+        }
+        .addon-price {
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: var(--teal);
+            padding: 0.2rem 1.4rem;
+            border-radius: 40px;
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 10px rgba(105, 219, 211, 0.3);
+        }
+
+        /* ===== WAITLIST ===== */
+        .waitlist-card {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 28px;
+            padding: 2.5rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .waitlist-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+        .waitlist-card p {
+            color: var(--text-medium);
+            margin-bottom: 1.2rem;
+        }
+        .waitlist-form {
+            display: flex;
+            gap: 0.8rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .waitlist-form input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            color: var(--text-dark);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.9rem;
+        }
+        .waitlist-form input::placeholder {
+            color: var(--text-light);
+        }
+        .waitlist-form input:focus {
+            outline: none;
+            border-color: var(--purple);
+        }
+        .waitlist-form .waitlist-btn {
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 0.8rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Fredoka', sans-serif;
+            transition: transform 0.2s ease;
+            white-space: nowrap;
+        }
+        .waitlist-form .waitlist-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ===== HIDDEN DISCOVERIES ===== */
+        .hidden-treasure {
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+            font-size: 1.8rem;
+            margin: 0 0.2rem;
+        }
+        .hidden-treasure:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+        .hidden-treasure .treasure-popup {
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            white-space: nowrap;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(-50%) translateY(8px);
+            font-family: 'Fredoka', sans-serif;
+            max-width: 250px;
+            white-space: normal;
+            text-align: center;
+        }
+        .hidden-treasure:hover .treasure-popup {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .hidden-treasure .treasure-popup.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ===== INSTAGRAM ===== */
+        .ig-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .ig-placeholder {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 2rem 1rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .ig-placeholder .ig-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.3rem;
+            opacity: 0.5;
+        }
+        .ig-placeholder p {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+        .ig-placeholder .ig-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.4rem 1.2rem;
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+            font-family: 'Fredoka', sans-serif;
+        }
+        .ig-placeholder .ig-link:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-card {
+            border-radius: 28px;
+            padding: 3rem 2.5rem 4rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+        .contact-intro {
+            text-align: center;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.2rem;
+        }
+        label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--purple);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        input,
+        select,
+        textarea {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            color: var(--text-dark);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--text-light);
+        }
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--purple);
+        }
+        select option {
+            background: #f5edf8;
+            color: var(--text-dark);
+        }
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.4rem 1.5rem;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-medium);
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--purple);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 108, 158, 0.3);
+            transition: all 0.15s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 108, 158, 0.4);
+        }
+        .submit-btn:active {
+            transform: translateY(2px);
+        }
+
+        /* ===== PARTY GUIDE ===== */
+        .guide-cta {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 28px;
+            border: 2px solid rgba(139, 108, 158, 0.12);
+        }
+        .guide-cta h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .guide-cta p {
+            color: var(--text-medium);
+            margin-bottom: 1.2rem;
+        }
+        .guide-cta .guide-btn {
+            display: inline-block;
+            background: var(--purple);
+            color: #fff;
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(139, 108, 158, 0.3);
+        }
+        .guide-cta .guide-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 108, 158, 0.4);
+        }
+
+        /* ===== CREDIBILITY ===== */
+        .credibility-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem 3rem;
+            margin: 2rem 0;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .credibility-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+        .credibility-item .cred-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+            opacity: 0.7;
+            flex-shrink: 0;
+        }
+        .credibility-item .cred-text {
+            font-weight: 500;
+        }
+        .credibility-item .cred-sub {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            width: 92%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+        }
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 0.5rem;
+            font-family: 'Magnolia Sky', 'Grand Hotel', cursive;
+        }
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            max-width: 280px;
+        }
+        .footer-brand .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .footer-brand .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(139, 108, 158, 0.08);
+            color: var(--purple);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .footer-brand .footer-social a:hover {
+            background: var(--purple);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 108, 158, 0.2);
+        }
+        .footer-col h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+        .footer-col ul li a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+        .footer-col ul li a:hover {
+            color: var(--purple);
+            transform: translateX(4px);
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            width: 92%;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        /* ===== BACKGROUND DECOR ===== */
+        .bg-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .bg-blob-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--purple);
+            top: -150px;
+            right: -150px;
+        }
+        .bg-blob-2 {
+            width: 600px;
+            height: 600px;
+            background: var(--teal);
+            bottom: -200px;
+            left: -200px;
+        }
+        .bg-blob-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--purple-light);
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* ===== PARTICLES ===== */
+        .sky-decor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .bubble-pop {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(139, 108, 158, 0.05);
+            border: 1px solid rgba(139, 108, 158, 0.08);
+        }
+        .bubble-pop.sparkle {
+            background: none !important;
+            border: none !important;
+            font-size: 18px;
+            width: auto !important;
+            height: auto !important;
+            opacity: 0.4;
+            color: #F5D442;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(245, 212, 66, 0.2);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .poster-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .addon-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .storybook {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 2rem;
+            }
+            .storybook-text .sb-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            .founding-benefits {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .ig-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-title {
+                font-size: 3.2rem;
+            }
+            .hero-logo {
+                max-width: 380px;
+            }
+            .credibility-wrap {
+                gap: 1rem 2rem;
+            }
+            .backdrop {
+                width: 300px;
+                height: 300px;
+            }
+            .backdrop:before {
+                width: 280px;
+                height: 280px;
+                top: 10px;
+                left: 10px;
+            }
+            .mermaid {
+                transform: translateX(-50%) translateY(0) translateZ(0) scale(0.85);
+                bottom: 180px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row-3 {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .poster-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .addon-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-brand p {
+                max-width: 100%;
+            }
+            .footer-brand .footer-social {
+                justify-content: center;
+            }
+            .founding-benefits {
+                grid-template-columns: 1fr 1fr;
+            }
+            .storybook-text .sb-features {
+                grid-template-columns: 1fr;
+            }
+            .ig-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 2.6rem;
+            }
+            .hero-logo {
+                max-width: 300px;
+            }
+            .banner p {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .waitlist-form {
+                flex-direction: column;
+            }
+            .contact-card {
+                padding: 2rem 1.2rem;
+            }
+            .founding-card {
+                padding: 2rem 1.2rem;
+            }
+            .banner {
+                padding: 1.5rem;
+            }
+            .storybook {
+                padding: 1.5rem;
+            }
+            .guide-cta {
+                padding: 1.5rem;
+            }
+            .guide-cta h3 {
+                font-size: 1.4rem;
+            }
+            #mermommy-guide {
+                width: 40px;
+                height: 40px;
+            }
+            .credibility-wrap {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+                padding: 1rem 1.5rem;
+            }
+            .credibility-item {
+                width: 100%;
+            }
+            .backdrop {
+                width: 260px;
+                height: 260px;
+            }
+            .backdrop:before {
+                width: 240px;
+                height: 240px;
+                top: 10px;
+                left: 10px;
+            }
+            .mermaid {
+                transform: translateX(-50%) translateY(0) translateZ(0) scale(0.7);
+                bottom: 160px;
+            }
+        }
+        @media (max-width: 600px) {
+            .poster-grid {
+                max-width: 100%;
+            }
+            .founding-benefits {
+                grid-template-columns: 1fr;
+            }
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+            .addon-grid {
+                max-width: 100%;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .hero-logo {
+                max-width: 240px;
+            }
+            .credibility-wrap {
+                padding: 0.8rem 1rem;
+            }
+            .backdrop {
+                width: 220px;
+                height: 220px;
+            }
+            .backdrop:before {
+                width: 200px;
+                height: 200px;
+                top: 10px;
+                left: 10px;
+            }
+            .mermaid {
+                transform: translateX(-50%) translateY(0) translateZ(0) scale(0.6);
+                bottom: 140px;
+            }
+            .water {
+                bottom: 72px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== BACKGROUND BLOBS ===== -->
+    <div class="bg-blob bg-blob-1"></div>
+    <div class="bg-blob bg-blob-2"></div>
+    <div class="bg-blob bg-blob-3"></div>
+
+    <!-- ===== PARTICLES ===== -->
+    <div class="sky-decor" id="decor-container"></div>
+
+    <!-- ===== MERMOMMY GUIDE (MotionPath) ===== -->
+    <div id="mermommy-guide">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 10 C45 10 38 18 34 30 C30 42 28 55 30 65 C32 72 36 78 40 82 C44 86 48 88 50 90 C52 88 56 86 60 82 C64 78 68 72 70 65 C72 55 70 42 66 30 C62 18 55 10 50 10Z"
+            fill="rgba(139,108,158,0.7)" stroke="rgba(139,108,158,0.3)" stroke-width="1.5"/>
+            <path d="M30 65 C20 72 12 82 10 90 C8 96 12 100 18 98 C24 96 32 88 36 80"
+            fill="rgba(139,108,158,0.6)" stroke="rgba(139,108,158,0.2)" stroke-width="1"/>
+            <path d="M70 65 C80 72 88 82 90 90 C92 96 88 100 82 98 C76 96 68 88 64 80"
+            fill="rgba(139,108,158,0.6)" stroke="rgba(139,108,158,0.2)" stroke-width="1"/>
+            <circle cx="50" cy="22" r="6" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="50" cy="30" r="2" fill="rgba(255,255,255,0.15)"/>
+            <text x="75" y="20" font-size="10" fill="rgba(139,108,158,0.3)">✨</text>
+            <text x="15" y="45" font-size="8" fill="rgba(139,108,158,0.2)">✨</text>
+        </svg>
+    </div>
+
+    <!-- ===== HIDDEN MOTION PATH ===== -->
+    <svg id="story-path" viewBox="0 0 100 2000" xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;">
+        <path id="pathLine" d="M50 0
+            C50 100, 80 150, 60 250
+            C40 350, 20 400, 50 500
+            C80 600, 90 650, 60 750
+            C30 850, 10 900, 50 1000
+            C90 1100, 100 1150, 60 1250
+            C20 1350, 0 1400, 50 1500
+            C80 1600, 90 1650, 50 1750
+            C10 1850, 0 1900, 50 2000"
+        fill="none" stroke="none" />
+    </svg>
+
+    <!-- ===== MAIN WRAPPER ===== -->
+    <div class="container">
+
+        <!-- ===== HERO - LAYERS OF DISCOVERY WITH BIG LOGO ===== -->
+        <section class="hero" id="hero">
+            <!-- Layer 1: Floating shells -->
+            <svg class="hero-layer hero-layer-1" viewBox="0 0 100 120">
+                <path d="M50 10 C70 10 85 30 88 55 C90 75 80 100 50 110 C20 100 10 75 12 55 C15 30 30 10 50 10Z"
+                fill="rgba(139,108,158,0.15)" stroke="rgba(139,108,158,0.05)" stroke-width="1"/>
+                <path d="M50 25 C60 25 70 40 72 55 C73 68 67 85 50 90 C33 85 27 68 28 55 C30 40 40 25 50 25Z"
+                fill="rgba(255,255,255,0.1)"/>
+            </svg>
+            <svg class="hero-layer hero-layer-2" viewBox="0 0 80 100">
+                <path d="M40 8 C55 8 67 22 70 42 C72 58 65 78 40 85 C15 78 8 58 10 42 C13 22 25 8 40 8Z"
+                fill="rgba(105,219,211,0.12)" stroke="rgba(105,219,211,0.05)" stroke-width="1"/>
+            </svg>
+            <div class="hero-layer hero-layer-3" style="font-size:2rem;opacity:0.06;">🐠</div>
+            <div class="hero-layer hero-layer-4" style="font-size:2.5rem;opacity:0.05;">⭐</div>
+
+            <!-- MerMommy swimming across -->
+            <div class="hero-swimmer">
+                <svg viewBox="0 0 80 60" width="100%">
+                    <path d="M40 10 C35 10 28 18 24 28 C20 38 18 48 20 55 C22 60 26 62 30 60 C34 58 36 50 38 45 C40 42 42 40 44 42 C46 45 48 52 50 58 C52 62 56 60 58 55 C60 48 58 38 54 28 C50 18 45 10 40 10Z"
+                    fill="rgba(139,108,158,0.15)" stroke="rgba(139,108,158,0.05)" stroke-width="1"/>
+                    <circle cx="40" cy="18" r="5" fill="rgba(139,108,158,0.08)"/>
+                </svg>
+            </div>
+
+            <!-- BIG LOGO -->
+            <div class="hero-logo-wrapper">
+                <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="hero-logo" loading="lazy" />
+            </div>
+
+            <h1 class="hero-title font-signature">Creating Magical Celebrations</h1>
+            <p class="hero-sub">
+                Curated children's parties, themed celebrations,<br />
+                luxury decor rentals, and unforgettable memories across North County San Diego.
+            </p>
+            <div class="hero-badge">The Party Starts Soon!</div>
+
+            <div class="scroll-indicator">
+                <span>Explore Our World</span>
+                <span class="arrow">↓</span>
+            </div>
+        </section>
+
+        <!-- ===== BANNER ===== -->
+        <section class="banner" id="banner">
+            <p>
+                We've been <span class="highlight">catching the party waves</span> for years,
+                turning everyday celebrations into <span class="highlight">extraordinary memories</span>.
+                Let us <span class="highlight">sail through the details</span> you wish you'd planned for—
+                so you can <span class="highlight">swim right into</span> every magical moment.
+            </p>
+        </section>
+
+        <!-- ===== FOUNDING FAMILIES ===== -->
+        <section class="founding-card" id="founding">
+            <h2>Founding Families Program</h2>
+            <p>
+                MerMommy Creations is preparing for our official launch. We're currently accepting a limited number
+                of founding families who would like to help us bring our first season of magical celebrations to life.
+            </p>
+            <div class="founding-benefits">
+                <div class="founding-benefit"><span>💰</span>Launch Pricing</div>
+                <div class="founding-benefit"><span>📅</span>Priority Booking</div>
+                <div class="founding-benefit"><span>🎁</span>Future Discounts</div>
+                <div class="founding-benefit"><span>✨</span>Exclusive Themes</div>
+            </div>
+            <p style="margin-top:1.2rem;font-size:0.85rem;color:var(--text-light);">
+                In exchange, we ask permission to photograph portions of the event for our portfolio.
+            </p>
+        </section>
+
+        <!-- ===== ADVENTURES - DESTINATION POSTERS ===== -->
+        <section class="section" id="adventure">
+            <h2 class="section-title">Pick Your Adventure</h2>
+            <div class="poster-grid">
+
+                <div class="poster-card card-lemon">
+                    <span class="poster-stamp">✧</span>
+                    <div class="poster-icon">🍋</div>
+                    <span class="poster-label">sunny · picnic</span>
+                    <h3>Lemonade Stand</h3>
+                    <p>Hand-painted crates, gingham textiles, and fresh citrus garlands for bright backyard celebrations.</p>
+                    <div class="poster-features">
+                        <span>picnic styling</span>
+                        <span>lemon bar</span>
+                        <span>floral accents</span>
+                    </div>
+                    <div class="poster-price">Included</div>
+                </div>
+
+                <div class="poster-card card-burger">
+                    <span class="poster-stamp">✧</span>
+                    <div class="poster-icon">🍔</div>
+                    <span class="poster-label">retro · diner</span>
+                    <h3>Palm Trees &amp; Cheeseburgers</h3>
+                    <p>Neon checkers, custom palm trees, and a vintage drive-in feel with a classic burger bar.</p>
+                    <div class="poster-features">
+                        <span>checker floor</span>
+                        <span>fry cones</span>
+                        <span>shake station</span>
+                    </div>
+                    <div class="poster-price">Included</div>
+                </div>
+
+                <div class="poster-card card-dye">
+                    <span class="poster-stamp">✧</span>
+                    <div class="poster-icon">🎨</div>
+                    <span class="poster-label">colorful · crafty</span>
+                    <h3>Tie-Dye Studio</h3>
+                    <p>Rainbow swirls, splatter paint walls, and interactive dye tables for creative fun.</p>
+                    <div class="poster-features">
+                        <span>dye kits</span>
+                        <span>splatter zone</span>
+                        <span>glow accents</span>
+                    </div>
+                    <div class="poster-price">Included</div>
+                </div>
+
+                <div class="poster-card card-mermaid">
+                    <span class="poster-stamp">✧</span>
+                    <div class="poster-icon">🐚</div>
+                    <span class="poster-label">oceanic · signature</span>
+                    <h3>Sea Shell Spa</h3>
+                    <p>Shimmering oyster shells, pastel scales, and pearl centerpieces in a magical mermaid cove.</p>
+                    <div class="poster-features">
+                        <span>coral decor</span>
+                        <span>pearl accents</span>
+                        <span>wave backdrop</span>
+                    </div>
+                    <div class="poster-price">Included</div>
+                </div>
+
+            </div>
+            <!-- Hidden Discovery: Pearl -->
+            <div style="text-align:center;margin-top:1.5rem;">
+                <span class="hidden-treasure" onclick="showTreasurePopup(this)">
+                    🪸
+                    <span class="treasure-popup">✨ You found a magic pearl! ✨</span>
+                </span>
+                <span class="hidden-treasure" onclick="showTreasurePopup(this)">
+                    ⭐
+                    <span class="treasure-popup">🌟 A wish upon a star! 🌟</span>
+                </span>
+            </div>
+        </section>
+
+        <!-- ===== INFINITE SLIDER - TREASURES ===== -->
+        <section class="section slider-section" id="treasures">
+            <h2 class="section-title">Treasures In Every Adventure</h2>
+            <p class="section-sub">Each celebration is filled with magical discoveries.</p>
+            <div class="slider-track" id="sliderTrack">
+                <div class="treasure-card"><span class="tc-icon">🫧</span><h4>Personalized Details</h4><p>Every little touch tells your story</p></div>
+                <div class="treasure-card"><span class="tc-icon">🎁</span><h4>Magical Surprises</h4><p>Unexpected moments of joy</p></div>
+                <div class="treasure-card"><span class="tc-icon">🎨</span><h4>Creative Styling</h4><p>Artful design that delights</p></div>
+                <div class="treasure-card"><span class="tc-icon">📸</span><h4>Picture Perfect</h4><p>Moments you'll treasure forever</p></div>
+                <div class="treasure-card"><span class="tc-icon">✨</span><h4>Stress-Free Planning</h4><p>We handle everything so you don't have to</p></div>
+                <div class="treasure-card"><span class="tc-icon">🧜</span><h4>Mom-Approved</h4><p>Designed with love and care</p></div>
+                <div class="treasure-card"><span class="tc-icon">🎉</span><h4>Celebration Setup</h4><p>We arrive early and build the magic</p></div>
+                <div class="treasure-card"><span class="tc-icon">💜</span><h4>Thoughtful Touches</h4><p>Little details that mean so much</p></div>
+            </div>
+            <div style="text-align:center;margin-top:1rem;color:var(--text-light);font-size:0.8rem;opacity:0.6;">
+                🪸 Hover to pause • Let the treasures drift by
+            </div>
+        </section>
+
+        <!-- ===== MORE THAN PARTY DECOR ===== -->
+        <section class="section" id="more-than-decor">
+            <h2 class="section-title">More Than Party Decor</h2>
+            <p class="section-sub">Every celebration is an opportunity to create something special.</p>
+            <div class="why-grid">
+                <div class="why-item"><span class="wi-icon">👗</span><h4>Custom Apparel</h4><p>Personalized outfits for the birthday star</p></div>
+                <div class="why-item"><span class="wi-icon">📋</span><h4>Party Signage</h4><p>Hand-crafted signs and welcome boards</p></div>
+                <div class="why-item"><span class="wi-icon">🎂</span><h4>Birthday Outfits</h4><p>Styled looks for the celebration</p></div>
+                <div class="why-item"><span class="wi-icon">🎨</span><h4>Personalized Decor</h4><p>Custom details that tell your story</p></div>
+                <div class="why-item"><span class="wi-icon">✨</span><h4>Creative Styling</h4><p>Art direction and design expertise</p></div>
+                <div class="why-item"><span class="wi-icon">🖌️</span><h4>Event Design</h4><p>Full creative vision and execution</p></div>
+            </div>
+        </section>
+
+        <!-- ===== WHY FAMILIES CHOOSE MERMOMMY ===== -->
+        <section class="section" id="why-choose">
+            <h2 class="section-title">Why Families Choose MerMommy</h2>
+            <div class="why-grid">
+                <div class="why-item"><span class="wi-icon">💜</span><h4>Designed By A Mom</h4><p>Every detail is crafted with love and understanding of what families truly need</p></div>
+                <div class="why-item"><span class="wi-icon">🎯</span><h4>Personalized Details</h4><p>Your celebration, your style — we bring your vision to life</p></div>
+                <div class="why-item"><span class="wi-icon">🧘</span><h4>Stress-Free Planning</h4><p>We handle everything so you can actually enjoy the party</p></div>
+                <div class="why-item"><span class="wi-icon">🎨</span><h4>Creative Event Styling</h4><p>Artful design that transforms any space into magic</p></div>
+                <div class="why-item"><span class="wi-icon">👕</span><h4>Custom Apparel Available</h4><p>Personalized outfits and shirts for the birthday star and guests</p></div>
+                <div class="why-item"><span class="wi-icon">🔄</span><h4>Setup &amp; Breakdown Options</h4><p>Full-service coordination from start to finish</p></div>
+            </div>
+        </section>
+
+        <!-- ===== STORYBOOK "MY TAIL" ===== -->
+        <section class="section" id="tail">
+            <h2 class="section-title" style="margin-bottom:1.5rem;">My Tail</h2>
+            <div class="storybook">
+                <div class="storybook-illustration">
+                    <div class="mermaid-wrapper">
+                        <div class="backdrop">
+                            <div class="water"></div>
+                            <div class="mermaid">
+                                <div class="hair">
+                                    <div class="hair--left"></div>
+                                    <div class="hair--middle"></div>
+                                    <div class="hair--right"></div>
+                                </div>
+                                <div class="ear--left"></div>
+                                <div class="ear--right"></div>
+                                <div class="face">
+                                    <div class="eyes">
+                                        <div class="eye"></div>
+                                        <div class="eye"></div>
+                                    </div>
+                                    <div class="cheeks">
+                                        <div class="cheek"></div>
+                                        <div class="cheek"></div>
+                                    </div>
+                                    <div class="nose"></div>
+                                    <div class="mouth"></div>
+                                </div>
+                                <div class="neck"></div>
+                                <div class="body">
+                                    <div class="bra">
+                                        <div class="bra--cup"></div>
+                                        <div class="bra--cup"></div>
+                                    </div>
+                                    <div class="tail"></div>
+                                    <div class="fins">
+                                        <div class="fin"></div>
+                                        <div class="fin"></div>
+                                    </div>
+                                </div>
+                                <div class="arms">
+                                    <div class="arm"></div>
+                                    <div class="arm"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="storybook-text">
+                    <p class="sb-tagline">"I show up like a friend, plan like a pro, and care like a mom."</p>
+                    <p class="sb-sub">MOM · CREATIVE · PARTY STYLIST</p>
+                    <p class="sb-story">
+                        I believe every celebration deserves a touch of magic. As a mom and creative at heart,
+                        I've turned my passion for party curation into a full-service experience that takes the
+                        stress off your shoulders and puts the joy front and center. From themed wardrobes that
+                        bring your vision to life to custom-made shirts for every little guest, I pour my heart
+                        into every detail so you can soak in every moment.
+                    </p>
+                    <div class="sb-features">
+                        <div class="sb-feature">
+                            <span class="sbf-icon">👗</span>
+                            <h4>Themed Wardrobes</h4>
+                            <p>Matching outfits that bring your party theme to life</p>
+                        </div>
+                        <div class="sb-feature">
+                            <span class="sbf-icon">👕</span>
+                            <h4>Custom Shirts</h4>
+                            <p>Cricut &amp; heat press creations for personalized party wear</p>
+                        </div>
+                        <div class="sb-feature">
+                            <span class="sbf-icon">🎉</span>
+                            <h4>Full-Service Magic</h4>
+                            <p>Setup, coordination, breakdown — we handle it all</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Hidden Discovery: Starfish -->
+            <div style="text-align:center;margin-top:1.5rem;">
+                <span class="hidden-treasure" onclick="showTreasurePopup(this)">
+                    ⭐
+                    <span class="treasure-popup">🌟 Every star is a wish waiting to come true! 🌟</span>
+                </span>
+            </div>
+        </section>
+
+        <!-- ===== ADD-ONS ===== -->
+        <section class="section" id="addons">
+            <h2 class="section-title">Add-On Services</h2>
+            <p class="section-sub">Make your celebration completely stress-free with our signature add-on services.</p>
+            <div class="addon-grid">
+                <div class="addon-card addon-mermaid">
+                    <div class="addon-icon">🧜‍♀️</div>
+                    <h3>The MerMommy Stay</h3>
+                    <span class="addon-tag">full-service coordination</span>
+                    <p>We stay throughout the entire party! From cake cutting to photography, we handle everything.</p>
+                    <div class="addon-price">from $150</div>
+                </div>
+                <div class="addon-card addon-pearl">
+                    <div class="addon-icon">🪸</div>
+                    <h3>Pearl Package</h3>
+                    <span class="addon-tag">setup + breakdown</span>
+                    <p>Full setup and teardown of your entire party vision — you just show up and enjoy!</p>
+                    <div class="addon-price">from $100</div>
+                </div>
+                <div class="addon-card addon-shell">
+                    <div class="addon-icon">🎁</div>
+                    <h3>Treasure Trove</h3>
+                    <span class="addon-tag">custom goodie bags</span>
+                    <p>Curated ocean-themed treasures and treats for every little guest to take home.</p>
+                    <div class="addon-price">from $8/guest</div>
+                </div>
+                <div class="addon-card addon-cake">
+                    <div class="addon-icon">🧁</div>
+                    <h3>Cakesmash Setup</h3>
+                    <span class="addon-tag">vintage high chair</span>
+                    <p>Styled vintage high chair with backdrop and props for that perfect first birthday memory.</p>
+                    <div class="addon-price">from $75</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WAITLIST ===== -->
+        <section class="section" id="waitlist">
+            <div class="waitlist-card">
+                <h3>Not Ready To Book Yet?</h3>
+                <p>Join our launch list and be the first to know when we're officially open.</p>
+                <form class="waitlist-form" id="waitlist-form">
+                    <input type="text" placeholder="Your name" required />
+                    <input type="email" placeholder="Your email" required />
+                    <button type="submit" class="waitlist-btn">Join List</button>
+                </form>
+                <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.8rem;">
+                    First 25 subscribers get a special launch surprise.
+                </p>
+            </div>
+            <!-- Hidden Discovery: Treasure Chest -->
+            <div style="text-align:center;margin-top:1.5rem;">
+                <span class="hidden-treasure" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}); showTreasurePopup(this);">
+                    🗝️
+                    <span class="treasure-popup">🗺️ Follow the map to join our launch list! 🗺️</span>
+                </span>
+            </div>
+        </section>
+
+        <!-- ===== INSTAGRAM ===== -->
+        <section class="section" id="instagram">
+            <h2 class="section-title">Follow Our Journey</h2>
+            <p class="section-sub">Every magical business starts somewhere. Follow along as we build MerMommy.</p>
+            <div class="ig-grid">
+                <div class="ig-placeholder">
+                    <span class="ig-icon">📷</span>
+                    <p>@mermommycreations</p>
+                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a>
+                </div>
+                <div class="ig-placeholder">
+                    <span class="ig-icon">📷</span>
+                    <p>@mermommycreations</p>
+                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a>
+                </div>
+                <div class="ig-placeholder">
+                    <span class="ig-icon">📷</span>
+                    <p>@mermommycreations</p>
+                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a>
+                </div>
+            </div>
+            <p style="text-align:center;margin-top:1.5rem;color:var(--text-light);font-size:0.9rem;">
+                Follow the journey as we design themes, build experiences, and prepare for our first season.
+            </p>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
+        <section class="section" id="contact">
+            <div class="contact-card" id="form-container">
+                <h2 class="font-signature" style="font-size:3rem;color:var(--purple);text-align:center;">Book a Setup</h2>
+                <p class="contact-intro">Let's chat about your celebration! Tell us what you need and we'll handle the rest.</p>
+
+                <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Parent's Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="name@email.com" />
+                        </div>
+                    </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label for="date">Target Date</label>
+                            <input type="date" id="date" name="event-date" />
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Average Age</label>
+                            <select id="age" name="age">
+                                <option value="1-2">1-2 years</option>
+                                <option value="3-4">3-4 years</option>
+                                <option value="5-6">5-6 years</option>
+                                <option value="7-8">7-8 years</option>
+                                <option value="9-10">9-10 years</option>
+                                <option value="10+">10+ years</option>
+                                <option value="mixed">Mixed ages</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location (North County San Diego)</label>
+                            <input type="text" id="location" name="location" placeholder="City, ZIP" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="theme">The Party Curation</label>
+                        <select id="theme" name="theme">
+                            <option value="sea-shell-spa">Sea Shell Spa</option>
+                            <option value="lemonade">Lemonade Stand</option>
+                            <option value="burger">Palm Trees &amp; Cheeseburgers</option>
+                            <option value="tie-dye">Tie-Dye Studio</option>
+                            <option value="custom">Something Custom</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Add-On Services</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-item"><input type="checkbox" name="addons" value="mermommy-stay" /> MerMommy Stay</label>
+                            <label class="checkbox-item"><input type="checkbox" name="addons" value="pearl-package" /> Pearl Package</label>
+                            <label class="checkbox-item"><input type="checkbox" name="addons" value="treasure-trove" /> Treasure Trove</label>
+                            <label class="checkbox-item"><input type="checkbox" name="addons" value="cakesmash" /> Cakesmash Setup</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell us about your celebration</label>
+                        <textarea id="message" name="message" rows="3" placeholder="How many guests? What's your vision? Need tables and chairs? We have everything — just let us know what you need!"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Inquiry</button>
+                </form>
+
+                <div id="success-message" style="display:none;text-align:center;padding:2rem 0;">
+                    <div style="font-size:3rem;">🐚</div>
+                    <h2 class="font-signature" style="font-size:3rem;color:var(--purple);">Inquiry Splashed!</h2>
+                    <p style="font-size:1.1rem;color:var(--text-medium);">Thank you! Your party coordinates have drifted safely into our inbox.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PARTY GUIDE ===== -->
+        <section class="section" id="guide">
+            <div class="guide-cta">
+                <h3>Party Guide</h3>
+                <p>Get inspired and start planning your magical celebration.</p>
+                <a href="#" class="guide-btn">Download Now</a>
+            </div>
+        </section>
+
+        <!-- ===== HOW THE MAGIC HAPPENS ===== -->
+        <section class="section" id="how-it-works">
+            <h2 class="section-title">How The Magic Happens</h2>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:0.5rem;position:relative;padding:1rem 0;" class="wave-path">
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">01</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Submit Inquiry</h4>
+                </div>
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">02</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Dream Together</h4>
+                </div>
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">03</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Design &amp; Plan</h4>
+                </div>
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">04</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Setup Day</h4>
+                </div>
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">05</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Celebrate</h4>
+                </div>
+                <div style="text-align:center;padding:1.5rem 0.5rem;background:rgba(255,255,255,0.3);border-radius:50% 50% 40% 40%/60% 60% 30% 30%;border:1px solid rgba(255,255,255,0.2);position:relative;z-index:1;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--purple);display:block;">06</span>
+                    <h4 style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">We Handle Cleanup</h4>
+                </div>
+                <div style="position:absolute;top:50%;left:8%;right:8%;height:2px;background:repeating-linear-gradient(90deg,var(--teal-light) 0px,var(--teal-light) 6px,transparent 6px,transparent 12px);opacity:0.3;z-index:0;"></div>
+            </div>
+        </section>
+
+        <!-- ===== CREDIBILITY ===== -->
+        <div class="credibility-wrap">
+            <div class="credibility-item">
+                <span class="cred-icon">📍</span>
+                <span class="cred-text">North County San Diego</span>
+            </div>
+            <div class="credibility-item">
+                <span class="cred-icon">📋</span>
+                <span class="cred-text">Licensed &amp; Insured</span>
+                <span class="cred-sub">*</span>
+            </div>
+            <div class="credibility-item">
+                <span class="cred-icon">🎨</span>
+                <span class="cred-text">Custom Event Design</span>
+            </div>
+            <div class="credibility-item">
+                <span class="cred-icon">🔄</span>
+                <span class="cred-text">Setup &amp; Breakdown</span>
+            </div>
+            <div class="credibility-item">
+                <span class="cred-icon">👨‍👩‍👧‍👦</span>
+                <span class="cred-text">Family Owned</span>
+            </div>
+        </div>
+
+    </div><!-- /container -->
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>MerMommy Creations</h3>
+                <p>Luxury children's party styling and event curation throughout North County San Diego. Creating magical celebrations with love.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/mermommycreations" target="_blank" aria-label="Instagram">📸</a>
+                    <a href="#" target="_blank" aria-label="Pinterest">📌</a>
+                    <a href="#" target="_blank" aria-label="Facebook">👍</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#adventure">Adventures</a></li>
+                    <li><a href="#tail">My Tail</a></li>
+                    <li><a href="#addons">Add-Ons</a></li>
+                    <li><a href="#contact">Book Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#more-than-decor">Custom Apparel</a></li>
+                    <li><a href="#more-than-decor">Event Design</a></li>
+                    <li><a href="#more-than-decor">Party Signage</a></li>
+                    <li><a href="#more-than-decor">Creative Styling</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://instagram.com/mermommycreations" target="_blank">Instagram</a></li>
+                    <li><a href="#">Email Us</a></li>
+                    <li><a href="#guide">Party Guide</a></li>
+                    <li><a href="#waitlist">Launch List</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MerMommy Creations. All rights reserved.</p>
+            <p style="font-size:0.65rem;color:var(--text-light);margin-top:0.3rem;">*When applicable</p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // =========================================
+            // 1. REGISTER GSAP PLUGINS
+            // =========================================
+            gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+            // =========================================
+            // 2. MERMOMMY GUIDE - MOTION PATH
+            // =========================================
+            const guide = document.getElementById('mermommy-guide');
+            const pathLine = document.getElementById('pathLine');
+
+            if (guide && pathLine) {
+                setTimeout(function() {
+                    guide.classList.add('visible');
+                }, 800);
+
+                gsap.to(guide, {
+                    motionPath: {
+                        path: pathLine,
+                        align: pathLine,
+                        autoRotate: true,
+                        alignOrigin: [0.5, 0.5]
+                    },
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: 'body',
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: 1.2,
+                        invalidateOnRefresh: true
+                    }
+                });
+
+                gsap.to(guide, {
+                    scale: 1.08,
+                    duration: 1.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+            }
+
+            // =========================================
+            // 3. PARTICLES WITH SPARKLES
+            // =========================================
+            const decorContainer = document.getElementById('decor-container');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const element = document.createElement('div');
+                const isSparkle = Math.random() > 0.65;
+
+                if (isSparkle) {
+                    element.classList.add('bubble-pop', 'sparkle');
+                    element.textContent = '✨';
+                    element.style.fontSize = (Math.random() * 12 + 16) + 'px';
+                    element.style.opacity = 0.25 + Math.random() * 0.25;
+                } else {
+                    element.classList.add('bubble-pop');
+                    const size = Math.random() * 20 + 6;
+                    element.style.width = size + 'px';
+                    element.style.height = size + 'px';
+                }
+
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.bottom = '-50px';
+                decorContainer.appendChild(element);
+
+                gsap.to(element, {
+                    y: -(window.innerHeight + 200),
+                    x: '+= ' + (Math.random() * 80 - 40),
+                    rotation: isSparkle ? 360 : 0,
+                    duration: Math.random() * 14 + 10,
+                    repeat: -1,
+                    delay: Math.random() * 18,
+                    ease: 'none',
+                });
+            }
+
+            // =========================================
+            // 4. INFINITE SLIDER - DUPLICATE ITEMS
+            // =========================================
+            const track = document.getElementById('sliderTrack');
+            if (track) {
+                const items = track.innerHTML;
+                track.innerHTML = items + items + items;
+            }
+
+            // =========================================
+            // 5. HIDDEN TREASURE POPUP FUNCTION
+            // =========================================
+            window.showTreasurePopup = function(el) {
+                const popup = el.querySelector('.treasure-popup');
+                if (popup) {
+                    popup.classList.add('show');
+                    setTimeout(function() {
+                        popup.classList.remove('show');
+                    }, 2500);
+                }
+            };
+
+            // =========================================
+            // 6. GSAP SCROLL ANIMATIONS
+            // =========================================
+
+            // Hero layers
+            gsap.from('.hero-layer, .hero-swimmer', {
+                opacity: 0,
+                duration: 1.2,
+                stagger: 0.3,
+                delay: 0.4,
+                ease: 'power2.out',
+            });
+
+            // Hero text and logo
+            gsap.from('.hero-title, .hero-sub, .hero-badge, .hero-logo', {
+                opacity: 0,
+                y: 30,
+                duration: 0.9,
+                stagger: 0.12,
+                ease: 'back.out(1.6)',
+                delay: 0.2,
+            });
+            gsap.from('.scroll-indicator', {
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.8,
+                ease: 'power2.out',
+            });
+
+            // Banner
+            gsap.from('#banner', {
+                opacity: 0,
+                y: 40,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '#banner', start: 'top 85%', toggleActions: 'play none none none' },
+            });
+
+            // Founding
+            gsap.from('#founding', {
+                opacity: 0,
+                y: 40,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '#founding', start: 'top 85%', toggleActions: 'play none none none' },
+            });
+
+            // Poster cards
+            gsap.from('.poster-card', {
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: 'back.out(1.6)',
+                scrollTrigger: { trigger: '.poster-grid', start: 'top 80%', toggleActions: 'play none none none' },
+            });
+
+            // Treasure slider
+            gsap.from('.slider-track', {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '.slider-section', start: 'top 85%', toggleActions: 'play none none none' },
+            });
+
+            // More than decor
+            gsap.from('#more-than-decor .why-item', {
+                opacity: 0,
+                y: 30,
+                duration: 0.7,
+                stagger: 0.08,
+                ease: 'back.out(1.6)',
+                scrollTrigger: { trigger: '#more-than-decor .why-grid', start: 'top 85%',
+                    toggleActions: 'play none none none' },
+            });
+
+            // Why choose
+            gsap.from('#why-choose .why-item', {
+                opacity: 0,
+                y: 30,
+                duration: 0.7,
+                stagger: 0.08,
+                ease: 'back.out(1.6)',
+                scrollTrigger: { trigger: '#why-choose .why-grid', start: 'top 85%',
+                    toggleActions: 'play none none none' },
+            });
+
+            // Storybook
+            gsap.from('.storybook', {
+                opacity: 0,
+                y: 40,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '#tail .storybook', start: 'top 80%', toggleActions: 'play none none none' },
+            });
+
+            // Add-ons
+            gsap.from('.addon-card', {
+                opacity: 0,
+                y: 35,
+                duration: 0.7,
+                stagger: 0.1,
+                ease: 'back.out(1.6)',
+                scrollTrigger: { trigger: '.addon-grid', start: 'top 80%', toggleActions: 'play none none none' },
+            });
+
+            // Waitlist
+            gsap.from('#waitlist .waitlist-card', {
+                opacity: 0,
+                y: 35,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '#waitlist', start: 'top 85%', toggleActions: 'play none none none' },
+            });
+
+            // Instagram
+            gsap.from('.ig-placeholder', {
+                opacity: 0,
+                y: 25,
+                duration: 0.6,
+                stagger: 0.08,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '.ig-grid', start: 'top 85%', toggleActions: 'play none none none' },
+            });
+
+            // Contact
+            gsap.from('.contact-card', {
+                opacity: 0,
+                y: 35,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '#contact', start: 'top 80%', toggleActions: 'play none none none' },
+            });
+
+            // Guide
+            gsap.from('#guide .guide-cta', {
+                opacity: 0,
+                y: 35,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '#guide', start: 'top 85%', toggleActions: 'play none none none' },
+            });
+
+            // Wave path
+            gsap.from('.wave-path > div', {
+                opacity: 0,
+                y: 30,
+                duration: 0.6,
+                stagger: 0.08,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '.wave-path', start: 'top 85%', toggleActions: 'play none none none' },
+            });
+
+            // Footer
+            gsap.from('#footer', {
+                opacity: 0,
+                y: 40,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: '#footer', start: 'top 90%', toggleActions: 'play none none none' },
+            });
+
+            // =========================================
+            // 7. FLOATING ICONS
+            // =========================================
+            document.querySelectorAll('.poster-icon, .addon-icon, .tc-icon, .wi-icon, .sbf-icon').forEach(function(icon) {
+                gsap.to(icon, {
+                    y: -4,
+                    duration: 2.8 + Math.random() * 0.6,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut',
+                    delay: Math.random() * 0.8,
+                });
+            });
+
+            // =========================================
+            // 8. ADVENTURE CARD HOVER
+            // =========================================
+            document.querySelectorAll('.poster-card').forEach(function(card) {
+                const icon = card.querySelector('.poster-icon');
+                const price = card.querySelector('.poster-price');
+                if (icon && price) {
+                    card.addEventListener('mouseenter', function() {
+                        gsap.to(icon, { scale: 1.2, rotation: 8, duration: 0.4, ease: 'back.out(1.7)' });
+                        gsap.to(price, { scale: 1.05, backgroundColor: '#8B6C9E', duration: 0.3,
+                            ease: 'power2.out' });
+                    });
+                    card.addEventListener('mouseleave', function() {
+                        gsap.to(icon, { scale: 1, rotation: 0, duration: 0.3, ease: 'power2.out' });
+                        gsap.to(price, { scale: 1, backgroundColor: '#69DBD3', duration: 0.3,
+                            ease: 'power2.out' });
+                    });
+                }
+            });
+
+            // =========================================
+            // 9. WAITLIST FORM
+            // =========================================
+            const waitlistForm = document.getElementById('waitlist-form');
+            if (waitlistForm) {
+                waitlistForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const btn = this.querySelector('.waitlist-btn');
+                    const original = btn.textContent;
+                    btn.textContent = 'Added!';
+                    btn.style.background = '#69DBD3';
+                    setTimeout(function() {
+                        btn.textContent = original;
+                        btn.style.background = '';
+                        waitlistForm.reset();
+                    }, 3000);
+                });
+            }
+
+            // =========================================
+            // 10. INQUIRY FORM
+            // =========================================
+            const form = document.getElementById('inquiry-form');
+            if (form) {
+                form.addEventListener('submit', async function(event) {
+                    event.preventDefault();
+                    const submitBtn = this.querySelector('.submit-btn');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                    const data = new FormData(this);
+                    try {
+                        const response = await fetch(this.action, {
+                            method: this.method,
+                            body: data,
+                            headers: { Accept: 'application/json' },
+                        });
+                        if (response.ok) {
+                            gsap.to('#form-container', {
+                                duration: 0.4,
+                                opacity: 0,
+                                onComplete: function() {
+                                    document.getElementById('form-container').style.display = 'none';
+                                    var successMsg = document.getElementById('success-message');
+                                    successMsg.style.display = 'block';
+                                    gsap.fromTo(successMsg, { opacity: 0, y: 20 }, { duration: 0.5,
+                                        opacity: 1, y: 0 });
+                                },
+                            });
+                        } else {
+                            alert('Oops! There was a problem. Please try again.');
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                        }
+                    } catch (error) {
+                        alert('Network error. Please try again.');
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
