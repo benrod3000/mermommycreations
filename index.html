@@ -84,8 +84,7 @@
         .contact-card,
         .guide-cta,
         .ig-placeholder,
-        .footer,
-        .footer-bottom {
+        .footer {
             border-radius: 0 !important;
             box-shadow: none !important;
             border: none !important;
@@ -441,9 +440,9 @@
             justify-content: center;
             align-items: center;
         }
-        /* === IMAGE SCALED DOWN & NO BORDER === */
+        /* === IMAGE SCALED UP === */
         .storybook-illustration .mommy-image {
-            max-width: 180px;
+            max-width: 260px;
             width: 100%;
             height: auto;
             display: block;
@@ -847,7 +846,7 @@
             z-index: 0;
         }
 
-        /* ---------- FOOTER ---------- */
+        /* ---------- FOOTER & TRUST BAR ---------- */
         .footer {
             background: rgba(255, 255, 255, 0.3);
             padding: 2.5rem 0 1.5rem;
@@ -927,41 +926,49 @@
             border-bottom-color: #8B6C9E;
         }
 
-        /* ---------- CREDIBILITY ---------- */
-        .footer-bottom {
+        /* --- TRUST BAR (Reorganized & Clean) --- */
+        .trust-bar {
             max-width: 1100px;
             width: 92%;
-            margin: 1.5rem auto 0;
-            padding-top: 1.2rem;
-            border-top: 4px solid rgba(45, 42, 58, 0.08) !important;
-            text-align: center;
-            font-size: 0.7rem;
-            color: #5a5a6a;
+            margin: 1.5rem auto 0.5rem;
+            padding: 1rem 0 0.5rem;
+            border-top: 2px solid rgba(45, 42, 58, 0.04);
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.5rem 2.5rem;
+            align-items: baseline;
+            gap: 0.25rem 2rem;
+            font-size: 0.8rem;
+            color: #5a5a6a;
+            font-weight: 400;
         }
-        .footer-bottom .footer-cred {
-            display: flex;
+        .trust-bar .trust-item {
+            display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            font-weight: 500;
-            font-size: 0.75rem;
+            gap: 0.3rem;
         }
-        .footer-bottom .footer-cred .fc-icon {
-            font-size: 1.1rem;
+        .trust-bar .trust-item .ti-icon {
+            font-size: 1rem;
             opacity: 0.6;
         }
-        .footer-bottom .footer-cred .fc-sub {
+        .trust-bar .trust-item .ti-sub {
             font-size: 0.6rem;
             color: #9a8aaa;
+            margin-left: 0.1rem;
         }
+        /* Pipe separators */
+        .trust-bar .sep {
+            color: #c0b0c0;
+            font-weight: 300;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
         .footer-copy {
             text-align: center;
             font-size: 0.65rem;
             color: #9a8aaa;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             padding-bottom: 0.5rem;
         }
 
@@ -1057,9 +1064,9 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 2rem;
             }
-            .footer-bottom {
-                flex-direction: column;
-                gap: 0.6rem;
+            .trust-bar {
+                gap: 0.25rem 1rem;
+                font-size: 0.75rem;
             }
             .founding-benefits {
                 grid-template-columns: repeat(2, 1fr);
@@ -1080,7 +1087,7 @@
                 max-width: 340px;
             }
             .storybook-illustration .mommy-image {
-                max-width: 150px;
+                max-width: 220px;
             }
         }
 
@@ -1148,7 +1155,16 @@
                 padding: 2rem 1.2rem;
             }
             .storybook-illustration .mommy-image {
-                max-width: 130px;
+                max-width: 200px;
+            }
+            .trust-bar {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.4rem;
+                font-size: 0.85rem;
+            }
+            .trust-bar .sep {
+                display: none;
             }
         }
         @media (max-width: 600px) {
@@ -1165,7 +1181,7 @@
                 font-size: 2.8rem;
             }
             .storybook-illustration .mommy-image {
-                max-width: 100px;
+                max-width: 160px;
             }
         }
     </style>
@@ -1430,9 +1446,9 @@
             <div class="waitlist-card">
                 <h3>Not Ready To Book Yet?</h3>
                 <p>Join our launch list and be the first to know when we're officially open.</p>
-                <form class="waitlist-form" id="waitlist-form">
-                    <input type="text" placeholder="Your name" required />
-                    <input type="email" placeholder="Your email" required />
+                <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xlgygvpw" method="POST">
+                    <input type="text" name="name" placeholder="Your name" required />
+                    <input type="email" name="email" placeholder="Your email" required />
                     <button type="submit" class="waitlist-btn">Join List</button>
                 </form>
                 <p style="font-size:0.7rem;color:#9a8aaa;margin-top:0.6rem;font-weight:500;">
@@ -1589,7 +1605,7 @@
 
     </div><!-- /container -->
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER & TRUST BAR ===== -->
     <footer class="footer" id="footer">
         <div class="footer-inner">
             <div class="footer-brand">
@@ -1630,29 +1646,17 @@
             </div>
         </div>
 
-        <!-- ===== CREDIBILITY ===== -->
-        <div class="footer-bottom">
-            <span class="footer-cred">
-                <span class="fc-icon">📍</span>
-                North County San Diego
-            </span>
-            <span class="footer-cred">
-                <span class="fc-icon">📋</span>
-                Licensed &amp; Insured
-                <span class="fc-sub">*</span>
-            </span>
-            <span class="footer-cred">
-                <span class="fc-icon">🎨</span>
-                Custom Event Design
-            </span>
-            <span class="footer-cred">
-                <span class="fc-icon">🔄</span>
-                Setup &amp; Breakdown
-            </span>
-            <span class="footer-cred">
-                <span class="fc-icon">👨‍👩‍👧‍👦</span>
-                Family Owned
-            </span>
+        <!-- === TRUST BAR (Reorganized & Clean) === -->
+        <div class="trust-bar">
+            <span class="trust-item"><span class="ti-icon">📍</span> North County San Diego</span>
+            <span class="sep">·</span>
+            <span class="trust-item"><span class="ti-icon">📋</span> Licensed &amp; Insured<span class="ti-sub">*</span></span>
+            <span class="sep">·</span>
+            <span class="trust-item"><span class="ti-icon">🎨</span> Custom Event Design</span>
+            <span class="sep">·</span>
+            <span class="trust-item"><span class="ti-icon">🔄</span> Setup &amp; Breakdown</span>
+            <span class="sep">·</span>
+            <span class="trust-item"><span class="ti-icon">👨‍👩‍👧‍👦</span> Family Owned</span>
         </div>
 
         <div class="footer-copy">
@@ -1779,23 +1783,47 @@
             };
 
             // =========================================
-            // 6. WAITLIST FORM
+            // 6. WAITLIST FORM (Now connected to Formspree)
             // =========================================
             const waitlistForm = document.getElementById('waitlist-form');
             if (waitlistForm) {
-                waitlistForm.addEventListener('submit', function(e) {
+                waitlistForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     const btn = this.querySelector('.waitlist-btn');
-                    const original = btn.textContent;
-                    btn.textContent = 'Added!';
-                    btn.style.background = '#69DBD3';
-                    btn.style.borderColor = '#69DBD3';
-                    setTimeout(function() {
-                        btn.textContent = original;
-                        btn.style.background = '#2d2a3a';
-                        btn.style.borderColor = '#2d2a3a';
-                        waitlistForm.reset();
-                    }, 3000);
+                    const originalText = btn.textContent;
+                    btn.textContent = 'Adding...';
+                    btn.disabled = true;
+
+                    const data = new FormData(this);
+
+                    try {
+                        const response = await fetch(this.action, {
+                            method: this.method,
+                            body: data,
+                            headers: { 'Accept': 'application/json' },
+                        });
+
+                        if (response.ok) {
+                            btn.textContent = 'Added! ✓';
+                            btn.style.background = '#69DBD3';
+                            btn.style.borderColor = '#69DBD3';
+                            this.reset();
+                            setTimeout(function() {
+                                btn.textContent = originalText;
+                                btn.style.background = '#2d2a3a';
+                                btn.style.borderColor = '#2d2a3a';
+                                btn.disabled = false;
+                            }, 3000);
+                        } else {
+                            alert('Oops! There was a problem. Please try again.');
+                            btn.textContent = originalText;
+                            btn.disabled = false;
+                        }
+                    } catch (error) {
+                        alert('Network error. Please try again.');
+                        btn.textContent = originalText;
+                        btn.disabled = false;
+                    }
                 });
             }
 
