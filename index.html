@@ -178,7 +178,7 @@
             }
         }
 
-        /* ---------- MAKE A SPLASH (was Founding Families) ---------- */
+        /* ---------- MAKE A SPLASH ---------- */
         .founding-card {
             padding: 2.5rem 2rem;
             text-align: center;
@@ -253,9 +253,15 @@
         }
 
         .poster-card .poster-icon {
-            font-size: 3.5rem;
             display: block;
             margin-bottom: 0.3rem;
+        }
+
+        .poster-card .poster-icon img {
+            width: 80px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
 
         .poster-card .poster-welcome {
@@ -1328,6 +1334,9 @@
             .section {
                 margin-bottom: 3rem;
             }
+            .poster-card .poster-icon img {
+                width: 70px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1379,7 +1388,7 @@
                 font-size: 2.4rem;
             }
             .hero-logo {
-                max-width: 420px;   /* Larger on tablet */
+                max-width: 420px;
             }
             .chapter-title {
                 font-size: 2rem;
@@ -1405,6 +1414,9 @@
             .section {
                 margin-bottom: 2.5rem;
             }
+            .poster-card .poster-icon img {
+                width: 80px;
+            }
         }
 
         @media (max-width: 600px) {
@@ -1415,10 +1427,10 @@
                 font-size: 1.8rem;
             }
             .hero-logo {
-                max-width: 350px;   /* Bigger on mobile */
+                max-width: 350px;
             }
-            .poster-card .poster-icon {
-                font-size: 2.8rem;
+            .poster-card .poster-icon img {
+                width: 70px;
             }
             .journal-illustration .journal-image {
                 max-width: 220px;
@@ -1489,10 +1501,13 @@
             <p class="chapter-sub">Each celebration is a journey waiting to begin. Which one will you choose?</p>
             <div class="poster-grid">
 
+                <!-- Lemonade Stand -->
                 <div class="poster-card card-lemon">
                     <span class="poster-stamp">✧</span>
                     <span class="poster-welcome">Welcome To</span>
-                    <span class="poster-icon">🍋</span>
+                    <span class="poster-icon">
+                        <img src="images/lemonade_stand.png" alt="Lemonade Stand party theme" loading="lazy" />
+                    </span>
                     <span class="poster-label">sunny · picnic</span>
                     <h3>Lemonade Stand</h3>
                     <p>A bright backyard retreat filled with hand-painted crates, gingham textiles, and fresh citrus garlands.</p>
@@ -1504,10 +1519,13 @@
                     <div class="poster-price">Included</div>
                 </div>
 
+                <!-- In‑N‑Out Burger Theme -->
                 <div class="poster-card card-burger">
                     <span class="poster-stamp">✧</span>
                     <span class="poster-welcome">Welcome To</span>
-                    <span class="poster-icon">🍔</span>
+                    <span class="poster-icon">
+                        <img src="images/hamburger.png" alt="In-N-Out burger party theme" loading="lazy" />
+                    </span>
                     <span class="poster-label">retro · diner</span>
                     <h3>Palm Trees &amp; Cheeseburgers</h3>
                     <p>A vintage drive-in experience with neon checkers, custom palm trees, and a classic burger bar.</p>
@@ -1519,10 +1537,13 @@
                     <div class="poster-price">Included</div>
                 </div>
 
+                <!-- Tie‑Dye Studio -->
                 <div class="poster-card card-dye">
                     <span class="poster-stamp">✧</span>
                     <span class="poster-welcome">Welcome To</span>
-                    <span class="poster-icon">🎨</span>
+                    <span class="poster-icon">
+                        <img src="images/tye_dye.png" alt="Tie-dye party theme" loading="lazy" />
+                    </span>
                     <span class="poster-label">colorful · crafty</span>
                     <h3>Tie-Dye Studio</h3>
                     <p>A rainbow explosion of color with splatter paint walls and interactive dye tables for creative fun.</p>
@@ -1534,10 +1555,13 @@
                     <div class="poster-price">Included</div>
                 </div>
 
+                <!-- Sea Shell Spa (Mermaid) -->
                 <div class="poster-card card-mermaid">
                     <span class="poster-stamp">✧</span>
                     <span class="poster-welcome">Welcome To</span>
-                    <span class="poster-icon">🐚</span>
+                    <span class="poster-icon">
+                        <img src="images/mermaidparty.png" alt="Sea Shell Spa mermaid party theme" loading="lazy" />
+                    </span>
                     <span class="poster-label">oceanic · signature</span>
                     <h3>Sea Shell Spa</h3>
                     <p>A relaxing mermaid retreat where little ocean dreamers can unwind, laugh, and <span class="highlight">shellabrate</span> together.</p>
