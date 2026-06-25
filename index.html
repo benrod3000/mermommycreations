@@ -8,10 +8,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Grand+Hotel&display=swap" rel="stylesheet" />
 
-    <!-- GSAP + Plugins -->
+    <!-- GSAP + Plugins (MotionPath removed – no longer needed) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
 
     <style>
         /* ============================================
@@ -1108,43 +1107,6 @@
             z-index: 0;
         }
 
-        /* ===== MERMOMMY TAIL (MotionPath Guide) - FIXED ===== */
-        #mermommy-tail {
-            position: fixed;
-            width: 64px;
-            height: 64px;
-            z-index: 999;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-            /* Let GSAP handle positioning via motion path */
-            top: 0;
-            left: 0;
-            transform: translate(0, 0);
-        }
-
-        #mermommy-tail.visible {
-            opacity: 1;
-        }
-
-        #mermommy-tail svg {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0 4px 20px rgba(139, 108, 158, 0.25));
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            padding: 4px;
-        }
-
-        /* Hidden motion path */
-        #story-path {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-            pointer-events: none;
-        }
-
         /* ===== PEARL COLLECTION ===== */
         .pearl-collection {
             position: relative;
@@ -1508,10 +1470,6 @@
             .journal-illustration .journal-image {
                 max-width: 220px;
             }
-            #mermommy-tail {
-                width: 52px;
-                height: 52px;
-            }
         }
 
         @media (max-width: 768px) {
@@ -1591,10 +1549,6 @@
             .trust-bar .sep {
                 display: none;
             }
-            #mermommy-tail {
-                width: 44px;
-                height: 44px;
-            }
         }
 
         @media (max-width: 600px) {
@@ -1613,10 +1567,6 @@
             .journal-illustration .journal-image {
                 max-width: 160px;
             }
-            #mermommy-tail {
-                width: 38px;
-                height: 38px;
-            }
         }
     </style>
 </head>
@@ -1624,34 +1574,6 @@
 
     <!-- ===== PARTICLES ===== -->
     <div class="sky-decor" id="decor-container"></div>
-
-    <!-- ===== MERMOMMY TAIL (MotionPath Guide) ===== -->
-    <div id="mermommy-tail">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 10 C45 10 38 18 34 30 C30 42 28 55 30 65 C32 72 36 78 40 82 C44 86 48 88 50 90 C52 88 56 86 60 82 C64 78 68 72 70 65 C72 55 70 42 66 30 C62 18 55 10 50 10Z"
-            fill="rgba(139,108,158,0.6)" stroke="rgba(139,108,158,0.2)" stroke-width="1.5"/>
-            <path d="M30 65 C20 72 12 82 10 90 C8 96 12 100 18 98 C24 96 32 88 36 80"
-            fill="rgba(139,108,158,0.4)" stroke="rgba(139,108,158,0.15)" stroke-width="1"/>
-            <path d="M70 65 C80 72 88 82 90 90 C92 96 88 100 82 98 C76 96 68 88 64 80"
-            fill="rgba(139,108,158,0.4)" stroke="rgba(139,108,158,0.15)" stroke-width="1"/>
-            <text x="75" y="20" font-size="8" fill="rgba(139,108,158,0.3)">✦</text>
-            <text x="15" y="45" font-size="7" fill="rgba(139,108,158,0.2)">✦</text>
-        </svg>
-    </div>
-
-    <!-- ===== HIDDEN MOTION PATH ===== -->
-    <svg id="story-path" viewBox="0 0 100 2000" xmlns="http://www.w3.org/2000/svg">
-        <path id="oceanPath" d="M50 0
-            C50 120, 80 180, 55 280
-            C30 380, 10 420, 50 520
-            C90 620, 95 680, 55 780
-            C15 880, 5 920, 50 1020
-            C95 1120, 100 1180, 55 1280
-            C10 1380, 0 1420, 50 1520
-            C80 1620, 90 1680, 50 1780
-            C10 1880, 5 1920, 50 2000"
-        fill="none" stroke="none" />
-    </svg>
 
     <!-- ===== MAIN WRAPPER ===== -->
     <div class="container">
@@ -2209,9 +2131,9 @@
         document.addEventListener('DOMContentLoaded', function() {
 
             // =========================================
-            // REGISTER GSAP PLUGINS
+            // REGISTER GSAP PLUGINS (only ScrollTrigger needed now)
             // =========================================
-            gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+            gsap.registerPlugin(ScrollTrigger);
 
             // =========================================
             // 1. HERO ENTRANCE
@@ -2267,129 +2189,7 @@
             });
 
             // =========================================
-            // 3. MERMOMMY TAIL - FIXED MOTION PATH
-            // =========================================
-            const tail = document.getElementById('mermommy-tail');
-            const oceanPath = document.getElementById('oceanPath');
-
-            if (tail && oceanPath) {
-                // Show tail immediately
-                tail.classList.add('visible');
-
-                // Animate the tail along the path
-                // Using autoAlpha and transform to ensure it moves
-                gsap.to(tail, {
-                    motionPath: {
-                        path: oceanPath,
-                        align: oceanPath,
-                        alignOrigin: [0.5, 0.5],
-                        autoRotate: true
-                    },
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: 'body',
-                        start: 'top top',
-                        end: 'bottom bottom',
-                        scrub: 1,
-                        invalidateOnRefresh: true
-                    }
-                });
-
-                // Waypoint effects for sections (swish)
-                const waypoints = [
-                    { trigger: '#adventure', label: 'Adventures' },
-                    { trigger: '#treasures', label: 'Treasures' },
-                    { trigger: '#tail', label: 'My Tail' },
-                    { trigger: '#contact', label: 'Contact' },
-                ];
-
-                waypoints.forEach(function(wp) {
-                    ScrollTrigger.create({
-                        trigger: wp.trigger,
-                        start: 'top center',
-                        onEnter: function() {
-                            gsap.to(tail, {
-                                x: '+=20',
-                                duration: 0.15,
-                                yoyo: true,
-                                repeat: 3,
-                                ease: 'power1.inOut',
-                                onComplete: function() {
-                                    gsap.set(tail, { x: 0 });
-                                }
-                            });
-                            gsap.to(tail, {
-                                scale: 1.2,
-                                duration: 0.2,
-                                yoyo: true,
-                                repeat: 1,
-                                ease: 'power2.out',
-                            });
-                        }
-                    });
-                });
-
-                // Sea Shell Spa - gentle swim
-                ScrollTrigger.create({
-                    trigger: '.card-mermaid',
-                    start: 'top center',
-                    onEnter: function() {
-                        gsap.to(tail, {
-                            x: '-=15',
-                            duration: 0.2,
-                            yoyo: true,
-                            repeat: 2,
-                            ease: 'power1.inOut',
-                            onComplete: function() {
-                                gsap.set(tail, { x: 0 });
-                            }
-                        });
-                        gsap.to(tail, {
-                            y: '-=10',
-                            duration: 0.15,
-                            yoyo: true,
-                            repeat: 2,
-                            ease: 'power1.inOut',
-                            onComplete: function() {
-                                gsap.set(tail, { y: 0 });
-                            }
-                        });
-                    }
-                });
-
-                // Contact section pulse
-                ScrollTrigger.create({
-                    trigger: '#contact',
-                    start: 'top center',
-                    onEnter: function() {
-                        gsap.to(tail, {
-                            scale: 0.6,
-                            duration: 0.3,
-                            ease: 'back.inOut(1.7)',
-                            onComplete: function() {
-                                gsap.to(tail, {
-                                    scale: 1,
-                                    duration: 0.3,
-                                    ease: 'power2.out'
-                                });
-                            }
-                        });
-                        gsap.to(tail, {
-                            x: '+=15',
-                            duration: 0.15,
-                            yoyo: true,
-                            repeat: 2,
-                            ease: 'power1.inOut',
-                            onComplete: function() {
-                                gsap.set(tail, { x: 0 });
-                            }
-                        });
-                    }
-                });
-            }
-
-            // =========================================
-            // 4. PARTICLES: BUBBLES + SPARKLES
+            // 3. PARTICLES: BUBBLES + SPARKLES
             // =========================================
             const decorContainer = document.getElementById('decor-container');
             if (decorContainer) {
@@ -2438,51 +2238,42 @@
             }
 
             // =========================================
-            // 5. GSAP INFINITE SLIDER
+            // 4. GSAP INFINITE SLIDER (Seamless Loop)
             // =========================================
             const sliderTrack = document.getElementById('sliderTrack');
             if (sliderTrack) {
-                const items = sliderTrack.querySelectorAll('.treasure-card');
-                const clones = items.length;
-                for (let i = 0; i < clones; i++) {
-                    const clone = items[i].cloneNode(true);
+                const originalCards = sliderTrack.querySelectorAll('.treasure-card');
+                // Clone each card and append to track to create a seamless loop
+                originalCards.forEach(card => {
+                    const clone = card.cloneNode(true);
                     sliderTrack.appendChild(clone);
-                }
-
-                let tl = gsap.timeline({
-                    repeat: -1,
-                    ease: 'none',
                 });
 
-                const duration = 30;
-                const distance = sliderTrack.scrollWidth / 2;
+                const totalWidth = sliderTrack.scrollWidth;
+                const halfWidth = totalWidth / 2;
 
-                tl.to(sliderTrack, {
-                    x: -distance,
-                    duration: duration,
-                    ease: 'none',
-                    modifiers: {
-                        x: function(x) {
-                            const pos = parseFloat(x);
-                            if (pos <= -distance) {
-                                gsap.set(sliderTrack, { x: 0 });
-                                return 0;
-                            }
-                            return pos;
-                        }
+                gsap.to(sliderTrack, {
+                    x: -halfWidth,
+                    duration: 30,
+                    ease: "none",
+                    repeat: -1,
+                    onRepeat: function() {
+                        // Instant reset to create seamless loop
+                        gsap.set(sliderTrack, { x: 0 });
                     }
                 });
 
-                sliderTrack.addEventListener('mouseenter', function() {
-                    tl.pause();
+                // Pause on hover
+                sliderTrack.addEventListener('mouseenter', () => {
+                    gsap.globalTimeline.pause();
                 });
-                sliderTrack.addEventListener('mouseleave', function() {
-                    tl.resume();
+                sliderTrack.addEventListener('mouseleave', () => {
+                    gsap.globalTimeline.resume();
                 });
             }
 
             // =========================================
-            // 6. PEARL COLLECTION
+            // 5. PEARL COLLECTION
             // =========================================
             const pearlStrand = document.getElementById('pearlStrand');
             const pearlCount = 12;
@@ -2499,7 +2290,7 @@
             const reveal = document.getElementById('pearlReveal');
             let revealed = false;
 
-            const pearlTrigger = ScrollTrigger.create({
+            ScrollTrigger.create({
                 trigger: '#pearl-collection',
                 start: 'top 70%',
                 end: 'bottom 30%',
@@ -2540,7 +2331,7 @@
             });
 
             // =========================================
-            // 7. HIDDEN TREASURE POPUP
+            // 6. HIDDEN TREASURE POPUP
             // =========================================
             window.showTreasurePopup = function(el) {
                 const popup = el.querySelector('.treasure-popup');
@@ -2553,7 +2344,7 @@
             };
 
             // =========================================
-            // 8. WAITLIST FORM
+            // 7. WAITLIST FORM
             // =========================================
             const waitlistForm = document.getElementById('waitlist-form');
             if (waitlistForm) {
@@ -2598,7 +2389,7 @@
             }
 
             // =========================================
-            // 9. INQUIRY FORM
+            // 8. INQUIRY FORM
             // =========================================
             const form = document.getElementById('inquiry-form');
             if (form) {
@@ -2641,7 +2432,7 @@
             }
 
             // =========================================
-            // 10. REFRESH SCROLLTRIGGER
+            // 9. REFRESH SCROLLTRIGGER
             // =========================================
             setTimeout(function() {
                 ScrollTrigger.refresh();
