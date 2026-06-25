@@ -1108,19 +1108,19 @@
             z-index: 0;
         }
 
-        /* ===== MERMOMMY TAIL (MotionPath Guide) ===== */
+        /* ===== MERMOMMY TAIL (MotionPath Guide) - FIXED ===== */
         #mermommy-tail {
             position: fixed;
-            width: 56px;
-            height: 56px;
+            width: 64px;
+            height: 64px;
             z-index: 999;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.8s ease;
-            /* Ensure it starts from visible area */
-            top: 10%;
-            left: 10%;
-            /* Will be overridden by motion path */
+            /* Let GSAP handle positioning via motion path */
+            top: 0;
+            left: 0;
+            transform: translate(0, 0);
         }
 
         #mermommy-tail.visible {
@@ -1130,9 +1130,10 @@
         #mermommy-tail svg {
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 4px 20px rgba(139, 108, 158, 0.2));
-            background: rgba(255, 255, 255, 0.1);
+            filter: drop-shadow(0 4px 20px rgba(139, 108, 158, 0.25));
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 50%;
+            padding: 4px;
         }
 
         /* Hidden motion path */
@@ -1421,7 +1422,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* ===== PARTICLES (BUBBLES + SPARKLES) ===== */
+        /* ===== PARTICLES ===== */
         .sky-decor {
             position: fixed;
             top: 0;
@@ -1508,8 +1509,8 @@
                 max-width: 220px;
             }
             #mermommy-tail {
-                width: 48px;
-                height: 48px;
+                width: 52px;
+                height: 52px;
             }
         }
 
@@ -1591,8 +1592,8 @@
                 display: none;
             }
             #mermommy-tail {
-                width: 40px;
-                height: 40px;
+                width: 44px;
+                height: 44px;
             }
         }
 
@@ -1613,8 +1614,8 @@
                 max-width: 160px;
             }
             #mermommy-tail {
-                width: 36px;
-                height: 36px;
+                width: 38px;
+                height: 38px;
             }
         }
     </style>
@@ -2266,31 +2267,30 @@
             });
 
             // =========================================
-            // 3. MERMOMMY TAIL - MOTION PATH WITH SWISH
+            // 3. MERMOMMY TAIL - FIXED MOTION PATH
             // =========================================
             const tail = document.getElementById('mermommy-tail');
             const oceanPath = document.getElementById('oceanPath');
 
             if (tail && oceanPath) {
-                // Show tail after a moment
-                setTimeout(function() {
-                    tail.classList.add('visible');
-                }, 1000);
+                // Show tail immediately
+                tail.classList.add('visible');
 
-                // Main motion path animation
+                // Animate the tail along the path
+                // Using autoAlpha and transform to ensure it moves
                 gsap.to(tail, {
                     motionPath: {
                         path: oceanPath,
                         align: oceanPath,
-                        autoRotate: true,
-                        alignOrigin: [0.5, 0.5]
+                        alignOrigin: [0.5, 0.5],
+                        autoRotate: true
                     },
                     ease: 'none',
                     scrollTrigger: {
                         trigger: 'body',
                         start: 'top top',
                         end: 'bottom bottom',
-                        scrub: 1.5,
+                        scrub: 1,
                         invalidateOnRefresh: true
                     }
                 });
@@ -2319,7 +2319,7 @@
                                 }
                             });
                             gsap.to(tail, {
-                                scale: 1.15,
+                                scale: 1.2,
                                 duration: 0.2,
                                 yoyo: true,
                                 repeat: 1,
@@ -2329,7 +2329,7 @@
                     });
                 });
 
-                // Sea Shell Spa - gentle swim around
+                // Sea Shell Spa - gentle swim
                 ScrollTrigger.create({
                     trigger: '.card-mermaid',
                     start: 'top center',
@@ -2363,7 +2363,7 @@
                     start: 'top center',
                     onEnter: function() {
                         gsap.to(tail, {
-                            scale: 0.7,
+                            scale: 0.6,
                             duration: 0.3,
                             ease: 'back.inOut(1.7)',
                             onComplete: function() {
@@ -2389,11 +2389,10 @@
             }
 
             // =========================================
-            // 4. PARTICLES: BUBBLES (more visible) + SPARKLES
+            // 4. PARTICLES: BUBBLES + SPARKLES
             // =========================================
             const decorContainer = document.getElementById('decor-container');
             if (decorContainer) {
-                // Create bubbles
                 for (let i = 0; i < 22; i++) {
                     const el = document.createElement('div');
                     el.className = 'bubble-el';
@@ -2417,7 +2416,6 @@
                     });
                 }
 
-                // Create sparkles
                 for (let i = 0; i < 14; i++) {
                     const el = document.createElement('div');
                     el.className = 'sparkle-el';
@@ -2647,7 +2645,7 @@
             // =========================================
             setTimeout(function() {
                 ScrollTrigger.refresh();
-            }, 800);
+            }, 500);
 
         });
     </script>
