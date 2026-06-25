@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MerMommy Creations | Luxury Children's Party Curation</title>
+    <title>MerMommy Creations | Storybook Celebrations</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Grand+Hotel&display=swap" rel="stylesheet" />
 
-    <!-- GSAP -->
+    <!-- GSAP + Plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
 
     <style>
         /* ============================================
-           RESET & BASE (Brutalist-lite)
+           STORYBOOK BASE
            ============================================ */
         * {
             box-sizing: border-box;
@@ -44,23 +45,33 @@
             color: #8B6C9E;
         }
 
-        .section-title {
+        .chapter-title {
             font-size: 2.8rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.5rem;
             color: #2d2a3a;
             letter-spacing: -1px;
             text-transform: uppercase;
         }
 
-        .section-sub {
+        .chapter-sub {
             text-align: center;
             color: #5a5a6a;
             font-size: 1.05rem;
             max-width: 600px;
             margin: -0.3rem auto 2rem;
             font-weight: 300;
+        }
+
+        .chapter-number {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #9a8aaa;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+            font-weight: 400;
         }
 
         .container {
@@ -71,36 +82,28 @@
             z-index: 10;
         }
 
-        /* ---------- BRUTALIST CARD BASE ---------- */
-        .card-soft,
-        .banner,
-        .founding-card,
-        .poster-card,
-        .treasure-card,
-        .theme-card,
-        .masonry-item,
-        .why-item,
-        .addon-card,
-        .waitlist-card,
-        .contact-card,
-        .guide-cta,
-        .ig-placeholder,
-        .footer {
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            border: none !important;
+        /* ---------- CHAPTER DIVIDER ---------- */
+        .chapter-divider {
+            text-align: center;
+            padding: 1.5rem 0 0.5rem;
+            font-size: 0.7rem;
+            color: #b0a0b8;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-bottom: 2px solid rgba(139, 108, 158, 0.06);
+            margin-bottom: 2rem;
         }
 
-        /* ---------- HERO ---------- */
+        /* ---------- HERO / CHAPTER 1 ---------- */
         .hero {
             position: relative;
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 6rem 1rem 3rem;
+            padding: 4rem 1rem 3rem;
         }
 
         .hero-logo-wrapper {
@@ -165,34 +168,6 @@
             }
         }
 
-        /* ---------- SECTION ---------- */
-        .section {
-            margin-bottom: 4rem;
-            width: 100%;
-        }
-
-        /* ---------- BANNER ---------- */
-        .banner {
-            padding: 2rem 0;
-            text-align: center;
-            background: transparent;
-            margin: 1rem 0 3rem;
-            border-top: 6px solid #8B6C9E !important;
-            border-bottom: 6px solid #69DBD3 !important;
-        }
-        .banner p {
-            font-size: 1.15rem;
-            color: #4a4a5a;
-            line-height: 1.8;
-            max-width: 750px;
-            margin: 0 auto;
-            font-weight: 400;
-        }
-        .banner .highlight {
-            color: #8B6C9E;
-            font-weight: 600;
-        }
-
         /* ---------- FOUNDING FAMILIES ---------- */
         .founding-card {
             padding: 2.5rem 2rem;
@@ -238,28 +213,51 @@
             margin-bottom: 0.1rem;
         }
 
-        /* ---------- ADVENTURE POSTERS ---------- */
+        /* ---------- ADVENTURE DESTINATION POSTERS ---------- */
         .poster-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
         }
+
         .poster-card {
             padding: 1.5rem 1rem;
             text-align: center;
             background: transparent;
             border-bottom: 4px solid rgba(45, 42, 58, 0.08) !important;
             transition: transform 0.2s ease;
+            position: relative;
         }
         .poster-card:hover {
             transform: translateY(-4px);
             border-bottom-color: #8B6C9E !important;
         }
+
+        .poster-card .poster-stamp {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.2rem;
+            opacity: 0.2;
+            transform: rotate(15deg);
+        }
+
         .poster-card .poster-icon {
             font-size: 3.5rem;
             display: block;
             margin-bottom: 0.3rem;
         }
+
+        .poster-card .poster-welcome {
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #9a8aaa;
+            display: block;
+            margin-bottom: 0.1rem;
+        }
+
         .poster-card .poster-label {
             font-size: 0.6rem;
             font-weight: 600;
@@ -269,12 +267,14 @@
             display: block;
             margin-bottom: 0.2rem;
         }
+
         .poster-card h3 {
             font-size: 1.4rem;
             font-weight: 700;
             color: #2d2a3a;
             margin-bottom: 0.2rem;
         }
+
         .poster-card p {
             font-size: 0.9rem;
             color: #5a5a6a;
@@ -282,6 +282,7 @@
             font-weight: 300;
             margin-bottom: 0.5rem;
         }
+
         .poster-card .poster-features {
             display: flex;
             flex-wrap: wrap;
@@ -289,6 +290,7 @@
             justify-content: center;
             margin: 0.3rem 0;
         }
+
         .poster-card .poster-features span {
             font-size: 0.6rem;
             font-weight: 500;
@@ -297,6 +299,7 @@
             padding: 0.1rem 0.8rem;
             border: 1px solid rgba(45, 42, 58, 0.1);
         }
+
         .poster-card .poster-price {
             font-size: 0.8rem;
             font-weight: 700;
@@ -308,66 +311,53 @@
             text-transform: uppercase;
         }
 
-        /* ---------- DREAM THEMES SLIDER ---------- */
+        /* ---------- TREASURES SLIDER ---------- */
         .slider-section {
             overflow: hidden;
             padding: 1.5rem 0;
+            position: relative;
         }
+
         .slider-track {
             display: flex;
             gap: 1.5rem;
             width: max-content;
-            animation: slideTreasures 35s linear infinite;
+            animation: slideTreasures 40s linear infinite;
         }
+
         .slider-track:hover {
             animation-play-state: paused;
         }
 
-        .theme-card {
-            flex: 0 0 180px;
-            padding: 1.2rem 0.8rem;
+        .treasure-card {
+            flex: 0 0 220px;
+            padding: 1.5rem 1rem;
             text-align: center;
             background: rgba(255, 255, 255, 0.15);
-            border: 2px dashed #2d2a3a !important;
-            transition: all 0.2s ease;
+            border: 2px solid rgba(45, 42, 58, 0.06) !important;
+            transform: rotate(var(--rot, 0deg));
+            transition: transform 0.3s ease, background 0.3s ease;
         }
-        .theme-card:hover {
+
+        .treasure-card:hover {
             background: rgba(255, 255, 255, 0.3);
-            border-style: solid !important;
+            transform: rotate(0deg) scale(1.03) !important;
         }
-        .theme-card .tc-icon {
+
+        .treasure-card .tc-icon {
             font-size: 2.5rem;
             display: block;
             margin-bottom: 0.2rem;
         }
-        .theme-card h4 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #2d2a3a;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
 
-        /* ---------- TREASURE CARDS (Infinite Slider) ---------- */
-        .treasure-card {
-            flex: 0 0 200px;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(45, 42, 58, 0.05) !important;
-        }
-        .treasure-card .tc-icon {
-            font-size: 2.2rem;
-            display: block;
-            margin-bottom: 0.2rem;
-        }
         .treasure-card h4 {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: #2d2a3a;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .treasure-card p {
             font-size: 0.7rem;
             color: #6a6a7a;
@@ -384,12 +374,44 @@
             }
         }
 
+        /* ---------- DREAM THEMES SLIDER ---------- */
+        .theme-card {
+            flex: 0 0 170px;
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px dashed rgba(45, 42, 58, 0.15) !important;
+            transform: rotate(var(--rot, 0deg));
+            transition: all 0.2s ease;
+        }
+
+        .theme-card:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-style: solid !important;
+            transform: rotate(0deg) scale(1.04) !important;
+        }
+
+        .theme-card .tc-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .theme-card h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #2d2a3a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         /* ---------- MORE THAN PARTY DECOR ---------- */
         .masonry-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
+
         .masonry-item {
             padding: 1.8rem 1.2rem;
             text-align: center;
@@ -397,15 +419,18 @@
             border-left: 4px solid rgba(139, 108, 158, 0.2) !important;
             transition: transform 0.2s ease;
         }
+
         .masonry-item:hover {
             transform: translateY(-4px);
             border-left-color: #8B6C9E !important;
         }
+
         .masonry-item .masonry-icon {
             font-size: 2.2rem;
             display: block;
             margin-bottom: 0.2rem;
         }
+
         .masonry-item h4 {
             font-size: 1rem;
             font-weight: 700;
@@ -413,6 +438,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .masonry-item p {
             font-size: 0.8rem;
             color: #5a5a6a;
@@ -426,6 +452,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
+
         .why-item {
             padding: 2rem 1.5rem;
             text-align: center;
@@ -433,15 +460,18 @@
             border-bottom: 4px solid rgba(45, 42, 58, 0.05) !important;
             transition: transform 0.2s ease;
         }
+
         .why-item:hover {
             transform: translateY(-4px);
             border-bottom-color: #69DBD3 !important;
         }
+
         .why-item .wi-icon {
             font-size: 2.4rem;
             display: block;
             margin-bottom: 0.3rem;
         }
+
         .why-item h4 {
             font-size: 1rem;
             font-weight: 700;
@@ -449,6 +479,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .why-item p {
             font-size: 0.8rem;
             color: #5a5a6a;
@@ -456,69 +487,137 @@
             line-height: 1.4;
         }
 
-        /* ---------- STORYBOOK (My Tail) ---------- */
-        .storybook {
+        /* ---------- JOURNAL / MY TAIL ---------- */
+        .journal {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 2.5rem;
             align-items: center;
-            padding: 2.5rem 0;
+            padding: 2.5rem 2.5rem;
+            background: rgba(255, 248, 240, 0.5);
+            border: 4px solid rgba(45, 42, 58, 0.06);
+            position: relative;
         }
-        .storybook-illustration {
+
+        /* Paper texture overlay */
+        .journal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg,
+                    transparent 0px,
+                    transparent 20px,
+                    rgba(139, 108, 158, 0.01) 20px,
+                    rgba(139, 108, 158, 0.01) 21px);
+            pointer-events: none;
+        }
+
+        .journal-illustration {
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
-        .storybook-illustration .mommy-image {
+
+        .journal-illustration .journal-image {
             max-width: 260px;
             width: 100%;
             height: auto;
             display: block;
+            border: 4px solid #2d2a3a;
         }
-        .storybook-text .sb-tagline {
+
+        /* Shell corner decorations */
+        .journal-shell {
+            position: absolute;
+            font-size: 1.8rem;
+            opacity: 0.15;
+        }
+
+        .journal-shell-1 {
+            top: -10px;
+            left: -10px;
+            transform: rotate(-20deg);
+        }
+        .journal-shell-2 {
+            bottom: -10px;
+            right: -10px;
+            transform: rotate(30deg);
+        }
+        .journal-shell-3 {
+            top: 50%;
+            right: -20px;
+            transform: rotate(45deg);
             font-size: 1.2rem;
+        }
+
+        .journal-text {
+            padding: 0.5rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .journal-text .journal-greeting {
+            font-size: 1.4rem;
             color: #8B6C9E;
-            font-weight: 500;
-            font-style: italic;
+            font-weight: 600;
+            font-family: 'Magnolia Sky', cursive;
             margin-bottom: 0.2rem;
         }
-        .storybook-text .sb-sub {
-            font-size: 0.7rem;
-            color: #9a8aaa;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+
+        .journal-text .journal-tagline {
+            font-size: 1.1rem;
+            color: #5a5a6a;
+            font-weight: 400;
+            font-style: italic;
             margin-bottom: 0.8rem;
         }
-        .storybook-text .sb-story {
+
+        .journal-text .journal-story {
             font-size: 0.95rem;
-            color: #5a5a6a;
+            color: #4a4a5a;
             line-height: 1.8;
             font-weight: 300;
             margin-bottom: 1rem;
         }
-        .storybook-text .sb-features {
+
+        .journal-text .journal-signoff {
+            font-size: 1.2rem;
+            color: #8B6C9E;
+            font-family: 'Magnolia Sky', cursive;
+            margin-bottom: 1rem;
+        }
+
+        .journal-text .journal-features {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0.8rem;
         }
-        .storybook-text .sb-feature {
+
+        .journal-text .journal-feature {
             padding: 0.8rem 0.3rem;
             text-align: center;
             background: rgba(255, 255, 255, 0.15);
             border-left: 4px solid rgba(139, 108, 158, 0.2);
         }
-        .storybook-text .sb-feature .sbf-icon {
+
+        .journal-text .journal-feature .jf-icon {
             font-size: 1.4rem;
             display: block;
             margin-bottom: 0.1rem;
         }
-        .storybook-text .sb-feature h4 {
+
+        .journal-text .journal-feature h4 {
             font-size: 0.8rem;
             font-weight: 700;
             color: #2d2a3a;
             text-transform: uppercase;
         }
-        .storybook-text .sb-feature p {
+
+        .journal-text .journal-feature p {
             font-size: 0.65rem;
             color: #6a6a7a;
             font-weight: 300;
@@ -530,6 +629,7 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
         }
+
         .addon-card {
             padding: 2rem 1.2rem;
             text-align: center;
@@ -537,20 +637,24 @@
             border-top: 4px solid rgba(45, 42, 58, 0.05) !important;
             transition: transform 0.2s ease;
         }
+
         .addon-card:hover {
             transform: translateY(-4px);
             border-top-color: #8B6C9E !important;
         }
+
         .addon-card .addon-icon {
             font-size: 2.8rem;
             display: block;
             margin-bottom: 0.3rem;
         }
+
         .addon-card h3 {
             font-size: 1.2rem;
             font-weight: 700;
             color: #2d2a3a;
         }
+
         .addon-card .addon-tag {
             font-size: 0.55rem;
             font-weight: 600;
@@ -560,12 +664,14 @@
             display: block;
             margin-bottom: 0.2rem;
         }
+
         .addon-card p {
             font-size: 0.85rem;
             color: #5a5a6a;
             font-weight: 300;
             line-height: 1.5;
         }
+
         .addon-price {
             font-size: 0.8rem;
             font-weight: 700;
@@ -584,6 +690,7 @@
             max-width: 650px;
             margin: 0 auto;
         }
+
         .waitlist-card h3 {
             font-size: 1.6rem;
             font-weight: 700;
@@ -592,17 +699,20 @@
             text-transform: uppercase;
             letter-spacing: -0.5px;
         }
+
         .waitlist-card p {
             color: #5a5a6a;
             font-weight: 300;
             margin-bottom: 1.2rem;
         }
+
         .waitlist-form {
             display: flex;
             gap: 0.8rem;
             max-width: 480px;
             margin: 0 auto;
         }
+
         .waitlist-form input {
             flex: 1;
             background: rgba(255, 255, 255, 0.6);
@@ -613,10 +723,12 @@
             font-size: 0.9rem;
             border-radius: 0;
         }
+
         .waitlist-form input:focus {
             outline: none;
             border-color: #8B6C9E;
         }
+
         .waitlist-form .waitlist-btn {
             background: #2d2a3a;
             color: #fff;
@@ -630,6 +742,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
         .waitlist-form .waitlist-btn:hover {
             background: #8B6C9E;
             border-color: #8B6C9E;
@@ -643,6 +756,7 @@
             max-width: 540px;
             margin: 0 auto;
         }
+
         .ig-placeholder {
             padding: 2rem 1rem;
             text-align: center;
@@ -654,16 +768,19 @@
             align-items: center;
             justify-content: center;
         }
+
         .ig-placeholder .ig-icon {
             font-size: 1.8rem;
             display: block;
             margin-bottom: 0.2rem;
             opacity: 0.4;
         }
+
         .ig-placeholder p {
             font-size: 0.7rem;
             color: #9a8aaa;
         }
+
         .ig-placeholder .ig-link {
             display: inline-block;
             margin-top: 0.4rem;
@@ -679,6 +796,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .ig-placeholder .ig-link:hover {
             background: #8B6C9E;
             border-color: #8B6C9E;
@@ -689,33 +807,40 @@
             padding: 3rem 2.5rem;
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid rgba(45, 42, 58, 0.05) !important;
+            position: relative;
         }
+
         .contact-intro {
             text-align: center;
             color: #5a5a6a;
             font-weight: 300;
             margin-bottom: 2rem;
         }
+
         .contact-form {
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
         }
+
         .form-group {
             display: flex;
             flex-direction: column;
             gap: 0.3rem;
         }
+
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.2rem;
         }
+
         .form-row-3 {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 1.2rem;
         }
+
         label {
             font-size: 0.7rem;
             font-weight: 700;
@@ -723,6 +848,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         input,
         select,
         textarea {
@@ -736,21 +862,25 @@
             transition: border 0.2s ease;
             border-radius: 0;
         }
+
         input:focus,
         select:focus,
         textarea:focus {
             outline: none;
             border-color: #8B6C9E;
         }
+
         select option {
             background: #f7f3f0;
             color: #2d2a3a;
         }
+
         .checkbox-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.3rem 1rem;
         }
+
         .checkbox-item {
             display: flex;
             align-items: center;
@@ -760,6 +890,7 @@
             cursor: pointer;
             font-weight: 300;
         }
+
         .checkbox-item input[type="checkbox"] {
             width: 16px;
             height: 16px;
@@ -767,6 +898,7 @@
             cursor: pointer;
             flex-shrink: 0;
         }
+
         .submit-btn {
             background: #2d2a3a;
             color: #fff;
@@ -781,10 +913,12 @@
             font-family: 'Fredoka', sans-serif;
             border-radius: 0;
         }
+
         .submit-btn:hover {
             background: #8B6C9E;
             border-color: #8B6C9E;
         }
+
         .submit-btn:active {
             transform: scale(0.98);
         }
@@ -796,6 +930,7 @@
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid rgba(45, 42, 58, 0.05) !important;
         }
+
         .guide-cta h3 {
             font-size: 1.6rem;
             font-weight: 700;
@@ -804,11 +939,13 @@
             text-transform: uppercase;
             letter-spacing: -0.5px;
         }
+
         .guide-cta p {
             color: #5a5a6a;
             font-weight: 300;
             margin-bottom: 1rem;
         }
+
         .guide-cta .guide-btn {
             display: inline-block;
             background: #2d2a3a;
@@ -823,6 +960,7 @@
             letter-spacing: 1px;
             border-radius: 0;
         }
+
         .guide-cta .guide-btn:hover {
             background: #8B6C9E;
             border-color: #8B6C9E;
@@ -836,6 +974,7 @@
             padding: 1rem 0;
             position: relative;
         }
+
         .wave-step {
             padding: 1.2rem 0.3rem;
             text-align: center;
@@ -844,12 +983,14 @@
             position: relative;
             z-index: 1;
         }
+
         .wave-step .ws-number {
             font-size: 0.65rem;
             font-weight: 700;
             color: #8B6C9E;
             display: block;
         }
+
         .wave-step h4 {
             font-size: 0.75rem;
             font-weight: 600;
@@ -857,6 +998,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .wave-path::before {
             content: '';
             position: absolute;
@@ -869,6 +1011,107 @@
             z-index: 0;
         }
 
+        /* ===== MERMOMMY TAIL (MotionPath Guide) ===== */
+        #mermommy-tail {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        #mermommy-tail.visible {
+            opacity: 1;
+        }
+
+        #mermommy-tail svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 4px 16px rgba(139, 108, 158, 0.15));
+        }
+
+        /* Hidden motion path */
+        #story-path {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ===== PEARL COLLECTION ===== */
+        .pearl-collection {
+            position: relative;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        .pearl-strand {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            min-height: 60px;
+        }
+
+        .pearl-item {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #f0e8f5, #c0b0d0);
+            border: 2px solid rgba(45, 42, 58, 0.1);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 2px 8px rgba(139, 108, 158, 0.1);
+        }
+
+        .pearl-item.collected {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .pearl-item .pearl-shine {
+            display: block;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            margin: 4px auto 0;
+        }
+
+        .pearl-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(45, 42, 58, 0.05);
+        }
+
+        .pearl-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pearl-reveal h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2d2a3a;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .pearl-reveal p {
+            color: #5a5a6a;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
         /* ---------- FOOTER & TRUST BAR ---------- */
         .footer {
             background: rgba(255, 255, 255, 0.3);
@@ -877,6 +1120,7 @@
             border-top: 6px solid #8B6C9E !important;
             border-bottom: 6px solid #69DBD3 !important;
         }
+
         .footer-inner {
             max-width: 1100px;
             width: 92%;
@@ -885,6 +1129,7 @@
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 2.5rem;
         }
+
         .footer-brand h3 {
             font-size: 1.3rem;
             font-weight: 700;
@@ -892,6 +1137,7 @@
             margin-bottom: 0.3rem;
             font-family: 'Magnolia Sky', 'Grand Hotel', cursive;
         }
+
         .footer-brand p {
             font-size: 0.85rem;
             color: #5a5a6a;
@@ -899,11 +1145,13 @@
             font-weight: 300;
             max-width: 280px;
         }
+
         .footer-brand .footer-social {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
+
         .footer-brand .footer-social a {
             display: flex;
             align-items: center;
@@ -917,10 +1165,12 @@
             transition: all 0.3s ease;
             font-weight: 700;
         }
+
         .footer-brand .footer-social a:hover {
             background: #8B6C9E;
             color: #fff;
         }
+
         .footer-col h4 {
             font-size: 0.75rem;
             font-weight: 700;
@@ -929,13 +1179,16 @@
             letter-spacing: 1px;
             margin-bottom: 0.8rem;
         }
+
         .footer-col ul {
             list-style: none;
             padding: 0;
         }
+
         .footer-col ul li {
             margin-bottom: 0.4rem;
         }
+
         .footer-col ul li a {
             color: #5a5a6a;
             text-decoration: none;
@@ -944,6 +1197,7 @@
             transition: color 0.2s ease;
             border-bottom: 1px solid transparent;
         }
+
         .footer-col ul li a:hover {
             color: #8B6C9E;
             border-bottom-color: #8B6C9E;
@@ -965,20 +1219,24 @@
             color: #5a5a6a;
             font-weight: 400;
         }
+
         .trust-bar .trust-item {
             display: inline-flex;
             align-items: center;
             gap: 0.3rem;
         }
+
         .trust-bar .trust-item .ti-icon {
             font-size: 1rem;
             opacity: 0.6;
         }
+
         .trust-bar .trust-item .ti-sub {
             font-size: 0.6rem;
             color: #9a8aaa;
             margin-left: 0.1rem;
         }
+
         .trust-bar .sep {
             color: #c0b0c0;
             font-weight: 300;
@@ -1003,9 +1261,11 @@
             margin: 0 0.1rem;
             transition: transform 0.3s ease;
         }
+
         .hidden-treasure:hover {
             transform: scale(1.15) rotate(8deg);
         }
+
         .hidden-treasure .treasure-popup {
             position: absolute;
             bottom: 120%;
@@ -1024,10 +1284,12 @@
             font-family: 'Fredoka', sans-serif;
             font-weight: 500;
         }
+
         .hidden-treasure:hover .treasure-popup {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
+
         .hidden-treasure .treasure-popup.show {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
@@ -1044,21 +1306,24 @@
             z-index: 0;
             overflow: hidden;
         }
+
         .bubble-el {
             position: absolute;
             border-radius: 50%;
-            background: rgba(139, 108, 158, 0.06);
-            border: 1px solid rgba(139, 108, 158, 0.08);
+            background: rgba(139, 108, 158, 0.05);
+            border: 1px solid rgba(139, 108, 158, 0.06);
             bottom: -30px;
             pointer-events: none;
         }
+
         .sparkle-el {
             position: absolute;
             bottom: -30px;
             pointer-events: none;
-            font-size: 18px;
-            opacity: 0.5;
+            font-size: 16px;
+            opacity: 0.4;
             line-height: 1;
+            color: #F5D442;
         }
 
         /* ---------- RESPONSIVE ---------- */
@@ -1075,11 +1340,12 @@
             .addon-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .storybook {
+            .journal {
                 grid-template-columns: 1fr;
                 text-align: center;
+                padding: 2rem;
             }
-            .storybook-text .sb-features {
+            .journal-text .journal-features {
                 grid-template-columns: repeat(2, 1fr);
             }
             .footer-inner {
@@ -1108,8 +1374,12 @@
             .hero-logo {
                 max-width: 340px;
             }
-            .storybook-illustration .mommy-image {
+            .journal-illustration .journal-image {
                 max-width: 220px;
+            }
+            #mermommy-tail {
+                width: 40px;
+                height: 40px;
             }
         }
 
@@ -1149,7 +1419,7 @@
             .founding-benefits {
                 grid-template-columns: 1fr 1fr;
             }
-            .storybook-text .sb-features {
+            .journal-text .journal-features {
                 grid-template-columns: 1fr;
             }
             .ig-grid {
@@ -1167,7 +1437,7 @@
             .hero-logo {
                 max-width: 280px;
             }
-            .section-title {
+            .chapter-title {
                 font-size: 2rem;
             }
             .waitlist-form {
@@ -1176,7 +1446,7 @@
             .contact-card {
                 padding: 2rem 1.2rem;
             }
-            .storybook-illustration .mommy-image {
+            .journal-illustration .journal-image {
                 max-width: 200px;
             }
             .trust-bar {
@@ -1188,7 +1458,12 @@
             .trust-bar .sep {
                 display: none;
             }
+            #mermommy-tail {
+                width: 32px;
+                height: 32px;
+            }
         }
+
         @media (max-width: 600px) {
             .founding-benefits {
                 grid-template-columns: 1fr;
@@ -1202,21 +1477,55 @@
             .poster-card .poster-icon {
                 font-size: 2.8rem;
             }
-            .storybook-illustration .mommy-image {
+            .journal-illustration .journal-image {
                 max-width: 160px;
+            }
+            #mermommy-tail {
+                width: 28px;
+                height: 28px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== PARTICLES (Bubbles + ✨) ===== -->
+    <!-- ===== PARTICLES ===== -->
     <div class="sky-decor" id="decor-container"></div>
+
+    <!-- ===== MERMOMMY TAIL (MotionPath Guide) ===== -->
+    <div id="mermommy-tail">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Mermaid Tail SVG -->
+            <path d="M50 10 C45 10 38 18 34 30 C30 42 28 55 30 65 C32 72 36 78 40 82 C44 86 48 88 50 90 C52 88 56 86 60 82 C64 78 68 72 70 65 C72 55 70 42 66 30 C62 18 55 10 50 10Z"
+            fill="rgba(139,108,158,0.6)" stroke="rgba(139,108,158,0.2)" stroke-width="1.5"/>
+            <path d="M30 65 C20 72 12 82 10 90 C8 96 12 100 18 98 C24 96 32 88 36 80"
+            fill="rgba(139,108,158,0.4)" stroke="rgba(139,108,158,0.15)" stroke-width="1"/>
+            <path d="M70 65 C80 72 88 82 90 90 C92 96 88 100 82 98 C76 96 68 88 64 80"
+            fill="rgba(139,108,158,0.4)" stroke="rgba(139,108,158,0.15)" stroke-width="1"/>
+            <!-- Tiny sparkles on tail -->
+            <text x="75" y="20" font-size="8" fill="rgba(139,108,158,0.3)">✦</text>
+            <text x="15" y="45" font-size="7" fill="rgba(139,108,158,0.2)">✦</text>
+        </svg>
+    </div>
+
+    <!-- ===== HIDDEN MOTION PATH ===== -->
+    <svg id="story-path" viewBox="0 0 100 2000" xmlns="http://www.w3.org/2000/svg">
+        <path id="oceanPath" d="M50 0
+            C50 120, 80 180, 55 280
+            C30 380, 10 420, 50 520
+            C90 620, 95 680, 55 780
+            C15 880, 5 920, 50 1020
+            C95 1120, 100 1180, 55 1280
+            C10 1380, 0 1420, 50 1520
+            C80 1620, 90 1680, 50 1780
+            C10 1880, 5 1920, 50 2000"
+        fill="none" stroke="none" />
+    </svg>
 
     <!-- ===== MAIN WRAPPER ===== -->
     <div class="container">
 
-        <!-- ===== HERO ===== -->
+        <!-- ===== CHAPTER 1: MEET MERMOMMY ===== -->
         <section class="hero" id="hero">
             <div class="hero-logo-wrapper">
                 <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="hero-logo" loading="lazy" />
@@ -1261,16 +1570,20 @@
             </p>
         </section>
 
-        <!-- ===== ADVENTURES ===== -->
+        <!-- ===== CHAPTER 2: CHOOSE YOUR ADVENTURE ===== -->
+        <div class="chapter-divider">✦ Chapter Two ✦</div>
         <section class="section" id="adventure">
-            <h2 class="section-title">Pick Your Adventure</h2>
+            <h2 class="chapter-title">Choose Your Adventure</h2>
+            <p class="chapter-sub">Each celebration is a journey waiting to begin.</p>
             <div class="poster-grid">
 
                 <div class="poster-card card-lemon">
+                    <span class="poster-stamp">✧</span>
+                    <span class="poster-welcome">Welcome To</span>
                     <span class="poster-icon">🍋</span>
                     <span class="poster-label">sunny · picnic</span>
                     <h3>Lemonade Stand</h3>
-                    <p>Hand-painted crates, gingham textiles, and fresh citrus garlands for bright backyard celebrations.</p>
+                    <p>A bright backyard retreat filled with hand-painted crates, gingham textiles, and fresh citrus garlands.</p>
                     <div class="poster-features">
                         <span>picnic styling</span>
                         <span>lemon bar</span>
@@ -1280,10 +1593,12 @@
                 </div>
 
                 <div class="poster-card card-burger">
+                    <span class="poster-stamp">✧</span>
+                    <span class="poster-welcome">Welcome To</span>
                     <span class="poster-icon">🍔</span>
                     <span class="poster-label">retro · diner</span>
                     <h3>Palm Trees &amp; Cheeseburgers</h3>
-                    <p>Neon checkers, custom palm trees, and a vintage drive-in feel with a classic burger bar.</p>
+                    <p>A vintage drive-in experience with neon checkers, custom palm trees, and a classic burger bar.</p>
                     <div class="poster-features">
                         <span>checker floor</span>
                         <span>fry cones</span>
@@ -1293,10 +1608,12 @@
                 </div>
 
                 <div class="poster-card card-dye">
+                    <span class="poster-stamp">✧</span>
+                    <span class="poster-welcome">Welcome To</span>
                     <span class="poster-icon">🎨</span>
                     <span class="poster-label">colorful · crafty</span>
                     <h3>Tie-Dye Studio</h3>
-                    <p>Rainbow swirls, splatter paint walls, and interactive dye tables for creative fun.</p>
+                    <p>A rainbow explosion of color with splatter paint walls and interactive dye tables for creative fun.</p>
                     <div class="poster-features">
                         <span>dye kits</span>
                         <span>splatter zone</span>
@@ -1306,10 +1623,12 @@
                 </div>
 
                 <div class="poster-card card-mermaid">
+                    <span class="poster-stamp">✧</span>
+                    <span class="poster-welcome">Welcome To</span>
                     <span class="poster-icon">🐚</span>
                     <span class="poster-label">oceanic · signature</span>
                     <h3>Sea Shell Spa</h3>
-                    <p>Shimmering oyster shells, pastel scales, and pearl centerpieces in a magical mermaid cove.</p>
+                    <p>A relaxing mermaid retreat where little ocean dreamers can unwind, laugh, and celebrate together.</p>
                     <div class="poster-features">
                         <span>coral decor</span>
                         <span>pearl accents</span>
@@ -1319,7 +1638,7 @@
                 </div>
 
             </div>
-            <!-- Hidden Discovery: Pearl -->
+            <!-- Hidden Discovery -->
             <div style="text-align:center;margin-top:1.5rem;">
                 <span class="hidden-treasure" onclick="showTreasurePopup(this)">
                     🪸
@@ -1338,47 +1657,46 @@
             </div>
         </section>
 
-        <!-- ===== DREAM THEMES SLIDER (New Section) ===== -->
+        <!-- ===== DREAM THEMES SLIDER ===== -->
         <section class="section slider-section" id="dream-themes">
-            <h2 class="section-title">Dreaming Up New Adventures</h2>
-            <p class="section-sub">More magical themes coming soon to a celebration near you.</p>
             <div class="slider-track" id="themeSliderTrack">
-                <div class="theme-card"><span class="tc-icon">🦩</span><h4>Flamingo</h4></div>
-                <div class="theme-card"><span class="tc-icon">🍉</span><h4>Watermelon</h4></div>
-                <div class="theme-card"><span class="tc-icon">🍍</span><h4>Pineapple</h4></div>
-                <div class="theme-card"><span class="tc-icon">🌮</span><h4>Taco</h4></div>
-                <div class="theme-card"><span class="tc-icon">❄️</span><h4>Frozen</h4></div>
-                <div class="theme-card"><span class="tc-icon">🌸</span><h4>Enchanted Garden</h4></div>
-                <div class="theme-card"><span class="tc-icon">🧑‍🌾</span><h4>Farmers Market</h4></div>
-                <div class="theme-card"><span class="tc-icon">🦌</span><h4>Little Deer</h4></div>
-                <div class="theme-card"><span class="tc-icon">🌈</span><h4>Rainbow</h4></div>
-                <div class="theme-card"><span class="tc-icon">👶</span><h4>Baby Shower</h4></div>
-                <div class="theme-card"><span class="tc-icon">💍</span><h4>Bridal Shower</h4></div>
+                <div class="theme-card" style="--rot:-1.5deg"><span class="tc-icon">🦩</span><h4>Flamingo</h4></div>
+                <div class="theme-card" style="--rot:2deg"><span class="tc-icon">🍉</span><h4>Watermelon</h4></div>
+                <div class="theme-card" style="--rot:-1deg"><span class="tc-icon">🍍</span><h4>Pineapple</h4></div>
+                <div class="theme-card" style="--rot:1.8deg"><span class="tc-icon">🌮</span><h4>Taco</h4></div>
+                <div class="theme-card" style="--rot:-2deg"><span class="tc-icon">❄️</span><h4>Frozen</h4></div>
+                <div class="theme-card" style="--rot:0.5deg"><span class="tc-icon">🌸</span><h4>Enchanted Garden</h4></div>
+                <div class="theme-card" style="--rot:-1.2deg"><span class="tc-icon">🧑‍🌾</span><h4>Farmers Market</h4></div>
+                <div class="theme-card" style="--rot:1.5deg"><span class="tc-icon">🦌</span><h4>Little Deer</h4></div>
+                <div class="theme-card" style="--rot:-0.8deg"><span class="tc-icon">🌈</span><h4>Rainbow</h4></div>
+                <div class="theme-card" style="--rot:1deg"><span class="tc-icon">👶</span><h4>Baby Shower</h4></div>
+                <div class="theme-card" style="--rot:-1.8deg"><span class="tc-icon">💍</span><h4>Bridal Shower</h4></div>
             </div>
-            <p style="text-align:center;margin-top:0.8rem;color:#9a8aaa;font-size:0.7rem;opacity:0.6;font-weight:500;">Hover to pause • Let the inspiration drift by</p>
+            <p style="text-align:center;margin-top:0.8rem;color:#9a8aaa;font-size:0.7rem;opacity:0.6;font-weight:500;">More adventures drifting in from the deep...</p>
         </section>
 
-        <!-- ===== INFINITE SLIDER (Treasures) ===== -->
+        <!-- ===== CHAPTER 3: TREASURES FOUND IN EVERY ADVENTURE ===== -->
+        <div class="chapter-divider">✦ Chapter Three ✦</div>
         <section class="section slider-section" id="treasures">
-            <h2 class="section-title">Treasures In Every Adventure</h2>
-            <p class="section-sub">Each celebration is filled with magical discoveries.</p>
+            <h2 class="chapter-title">Treasures Found In Every Adventure</h2>
+            <p class="chapter-sub">Each celebration is filled with magical discoveries waiting to be found.</p>
             <div class="slider-track" id="sliderTrack">
-                <div class="treasure-card"><span class="tc-icon">🫧</span><h4>Personalized Details</h4><p>Every little touch tells your story</p></div>
-                <div class="treasure-card"><span class="tc-icon">🎁</span><h4>Magical Surprises</h4><p>Unexpected moments of joy</p></div>
-                <div class="treasure-card"><span class="tc-icon">🎨</span><h4>Creative Styling</h4><p>Artful design that delights</p></div>
-                <div class="treasure-card"><span class="tc-icon">📸</span><h4>Picture Perfect</h4><p>Moments you'll treasure forever</p></div>
-                <div class="treasure-card"><span class="tc-icon">✨</span><h4>Stress-Free Planning</h4><p>We handle everything so you don't have to</p></div>
-                <div class="treasure-card"><span class="tc-icon">🧜</span><h4>Mom-Approved</h4><p>Designed with love and care</p></div>
-                <div class="treasure-card"><span class="tc-icon">🎉</span><h4>Celebration Setup</h4><p>We arrive early and build the magic</p></div>
-                <div class="treasure-card"><span class="tc-icon">💜</span><h4>Thoughtful Touches</h4><p>Little details that mean so much</p></div>
+                <div class="treasure-card" style="--rot:-2deg"><span class="tc-icon">🫧</span><h4>Personalized Details</h4><p>Every little touch tells your story</p></div>
+                <div class="treasure-card" style="--rot:1.5deg"><span class="tc-icon">✨</span><h4>Magical Touches</h4><p>Little moments that sparkle</p></div>
+                <div class="treasure-card" style="--rot:-1deg"><span class="tc-icon">🎨</span><h4>Creative Styling</h4><p>Artful design that delights</p></div>
+                <div class="treasure-card" style="--rot:2deg"><span class="tc-icon">📸</span><h4>Memory-Making</h4><p>Moments you'll treasure forever</p></div>
+                <div class="treasure-card" style="--rot:-1.5deg"><span class="tc-icon">🎁</span><h4>Surprise Elements</h4><p>Unexpected moments of joy</p></div>
+                <div class="treasure-card" style="--rot:1deg"><span class="tc-icon">💜</span><h4>Mom-Approved Planning</h4><p>Designed with love and care</p></div>
+                <div class="treasure-card" style="--rot:-2.5deg"><span class="tc-icon">🌊</span><h4>Stress-Free Setup</h4><p>We arrive early and build the magic</p></div>
+                <div class="treasure-card" style="--rot:1.8deg"><span class="tc-icon">🧜</span><h4>Signature MerMommy Magic</h4><p>That special something only we bring</p></div>
             </div>
             <p style="text-align:center;margin-top:0.8rem;color:#9a8aaa;font-size:0.7rem;opacity:0.6;font-weight:500;">Hover to pause • Let the treasures drift by</p>
         </section>
 
         <!-- ===== MORE THAN PARTY DECOR ===== -->
         <section class="section" id="more-than-decor">
-            <h2 class="section-title">More Than Party Decor</h2>
-            <p class="section-sub">Every celebration is an opportunity to create something special.</p>
+            <h2 class="chapter-title">More Than Party Decor</h2>
+            <p class="chapter-sub">Every celebration is an opportunity to create something special.</p>
             <div class="masonry-grid">
                 <div class="masonry-item"><span class="masonry-icon">👗</span><h4>Custom Apparel</h4><p>Personalized outfits for the birthday star</p></div>
                 <div class="masonry-item"><span class="masonry-icon">📋</span><h4>Party Signage</h4><p>Hand-crafted signs and welcome boards</p></div>
@@ -1389,49 +1707,73 @@
             </div>
         </section>
 
-        <!-- ===== WHY CHOOSE ===== -->
-        <section class="section" id="why-choose">
-            <h2 class="section-title">Why Families Choose MerMommy</h2>
-            <div class="why-grid">
-                <div class="why-item"><span class="wi-icon">💜</span><h4>Designed By A Mom</h4><p>Every detail is crafted with love and understanding of what families truly need</p></div>
-                <div class="why-item"><span class="wi-icon">🎯</span><h4>Personalized Details</h4><p>Your celebration, your style — we bring your vision to life</p></div>
-                <div class="why-item"><span class="wi-icon">🧘</span><h4>Stress-Free Planning</h4><p>We handle everything so you can actually enjoy the party</p></div>
-                <div class="why-item"><span class="wi-icon">🎨</span><h4>Creative Event Styling</h4><p>Artful design that transforms any space into magic</p></div>
-                <div class="why-item"><span class="wi-icon">👕</span><h4>Custom Apparel Available</h4><p>Personalized outfits and shirts for the birthday star and guests</p></div>
-                <div class="why-item"><span class="wi-icon">🔄</span><h4>Setup &amp; Breakdown</h4><p>Full-service coordination from start to finish</p></div>
+        <!-- ===== CHAPTER 4: HOW THE MAGIC HAPPENS ===== -->
+        <div class="chapter-divider">✦ Chapter Four ✦</div>
+        <section class="section" id="how-it-works">
+            <h2 class="chapter-title">How The Magic Happens</h2>
+            <div class="wave-path">
+                <div class="wave-step">
+                    <span class="ws-number">01</span>
+                    <h4>Submit Inquiry</h4>
+                </div>
+                <div class="wave-step">
+                    <span class="ws-number">02</span>
+                    <h4>Dream Together</h4>
+                </div>
+                <div class="wave-step">
+                    <span class="ws-number">03</span>
+                    <h4>Design &amp; Plan</h4>
+                </div>
+                <div class="wave-step">
+                    <span class="ws-number">04</span>
+                    <h4>Setup Day</h4>
+                </div>
+                <div class="wave-step">
+                    <span class="ws-number">05</span>
+                    <h4>Celebrate</h4>
+                </div>
+                <div class="wave-step">
+                    <span class="ws-number">06</span>
+                    <h4>We Handle Cleanup</h4>
+                </div>
             </div>
         </section>
 
-        <!-- ===== MY TAIL ===== -->
+        <!-- ===== CHAPTER 5: JOIN OUR JOURNEY (My Tail / Journal) ===== -->
+        <div class="chapter-divider">✦ Chapter Five ✦</div>
         <section class="section" id="tail">
-            <h2 class="section-title" style="margin-bottom:1rem;">My Tail</h2>
-            <div class="storybook">
-                <div class="storybook-illustration">
-                    <img src="images/mommy.png" alt="MerMommy" class="mommy-image" loading="lazy" />
+            <h2 class="chapter-title" style="margin-bottom:1rem;">My Tail</h2>
+            <div class="journal">
+                <div class="journal-illustration">
+                    <span class="journal-shell journal-shell-1">🐚</span>
+                    <span class="journal-shell journal-shell-2">🪸</span>
+                    <span class="journal-shell journal-shell-3">✦</span>
+                    <img src="images/mommy.png" alt="Kayte - MerMommy" class="journal-image" loading="lazy" />
                 </div>
-                <div class="storybook-text">
-                    <p class="sb-tagline">"I show up like a friend, plan like a pro, and care like a mom."</p>
-                    <p class="sb-sub">MOM · CREATIVE · PARTY STYLIST</p>
-                    <p class="sb-story">
-                        I believe every celebration deserves a touch of magic. As a mom and creative at heart,
+                <div class="journal-text">
+                    <p class="journal-greeting">Dear Friends,</p>
+                    <p class="journal-tagline">"I show up like a friend, plan like a pro, and care like a mom."</p>
+                    <p class="journal-story">
+                        I've always believed childhood should feel magical. As a mom and creative at heart,
                         I've turned my passion for party curation into a full-service experience that takes the
                         stress off your shoulders and puts the joy front and center. From themed wardrobes that
                         bring your vision to life to custom-made shirts for every little guest, I pour my heart
                         into every detail so you can soak in every moment.
                     </p>
-                    <div class="sb-features">
-                        <div class="sb-feature">
-                            <span class="sbf-icon">👗</span>
+                    <p class="journal-signoff">With love,<br />Kayte</p>
+                    <div class="journal-features">
+                        <div class="journal-feature">
+                            <span class="jf-icon">👗</span>
                             <h4>Themed Wardrobes</h4>
                             <p>Matching outfits that bring your party theme to life</p>
                         </div>
-                        <div class="sb-feature">
-                            <span class="sbf-icon">👕</span>
+                        <div class="journal-feature">
+                            <span class="jf-icon">👕</span>
                             <h4>Custom Shirts</h4>
                             <p>Cricut &amp; heat press creations for personalized party wear</p>
                         </div>
-                        <div class="sb-feature">
-                            <span class="sbf-icon">🎉</span>
+                        <div class="journal-feature">
+                            <span class="jf-icon">🎉</span>
                             <h4>Full-Service Magic</h4>
                             <p>Setup, coordination, breakdown — we handle it all</p>
                         </div>
@@ -1449,8 +1791,8 @@
 
         <!-- ===== ADD-ONS ===== -->
         <section class="section" id="addons">
-            <h2 class="section-title">Add-On Services</h2>
-            <p class="section-sub">Make your celebration completely stress-free with our signature add-on services.</p>
+            <h2 class="chapter-title">Add-On Services</h2>
+            <p class="chapter-sub">Make your celebration completely stress-free with our signature add-on services.</p>
             <div class="addon-grid">
                 <div class="addon-card">
                     <span class="addon-icon">🧜‍♀️</span>
@@ -1506,10 +1848,24 @@
             </div>
         </section>
 
+        <!-- ===== PEARL COLLECTION ===== -->
+        <section class="section" id="pearl-collection">
+            <div class="pearl-collection">
+                <div class="pearl-strand" id="pearlStrand">
+                    <!-- Pearls will be added by JavaScript -->
+                </div>
+                <div class="pearl-reveal" id="pearlReveal">
+                    <h3>You've Discovered Every Pearl</h3>
+                    <p>Ready to create your own magical adventure?</p>
+                    <a href="#contact" class="guide-btn" style="display:inline-block;background:#2d2a3a;color:#fff;padding:0.7rem 2.5rem;text-decoration:none;font-weight:700;border:2px solid #2d2a3a;font-family:'Fredoka',sans-serif;text-transform:uppercase;letter-spacing:1px;">Let's Begin</a>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== INSTAGRAM ===== -->
         <section class="section" id="instagram">
-            <h2 class="section-title">Follow Our Journey</h2>
-            <p class="section-sub">Every magical business starts somewhere. Follow along as we build MerMommy.</p>
+            <h2 class="chapter-title">Follow Our Journey</h2>
+            <p class="chapter-sub">Every magical business starts somewhere. Follow along as we build MerMommy.</p>
             <div class="ig-grid">
                 <div class="ig-placeholder">
                     <span class="ig-icon">📷</span>
@@ -1614,37 +1970,6 @@
             </div>
         </section>
 
-        <!-- ===== HOW THE MAGIC HAPPENS ===== -->
-        <section class="section" id="how-it-works">
-            <h2 class="section-title">How The Magic Happens</h2>
-            <div class="wave-path">
-                <div class="wave-step">
-                    <span class="ws-number">01</span>
-                    <h4>Submit Inquiry</h4>
-                </div>
-                <div class="wave-step">
-                    <span class="ws-number">02</span>
-                    <h4>Dream Together</h4>
-                </div>
-                <div class="wave-step">
-                    <span class="ws-number">03</span>
-                    <h4>Design &amp; Plan</h4>
-                </div>
-                <div class="wave-step">
-                    <span class="ws-number">04</span>
-                    <h4>Setup Day</h4>
-                </div>
-                <div class="wave-step">
-                    <span class="ws-number">05</span>
-                    <h4>Celebrate</h4>
-                </div>
-                <div class="wave-step">
-                    <span class="ws-number">06</span>
-                    <h4>We Handle Cleanup</h4>
-                </div>
-            </div>
-        </section>
-
     </div><!-- /container -->
 
     <!-- ===== FOOTER & TRUST BAR ===== -->
@@ -1714,7 +2039,7 @@
             // =========================================
             // REGISTER GSAP PLUGINS
             // =========================================
-            gsap.registerPlugin(ScrollTrigger);
+            gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
             // =========================================
             // 1. HERO ENTRANCE
@@ -1744,14 +2069,13 @@
                 '#dream-themes',
                 '#treasures',
                 '#more-than-decor .masonry-item',
-                '#why-choose .why-item',
-                '#tail .storybook',
+                '#how-it-works .wave-step',
+                '#tail .journal',
                 '.addon-card',
                 '#waitlist .waitlist-card',
-                '.ig-placeholder',
+                '#instagram .ig-placeholder',
                 '.contact-card',
                 '#guide .guide-cta',
-                '.wave-step',
             ];
 
             sections.forEach(function(sel) {
@@ -1770,7 +2094,120 @@
             });
 
             // =========================================
-            // 3. PARTICLES (Bubbles + ✨)
+            // 3. MERMOMMY TAIL - MOTION PATH
+            // =========================================
+            const tail = document.getElementById('mermommy-tail');
+            const oceanPath = document.getElementById('oceanPath');
+
+            if (tail && oceanPath) {
+                // Show tail after a moment
+                setTimeout(function() {
+                    tail.classList.add('visible');
+                }, 1000);
+
+                // Main motion path animation
+                gsap.to(tail, {
+                    motionPath: {
+                        path: oceanPath,
+                        align: oceanPath,
+                        autoRotate: true,
+                        alignOrigin: [0.5, 0.5]
+                    },
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: 'body',
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: 1.5,
+                        invalidateOnRefresh: true
+                    }
+                });
+
+                // Waypoint effects for sections
+                const waypoints = [
+                    { trigger: '#adventure', label: 'Adventures' },
+                    { trigger: '#treasures', label: 'Treasures' },
+                    { trigger: '#tail', label: 'My Tail' },
+                    { trigger: '#contact', label: 'Contact' },
+                ];
+
+                waypoints.forEach(function(wp) {
+                    ScrollTrigger.create({
+                        trigger: wp.trigger,
+                        start: 'top center',
+                        onEnter: function() {
+                            // Tiny pulse animation when reaching a section
+                            gsap.to(tail, {
+                                scale: 1.3,
+                                duration: 0.5,
+                                ease: 'back.out(1.7)',
+                                onComplete: function() {
+                                    gsap.to(tail, {
+                                        scale: 1,
+                                        duration: 0.4,
+                                        ease: 'power2.out'
+                                    });
+                                }
+                            });
+                        }
+                    });
+                });
+
+                // Loop animation when entering My Tail section
+                ScrollTrigger.create({
+                    trigger: '#tail',
+                    start: 'top center',
+                    onEnter: function() {
+                        gsap.to(tail, {
+                            rotation: 360,
+                            duration: 1.2,
+                            ease: 'power2.inOut',
+                            onComplete: function() {
+                                gsap.set(tail, { rotation: 0 });
+                            }
+                        });
+                    }
+                });
+
+                // Circle effect when entering Sea Shell Spa
+                ScrollTrigger.create({
+                    trigger: '.card-mermaid',
+                    start: 'top center',
+                    onEnter: function() {
+                        gsap.to(tail, {
+                            rotation: 720,
+                            duration: 1.5,
+                            ease: 'power1.inOut',
+                            onComplete: function() {
+                                gsap.set(tail, { rotation: 0 });
+                            }
+                        });
+                    }
+                });
+
+                // Tail pulse at contact
+                ScrollTrigger.create({
+                    trigger: '#contact',
+                    start: 'top center',
+                    onEnter: function() {
+                        gsap.to(tail, {
+                            scale: 0.5,
+                            duration: 0.6,
+                            ease: 'back.inOut(1.7)',
+                            onComplete: function() {
+                                gsap.to(tail, {
+                                    scale: 1,
+                                    duration: 0.4,
+                                    ease: 'power2.out'
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+
+            // =========================================
+            // 4. PARTICLES (Bubbles + ✨)
             // =========================================
             const decorContainer = document.getElementById('decor-container');
             if (decorContainer) {
@@ -1804,7 +2241,7 @@
             }
 
             // =========================================
-            // 4. INFINITE SLIDERS
+            // 5. INFINITE SLIDERS
             // =========================================
             function setupSlider(trackId) {
                 const track = document.getElementById(trackId);
@@ -1817,7 +2254,47 @@
             setupSlider('themeSliderTrack');
 
             // =========================================
-            // 5. HIDDEN TREASURE POPUP
+            // 6. PEARL COLLECTION
+            // =========================================
+            const pearlStrand = document.getElementById('pearlStrand');
+            const pearlCount = 12;
+            const pearls = [];
+
+            for (let i = 0; i < pearlCount; i++) {
+                const pearl = document.createElement('div');
+                pearl.className = 'pearl-item';
+                pearl.innerHTML = '<span class="pearl-shine"></span>';
+                pearlStrand.appendChild(pearl);
+                pearls.push(pearl);
+            }
+
+            // Collect pearls as user scrolls
+            const pearlTrigger = ScrollTrigger.create({
+                trigger: '#pearl-collection',
+                start: 'top bottom',
+                end: 'bottom top',
+                onUpdate: function(self) {
+                    const progress = self.progress;
+                    const count = Math.floor(progress * pearlCount);
+                    for (let i = 0; i < pearlCount; i++) {
+                        if (i < count) {
+                            pearls[i].classList.add('collected');
+                        } else {
+                            pearls[i].classList.remove('collected');
+                        }
+                    }
+                    // Show reveal when all pearls are collected
+                    const reveal = document.getElementById('pearlReveal');
+                    if (count >= pearlCount) {
+                        reveal.classList.add('visible');
+                    } else {
+                        reveal.classList.remove('visible');
+                    }
+                }
+            });
+
+            // =========================================
+            // 7. HIDDEN TREASURE POPUP
             // =========================================
             window.showTreasurePopup = function(el) {
                 const popup = el.querySelector('.treasure-popup');
@@ -1830,7 +2307,7 @@
             };
 
             // =========================================
-            // 6. WAITLIST FORM (Connected to Formspree)
+            // 8. WAITLIST FORM
             // =========================================
             const waitlistForm = document.getElementById('waitlist-form');
             if (waitlistForm) {
@@ -1875,7 +2352,7 @@
             }
 
             // =========================================
-            // 7. INQUIRY FORM
+            // 9. INQUIRY FORM
             // =========================================
             const form = document.getElementById('inquiry-form');
             if (form) {
