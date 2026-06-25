@@ -74,16 +74,6 @@
             font-weight: 400;
         }
 
-        .chapter-number {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #6a5a7a;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 0.3rem;
-            font-weight: 400;
-        }
-
         .container {
             max-width: 1100px;
             width: 92%;
@@ -332,36 +322,147 @@
             display: flex;
             gap: 1.5rem;
             width: max-content;
-            animation: slideTreasures 40s linear infinite;
-        }
-
-        .slider-track:hover {
-            animation-play-state: paused;
+            padding: 0.5rem 0;
+            will-change: transform;
         }
 
         .treasure-card {
-            flex: 0 0 220px;
-            padding: 1.5rem 1rem;
+            flex: 0 0 auto;
+            padding: 1.5rem 1.2rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.12);
-            border: 2px solid rgba(45, 42, 58, 0.06) !important;
-            transform: rotate(var(--rot, 0deg));
-            transition: transform 0.3s ease, background 0.3s ease;
+            background: rgba(255, 248, 240, 0.3);
+            border: 2px solid rgba(45, 42, 58, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
+            max-width: 200px;
+            position: relative;
         }
 
-        .treasure-card:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: rotate(0deg) scale(1.03) !important;
+        .treasure-card.map {
+            background: linear-gradient(135deg, #f5e6c8, #e8d5b0);
+            border-color: #c4a882;
+            border-style: solid;
+            transform: rotate(var(--rot, 2deg));
+            padding: 1.8rem 1.2rem;
+            min-height: 180px;
+            border-radius: 4px 12px 4px 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .treasure-card.map::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px dashed rgba(139, 108, 158, 0.08);
+            pointer-events: none;
+            border-radius: 2px 10px 2px 10px;
+        }
+
+        .treasure-card.shell {
+            background: rgba(255, 230, 220, 0.25);
+            border-color: rgba(200, 160, 150, 0.2);
+            border-radius: 50% 50% 40% 40% / 60% 60% 30% 30%;
+            min-height: 170px;
+            max-width: 180px;
+            transform: rotate(var(--rot, -3deg));
+            border-width: 2px;
+            border-style: solid;
+        }
+
+        .treasure-card.bottle {
+            background: rgba(200, 230, 240, 0.15);
+            border-color: rgba(150, 200, 210, 0.2);
+            border-radius: 30% 30% 15% 15% / 40% 40% 20% 20%;
+            min-height: 200px;
+            max-width: 140px;
+            transform: rotate(var(--rot, 4deg));
+            border-width: 2px;
+            border-style: solid;
+            padding: 2rem 0.8rem;
+        }
+        .treasure-card.bottle::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            height: 12px;
+            border: 2px solid rgba(150, 200, 210, 0.15);
+            border-radius: 50%;
+        }
+
+        .treasure-card.pearl {
+            background: radial-gradient(circle at 35% 35%, #f5f0f8, #d8cce0);
+            border-color: rgba(180, 160, 190, 0.15);
+            border-radius: 50%;
+            min-height: 150px;
+            max-width: 150px;
+            padding: 1.2rem;
+            transform: rotate(var(--rot, 0deg));
+            border-width: 2px;
+            border-style: solid;
+            box-shadow: inset 0 -8px 20px rgba(139, 108, 158, 0.05);
+        }
+        .treasure-card.pearl .pearl-shine {
+            position: absolute;
+            top: 15%;
+            left: 20%;
+            width: 25%;
+            height: 12%;
+            background: radial-gradient(ellipse, rgba(255, 255, 255, 0.5), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .treasure-card.postcard {
+            background: rgba(255, 248, 240, 0.25);
+            border-color: rgba(180, 160, 150, 0.15);
+            border-radius: 4px;
+            min-height: 150px;
+            max-width: 200px;
+            transform: rotate(var(--rot, -2deg));
+            border-width: 2px;
+            border-style: solid;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+        .treasure-card.postcard::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(139, 108, 158, 0.05);
+        }
+        .treasure-card.postcard::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(139, 108, 158, 0.05);
         }
 
         .treasure-card .tc-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             display: block;
             margin-bottom: 0.2rem;
+            line-height: 1;
+            opacity: 0.7;
         }
 
         .treasure-card h4 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: #2d2a3a;
             text-transform: uppercase;
@@ -369,50 +470,77 @@
         }
 
         .treasure-card p {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #4a4a5a;
             font-weight: 400;
             margin-top: 0.1rem;
+            max-width: 90%;
         }
 
-        @keyframes slideTreasures {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+        /* ---------- SKETCHBOOK ---------- */
+        .sketchbook-section {
+            padding: 1.5rem 0;
         }
 
-        /* ---------- DREAM THEMES SLIDER ---------- */
-        .theme-card {
-            flex: 0 0 170px;
+        .sketchbook-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .sketch-card {
             padding: 1.2rem 0.8rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px dashed rgba(45, 42, 58, 0.12) !important;
+            background: rgba(255, 248, 240, 0.15);
+            border: 2px dashed rgba(45, 42, 58, 0.08);
             transform: rotate(var(--rot, 0deg));
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .theme-card:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-style: solid !important;
-            transform: rotate(0deg) scale(1.04) !important;
+        .sketch-card:hover {
+            background: rgba(255, 248, 240, 0.25);
+            border-style: solid;
+            transform: rotate(0deg) scale(1.02);
         }
 
-        .theme-card .tc-icon {
-            font-size: 2.5rem;
+        .sketch-card .sketch-pencil {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            font-size: 1.2rem;
+            opacity: 0.25;
+            transform: rotate(20deg);
+        }
+
+        .sketch-card .sketch-icon {
+            font-size: 2.2rem;
             display: block;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.1rem;
+            opacity: 0.7;
         }
 
-        .theme-card h4 {
+        .sketch-card h4 {
             font-size: 0.8rem;
             font-weight: 600;
             color: #2d2a3a;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+        }
+
+        .sketch-card .sketch-note {
+            font-size: 0.55rem;
+            color: #6a5a7a;
+            font-style: italic;
+            margin-top: 0.1rem;
+            opacity: 0.5;
         }
 
         /* ---------- MORE THAN PARTY DECOR ---------- */
@@ -436,9 +564,10 @@
         }
 
         .masonry-item .masonry-icon {
-            font-size: 2.2rem;
+            font-size: 2rem;
             display: block;
             margin-bottom: 0.2rem;
+            opacity: 0.7;
         }
 
         .masonry-item h4 {
@@ -456,48 +585,7 @@
             margin-top: 0.1rem;
         }
 
-        /* ---------- WHY CHOOSE ---------- */
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .why-item {
-            padding: 2rem 1.5rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.12);
-            border-bottom: 4px solid rgba(45, 42, 58, 0.05) !important;
-            transition: transform 0.2s ease;
-        }
-
-        .why-item:hover {
-            transform: translateY(-4px);
-            border-bottom-color: #69DBD3 !important;
-        }
-
-        .why-item .wi-icon {
-            font-size: 2.4rem;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-
-        .why-item h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #2d2a3a;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .why-item p {
-            font-size: 0.8rem;
-            color: #3a3a4a;
-            font-weight: 400;
-            line-height: 1.4;
-        }
-
-        /* ---------- JOURNAL / MY TAIL ---------- */
+        /* ---------- JOURNAL ---------- */
         .journal {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -542,7 +630,7 @@
         .journal-shell {
             position: absolute;
             font-size: 1.8rem;
-            opacity: 0.15;
+            opacity: 0.12;
         }
 
         .journal-shell-1 {
@@ -554,12 +642,6 @@
             bottom: -10px;
             right: -10px;
             transform: rotate(30deg);
-        }
-        .journal-shell-3 {
-            top: 50%;
-            right: -20px;
-            transform: rotate(45deg);
-            font-size: 1.2rem;
         }
 
         .journal-text {
@@ -592,6 +674,11 @@
             margin-bottom: 1rem;
         }
 
+        .journal-text .journal-story .story-highlight {
+            color: #8B6C9E;
+            font-weight: 500;
+        }
+
         .journal-text .journal-signoff {
             font-size: 1.2rem;
             color: #8B6C9E;
@@ -616,6 +703,7 @@
             font-size: 1.4rem;
             display: block;
             margin-bottom: 0.1rem;
+            opacity: 0.7;
         }
 
         .journal-text .journal-feature h4 {
@@ -652,9 +740,10 @@
         }
 
         .addon-card .addon-icon {
-            font-size: 2.8rem;
+            font-size: 2.4rem;
             display: block;
             margin-bottom: 0.3rem;
+            opacity: 0.7;
         }
 
         .addon-card h3 {
@@ -696,7 +785,7 @@
             background: rgba(255, 255, 255, 0.15);
             border: 2px solid #2d2a3a !important;
             max-width: 650px;
-            margin: 2rem auto 0; /* Added top margin to fix overlap */
+            margin: 2rem auto 0;
         }
 
         .waitlist-card h3 {
@@ -781,7 +870,7 @@
             font-size: 1.8rem;
             display: block;
             margin-bottom: 0.2rem;
-            opacity: 0.4;
+            opacity: 0.3;
         }
 
         .ig-placeholder p {
@@ -1022,12 +1111,16 @@
         /* ===== MERMOMMY TAIL (MotionPath Guide) ===== */
         #mermommy-tail {
             position: fixed;
-            width: 50px;
-            height: 50px;
+            width: 56px;
+            height: 56px;
             z-index: 999;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.8s ease;
+            /* Ensure it starts from visible area */
+            top: 10%;
+            left: 10%;
+            /* Will be overridden by motion path */
         }
 
         #mermommy-tail.visible {
@@ -1037,7 +1130,9 @@
         #mermommy-tail svg {
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 4px 16px rgba(139, 108, 158, 0.15));
+            filter: drop-shadow(0 4px 20px rgba(139, 108, 158, 0.2));
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
         }
 
         /* Hidden motion path */
@@ -1052,8 +1147,9 @@
         /* ===== PEARL COLLECTION ===== */
         .pearl-collection {
             position: relative;
-            padding: 1.5rem 0;
+            padding: 2rem 0 3rem;
             text-align: center;
+            min-height: 350px;
         }
 
         .pearl-strand {
@@ -1061,19 +1157,19 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             min-height: 60px;
         }
 
         .pearl-item {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: radial-gradient(circle at 30% 30%, #f0e8f5, #c0b0d0);
             border: 2px solid rgba(45, 42, 58, 0.1);
-            opacity: 0;
-            transform: scale(0.5);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0.15;
+            transform: scale(0.7);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             box-shadow: 0 2px 8px rgba(139, 108, 158, 0.1);
         }
 
@@ -1088,16 +1184,18 @@
             height: 8px;
             background: rgba(255, 255, 255, 0.4);
             border-radius: 50%;
-            margin: 4px auto 0;
+            margin: 5px auto 0;
         }
 
         .pearl-reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-            padding: 1.5rem;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            padding: 2rem 1.5rem;
             background: rgba(255, 255, 255, 0.15);
             border: 2px solid rgba(45, 42, 58, 0.05);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .pearl-reveal.visible {
@@ -1106,7 +1204,7 @@
         }
 
         .pearl-reveal h3 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #2d2a3a;
             margin-bottom: 0.3rem;
@@ -1117,7 +1215,27 @@
         .pearl-reveal p {
             color: #3a3a4a;
             font-weight: 400;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pearl-reveal .guide-btn {
+            display: inline-block;
+            background: #2d2a3a;
+            color: #fff;
+            padding: 0.8rem 2.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid #2d2a3a;
+            transition: background 0.2s ease;
+            font-family: 'Fredoka', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 0;
+        }
+
+        .pearl-reveal .guide-btn:hover {
+            background: #8B6C9E;
+            border-color: #8B6C9E;
         }
 
         /* ---------- FOOTER & TRUST BAR ---------- */
@@ -1303,7 +1421,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* ===== PARTICLES ===== */
+        /* ===== PARTICLES (BUBBLES + SPARKLES) ===== */
         .sky-decor {
             position: fixed;
             top: 0;
@@ -1318,20 +1436,24 @@
         .bubble-el {
             position: absolute;
             border-radius: 50%;
-            background: rgba(139, 108, 158, 0.05);
-            border: 1px solid rgba(139, 108, 158, 0.06);
+            background: radial-gradient(circle at 30% 30%, rgba(200, 230, 240, 0.25), rgba(160, 200, 210, 0.08));
+            border: 1px solid rgba(160, 200, 210, 0.15);
             bottom: -30px;
             pointer-events: none;
+            box-shadow: inset 0 -4px 10px rgba(255, 255, 255, 0.1);
+            will-change: transform;
         }
 
         .sparkle-el {
             position: absolute;
             bottom: -30px;
             pointer-events: none;
-            font-size: 16px;
-            opacity: 0.4;
+            font-size: 14px;
+            opacity: 0.25;
             line-height: 1;
             color: #F5D442;
+            text-shadow: 0 0 12px rgba(245, 212, 66, 0.15);
+            will-change: transform;
         }
 
         /* ---------- RESPONSIVE ---------- */
@@ -1342,10 +1464,10 @@
             .masonry-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .why-grid {
+            .addon-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .addon-grid {
+            .sketchbook-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .journal {
@@ -1386,8 +1508,8 @@
                 max-width: 220px;
             }
             #mermommy-tail {
-                width: 40px;
-                height: 40px;
+                width: 48px;
+                height: 48px;
             }
         }
 
@@ -1406,10 +1528,12 @@
             .masonry-grid {
                 grid-template-columns: 1fr;
             }
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
             .addon-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .sketchbook-grid {
                 grid-template-columns: 1fr;
                 max-width: 400px;
                 margin: 0 auto;
@@ -1467,8 +1591,8 @@
                 display: none;
             }
             #mermommy-tail {
-                width: 32px;
-                height: 32px;
+                width: 40px;
+                height: 40px;
             }
         }
 
@@ -1489,8 +1613,8 @@
                 max-width: 160px;
             }
             #mermommy-tail {
-                width: 28px;
-                height: 28px;
+                width: 36px;
+                height: 36px;
             }
         }
     </style>
@@ -1503,14 +1627,12 @@
     <!-- ===== MERMOMMY TAIL (MotionPath Guide) ===== -->
     <div id="mermommy-tail">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Mermaid Tail SVG -->
             <path d="M50 10 C45 10 38 18 34 30 C30 42 28 55 30 65 C32 72 36 78 40 82 C44 86 48 88 50 90 C52 88 56 86 60 82 C64 78 68 72 70 65 C72 55 70 42 66 30 C62 18 55 10 50 10Z"
             fill="rgba(139,108,158,0.6)" stroke="rgba(139,108,158,0.2)" stroke-width="1.5"/>
             <path d="M30 65 C20 72 12 82 10 90 C8 96 12 100 18 98 C24 96 32 88 36 80"
             fill="rgba(139,108,158,0.4)" stroke="rgba(139,108,158,0.15)" stroke-width="1"/>
             <path d="M70 65 C80 72 88 82 90 90 C92 96 88 100 82 98 C76 96 68 88 64 80"
             fill="rgba(139,108,158,0.4)" stroke="rgba(139,108,158,0.15)" stroke-width="1"/>
-            <!-- Tiny sparkles on tail -->
             <text x="75" y="20" font-size="8" fill="rgba(139,108,158,0.3)">✦</text>
             <text x="15" y="45" font-size="7" fill="rgba(139,108,158,0.2)">✦</text>
         </svg>
@@ -1560,12 +1682,11 @@
             </p>
         </section>
 
-        <!-- ===== FOUNDING FAMILIES ===== -->
+        <!-- ===== JOIN OUR FIRST ADVENTURES ===== -->
         <section class="founding-card" id="founding">
-            <h2>Founding Families Program</h2>
+            <h2>Join Our First Adventures</h2>
             <p>
-                MerMommy Creations is preparing for our official launch. We're currently accepting a limited number
-                of founding families who would like to help us bring our first season of magical celebrations to life.
+                We're inviting a small group of families to be among the very first to experience a MerMommy celebration. As a founding MerFriend, you'll help shape our first season of magical parties.
             </p>
             <div class="founding-benefits">
                 <div class="founding-benefit"><span>💰</span>Launch Pricing</div>
@@ -1650,11 +1771,11 @@
             <div style="text-align:center;margin-top:1.5rem;">
                 <span class="hidden-treasure" onclick="showTreasurePopup(this)">
                     🪸
-                    <span class="treasure-popup">✨ You found a magic pearl! ✨</span>
+                    <span class="treasure-popup">✦ You found a magic pearl! ✦</span>
                 </span>
                 <span class="hidden-treasure" onclick="showTreasurePopup(this)">
                     ⭐
-                    <span class="treasure-popup">🌟 A wish upon a star! 🌟</span>
+                    <span class="treasure-popup">✦ A wish upon a star! ✦</span>
                 </span>
             </div>
             <!-- Included note -->
@@ -1665,40 +1786,81 @@
             </div>
         </section>
 
-        <!-- ===== DREAM THEMES SLIDER ===== -->
-        <section class="section slider-section" id="dream-themes">
-            <div class="slider-track" id="themeSliderTrack">
-                <div class="theme-card" style="--rot:-1.5deg"><span class="tc-icon">🦩</span><h4>Flamingo</h4></div>
-                <div class="theme-card" style="--rot:2deg"><span class="tc-icon">🍉</span><h4>Watermelon</h4></div>
-                <div class="theme-card" style="--rot:-1deg"><span class="tc-icon">🍍</span><h4>Pineapple</h4></div>
-                <div class="theme-card" style="--rot:1.8deg"><span class="tc-icon">🌮</span><h4>Taco</h4></div>
-                <div class="theme-card" style="--rot:-2deg"><span class="tc-icon">❄️</span><h4>Frozen</h4></div>
-                <div class="theme-card" style="--rot:0.5deg"><span class="tc-icon">🌸</span><h4>Enchanted Garden</h4></div>
-                <div class="theme-card" style="--rot:-1.2deg"><span class="tc-icon">🧑‍🌾</span><h4>Farmers Market</h4></div>
-                <div class="theme-card" style="--rot:1.5deg"><span class="tc-icon">🦌</span><h4>Little Deer</h4></div>
-                <div class="theme-card" style="--rot:-0.8deg"><span class="tc-icon">🌈</span><h4>Rainbow</h4></div>
-                <div class="theme-card" style="--rot:1deg"><span class="tc-icon">👶</span><h4>Baby Shower</h4></div>
-                <div class="theme-card" style="--rot:-1.8deg"><span class="tc-icon">💍</span><h4>Bridal Shower</h4></div>
+        <!-- ===== MERMOMMY'S SKETCHBOOK ===== -->
+        <section class="section sketchbook-section" id="sketchbook">
+            <div class="chapter-divider">✦ In The Sketchbook ✦</div>
+            <h2 class="chapter-title">Coming Up From The Deep...</h2>
+            <p class="chapter-sub">Concepts we're dreaming up, sketching out, and bringing to life.</p>
+            <div class="sketchbook-grid">
+                <div class="sketch-card" style="--rot:-1.5deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🦄</span><h4>Unicorn Garden</h4><span class="sketch-note">mood board</span></div>
+                <div class="sketch-card" style="--rot:2deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🌸</span><h4>Fairy Forest</h4><span class="sketch-note">sketch</span></div>
+                <div class="sketch-card" style="--rot:-1deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🪩</span><h4>Disco Dream</h4><span class="sketch-note">concept</span></div>
+                <div class="sketch-card" style="--rot:1.8deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🧚</span><h4>Enchanted Tea Party</h4><span class="sketch-note">mood board</span></div>
+                <div class="sketch-card" style="--rot:-0.8deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🚀</span><h4>Space Explorer</h4><span class="sketch-note">sketch</span></div>
+                <div class="sketch-card" style="--rot:1.2deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🎪</span><h4>Vintage Carnival</h4><span class="sketch-note">concept</span></div>
+                <div class="sketch-card" style="--rot:-1.2deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🌿</span><h4>Enchanted Garden</h4><span class="sketch-note">mood board</span></div>
+                <div class="sketch-card" style="--rot:0.5deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🦌</span><h4>Little Deer</h4><span class="sketch-note">sketch</span></div>
             </div>
-            <p style="text-align:center;margin-top:0.8rem;color:#6a5a7a;font-size:0.7rem;opacity:0.6;font-weight:400;">More adventures drifting in from the deep...</p>
+            <p style="text-align:center;margin-top:1.5rem;color:#6a5a7a;font-size:0.8rem;font-style:italic;opacity:0.6;">✧ More sketches appearing every week ✧</p>
         </section>
 
-        <!-- ===== CHAPTER 3: TREASURES FOUND IN EVERY ADVENTURE ===== -->
+        <!-- ===== CHAPTER 3: A LITTLE EXTRA MAGIC ===== -->
         <div class="chapter-divider">✦ Chapter Three ✦</div>
         <section class="section slider-section" id="treasures">
-            <h2 class="chapter-title">Treasures Found In Every Adventure</h2>
-            <p class="chapter-sub">Each celebration is filled with magical discoveries waiting to be found.</p>
+            <h2 class="chapter-title">A Little Extra Magic</h2>
+            <p class="chapter-sub">Every celebration is filled with small wonders waiting to be discovered.</p>
             <div class="slider-track" id="sliderTrack">
-                <div class="treasure-card" style="--rot:-2deg"><span class="tc-icon">🫧</span><h4>Personalized Details</h4><p>Every little touch tells your story</p></div>
-                <div class="treasure-card" style="--rot:1.5deg"><span class="tc-icon">✨</span><h4>Magical Touches</h4><p>Little moments that sparkle</p></div>
-                <div class="treasure-card" style="--rot:-1deg"><span class="tc-icon">🎨</span><h4>Creative Styling</h4><p>Artful design that delights</p></div>
-                <div class="treasure-card" style="--rot:2deg"><span class="tc-icon">📸</span><h4>Memory-Making</h4><p>Moments you'll treasure forever</p></div>
-                <div class="treasure-card" style="--rot:-1.5deg"><span class="tc-icon">🎁</span><h4>Surprise Elements</h4><p>Unexpected moments of joy</p></div>
-                <div class="treasure-card" style="--rot:1deg"><span class="tc-icon">💜</span><h4>Mom-Approved Planning</h4><p>Designed with love and care</p></div>
-                <div class="treasure-card" style="--rot:-2.5deg"><span class="tc-icon">🌊</span><h4>Stress-Free Setup</h4><p>We arrive early and build the magic</p></div>
-                <div class="treasure-card" style="--rot:1.8deg"><span class="tc-icon">🧜</span><h4>Signature MerMommy Magic</h4><p>That special something only we bring</p></div>
+                <!-- Treasure Map -->
+                <div class="treasure-card map" style="--rot:2deg">
+                    <span class="tc-icon">🗺️</span>
+                    <h4>Personalized Details</h4>
+                    <p>Every little touch tells your story</p>
+                </div>
+                <!-- Shell -->
+                <div class="treasure-card shell" style="--rot:-3deg">
+                    <span class="tc-icon">🐚</span>
+                    <h4>Magical Touches</h4>
+                    <p>Little moments that sparkle</p>
+                </div>
+                <!-- Message Bottle -->
+                <div class="treasure-card bottle" style="--rot:4deg">
+                    <span class="tc-icon">🍾</span>
+                    <h4>Creative Styling</h4>
+                    <p>Artful design that delights</p>
+                </div>
+                <!-- Pearl -->
+                <div class="treasure-card pearl" style="--rot:0deg">
+                    <span class="pearl-shine"></span>
+                    <span class="tc-icon">🪸</span>
+                    <h4>Memory-Making</h4>
+                    <p>Moments you'll treasure forever</p>
+                </div>
+                <!-- Postcard -->
+                <div class="treasure-card postcard" style="--rot:-2deg">
+                    <span class="tc-icon">📮</span>
+                    <h4>Surprise Elements</h4>
+                    <p>Unexpected moments of joy</p>
+                </div>
+                <!-- Treasure Map -->
+                <div class="treasure-card map" style="--rot:-1.5deg">
+                    <span class="tc-icon">🗺️</span>
+                    <h4>Mom-Approved Planning</h4>
+                    <p>Designed with love and care</p>
+                </div>
+                <!-- Shell -->
+                <div class="treasure-card shell" style="--rot:2.5deg">
+                    <span class="tc-icon">🐚</span>
+                    <h4>Stress-Free Setup</h4>
+                    <p>We arrive early and build the magic</p>
+                </div>
+                <!-- Message Bottle -->
+                <div class="treasure-card bottle" style="--rot:-3.5deg">
+                    <span class="tc-icon">🍾</span>
+                    <h4>Signature MerMommy Magic</h4>
+                    <p>That special something only we bring</p>
+                </div>
             </div>
-            <p style="text-align:center;margin-top:0.8rem;color:#6a5a7a;font-size:0.7rem;opacity:0.6;font-weight:400;">Hover to pause • Let the treasures drift by</p>
+            <p style="text-align:center;margin-top:1rem;color:#6a5a7a;font-size:0.7rem;opacity:0.5;font-style:italic;">✦ Each treasure holds a little piece of the magic ✦</p>
         </section>
 
         <!-- ===== MORE THAN PARTY DECOR ===== -->
@@ -1747,7 +1909,7 @@
             </div>
         </section>
 
-        <!-- ===== CHAPTER 5: JOIN OUR JOURNEY (My Tail / Journal) ===== -->
+        <!-- ===== CHAPTER 5: JOIN OUR JOURNEY ===== -->
         <div class="chapter-divider">✦ Chapter Five ✦</div>
         <section class="section" id="tail">
             <h2 class="chapter-title" style="margin-bottom:1rem;">My Tail</h2>
@@ -1755,18 +1917,19 @@
                 <div class="journal-illustration">
                     <span class="journal-shell journal-shell-1">🐚</span>
                     <span class="journal-shell journal-shell-2">🪸</span>
-                    <span class="journal-shell journal-shell-3">✦</span>
                     <img src="images/mommy.png" alt="Kayte - MerMommy" class="journal-image" loading="lazy" />
                 </div>
                 <div class="journal-text">
                     <p class="journal-greeting">Dear Friends,</p>
                     <p class="journal-tagline">"I show up like a friend, plan like a pro, and care like a mom."</p>
                     <p class="journal-story">
-                        I've always believed childhood should feel magical. As a mom and creative at heart,
-                        I've turned my passion for party curation into a full-service experience that takes the
-                        stress off your shoulders and puts the joy front and center. From themed wardrobes that
-                        bring your vision to life to custom-made shirts for every little guest, I pour my heart
-                        into every detail so you can soak in every moment.
+                        I've always been the person who couldn't stop adding <span class="story-highlight">one more special detail</span>.
+                        One more sign. One more decoration. One more surprise.
+                        <br /><br />
+                        Because the <span class="story-highlight">little things</span> become the memories.
+                        And childhood moves so fast.
+                        <br /><br />
+                        So I started MerMommy to help families slow down, be present, and enjoy the moments that matter most. Every celebration is a chance to create something beautiful, together.
                     </p>
                     <p class="journal-signoff">With love,<br />Kayte</p>
                     <div class="journal-features">
@@ -1792,7 +1955,7 @@
             <div style="text-align:center;margin-top:1rem;">
                 <span class="hidden-treasure" onclick="showTreasurePopup(this)">
                     ⭐
-                    <span class="treasure-popup">🌟 Every star is a wish waiting to come true! 🌟</span>
+                    <span class="treasure-popup">✦ Every star is a wish waiting to come true ✦</span>
                 </span>
             </div>
         </section>
@@ -1851,7 +2014,7 @@
             <div style="text-align:center;margin-top:1rem;">
                 <span class="hidden-treasure" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}); showTreasurePopup(this);">
                     🗝️
-                    <span class="treasure-popup">🗺️ Follow the map to join our launch list! 🗺️</span>
+                    <span class="treasure-popup">✦ Follow the map to join our launch list ✦</span>
                 </span>
             </div>
         </section>
@@ -1865,7 +2028,7 @@
                 <div class="pearl-reveal" id="pearlReveal">
                     <h3>You've Discovered Every Pearl</h3>
                     <p>Ready to create your own magical adventure? <span class="highlight">Seas the day</span> and let's make it happen!</p>
-                    <a href="#contact" class="guide-btn" style="display:inline-block;background:#2d2a3a;color:#fff;padding:0.7rem 2.5rem;text-decoration:none;font-weight:700;border:2px solid #2d2a3a;font-family:'Fredoka',sans-serif;text-transform:uppercase;letter-spacing:1px;">Let's Begin</a>
+                    <a href="#contact" class="guide-btn">Let's Begin</a>
                 </div>
             </div>
         </section>
@@ -2074,7 +2237,7 @@
                 '#banner',
                 '#founding',
                 '.poster-card',
-                '#dream-themes',
+                '#sketchbook',
                 '#treasures',
                 '#more-than-decor .masonry-item',
                 '#how-it-works .wave-step',
@@ -2084,6 +2247,7 @@
                 '#instagram .ig-placeholder',
                 '.contact-card',
                 '#guide .guide-cta',
+                '#pearl-collection',
             ];
 
             sections.forEach(function(sel) {
@@ -2102,7 +2266,7 @@
             });
 
             // =========================================
-            // 3. MERMOMMY TAIL - MOTION PATH
+            // 3. MERMOMMY TAIL - MOTION PATH WITH SWISH
             // =========================================
             const tail = document.getElementById('mermommy-tail');
             const oceanPath = document.getElementById('oceanPath');
@@ -2131,7 +2295,7 @@
                     }
                 });
 
-                // Waypoint effects for sections
+                // Waypoint effects for sections (swish)
                 const waypoints = [
                     { trigger: '#adventure', label: 'Adventures' },
                     { trigger: '#treasures', label: 'Treasures' },
@@ -2145,68 +2309,79 @@
                         start: 'top center',
                         onEnter: function() {
                             gsap.to(tail, {
-                                scale: 1.3,
-                                duration: 0.5,
-                                ease: 'back.out(1.7)',
+                                x: '+=20',
+                                duration: 0.15,
+                                yoyo: true,
+                                repeat: 3,
+                                ease: 'power1.inOut',
                                 onComplete: function() {
-                                    gsap.to(tail, {
-                                        scale: 1,
-                                        duration: 0.4,
-                                        ease: 'power2.out'
-                                    });
+                                    gsap.set(tail, { x: 0 });
                                 }
+                            });
+                            gsap.to(tail, {
+                                scale: 1.15,
+                                duration: 0.2,
+                                yoyo: true,
+                                repeat: 1,
+                                ease: 'power2.out',
                             });
                         }
                     });
                 });
 
-                // Loop animation when entering My Tail section
-                ScrollTrigger.create({
-                    trigger: '#tail',
-                    start: 'top center',
-                    onEnter: function() {
-                        gsap.to(tail, {
-                            rotation: 360,
-                            duration: 1.2,
-                            ease: 'power2.inOut',
-                            onComplete: function() {
-                                gsap.set(tail, { rotation: 0 });
-                            }
-                        });
-                    }
-                });
-
-                // Circle effect when entering Sea Shell Spa
+                // Sea Shell Spa - gentle swim around
                 ScrollTrigger.create({
                     trigger: '.card-mermaid',
                     start: 'top center',
                     onEnter: function() {
                         gsap.to(tail, {
-                            rotation: 720,
-                            duration: 1.5,
+                            x: '-=15',
+                            duration: 0.2,
+                            yoyo: true,
+                            repeat: 2,
                             ease: 'power1.inOut',
                             onComplete: function() {
-                                gsap.set(tail, { rotation: 0 });
+                                gsap.set(tail, { x: 0 });
+                            }
+                        });
+                        gsap.to(tail, {
+                            y: '-=10',
+                            duration: 0.15,
+                            yoyo: true,
+                            repeat: 2,
+                            ease: 'power1.inOut',
+                            onComplete: function() {
+                                gsap.set(tail, { y: 0 });
                             }
                         });
                     }
                 });
 
-                // Tail pulse at contact
+                // Contact section pulse
                 ScrollTrigger.create({
                     trigger: '#contact',
                     start: 'top center',
                     onEnter: function() {
                         gsap.to(tail, {
-                            scale: 0.5,
-                            duration: 0.6,
+                            scale: 0.7,
+                            duration: 0.3,
                             ease: 'back.inOut(1.7)',
                             onComplete: function() {
                                 gsap.to(tail, {
                                     scale: 1,
-                                    duration: 0.4,
+                                    duration: 0.3,
                                     ease: 'power2.out'
                                 });
+                            }
+                        });
+                        gsap.to(tail, {
+                            x: '+=15',
+                            duration: 0.15,
+                            yoyo: true,
+                            repeat: 2,
+                            ease: 'power1.inOut',
+                            onComplete: function() {
+                                gsap.set(tail, { x: 0 });
                             }
                         });
                     }
@@ -2214,32 +2389,49 @@
             }
 
             // =========================================
-            // 4. PARTICLES (Bubbles + ✨)
+            // 4. PARTICLES: BUBBLES (more visible) + SPARKLES
             // =========================================
             const decorContainer = document.getElementById('decor-container');
             if (decorContainer) {
-                for (let i = 0; i < 30; i++) {
+                // Create bubbles
+                for (let i = 0; i < 22; i++) {
                     const el = document.createElement('div');
-                    const isSparkle = Math.random() > 0.6;
-                    if (isSparkle) {
-                        el.className = 'sparkle-el';
-                        el.textContent = '✨';
-                        const size = Math.random() * 14 + 16;
-                        el.style.fontSize = size + 'px';
-                        el.style.opacity = 0.3 + Math.random() * 0.4;
-                    } else {
-                        el.className = 'bubble-el';
-                        const size = Math.random() * 14 + 6;
-                        el.style.width = size + 'px';
-                        el.style.height = size + 'px';
-                    }
+                    el.className = 'bubble-el';
+                    const size = Math.random() * 24 + 10;
+                    el.style.width = size + 'px';
+                    el.style.height = size + 'px';
+                    el.style.left = Math.random() * 100 + 'vw';
+                    el.style.opacity = 0.2 + Math.random() * 0.25;
+                    el.style.background = `radial-gradient(circle at 30% 30%, 
+                        rgba(200, 230, 240, ${0.2 + Math.random() * 0.15}), 
+                        rgba(160, 200, 210, 0.05))`;
+                    decorContainer.appendChild(el);
+
+                    gsap.to(el, {
+                        y: -(window.innerHeight + 150),
+                        x: '+= ' + (Math.random() * 60 - 30),
+                        duration: Math.random() * 20 + 14,
+                        repeat: -1,
+                        delay: Math.random() * 18,
+                        ease: 'none',
+                    });
+                }
+
+                // Create sparkles
+                for (let i = 0; i < 14; i++) {
+                    const el = document.createElement('div');
+                    el.className = 'sparkle-el';
+                    el.textContent = '✦';
+                    const size = Math.random() * 12 + 12;
+                    el.style.fontSize = size + 'px';
+                    el.style.opacity = 0.15 + Math.random() * 0.2;
                     el.style.left = Math.random() * 100 + 'vw';
                     decorContainer.appendChild(el);
 
                     gsap.to(el, {
-                        y: -(window.innerHeight + 100),
+                        y: -(window.innerHeight + 150),
                         x: '+= ' + (Math.random() * 80 - 40),
-                        duration: Math.random() * 18 + 14,
+                        duration: Math.random() * 22 + 16,
                         repeat: -1,
                         delay: Math.random() * 20,
                         ease: 'none',
@@ -2248,17 +2440,48 @@
             }
 
             // =========================================
-            // 5. INFINITE SLIDERS
+            // 5. GSAP INFINITE SLIDER
             // =========================================
-            function setupSlider(trackId) {
-                const track = document.getElementById(trackId);
-                if (track) {
-                    const items = track.innerHTML;
-                    track.innerHTML = items + items + items;
+            const sliderTrack = document.getElementById('sliderTrack');
+            if (sliderTrack) {
+                const items = sliderTrack.querySelectorAll('.treasure-card');
+                const clones = items.length;
+                for (let i = 0; i < clones; i++) {
+                    const clone = items[i].cloneNode(true);
+                    sliderTrack.appendChild(clone);
                 }
+
+                let tl = gsap.timeline({
+                    repeat: -1,
+                    ease: 'none',
+                });
+
+                const duration = 30;
+                const distance = sliderTrack.scrollWidth / 2;
+
+                tl.to(sliderTrack, {
+                    x: -distance,
+                    duration: duration,
+                    ease: 'none',
+                    modifiers: {
+                        x: function(x) {
+                            const pos = parseFloat(x);
+                            if (pos <= -distance) {
+                                gsap.set(sliderTrack, { x: 0 });
+                                return 0;
+                            }
+                            return pos;
+                        }
+                    }
+                });
+
+                sliderTrack.addEventListener('mouseenter', function() {
+                    tl.pause();
+                });
+                sliderTrack.addEventListener('mouseleave', function() {
+                    tl.resume();
+                });
             }
-            setupSlider('sliderTrack');
-            setupSlider('themeSliderTrack');
 
             // =========================================
             // 6. PEARL COLLECTION
@@ -2275,14 +2498,17 @@
                 pearls.push(pearl);
             }
 
-            // Collect pearls as user scrolls
+            const reveal = document.getElementById('pearlReveal');
+            let revealed = false;
+
             const pearlTrigger = ScrollTrigger.create({
                 trigger: '#pearl-collection',
-                start: 'top bottom',
-                end: 'bottom top',
+                start: 'top 70%',
+                end: 'bottom 30%',
                 onUpdate: function(self) {
                     const progress = self.progress;
-                    const count = Math.floor(progress * pearlCount);
+                    const count = Math.min(Math.floor(progress * pearlCount), pearlCount);
+
                     for (let i = 0; i < pearlCount; i++) {
                         if (i < count) {
                             pearls[i].classList.add('collected');
@@ -2290,12 +2516,27 @@
                             pearls[i].classList.remove('collected');
                         }
                     }
-                    // Show reveal when all pearls are collected
-                    const reveal = document.getElementById('pearlReveal');
-                    if (count >= pearlCount) {
+
+                    if (count >= pearlCount || self.progress > 0.85) {
+                        if (!revealed) {
+                            revealed = true;
+                            reveal.classList.add('visible');
+                        }
+                    }
+                }
+            });
+
+            ScrollTrigger.create({
+                trigger: '#pearl-collection',
+                start: 'bottom bottom',
+                once: true,
+                onEnter: function() {
+                    if (!revealed) {
+                        revealed = true;
+                        for (let i = 0; i < pearlCount; i++) {
+                            pearls[i].classList.add('collected');
+                        }
                         reveal.classList.add('visible');
-                    } else {
-                        reveal.classList.remove('visible');
                     }
                 }
             });
@@ -2402,11 +2643,11 @@
             }
 
             // =========================================
-            // 10. PEARL SECTION VISIBILITY FIX
+            // 10. REFRESH SCROLLTRIGGER
             // =========================================
             setTimeout(function() {
                 ScrollTrigger.refresh();
-            }, 500);
+            }, 800);
 
         });
     </script>
