@@ -77,6 +77,7 @@
         .founding-card,
         .poster-card,
         .treasure-card,
+        .theme-card,
         .masonry-item,
         .why-item,
         .addon-card,
@@ -307,7 +308,7 @@
             text-transform: uppercase;
         }
 
-        /* ---------- INFINITE SLIDER ---------- */
+        /* ---------- DREAM THEMES SLIDER ---------- */
         .slider-section {
             overflow: hidden;
             padding: 1.5rem 0;
@@ -321,6 +322,33 @@
         .slider-track:hover {
             animation-play-state: paused;
         }
+
+        .theme-card {
+            flex: 0 0 180px;
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px dashed #2d2a3a !important;
+            transition: all 0.2s ease;
+        }
+        .theme-card:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-style: solid !important;
+        }
+        .theme-card .tc-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        .theme-card h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2d2a3a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ---------- TREASURE CARDS (Infinite Slider) ---------- */
         .treasure-card {
             flex: 0 0 200px;
             padding: 1.5rem 1rem;
@@ -346,6 +374,7 @@
             font-weight: 300;
             margin-top: 0.1rem;
         }
+
         @keyframes slideTreasures {
             0% {
                 transform: translateX(0);
@@ -440,17 +469,11 @@
             justify-content: center;
             align-items: center;
         }
-        /* === IMAGE SCALED UP === */
         .storybook-illustration .mommy-image {
             max-width: 260px;
             width: 100%;
             height: auto;
             display: block;
-            filter: grayscale(0%);
-            transition: filter 0.3s ease;
-        }
-        .storybook-illustration .mommy-image:hover {
-            filter: grayscale(0%);
         }
         .storybook-text .sb-tagline {
             font-size: 1.2rem;
@@ -926,7 +949,7 @@
             border-bottom-color: #8B6C9E;
         }
 
-        /* --- TRUST BAR (Reorganized & Clean) --- */
+        /* --- TRUST BAR --- */
         .trust-bar {
             max-width: 1100px;
             width: 92%;
@@ -956,7 +979,6 @@
             color: #9a8aaa;
             margin-left: 0.1rem;
         }
-        /* Pipe separators */
         .trust-bar .sep {
             color: #c0b0c0;
             font-weight: 300;
@@ -1216,7 +1238,7 @@
             <p>
                 We've been <span class="highlight">catching the party waves</span> for years,
                 turning everyday celebrations into <span class="highlight">extraordinary memories</span>.
-                Let us <span class="highlight">sail through the details</span> you wish you'd planned for—
+                Let us <span class="highlight">sail through the details</span> you wish you'd planned for,
                 so you can <span class="highlight">swim right into</span> every magical moment.
             </p>
         </section>
@@ -1316,7 +1338,27 @@
             </div>
         </section>
 
-        <!-- ===== INFINITE SLIDER ===== -->
+        <!-- ===== DREAM THEMES SLIDER (New Section) ===== -->
+        <section class="section slider-section" id="dream-themes">
+            <h2 class="section-title">Dreaming Up New Adventures</h2>
+            <p class="section-sub">More magical themes coming soon to a celebration near you.</p>
+            <div class="slider-track" id="themeSliderTrack">
+                <div class="theme-card"><span class="tc-icon">🦩</span><h4>Flamingo</h4></div>
+                <div class="theme-card"><span class="tc-icon">🍉</span><h4>Watermelon</h4></div>
+                <div class="theme-card"><span class="tc-icon">🍍</span><h4>Pineapple</h4></div>
+                <div class="theme-card"><span class="tc-icon">🌮</span><h4>Taco</h4></div>
+                <div class="theme-card"><span class="tc-icon">❄️</span><h4>Frozen</h4></div>
+                <div class="theme-card"><span class="tc-icon">🌸</span><h4>Enchanted Garden</h4></div>
+                <div class="theme-card"><span class="tc-icon">🧑‍🌾</span><h4>Farmers Market</h4></div>
+                <div class="theme-card"><span class="tc-icon">🦌</span><h4>Little Deer</h4></div>
+                <div class="theme-card"><span class="tc-icon">🌈</span><h4>Rainbow</h4></div>
+                <div class="theme-card"><span class="tc-icon">👶</span><h4>Baby Shower</h4></div>
+                <div class="theme-card"><span class="tc-icon">💍</span><h4>Bridal Shower</h4></div>
+            </div>
+            <p style="text-align:center;margin-top:0.8rem;color:#9a8aaa;font-size:0.7rem;opacity:0.6;font-weight:500;">Hover to pause • Let the inspiration drift by</p>
+        </section>
+
+        <!-- ===== INFINITE SLIDER (Treasures) ===== -->
         <section class="section slider-section" id="treasures">
             <h2 class="section-title">Treasures In Every Adventure</h2>
             <p class="section-sub">Each celebration is filled with magical discoveries.</p>
@@ -1646,7 +1688,7 @@
             </div>
         </div>
 
-        <!-- === TRUST BAR (Reorganized & Clean) === -->
+        <!-- === TRUST BAR === -->
         <div class="trust-bar">
             <span class="trust-item"><span class="ti-icon">📍</span> North County San Diego</span>
             <span class="sep">·</span>
@@ -1699,7 +1741,8 @@
                 '#banner',
                 '#founding',
                 '.poster-card',
-                '.slider-section',
+                '#dream-themes',
+                '#treasures',
                 '#more-than-decor .masonry-item',
                 '#why-choose .why-item',
                 '#tail .storybook',
@@ -1761,13 +1804,17 @@
             }
 
             // =========================================
-            // 4. INFINITE SLIDER
+            // 4. INFINITE SLIDERS
             // =========================================
-            const track = document.getElementById('sliderTrack');
-            if (track) {
-                const items = track.innerHTML;
-                track.innerHTML = items + items + items;
+            function setupSlider(trackId) {
+                const track = document.getElementById(trackId);
+                if (track) {
+                    const items = track.innerHTML;
+                    track.innerHTML = items + items + items;
+                }
             }
+            setupSlider('sliderTrack');
+            setupSlider('themeSliderTrack');
 
             // =========================================
             // 5. HIDDEN TREASURE POPUP
@@ -1783,7 +1830,7 @@
             };
 
             // =========================================
-            // 6. WAITLIST FORM (Now connected to Formspree)
+            // 6. WAITLIST FORM (Connected to Formspree)
             // =========================================
             const waitlistForm = document.getElementById('waitlist-form');
             if (waitlistForm) {
