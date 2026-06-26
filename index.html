@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MerMommy Creations | Storybook Children’s Parties North County San Diego</title>
+    <title>Children's Party Styling | MerMommy Creations North County San Diego</title>
     <meta name="description" content="Children's party styling, themed decor, and stress-free celebrations in North County San Diego. MerMommy creates enchanting, ocean-inspired memories." />
-    <meta property="og:title" content="MerMommy Creations | Storybook Celebrations" />
-    <meta property="og:description" content="Children’s parties, themed decor, and unforgettable moments in North County San Diego." />
+    <meta name="geo.region" content="US-CA" />
+    <meta name="geo.placename" content="North County San Diego" />
+    <meta property="og:title" content="Children's Party Styling | MerMommy Creations North County San Diego" />
+    <meta property="og:description" content="Themed decor, party rentals, and unforgettable moments in North County San Diego." />
     <meta property="og:image" content="https://mermommycreations.com/images/MerMommyCreations.png" />
     <meta property="og:url" content="https://mermommycreations.com" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Schema Markup for LocalBusiness -->
+    <!-- Schema Markup for LocalBusiness + EventPlanner -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@type": ["LocalBusiness", "EventPlanner"],
         "name": "MerMommy Creations",
         "description": "Children's party styling, themed decor, and stress-free celebrations in North County San Diego.",
         "image": "https://mermommycreations.com/images/MerMommyCreations.png",
         "url": "https://mermommycreations.com",
-        "telephone": "",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "North County San Diego",
@@ -31,6 +32,15 @@
             "@type": "GeoCoordinates",
             "latitude": 33.1352,
             "longitude": -117.2719
+        },
+        "serviceArea": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": 33.1352,
+                "longitude": -117.2719
+            },
+            "geoRadius": "30000"
         },
         "priceRange": "$$",
         "openingHours": "Mo-Fr 09:00-17:00",
@@ -43,9 +53,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Grand+Hotel&display=swap" rel="stylesheet" />
 
-    <!-- GSAP + Plugins -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- GSAP + Plugins (deferred for page speed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
     <style>
         /* ============================================
@@ -156,10 +166,18 @@
         }
 
         .hero-title {
-            font-size: 4.2rem;
-            margin-bottom: 0.2rem;
-            color: #5a3a6a;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2d2a3a;
             letter-spacing: -1px;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero-title-sub {
+            font-size: 4.2rem;
+            color: #5a3a6a;
+            margin-bottom: 0.2rem;
+            line-height: 1.1;
         }
 
         .hero-sub {
@@ -181,6 +199,12 @@
             letter-spacing: 0.5px;
             border: 2px solid #2d2a3a;
             text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .hero-badge:hover {
+            background: #8B6C9E;
+            border-color: #8B6C9E;
         }
 
         .scroll-indicator {
@@ -1195,6 +1219,25 @@
             padding-bottom: 0.5rem;
         }
 
+        .footer-legal {
+            text-align: center;
+            font-size: 0.6rem;
+            color: #6a5a7a;
+            margin-top: 0.2rem;
+            padding-bottom: 0.5rem;
+        }
+        .footer-legal a {
+            color: #6a5a7a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+            margin: 0 0.3rem;
+        }
+        .footer-legal a:hover {
+            color: #8B6C9E;
+            border-bottom-color: #8B6C9E;
+        }
+
         /* ---------- HIDDEN TREASURES ---------- */
         .hidden-treasure {
             display: inline-block;
@@ -1286,7 +1329,8 @@
             .ig-grid { grid-template-columns: repeat(2, 1fr); }
             .wave-path { grid-template-columns: repeat(3, 1fr); }
             .wave-path::before { display: none; }
-            .hero-title { font-size: 3rem; }
+            .hero-title { font-size: 2.4rem; }
+            .hero-title-sub { font-size: 3.5rem; }
             .hero-logo { max-width: 420px; }
             .section { margin-bottom: 3rem; }
             .poster-card .poster-icon img { max-height: 250px; }
@@ -1303,7 +1347,8 @@
             .ig-grid { grid-template-columns: 1fr; }
             .checkbox-grid { grid-template-columns: 1fr; }
             .wave-path { grid-template-columns: repeat(2, 1fr); }
-            .hero-title { font-size: 2.4rem; }
+            .hero-title { font-size: 2rem; }
+            .hero-title-sub { font-size: 2.8rem; }
             .hero-logo { max-width: 420px; }
             .chapter-title { font-size: 2rem; }
             .waitlist-form { flex-direction: column; }
@@ -1318,6 +1363,7 @@
 
         @media (max-width: 480px) {
             .shell-card { flex: 0 0 120px; }
+            .waitlist-form { flex-direction: column; }
             .waitlist-form input, .waitlist-form .waitlist-btn { width: 100%; }
         }
     </style>
@@ -1348,15 +1394,16 @@
         <!-- ===== CHAPTER 1: MEET MERMOMMY ===== -->
         <section class="hero" id="hero">
             <div class="hero-logo-wrapper">
-                <img src="images/MerMommyCreations.png" alt="MerMommy Creations - storybook children's party styling in North County San Diego" class="hero-logo" loading="lazy" />
+                <img src="images/MerMommyCreations.png" alt="MerMommy Creations - storybook children's party styling in North County San Diego" class="hero-logo" />
             </div>
-            <h1 class="hero-title font-signature">Let's Shell-ebrate!</h1>
+            <h1 class="hero-title">Children's Party Styling in North County San Diego</h1>
+            <p class="hero-title-sub font-signature">Let's Shell-ebrate!</p>
             <p class="hero-sub">
                 <strong>Save your clams. Rent the magic.</strong><br>
-                Whimsical children's parties, themed decor, and unforgettable memories across North County San Diego.<br>
+                Whimsical parties, themed decor, and unforgettable memories.<br>
                 <span style="font-style:italic;color:#8B6C9E;">We don't plan the party… we just make everyone think you did.</span>
             </p>
-            <div class="hero-badge">Dive In!</div>
+            <a href="#contact" class="hero-badge">Book Your Party ↓</a>
             <div class="scroll-indicator">
                 <span>Dive Deeper</span>
                 <span class="arrow">↓</span>
@@ -1411,7 +1458,7 @@
                     <h3>Lemonade Stand</h3>
                     <p>A bright backyard retreat filled with hand-painted crates, gingham textiles, and fresh citrus garlands.</p>
                     <div class="poster-features"><span>picnic styling</span><span>lemon bar</span><span>floral accents</span></div>
-                    <div class="poster-price">Included</div>
+                    <div class="poster-price">From $199</div>
                 </div>
 
                 <div class="poster-card card-burger">
@@ -1422,7 +1469,7 @@
                     <h3>Palm Trees &amp; Cheeseburgers</h3>
                     <p>A vintage drive-in experience with neon checkers, custom palm trees, and a classic burger bar.</p>
                     <div class="poster-features"><span>checker floor</span><span>fry cones</span><span>shake station</span></div>
-                    <div class="poster-price">Included</div>
+                    <div class="poster-price">From $199</div>
                 </div>
 
                 <div class="poster-card card-dye">
@@ -1433,7 +1480,7 @@
                     <h3>Tie-Dye Studio</h3>
                     <p>A rainbow explosion of color with splatter paint walls and interactive dye tables for creative fun.</p>
                     <div class="poster-features"><span>dye kits</span><span>splatter zone</span><span>glow accents</span></div>
-                    <div class="poster-price">Included</div>
+                    <div class="poster-price">From $199</div>
                 </div>
 
                 <div class="poster-card card-mermaid">
@@ -1444,7 +1491,7 @@
                     <h3>Sea Shell Spa</h3>
                     <p>A relaxing mermaid retreat where little ocean dreamers can unwind, laugh, and <span class="highlight">shellabrate</span> together.</p>
                     <div class="poster-features"><span>coral decor</span><span>pearl accents</span><span>wave backdrop</span></div>
-                    <div class="poster-price">Included</div>
+                    <div class="poster-price">From $199</div>
                 </div>
 
             </div>
@@ -1637,7 +1684,6 @@
                 <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xlgygvpw" method="POST">
                     <input type="text" name="name" placeholder="Your name" required />
                     <input type="email" name="email" placeholder="Your email" required />
-                    <input type="hidden" name="ip_address" id="waitlist-ip" />
                     <button type="submit" class="waitlist-btn">Join List</button>
                 </form>
                 <p style="font-size:0.7rem;color:#6a5a7a;margin-top:0.6rem;font-weight:400;">
@@ -1672,7 +1718,6 @@
                     <span style="font-size:0.9rem;color:#6a5a7a;">You bring the kids. We'll bring the "HOW DID YOU THINK OF THIS?!" moments.</span>
                 </p>
                 <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="contact-form">
-                    <input type="hidden" name="ip_address" id="inquiry-ip" />
                     <div class="form-row">
                         <div class="form-group"><label for="name">Parent's Name</label><input type="text" id="name" name="name" required placeholder="Your name" /></div>
                         <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" required placeholder="name@email.com" /></div>
@@ -1767,19 +1812,22 @@
             <span class="trust-item" style="font-size:0.65rem;color:#8B6C9E;">✨ Rent the magic. Keep the memories.</span>
         </div>
         <div class="footer-copy">
-            &copy; 2026 MerMommy Creations. All rights reserved.<br>
-            <span style="font-size:0.5rem;color:#9a8a9a;">Glitter has been known to travel home with guests. You've been warned.</span>
+            &copy; 2026 MerMommy Creations. All rights reserved.
+        </div>
+        <div class="footer-legal">
+            <a href="/terms">Terms &amp; Conditions</a> <span style="color:#a090a0;">·</span>
+            <a href="/privacy">Privacy Policy</a>
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- ===== SCRIPTS (GSAP moved here for performance, IP capture removed) ===== -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
             gsap.registerPlugin(ScrollTrigger);
 
             // 1. HERO ENTRANCE
-            gsap.from('.hero-title, .hero-sub, .hero-badge, .hero-logo', {
+            gsap.from('.hero-title, .hero-title-sub, .hero-sub, .hero-badge, .hero-logo', {
                 opacity: 0, y: 20, duration: 0.9, stagger: 0.1, ease: 'power2.out', delay: 0.2
             });
             gsap.from('.scroll-indicator', { opacity: 0, duration: 0.6, delay: 0.8, ease: 'power2.out' });
@@ -1797,17 +1845,7 @@
                 });
             });
 
-            // 3. IP CAPTURE
-            async function captureIP() {
-                try { const r = await fetch('https://api.ipify.org?format=json'); const d = await r.json(); return d.ip; }
-                catch(e) { return 'unknown'; }
-            }
-            captureIP().then(ip => {
-                document.getElementById('inquiry-ip').value = ip;
-                document.getElementById('waitlist-ip').value = ip;
-            });
-
-            // 4. PARTICLES
+            // 3. PARTICLES
             const decor = document.getElementById('decor-container');
             if(decor) {
                 for(let i=0;i<22;i++) {
@@ -1828,7 +1866,7 @@
                 }
             }
 
-            // 5. INFINITE SLIDER WITH TOUCH SUPPORT
+            // 4. INFINITE SLIDER WITH TOUCH SUPPORT
             const track = document.getElementById('sliderTrack');
             if(track) {
                 const cards = track.querySelectorAll('.shell-card');
@@ -1836,17 +1874,14 @@
                 const half = track.scrollWidth / 2;
                 const tl = gsap.to(track, { x: -half, duration: 30, ease: 'none', repeat: -1, onRepeat: () => gsap.set(track, { x: 0 }) });
 
-                // Pause on hover
                 track.addEventListener('mouseenter', () => tl.pause());
                 track.addEventListener('mouseleave', () => tl.resume());
-
-                // Touch support: pause on touch start, resume on touch end/cancel
                 track.addEventListener('touchstart', () => tl.pause(), { passive: true });
                 track.addEventListener('touchend', () => tl.resume(), { passive: true });
                 track.addEventListener('touchcancel', () => tl.resume(), { passive: true });
             }
 
-            // 6. JOURNAL GSAP SHOWCASE
+            // 5. JOURNAL GSAP SHOWCASE
             const story = document.querySelector('.journal-story');
             if(story) {
                 story.querySelectorAll('p').forEach(p => {
@@ -1867,7 +1902,7 @@
                 });
             }
 
-            // 7. KAYTE IMAGE FLOATING ANIMATION (My Tale)
+            // 6. KAYTE IMAGE FLOATING ANIMATION (My Tale)
             const kayteImg = document.getElementById('kayteImage');
             if(kayteImg) {
                 gsap.to(kayteImg, {
@@ -1877,7 +1912,6 @@
                     yoyo: true,
                     repeat: -1
                 });
-                // Also add a subtle rotation for more organic feel
                 gsap.to(kayteImg, {
                     rotation: 1.5,
                     duration: 4,
@@ -1887,13 +1921,13 @@
                 });
             }
 
-            // 8. HIDDEN TREASURE POPUP
+            // 7. HIDDEN TREASURE POPUP
             window.showTreasurePopup = function(el) {
                 const popup = el.querySelector('.treasure-popup');
                 if(popup) { popup.classList.add('show'); setTimeout(() => popup.classList.remove('show'), 2500); }
             };
 
-            // 9. WAITLIST FORM
+            // 8. WAITLIST FORM
             const wlForm = document.getElementById('waitlist-form');
             if(wlForm) {
                 wlForm.addEventListener('submit', async function(e) {
@@ -1915,7 +1949,7 @@
                 });
             }
 
-            // 10. INQUIRY FORM
+            // 9. INQUIRY FORM
             const inqForm = document.getElementById('inquiry-form');
             if(inqForm) {
                 inqForm.addEventListener('submit', async function(e) {
@@ -1940,7 +1974,7 @@
                 });
             }
 
-            // 11. REFRESH
+            // 10. REFRESH
             setTimeout(() => ScrollTrigger.refresh(), 500);
         });
     </script>
