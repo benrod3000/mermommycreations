@@ -7,6 +7,7 @@
     <meta name="description" content="Children's party styling, themed decor, and stress-free celebrations in North County San Diego. MerMommy creates enchanting, ocean-inspired memories." />
     <meta name="geo.region" content="US-CA" />
     <meta name="geo.placename" content="North County San Diego" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="Children's Party Styling | MerMommy Creations North County San Diego" />
     <meta property="og:description" content="Themed decor, party rentals, and unforgettable moments in North County San Diego." />
     <meta property="og:image" content="https://mermommycreations.com/images/MerMommyCreations.png" />
@@ -52,10 +53,6 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Grand+Hotel&display=swap" rel="stylesheet" />
-
-    <!-- GSAP + Plugins (deferred for page speed) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
     <style>
         /* ============================================
@@ -966,29 +963,6 @@
 
         select option { background: #f7f3f0; color: #2d2a3a; }
 
-        .checkbox-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.3rem 1rem;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: #3a3a4a;
-            font-size: 0.85rem;
-            cursor: pointer;
-            font-weight: 400;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            width: 16px; height: 16px;
-            accent-color: #8B6C9E;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
         .submit-btn {
             background: #2d2a3a;
             color: #fff;
@@ -1010,6 +984,121 @@
         }
 
         .submit-btn:active { transform: scale(0.98); }
+
+        /* ---------- ADD-ON CARDS ---------- */
+        .addon-intro {
+            font-size: 0.85rem;
+            color: #6a5a7a;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .addon-card {
+            position: relative;
+            cursor: pointer;
+            display: block;
+        }
+
+        .addon-card--soon {
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .addon-card-inner {
+            padding: 1.2rem 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(45, 42, 58, 0.12);
+            transition: all 0.2s ease;
+            text-align: center;
+            height: 100%;
+            position: relative;
+        }
+
+        .addon-card:not(.addon-card--soon):hover .addon-card-inner {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #8B6C9E;
+            transform: translateY(-2px);
+        }
+
+        .addon-checkbox {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .addon-check-indicator {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 20px;
+            height: 20px;
+            background: #8B6C9E;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .addon-checkbox:checked ~ .addon-card-inner {
+            background: rgba(139, 108, 158, 0.15);
+            border-color: #8B6C9E;
+            border-width: 2px;
+        }
+
+        .addon-checkbox:checked ~ .addon-card-inner .addon-check-indicator {
+            opacity: 1;
+        }
+
+        .addon-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .addon-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #2d2a3a;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.4rem;
+        }
+
+        .addon-desc {
+            font-size: 0.78rem;
+            color: #3a3a4a;
+            line-height: 1.5;
+            font-weight: 400;
+            margin-bottom: 0.6rem;
+        }
+
+        .addon-price {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #8B6C9E;
+            border: 1px solid #8B6C9E;
+            padding: 0.2rem 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .addon-price--soon {
+            color: #a090a0;
+            border-color: rgba(160, 144, 160, 0.3);
+            font-size: 0.6rem;
+        }
 
         /* ---------- PARTY GUIDE ---------- */
         .guide-cta {
@@ -1131,6 +1220,10 @@
             line-height: 1.5;
             font-weight: 400;
             max-width: 280px;
+        }
+
+        .footer-brand address {
+            font-style: normal;
         }
 
         .footer-social {
@@ -1335,6 +1428,7 @@
             .section { margin-bottom: 3rem; }
             .poster-card .poster-icon img { max-height: 250px; }
             .shell-card { flex: 0 0 160px; }
+            .addon-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
@@ -1345,7 +1439,6 @@
             .sketchbook-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
             .journal-text .journal-features { grid-template-columns: 1fr; }
             .ig-grid { grid-template-columns: 1fr; }
-            .checkbox-grid { grid-template-columns: 1fr; }
             .wave-path { grid-template-columns: repeat(2, 1fr); }
             .hero-title { font-size: 2rem; }
             .hero-title-sub { font-size: 2.8rem; }
@@ -1359,6 +1452,7 @@
             .section { margin-bottom: 2.5rem; }
             .poster-card .poster-icon img { max-height: none; }
             .shell-card { flex: 0 0 140px; }
+            .addon-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 480px) {
@@ -1712,48 +1806,98 @@
 
         <!-- ===== SEND A MESSAGE IN A BOTTLE (Contact) - Fishing Pole Emoji ===== -->
         <section class="section" id="contact">
-            <div class="contact-card" id="form-container">
-                <h2 class="font-signature" style="font-size:2.8rem;color:#8B6C9E;text-align:center;">Send a Message in a Bottle</h2>
-                <p class="contact-intro">Let's chat about your celebration! Tell us what you need and we'll handle the rest.<br>
-                    <span style="font-size:0.9rem;color:#6a5a7a;">You bring the kids. We'll bring the "HOW DID YOU THINK OF THIS?!" moments.</span>
-                </p>
-                <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="contact-form">
-                    <div class="form-row">
-                        <div class="form-group"><label for="name">Parent's Name</label><input type="text" id="name" name="name" required placeholder="Your name" /></div>
-                        <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" required placeholder="name@email.com" /></div>
-                    </div>
-                    <div class="form-row-3">
-                        <div class="form-group"><label for="date">Target Date</label><input type="date" id="date" name="event-date" /></div>
+            <div class="contact-card" id="contact-wrapper">
+                <!-- Form Container (hidden on success) -->
+                <div id="form-container">
+                    <h2 class="font-signature" style="font-size:2.8rem;color:#8B6C9E;text-align:center;">Send a Message in a Bottle</h2>
+                    <p class="contact-intro">Let's chat about your celebration! Tell us what you need and we'll handle the rest.<br>
+                        <span style="font-size:0.9rem;color:#6a5a7a;">You bring the kids. We'll bring the "HOW DID YOU THINK OF THIS?!" moments.</span>
+                    </p>
+                    <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group"><label for="name">Parent's Name</label><input type="text" id="name" name="name" required placeholder="Your name" /></div>
+                            <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" required placeholder="name@email.com" /></div>
+                        </div>
+                        <div class="form-row-3">
+                            <div class="form-group"><label for="date">Target Date</label><input type="date" id="date" name="event-date" /></div>
+                            <div class="form-group">
+                                <label for="age">Average Age</label>
+                                <select id="age" name="age">
+                                    <option value="1-2">1-2 years</option><option value="3-4">3-4 years</option><option value="5-6">5-6 years</option>
+                                    <option value="7-8">7-8 years</option><option value="9-10">9-10 years</option><option value="10+">10+ years</option>
+                                    <option value="mixed">Mixed ages</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label for="location">Location (North County San Diego)</label><input type="text" id="location" name="location" placeholder="City, ZIP" required /></div>
+                        </div>
                         <div class="form-group">
-                            <label for="age">Average Age</label>
-                            <select id="age" name="age">
-                                <option value="1-2">1-2 years</option><option value="3-4">3-4 years</option><option value="5-6">5-6 years</option>
-                                <option value="7-8">7-8 years</option><option value="9-10">9-10 years</option><option value="10+">10+ years</option>
-                                <option value="mixed">Mixed ages</option>
+                            <label for="theme">The Party Curation</label>
+                            <select id="theme" name="theme">
+                                <option value="sea-shell-spa">Sea Shell Spa</option><option value="lemonade">Lemonade Stand</option>
+                                <option value="burger">Palm Trees &amp; Cheeseburgers</option><option value="tie-dye">Tie-Dye Studio</option>
+                                <option value="custom">Something Custom</option>
                             </select>
                         </div>
-                        <div class="form-group"><label for="location">Location (North County San Diego)</label><input type="text" id="location" name="location" placeholder="City, ZIP" required /></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="theme">The Party Curation</label>
-                        <select id="theme" name="theme">
-                            <option value="sea-shell-spa">Sea Shell Spa</option><option value="lemonade">Lemonade Stand</option>
-                            <option value="burger">Palm Trees &amp; Cheeseburgers</option><option value="tie-dye">Tie-Dye Studio</option>
-                            <option value="custom">Something Custom</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Add-On Services</label>
-                        <div class="checkbox-grid">
-                            <label class="checkbox-item"><input type="checkbox" name="addons" value="mermommy-stay" /> MerMommy Stay</label>
-                            <label class="checkbox-item"><input type="checkbox" name="addons" value="pearl-package" /> Pearl Package</label>
-                            <label class="checkbox-item"><input type="checkbox" name="addons" value="treasure-trove" /> Treasure Trove</label>
-                            <label class="checkbox-item"><input type="checkbox" name="addons" value="cakesmash" /> Cakesmash Setup</label>
+
+                        <!-- ===== NEW ADD-ON CARDS ===== -->
+                        <div class="form-group">
+                            <label>Add-On Services</label>
+                            <p class="addon-intro">Enhance your celebration with a little extra magic.</p>
+                            <div class="addon-grid">
+
+                                <!-- ADD-ON 1: MerMommy Stay -->
+                                <label class="addon-card" for="addon-stay">
+                                    <input type="checkbox" id="addon-stay" name="addons" value="mermommy-stay" class="addon-checkbox" />
+                                    <div class="addon-card-inner">
+                                        <div class="addon-check-indicator">✓</div>
+                                        <span class="addon-icon">🧜‍♀️</span>
+                                        <h4 class="addon-name">MerMommy Stay</h4>
+                                        <p class="addon-desc">We handle every detail so you can be present for every moment — not running around missing the magic you planned.</p>
+                                        <span class="addon-price">Ask for pricing</span>
+                                    </div>
+                                </label>
+
+                                <!-- ADD-ON 2: Cakesmash Chair -->
+                                <label class="addon-card" for="addon-cakesmash">
+                                    <input type="checkbox" id="addon-cakesmash" name="addons" value="cakesmash" class="addon-checkbox" />
+                                    <div class="addon-card-inner">
+                                        <div class="addon-check-indicator">✓</div>
+                                        <span class="addon-icon">🎂</span>
+                                        <h4 class="addon-name">Cakesmash Chair</h4>
+                                        <p class="addon-desc">A vintage highchair styled for the perfect first birthday moment. Just add cake and a camera.</p>
+                                        <span class="addon-price">Ask for pricing</span>
+                                    </div>
+                                </label>
+
+                                <!-- ADD-ON 3: Coming Soon -->
+                                <div class="addon-card addon-card--soon">
+                                    <div class="addon-card-inner">
+                                        <span class="addon-icon" style="opacity:0.3;">🐚</span>
+                                        <h4 class="addon-name" style="opacity:0.4;">Coming Soon</h4>
+                                        <p class="addon-desc" style="opacity:0.35;">Something magical is brewing in the depths...</p>
+                                        <span class="addon-price addon-price--soon">✦ Dropping Soon ✦</span>
+                                    </div>
+                                </div>
+
+                                <!-- ADD-ON 4: Coming Soon -->
+                                <div class="addon-card addon-card--soon">
+                                    <div class="addon-card-inner">
+                                        <span class="addon-icon" style="opacity:0.3;">⭐</span>
+                                        <h4 class="addon-name" style="opacity:0.4;">Coming Soon</h4>
+                                        <p class="addon-desc" style="opacity:0.35;">Another treasure is almost ready to surface...</p>
+                                        <span class="addon-price addon-price--soon">✦ Dropping Soon ✦</span>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group"><label for="message">Tell us about your celebration</label><textarea id="message" name="message" rows="3" placeholder="How many guests? What's your vision? Need tables and chairs? We have everything, just let us know what you need!"></textarea></div>
-                    <button type="submit" class="submit-btn">Dive In 🎣</button>
-                </form>
+
+                        <div class="form-group"><label for="message">Tell us about your celebration</label><textarea id="message" name="message" rows="3" placeholder="How many guests? What's your vision? Need tables and chairs? We have everything, just let us know what you need!"></textarea></div>
+                        <button type="submit" class="submit-btn">Dive In 🎣</button>
+                    </form>
+                </div>
+
+                <!-- Success Message (sibling of form-container) -->
                 <div id="success-message" style="display:none;text-align:center;padding:2rem 0;">
                     <div style="font-size:2.5rem;">🐚</div>
                     <h2 class="font-signature" style="font-size:2.5rem;color:#8B6C9E;">Inquiry Splashed!</h2>
@@ -1782,9 +1926,10 @@
         <div class="footer-main">
             <div class="footer-brand">
                 <h3>MerMommy Creations</h3>
-                <p>Children's party styling & rentals in North County San Diego.<br>
-                    <span style="font-size:0.7rem;color:#8B6C9E;">Rent the magic. Keep the memories.</span>
-                </p>
+                <address style="font-style:normal;">
+                    Children's party styling &amp; rentals in North County San Diego.
+                </address>
+                <p style="font-size:0.7rem;color:#8B6C9E;margin-top:0.2rem;">Rent the magic. Keep the memories.</p>
                 <div class="footer-social">
                     <a href="https://instagram.com/mermommycreations" target="_blank" aria-label="Instagram">📸</a>
                     <a href="#" target="_blank" aria-label="Pinterest">📌</a>
@@ -1820,7 +1965,10 @@
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS (GSAP moved here for performance, IP capture removed) ===== -->
+    <!-- ===== SCRIPTS (GSAP moved here for performance, no defer) ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -1836,7 +1984,7 @@
             const sections = [
                 '#banner', '#founding', '.poster-card', '#sketchbook', '#treasures',
                 '#more-than-decor .masonry-item', '#how-it-works .wave-step', '#tail .journal',
-                '#waitlist .waitlist-card', '#instagram .ig-placeholder', '.contact-card', '#guide .guide-cta'
+                '#waitlist .waitlist-card', '#instagram .ig-placeholder', '#form-container', '#guide .guide-cta'
             ];
             sections.forEach(sel => {
                 gsap.from(sel, {
@@ -1951,7 +2099,10 @@
 
             // 9. INQUIRY FORM
             const inqForm = document.getElementById('inquiry-form');
-            if(inqForm) {
+            const formContainer = document.getElementById('form-container');
+            const successMsg = document.getElementById('success-message');
+
+            if(inqForm && formContainer && successMsg) {
                 inqForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     const btn = this.querySelector('.submit-btn');
@@ -1960,11 +2111,10 @@
                     try {
                         const res = await fetch(this.action, { method:'POST', body: new FormData(this), headers:{ 'Accept':'application/json' } });
                         if(res.ok) {
-                            gsap.to('#form-container', { duration:0.4, opacity:0, onComplete: () => {
-                                document.getElementById('form-container').style.display = 'none';
-                                const msg = document.getElementById('success-message');
-                                msg.style.display = 'block';
-                                gsap.fromTo(msg, { opacity:0, y:20 }, { duration:0.5, opacity:1, y:0 });
+                            gsap.to(formContainer, { duration:0.4, opacity:0, onComplete: () => {
+                                formContainer.style.display = 'none';
+                                successMsg.style.display = 'block';
+                                gsap.fromTo(successMsg, { opacity:0, y:20 }, { duration:0.5, opacity:1, y:0 });
                             }});
                         } else {
                             alert('Oops! There was a problem. Please try again.');
