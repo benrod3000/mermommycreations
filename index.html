@@ -479,7 +479,7 @@
             50% { transform: translateY(-4px); }
         }
 
-        /* --- Pearl Glow (Much Brighter) --- */
+        /* --- Pearl Glow --- */
         .pearl-glow {
             position: absolute;
             top: 50%;
@@ -1364,6 +1364,104 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* ---------- LEGAL MODAL ---------- */
+        #legal-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+        }
+
+        #legal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(45, 42, 58, 0.6);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+        }
+
+        #legal-drawer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-height: 82vh;
+            background: linear-gradient(180deg, #d4c0e8 0%, #b0d0d0 60%, #b8e0e0 100%);
+            border-top: 6px solid #8B6C9E;
+            border-radius: 0;
+            overflow: hidden;
+            transform: translateY(100%);
+        }
+
+        #legal-drawer-inner {
+            padding: 2.5rem 2rem 3rem;
+            max-width: 780px;
+            margin: 0 auto;
+            overflow-y: auto;
+            max-height: 82vh;
+            position: relative;
+        }
+
+        #legal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #2d2a3a;
+            color: #fff;
+            border: none;
+            width: 32px;
+            height: 32px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #legal-close:hover {
+            background: #8B6C9E;
+        }
+
+        #legal-content h2 {
+            font-family: 'Grand Hotel', cursive;
+            font-size: 2.2rem;
+            color: #8B6C9E;
+            margin-bottom: 0.3rem;
+            font-weight: 400;
+        }
+
+        #legal-content h3 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #2d2a3a;
+            margin: 1.5rem 0 0.4rem;
+        }
+
+        #legal-content p {
+            font-size: 0.9rem;
+            color: #3a3a4a;
+            line-height: 1.7;
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+        }
+
+        #legal-content .legal-sub {
+            font-size: 0.7rem;
+            color: #6a5a7a;
+            font-style: italic;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            #legal-drawer { max-height: 90vh; }
+            #legal-drawer-inner { max-height: 90vh; padding: 2rem 1.2rem 3rem; }
+        }
+
         /* ===== PARTICLES ===== */
         .sky-decor {
             position: fixed;
@@ -1888,7 +1986,7 @@
                         </div>
 
                         <div class="form-group"><label for="message">Tell us about your celebration</label><textarea id="message" name="message" rows="3" placeholder="How many guests? What's your vision? Need tables and chairs? We have everything, just let us know what you need!"></textarea></div>
-                        <button type="submit" class="submit-btn">Dive In 🎣</button>
+                        <button type="submit" class="submit-btn">Drop Us A Line 🎣</button>
                     </form>
                 </div>
 
@@ -1953,10 +2051,23 @@
             &copy; 2026 MerMommy Creations. All rights reserved.
         </div>
         <div class="footer-legal">
-            <a href="/terms">Terms &amp; Conditions</a> <span style="color:#a090a0;">·</span>
-            <a href="/privacy">Privacy Policy</a>
+            <a href="#" data-legal="terms">Terms &amp; Conditions</a> <span style="color:#a090a0;">·</span>
+            <a href="#" data-legal="privacy">Privacy Policy</a>
         </div>
     </footer>
+
+    <!-- ===== LEGAL MODAL ===== -->
+    <div id="legal-modal" style="display:none;">
+        <div id="legal-backdrop"></div>
+        <div id="legal-drawer">
+            <div id="legal-drawer-inner">
+                <button id="legal-close" aria-label="Close">✕</button>
+                <div id="legal-content">
+                    <!-- Content injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ===== SCRIPTS ===== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -2117,7 +2228,92 @@
                 });
             }
 
-            // 10. REFRESH
+            // 10. LEGAL MODAL
+            const legalModal = document.getElementById('legal-modal');
+            const legalBackdrop = document.getElementById('legal-backdrop');
+            const legalDrawer = document.getElementById('legal-drawer');
+            const legalContent = document.getElementById('legal-content');
+            const legalClose = document.getElementById('legal-close');
+
+            const legalText = {
+                terms: {
+                    title: 'Terms & Conditions',
+                    sub: 'Last updated: 2026 · No pirates were harmed in the making of these terms.',
+                    body: `
+                        <h3>1. Bookings & Deposits</h3>
+                        <p>A deposit is required to secure your event date. Deposits are non-refundable but may be applied to a rescheduled date with at least 14 days notice.</p>
+                        <h3>2. Cancellations</h3>
+                        <p>Cancellations made within 7 days of the event are subject to full payment. We understand life happens — please contact us as early as possible.</p>
+                        <h3>3. Prop Returns</h3>
+                        <p>All rented items must be returned in their original condition. Damaged or missing items will be charged at replacement cost. Emotional attachment is understandable but not billable.</p>
+                        <h3>4. Photography</h3>
+                        <p>Founding MerFriend bookings include permission for MerMommy Creations to photograph portions of the event for portfolio use. All other bookings require written consent for us to use your event photos.</p>
+                        <h3>5. Liability</h3>
+                        <p>MerMommy Creations is not liable for injuries, damages, or incidents occurring during the event. We are licensed and insured for our setup and breakdown activities only.</p>
+                        <h3>6. Changes</h3>
+                        <p>These terms may be updated at any time. Continued use of our services constitutes acceptance of the current terms.</p>
+                    `
+                },
+                privacy: {
+                    title: 'Privacy Policy',
+                    sub: 'Your data swims safely with us. No sharing with sea creatures.',
+                    body: `
+                        <h3>1. Information We Collect</h3>
+                        <p>We collect information you provide directly — your name, email address, event details, and any other information submitted through our inquiry or waitlist forms.</p>
+                        <h3>2. How We Use It</h3>
+                        <p>Your information is used solely to respond to your inquiry, send you booking confirmations, and (if you joined the waitlist) notify you of our launch and exclusive offers.</p>
+                        <h3>3. We Do Not Sell Your Data</h3>
+                        <p>MerMommy Creations will never sell, rent, or trade your personal information to third parties. Ever.</p>
+                        <h3>4. Third-Party Services</h3>
+                        <p>We use Formspree to process form submissions. Their privacy policy applies to data processed through their platform. We do not use advertising trackers or analytics beyond basic site visits.</p>
+                        <h3>5. California Residents (CCPA)</h3>
+                        <p>As a California-based business, we respect your right to know what data we collect, request deletion, and opt out of any sale of your data (which we don't do anyway).</p>
+                        <h3>6. Contact</h3>
+                        <p>Questions about your data? Reach us through the contact form on this page.</p>
+                    `
+                }
+            };
+
+            function openLegal(type) {
+                const data = legalText[type];
+                legalContent.innerHTML = `
+                    <h2>${data.title}</h2>
+                    <span class="legal-sub">${data.sub}</span>
+                    ${data.body}
+                `;
+                legalModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+
+                gsap.to(legalBackdrop, { opacity: 1, duration: 0.35, ease: 'power2.out' });
+                gsap.to(legalDrawer, { translateY: '0%', duration: 0.5, ease: 'power3.out', delay: 0.05 });
+            }
+
+            function closeLegal() {
+                gsap.to(legalDrawer, { translateY: '100%', duration: 0.4, ease: 'power3.in' });
+                gsap.to(legalBackdrop, { opacity: 0, duration: 0.3, delay: 0.15, ease: 'power2.in', onComplete: () => {
+                    legalModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                    legalDrawer.style.transform = '';
+                }});
+            }
+
+            legalClose.addEventListener('click', closeLegal);
+            legalBackdrop.addEventListener('click', closeLegal);
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeLegal();
+            });
+
+            // Wire up footer links
+            document.querySelectorAll('.footer-legal a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const type = this.dataset.legal;
+                    if (type) openLegal(type);
+                });
+            });
+
+            // 11. REFRESH
             setTimeout(() => ScrollTrigger.refresh(), 500);
         });
     </script>
