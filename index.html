@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MerMommy Creations | Storybook Children’s Parties North County San Diego</title>
-    <meta name="description" content="Curated children's party styling, themed decor, and stress-free celebrations in North County San Diego. MerMommy creates magical, ocean-inspired memories." />
+    <meta name="description" content="Children's party styling, themed decor, and stress-free celebrations in North County San Diego. MerMommy creates magical, ocean-inspired memories." />
     <meta property="og:title" content="MerMommy Creations | Storybook Celebrations" />
-    <meta property="og:description" content="Curated children’s parties, themed decor, and unforgettable moments in North County San Diego." />
+    <meta property="og:description" content="Children’s parties, themed decor, and unforgettable moments in North County San Diego." />
     <meta property="og:image" content="https://mermommycreations.com/images/MerMommyCreations.png" />
     <meta property="og:url" content="https://mermommycreations.com" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -343,23 +343,59 @@
             will-change: transform;
         }
 
-        /* --- Card Outer (Clipped to Shell) --- */
-        .treasure-card {
+        /* Base Shell Card */
+        .shell-card {
             flex: 0 0 200px;
             aspect-ratio: 322 / 288;
-            clip-path: url(#shellClip);
             filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
             transform: rotate(var(--rot, 0deg));
-            background: linear-gradient(145deg, #fdf8f6, #fce4ec);
             transition: filter 0.3s ease;
             position: relative;
         }
 
-        .treasure-card:hover {
+        .shell-card:hover {
             filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.15));
         }
 
-        /* --- Card Inner (Floating Content) --- */
+        /* Shell Variants */
+        .shell-v1 {
+            clip-path: url(#shellClip);
+            background: conic-gradient(from 45deg at 50% 50%, #ffd1dc, #b8e0ff, #e0bbff, #ffd1dc);
+        }
+
+        .shell-v2 {
+            clip-path: url(#shellClip2);
+            background: conic-gradient(from 135deg at 50% 50%, #ffd1dc, #b8e0ff, #e0bbff, #ffd1dc);
+        }
+
+        /* Base Shell Background + Texture Overlay */
+        .shell-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), rgba(255, 220, 240, 0.1) 80%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .shell-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            pointer-events: none;
+            opacity: 0.8;
+            z-index: 1;
+            mix-blend-mode: multiply;
+        }
+
+        /* Card Inner (Floating Content) */
         .treasure-card-inner {
             width: 100%;
             height: 100%;
@@ -371,41 +407,14 @@
             padding: 28% 15%;
             position: relative;
             animation: float 3s ease-in-out infinite;
-            background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.9), rgba(255, 220, 240, 0.2) 80%);
+            background: radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.6), rgba(255, 220, 240, 0.1) 90%);
             z-index: 2;
+            backdrop-filter: blur(2px);
         }
 
-        .treasure-card:hover .treasure-card-inner {
+        .shell-card:hover .treasure-card-inner {
             animation-play-state: paused;
             transform: translateY(-6px);
-        }
-
-        /* --- Iridescent Overlay --- */
-        .treasure-card-inner::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            left: -20%;
-            width: 140%;
-            height: 140%;
-            background: radial-gradient(circle at 60% 30%, rgba(200, 230, 255, 0.4), rgba(255, 200, 220, 0.2) 60%, transparent 100%);
-            opacity: 0.5;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* --- Storybook Watercolor Texture --- */
-        .treasure-card-inner::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none;
-            opacity: 0.6;
-            z-index: 1;
         }
 
         /* --- Floating Keyframes --- */
@@ -414,27 +423,28 @@
             50% { transform: translateY(-4px); }
         }
 
-        /* --- Pearl Glow --- */
+        /* --- Pearl Glow (Much Brighter) --- */
         .pearl-glow {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 65%;
+            width: 80%;
             aspect-ratio: 1;
-            background: radial-gradient(circle, rgba(255, 220, 240, 0.9), rgba(200, 180, 255, 0.3) 60%, transparent 80%);
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.9), rgba(200, 180, 255, 0.7) 30%, rgba(100, 200, 255, 0.4) 70%, transparent 100%);
             border-radius: 50%;
-            filter: blur(12px);
-            opacity: 0.6;
+            filter: blur(10px);
+            opacity: 0.9;
             transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
             pointer-events: none;
             z-index: 0;
+            mix-blend-mode: screen;
         }
 
-        .treasure-card:hover .pearl-glow {
+        .shell-card:hover .pearl-glow {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1.2);
-            filter: blur(8px);
+            filter: blur(6px);
         }
 
         /* --- Sparkles --- */
@@ -442,7 +452,7 @@
             position: absolute;
             font-size: 0.6rem;
             color: #fff;
-            text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 24px rgba(200, 180, 255, 0.6);
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
             pointer-events: none;
@@ -451,7 +461,7 @@
             line-height: 1;
         }
 
-        .treasure-card:hover .sparkle {
+        .shell-card:hover .sparkle {
             opacity: 1;
             transform: scale(1);
         }
@@ -467,7 +477,7 @@
         }
 
         /* --- Treasure Card Typography --- */
-        .treasure-card .tc-icon {
+        .treasure-card-inner .tc-icon {
             font-size: 2.2rem;
             display: block;
             margin-bottom: 0.2rem;
@@ -477,7 +487,7 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
         }
 
-        .treasure-card h4 {
+        .treasure-card-inner h4 {
             font-size: 0.85rem;
             font-weight: 700;
             color: #2d2a3a;
@@ -486,9 +496,10 @@
             position: relative;
             z-index: 2;
             margin-top: 0.1rem;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
         }
 
-        .treasure-card p {
+        .treasure-card-inner p {
             font-size: 0.65rem;
             color: #4a4a5a;
             font-weight: 400;
@@ -496,6 +507,7 @@
             max-width: 90%;
             position: relative;
             z-index: 2;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
         }
 
         /* ---------- SKETCHBOOK ---------- */
@@ -1277,7 +1289,7 @@
             .hero-logo { max-width: 420px; }
             .section { margin-bottom: 3rem; }
             .poster-card .poster-icon img { max-height: 250px; }
-            .treasure-card { flex: 0 0 160px; }
+            .shell-card { flex: 0 0 160px; }
         }
 
         @media (max-width: 768px) {
@@ -1299,21 +1311,27 @@
             .trust-bar .sep { display: none; }
             .section { margin-bottom: 2.5rem; }
             .poster-card .poster-icon img { max-height: none; }
-            .treasure-card { flex: 0 0 140px; }
+            .shell-card { flex: 0 0 140px; }
         }
 
         @media (max-width: 480px) {
-            .treasure-card { flex: 0 0 120px; }
+            .shell-card { flex: 0 0 120px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== SVG CLIP PATH (Hidden) ===== -->
+    <!-- ===== SVG CLIP PATHS (Hidden) ===== -->
     <svg width="0" height="0" style="position:absolute;z-index:-1;" aria-hidden="true">
         <defs>
+            <!-- Shell 1 (Original) -->
             <clipPath id="shellClip" clipPathUnits="objectBoundingBox">
                 <path d="m 65.441299,282.42457 c -2.92498,-0.42658 -3.3047,-0.97428 -5.65227,-8.15248 -3.93539,-12.03336 -5.07492,-18.83035 -5.14611,-30.69517 -0.0738,-12.29982 2.78936,-29.31539 5.08075,-30.19469 2.02099,-0.77552 14.65566,6.82434 24.35325,14.64868 11.93487,9.62946 43.264511,42.41222 44.743971,46.81927 0.13418,0.39971 -3.69494,0.80428 -8.50917,0.89904 -8.15658,0.16057 -13.78311,1.15722 -27.041201,4.78994 -5.56167,1.5239 -22.45866,2.66866 -27.82922,1.88541 z m 86.743951,-0.36895 c -11.6287,-2.44343 -24.15439,-11.33744 -31.50621,-22.37133 -7.69979,-11.55614 -22.25299,-26.10782 -35.960771,-35.95703 -19.86281,-14.27166 -37.75992,-22.28082 -65.25122,-29.20066 -0.61043,-0.15365 -1.41796,-2.60185 -1.79451,-5.44043 -0.97871,-7.37786 -3.97034,-14.31522 -9.64905,-22.37541 -2.7206098,-3.86156 -4.9465698,-8.036 -4.9465698,-9.27654 0,-2.54138 4.85911,-6.71502 9.8390198,-8.45103 4.01887,-1.40098 3.99221,-1.54096 -1.29269,-6.7888 -8.7908898,-8.72925 -8.3525898,-13.11068 1.88746,-18.86802 9.87402,-5.55155 10.5915,-8.27769 5.06621,-19.24945 -5.18497,-10.295988 -5.07947,-10.514125 6.52338,-13.487518 10.63601,-2.725627 11.3484,-3.490101 10.59398,-11.368598 -0.34991,-3.654135 -0.91507,-8.407427 -1.25591,-10.562871 -0.88046,-5.567943 0.91671,-6.58101 11.6747,-6.58101 11.34179,0 12.07973,-0.742689 12.96753,-13.051023 0.80929,-11.219727 1.26776,-11.747679 8.75164,-10.077817 14.62649,3.263577 17.112,2.477213 19.18087,-6.068413 3.41462,-14.104376 4.55811,-14.849298 15.122591,-9.851506 10.45539,4.946183 13.84126,3.580369 18.38103,-7.414643 3.70553,-8.9745323 5.67308,-9.3081164 14.96137,-2.536598 9.61352,7.008624 12.03153,6.627571 19.10693,-3.011052 6.18801,-8.4297563 6.6831,-8.4166786 14.91369,0.393944 8.86262,9.487196 9.93506,9.575146 19.5782,1.605594 7.88905,-6.5198915 9.8614,-6.0773823 13.93242,3.125835 4.7724,10.788807 7.64368,11.850793 18.41406,6.810723 10.31043,-4.824832 10.89607,-4.449983 14.8149,9.482624 0.86409,3.072104 2.37395,5.649476 4.03685,6.891008 2.65305,1.980787 2.66742,1.980593 11.16535,-0.150752 6.90202,-1.731076 11.04542,-2.010819 11.71491,-0.790935 0.0432,0.07866 0.41559,4.324363 0.8276,9.434905 0.99168,12.300512 1.28225,12.567492 14.37501,13.208106 l 10.2189,0.5 -0.0903,4.5 c -0.0497,2.475 -0.44392,7.242102 -0.8761,10.59356 -0.95686,7.420142 0.72228,9.592206 8.82619,11.417202 13.35635,3.007847 13.81155,3.744865 8.64021,13.989235 -4.77434,9.45791 -3.80459,13.51658 4.19682,17.56487 4.53335,2.29364 9.80318,6.33141 9.80318,7.51125 0,0.53588 -2.6485,3.82127 -5.88556,7.30087 -6.84342,7.35616 -8.24603,10.41534 -5.47833,11.94859 5.85956,3.24609 10.10367,11.65636 8.77405,17.38695 -0.79825,3.44045 -5.19432,11.28747 -6.32348,11.28747 -0.45596,0 -1.11674,2.1375 -1.46841,4.75 -1.24945,9.28211 -9.40864,21.58828 -15.06535,22.72243 -1.12911,0.22638 -6.55292,1.12336 -12.05292,1.9933 -34.14466,5.40065 -60.26969,22.55308 -77.37927,50.80346 -5.97393,9.86381 -10.18048,14.87027 -16.21856,19.30262 -9.61734,7.05978 -25.00496,10.67387 -35.79384,8.40689 z m 83.39167,-0.002 c -2.75,-0.42546 -9.5,-1.97123 -15,-3.43504 -7.013,-1.86649 -12.87381,-2.71829 -19.62105,-2.85168 l -9.62105,-0.1902 5.12105,-5.55809 c 2.81658,-3.05695 7.44804,-9.35695 10.29213,-14 8.45061,-13.79582 21.84604,-27.5903 33.86669,-34.87558 6.39478,-3.87564 19.84541,-9.79297 24.27333,-10.67855 l 3.1889,-0.63756 v 9.97978 c 0,22.02555 -2.24274,40.47792 -6.61,54.38438 -2.39119,7.61415 -2.39119,7.61415 -7.03016,8.25 -5.66,0.77579 -12.21209,0.64126 -18.85984,-0.38724 z" transform="scale(0.00310559, 0.00347222)" />
+            </clipPath>
+
+            <!-- Shell 2 (New) -->
+            <clipPath id="shellClip2" clipPathUnits="objectBoundingBox">
+                <path d="m 124.08609,289.15755 c -7.42934,-3.39315 -20.23705,-21.63369 -22.14678,-31.5411 -0.57543,-2.98527 -0.43467,-3.29623 1.24937,-2.76005 14.60072,4.64877 54.87051,19.54231 55.15613,20.39917 0.59895,1.79687 -7.82012,9.59264 -13.14177,12.1688 -5.93689,2.874 -16.68721,3.75633 -21.11695,1.73318 z m 78.00045,-0.0756 c -2.2,-0.69577 -5.35,-1.97958 -7,-2.8529 -4.316,-2.28441 -12.11476,-10.55135 -10.95414,-11.61175 1.11682,-1.02038 56.56087,-20.36313 57.02849,-19.89551 0.82844,0.82844 -4.87707,14.64136 -7.97485,19.30696 -9.98447,15.03769 -18.34806,19.08595 -31.0995,15.0532 z m -34.12573,-3.28177 c -3.53724,-0.70877 -6.71542,-4.82401 -5.98209,-7.74586 2.03077,-8.09122 18.60782,-6.77633 18.60782,1.47598 0,4.32661 -6.41797,7.51374 -12.62573,6.26988 z M 150.87169,258.73077 C 136.60566,244.60506 128.89702,235.23658 117.80568,218.54495 86.909151,172.04794 73.257853,113.29836 81.143676,60.766708 82.824039,49.572914 85.795863,43.429421 92.616534,37.049482 104.99051,25.475078 121.10428,23.628239 135.33198,32.153759 c 8.6889,5.206565 8.78705,5.362914 6.357,10.126219 -2.81138,5.510745 -6.82287,19.662341 -8.84099,31.188899 -2.38671,13.631766 -2.34117,54.258473 0.083,74.011893 4.59402,37.43507 15.17151,80.73195 27.12272,111.02151 2.49095,6.31317 4.52987,11.59099 4.53093,11.72849 0.0117,1.52039 -3.7448,-1.62993 -13.71292,-11.5 z m -6.93159,4.14979 C 91.411535,231.77154 54.650151,181.95398 43.656897,126.98077 41.300512,115.19736 39.109162,86.137067 40.045014,79.082269 41.874588,65.290262 51.02673,54.896312 63.270514,52.705418 c 4.752146,-0.850346 13.609022,-0.264984 14.855847,0.981841 0.286358,0.286358 -0.05224,3.844544 -0.752431,7.907081 -0.781884,4.536492 -1.261923,16.067702 -1.24416,29.88643 0.02433,18.92907 0.391321,24.53672 2.312344,35.33312 7.483174,42.0564 23.774206,78.97389 49.162416,111.40808 3.3403,4.26734 11.28711,13.0463 17.65958,19.5088 6.37246,6.4625 11.18903,11.75 10.70348,11.75 -0.48556,0 -5.89793,-2.9701 -12.02749,-6.60021 z m 18.84309,-6.66898 c -20.18482,-53.12097 -31.67661,-120.08875 -28.309,-164.969222 2.26082,-30.130188 9.01444,-50.822197 21.60125,-66.182743 3.76965,-4.600349 10.43228,-8.578845 14.36666,-8.578845 12.74463,0 27.42653,25.282319 32.81059,56.5 2.61947,15.188169 2.35745,52.54357 -0.52607,75 -4.85422,37.8038 -10.70724,65.48227 -19.1334,90.48018 -7.43149,22.04702 -11.15723,30.46008 -13.64925,30.82118 -1.81699,0.26328 -2.7217,-1.38809 -7.16078,-13.07055 z m 13.13755,12.01919 c 5.9841,-13.64553 13.85423,-36.67555 18.19731,-53.25 3.56934,-13.62162 9.23241,-44.90534 12.12854,-67 2.19516,-16.74692 2.50831,-63.254492 0.50163,-74.5 -2.01167,-11.273499 -5.01589,-22.680941 -7.73635,-29.376032 l -2.43278,-5.98713 2.04317,-2.174857 c 3.12238,-3.323622 11.90824,-7.386967 18.7055,-8.651052 11.28382,-2.098446 25.0933,3.212969 32.67715,12.568314 5.80515,7.161173 7.42954,11.600485 9.0581,24.754953 7.09081,57.275304 -9.79085,118.338544 -46.1264,166.845414 -8.68938,11.60006 -33.76593,38.02039 -36.08661,38.02039 -0.81259,0 -1.23076,-0.5625 -0.92926,-1.25 z m 13.81686,-5.5 c 34.33034,-32.23598 60.08182,-79.13452 69.82039,-127.15677 4.56178,-22.49472 5.76792,-50.058073 3.10345,-70.921184 -0.89398,-6.999997 -0.99131,-10.655642 -0.30206,-11.344895 0.55932,-0.559317 4.12137,-1.036374 7.91567,-1.060127 12.00405,-0.07515 21.77651,6.068046 26.44762,16.62558 4.1022,9.271706 3.59913,37.093596 -1.0821,59.844736 -5.53272,26.88948 -18.26208,54.31747 -36.19198,77.98298 -7.79632,10.2903 -25.90392,29.00403 -35.86206,37.06251 -11.39969,9.22504 -37.36258,25.71717 -40.48549,25.71717 -0.30359,0 2.68286,-3.0375 6.63656,-6.75 z m 9.84894,2.30038 c 0,-0.18804 2.3625,-1.82892 5.25,-3.6464 19.35883,-12.18504 44.27197,-35.21747 58.0321,-53.6512 25.03755,-33.5415 37.80253,-68.77597 39.58085,-109.25278 l 0.63704,-14.5 3.41497,0.276178 c 8.1749,0.661128 18.57882,8.390911 23.02558,17.107282 5.57757,10.93295 6.43587,29.68832 2.06466,45.11654 -3.96614,13.99849 -19.4739,39.86425 -34.88698,58.18879 -12.67136,15.06493 -31.00365,30.98826 -47.54777,41.29976 -6.39707,3.98712 -11.76398,6.11329 -44.32045,17.55815 -2.8875,1.01507 -5.25,1.69173 -5.25,1.50368 z m -73,-5.42905 c -4.125,-1.52979 -13.125,-4.71225 -20,-7.07213 C 92.488417,247.6907 83.466837,242.34565 69.086539,230.31219 45.486199,210.56338 26.072443,185.80967 13.142975,158.98077 1.3917448,134.59674 2.3988048,108.60063 15.656599,94.094491 c 5.038977,-5.513444 10.83185,-8.94189 17.093473,-10.116577 l 3.520659,-0.66048 0.671172,14.059907 c 1.549623,32.461929 9.58883,60.683269 24.898774,87.406229 17.702194,30.89853 38.851043,53.26084 71.776453,75.89475 3.5096,2.41261 1.58069,2.11734 -7.03059,-1.07622 z" transform="scale(0.00293255, 0.00340136)" />
             </clipPath>
         </defs>
     </svg>
@@ -1329,14 +1347,15 @@
             <div class="hero-logo-wrapper">
                 <img src="images/MerMommyCreations.png" alt="MerMommy Creations - storybook children's party styling in North County San Diego" class="hero-logo" loading="lazy" />
             </div>
-            <h1 class="hero-title font-signature">Creating Magical Celebrations</h1>
+            <h1 class="hero-title font-signature">Let's Shell-ebrate!</h1>
             <p class="hero-sub">
-                Curated children's parties, themed celebrations,<br />
-                custom decor rentals, and unforgettable memories across North County San Diego.
+                <strong>Save your clams.</strong> Rent the magic.<br>
+                Themed party experiences made easy for families across North County San Diego.<br>
+                <span style="font-style:italic;color:#8B6C9E;">We don't plan the party… we just make everyone think you did.</span>
             </p>
-            <div class="hero-badge">The Party Starts Soon!</div>
+            <div class="hero-badge">Dive In!</div>
             <div class="scroll-indicator">
-                <span>Explore Our World</span>
+                <span>Dive Deeper</span>
                 <span class="arrow">↓</span>
             </div>
         </section>
@@ -1348,15 +1367,19 @@
                 turning everyday celebrations into <span class="highlight">extraordinary memories</span>.
                 Let us <span class="highlight">sail through the details</span> you wish you'd planned for,
                 so you can <span class="highlight">swim right into</span> every magical moment.
+                <br><br>
+                <span style="font-size:0.9rem;color:#6a5a7a;">Mermaid hair? Optional. Mermaid magic? Included.</span>
             </p>
         </section>
 
         <!-- ===== MAKE A SPLASH ===== -->
         <section class="section founding-card" id="founding">
-            <h2>🐚 Help Us Make a Splash! 🐚</h2>
+            <h2>🐚 Make a Splash! 🐚</h2>
             <p>
                 We're looking for a handful of families to help us create our very first MerMommy memories. 
                 As a founding MerFriend, you'll get to shape our first season of magic — and enjoy perks as deep as the ocean.
+                <br><br>
+                <strong>Save your clams.</strong> Spend them on memories instead.
             </p>
             <div class="founding-benefits">
                 <div class="founding-benefit"><span>💰</span>Launch Pricing</div>
@@ -1365,7 +1388,8 @@
                 <div class="founding-benefit"><span>✨</span>Exclusive Themes</div>
             </div>
             <p style="margin-top:1.2rem;font-size:0.8rem;color:#6a5a7a;">
-                In exchange, we ask permission to photograph portions of the event for our portfolio.
+                In exchange, we ask permission to photograph portions of the event for our portfolio.<br>
+                <span style="font-size:0.7rem;">No pirates were harmed during the making of this party.</span>
             </p>
         </section>
 
@@ -1373,7 +1397,9 @@
         <div class="chapter-divider">✦ Chapter Two ✦</div>
         <section class="section" id="adventure">
             <h2 class="chapter-title">Choose Your Adventure</h2>
-            <p class="chapter-sub">Each celebration is a journey waiting to begin. Which one will you choose?</p>
+            <p class="chapter-sub">Each celebration is a journey waiting to begin. Which one will you choose?<br>
+                <span style="font-size:0.85rem;color:#8B6C9E;">(We already bought the treasure chest. Save your clams.)</span>
+            </p>
             <div class="poster-grid">
 
                 <div class="poster-card card-lemon">
@@ -1426,7 +1452,11 @@
                 <span class="hidden-treasure" onclick="showTreasurePopup(this)">⭐<span class="treasure-popup">✦ A wish upon a star! ✦</span></span>
             </div>
             <div style="text-align:center;margin-top:1.5rem;padding:0.8rem 1.5rem;border:2px solid rgba(45,42,58,0.05);max-width:550px;margin-left:auto;margin-right:auto;">
-                <p style="color:#3a3a4a;font-size:0.95rem;font-weight:500;margin:0;">✦ All decor, tableware, and setup included. Just bring your guests and the cake!</p>
+                <p style="color:#3a3a4a;font-size:0.95rem;font-weight:500;margin:0;">
+                    <strong>🐚 Inside Your Treasure Chest:</strong> All decor, tableware, and setup included.<br>
+                    Just bring your guests and the cake!
+                </p>
+                <p style="font-size:0.7rem;color:#6a5a7a;margin-top:0.2rem;">Keep the memories. Return the decorations. Save your clams.</p>
             </div>
         </section>
 
@@ -1434,7 +1464,9 @@
         <section class="section sketchbook-section" id="sketchbook">
             <div class="chapter-divider">✦ In The Sketchbook ✦</div>
             <h2 class="chapter-title">Coming Up From The Deep...</h2>
-            <p class="chapter-sub">Concepts we're dreaming up, sketching out, and bringing to life.</p>
+            <p class="chapter-sub">Concepts we're dreaming up, sketching out, and bringing to life.<br>
+                <span style="font-size:0.8rem;color:#6a5a7a;">(We've already done the deep-sea diving for you.)</span>
+            </p>
             <div class="sketchbook-grid">
                 <div class="sketch-card" style="--rot:-1.5deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🦄</span><h4>Unicorn Garden</h4><span class="sketch-note">mood board</span></div>
                 <div class="sketch-card" style="--rot:2deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🌸</span><h4>Fairy Forest</h4><span class="sketch-note">sketch</span></div>
@@ -1448,13 +1480,16 @@
             <p style="text-align:center;margin-top:1.5rem;color:#6a5a7a;font-size:0.8rem;font-style:italic;opacity:0.6;">✧ More sketches appearing every week ✧</p>
         </section>
 
-        <!-- ===== A LITTLE EXTRA MAGIC (UPDATED) ===== -->
+        <!-- ===== A LITTLE EXTRA MAGIC (UPDATED WITH TWO SHELL SHAPES) ===== -->
         <div class="chapter-divider">✦ Chapter Three ✦</div>
         <section class="section slider-section" id="treasures">
             <h2 class="chapter-title">A Little Extra Magic</h2>
-            <p class="chapter-sub">Every celebration is filled with small wonders waiting to be discovered.</p>
+            <p class="chapter-sub">Every celebration is filled with small wonders waiting to be discovered.<br>
+                <span style="font-size:0.8rem;color:#6a5a7a;">(We provide the shell-fies. You make the memories.)</span>
+            </p>
             <div class="slider-track" id="sliderTrack">
-                <div class="treasure-card" style="--rot: 2deg;">
+                <!-- Shell 1 -->
+                <div class="shell-card shell-v1" style="--rot: 2deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
                         <span class="tc-icon">🗺️</span>
@@ -1466,7 +1501,8 @@
                         <span class="sparkle s4">✦</span>
                     </div>
                 </div>
-                <div class="treasure-card" style="--rot: -3deg;">
+                <!-- Shell 2 -->
+                <div class="shell-card shell-v2" style="--rot: -3deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
                         <span class="tc-icon">🐚</span>
@@ -1478,7 +1514,8 @@
                         <span class="sparkle s4">✦</span>
                     </div>
                 </div>
-                <div class="treasure-card" style="--rot: 4deg;">
+                <!-- Shell 1 -->
+                <div class="shell-card shell-v1" style="--rot: 4deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
                         <span class="tc-icon">🍾</span>
@@ -1490,7 +1527,8 @@
                         <span class="sparkle s4">✦</span>
                     </div>
                 </div>
-                <div class="treasure-card" style="--rot: 0deg;">
+                <!-- Shell 2 -->
+                <div class="shell-card shell-v2" style="--rot: 0deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
                         <span class="tc-icon">🪸</span>
@@ -1502,7 +1540,8 @@
                         <span class="sparkle s4">✦</span>
                     </div>
                 </div>
-                <div class="treasure-card" style="--rot: -2deg;">
+                <!-- Shell 1 -->
+                <div class="shell-card shell-v1" style="--rot: -2deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
                         <span class="tc-icon">📮</span>
@@ -1514,7 +1553,8 @@
                         <span class="sparkle s4">✦</span>
                     </div>
                 </div>
-                <div class="treasure-card" style="--rot: -1.5deg;">
+                <!-- Shell 2 -->
+                <div class="shell-card shell-v2" style="--rot: -1.5deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
                         <span class="tc-icon">🗺️</span>
@@ -1526,7 +1566,8 @@
                         <span class="sparkle s4">✦</span>
                     </div>
                 </div>
-                <div class="treasure-card" style="--rot: 2.5deg;">
+                <!-- Shell 1 -->
+                <div class="shell-card shell-v1" style="--rot: 2.5deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
                         <span class="tc-icon">🐚</span>
@@ -1538,7 +1579,8 @@
                         <span class="sparkle s4">✦</span>
                     </div>
                 </div>
-                <div class="treasure-card" style="--rot: -3.5deg;">
+                <!-- Shell 2 -->
+                <div class="shell-card shell-v2" style="--rot: -3.5deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
                         <span class="tc-icon">🍾</span>
@@ -1557,7 +1599,9 @@
         <!-- ===== MORE THAN PARTY DECOR ===== -->
         <section class="section" id="more-than-decor">
             <h2 class="chapter-title">More Than Party Decor</h2>
-            <p class="chapter-sub">Every celebration is an opportunity to create something <span class="highlight">fintastic</span>.</p>
+            <p class="chapter-sub">Every celebration is an opportunity to create something <span class="highlight">fintastic</span>.<br>
+                <span style="font-size:0.8rem;color:#6a5a7a;">(The only thing you'll need to fish for… is compliments.)</span>
+            </p>
             <div class="masonry-grid">
                 <div class="masonry-item"><span class="masonry-icon">👗</span><h4>Custom Apparel</h4><p>Personalized outfits for the birthday star</p></div>
                 <div class="masonry-item"><span class="masonry-icon">📋</span><h4>Party Signage</h4><p>Hand-crafted signs and welcome boards</p></div>
@@ -1571,7 +1615,8 @@
         <!-- ===== HOW THE MAGIC HAPPENS ===== -->
         <div class="chapter-divider">✦ Chapter Four ✦</div>
         <section class="section" id="how-it-works">
-            <h2 class="chapter-title">How The Magic Happens</h2>
+            <h2 class="chapter-title">Captain's Notes</h2>
+            <p class="chapter-sub">How the magic happens (we've got it down to a science—with a splash of whimsy).</p>
             <div class="wave-path">
                 <div class="wave-step"><span class="ws-number">01</span><h4>Submit Inquiry</h4></div>
                 <div class="wave-step"><span class="ws-number">02</span><h4>Dream Together</h4></div>
@@ -1580,6 +1625,7 @@
                 <div class="wave-step"><span class="ws-number">05</span><h4>Celebrate</h4></div>
                 <div class="wave-step"><span class="ws-number">06</span><h4>We Handle Cleanup</h4></div>
             </div>
+            <p style="text-align:center;margin-top:1rem;color:#6a5a7a;font-size:0.8rem;font-style:italic;">Please return all props. Emotional attachment is understandable.</p>
         </section>
 
         <!-- ===== CHAPTER 5: MY TAIL ===== -->
@@ -1606,6 +1652,7 @@
                         <p>You just show up and suddenly your backyard is giving “mermaid DJ set, emotional support seagulls, and questionable crab behavior.”</p>
                         <p>Because childhood should feel <span class="story-highlight">magical, not expensive</span>.</p>
                         <p>So come on in. Let’s make it cute, silly, a little ridiculous, and <span class="story-highlight">unforgettable</span>.</p>
+                        <p style="font-size:0.85rem;color:#8B6C9E;font-style:italic;">Side effects may include smiling, squealing, and excessive shell-fies.</p>
                     </div>
                     <p class="journal-signoff">With love from the tide,<br>Kayte</p>
                     <div class="journal-features">
@@ -1623,8 +1670,9 @@
         <!-- ===== WAITLIST ===== -->
         <section class="section" id="waitlist">
             <div class="waitlist-card">
-                <h3>Not Ready To Book Yet?</h3>
-                <p>Join our launch list and <span class="highlight">seas the day</span>, be the first to know when we're officially open.</p>
+                <h3>Not Ready to Dive In?</h3>
+                <p>Join our launch list and <span class="highlight">seas the day</span>—be the first to know when we're officially open.<br>
+                    <span style="font-size:0.9rem;color:#8B6C9E;">Save your clams – join early for exclusive perks.</span></p>
                 <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xlgygvpw" method="POST">
                     <input type="text" name="name" placeholder="Your name" required />
                     <input type="email" name="email" placeholder="Your email" required />
@@ -1632,7 +1680,8 @@
                     <button type="submit" class="waitlist-btn">Join List</button>
                 </form>
                 <p style="font-size:0.7rem;color:#6a5a7a;margin-top:0.6rem;font-weight:400;">
-                    First 25 subscribers get a special launch surprise.
+                    First 25 subscribers get a special launch surprise.<br>
+                    <span style="font-size:0.6rem;">Mermaids not guaranteed. Magic almost always is.</span>
                 </p>
             </div>
             <div style="text-align:center;margin-top:1rem;">
@@ -1640,23 +1689,27 @@
             </div>
         </section>
 
-        <!-- ===== INSTAGRAM ===== -->
+        <!-- ===== SHELL-FIES & SEA-NERY (Instagram) ===== -->
         <section class="section" id="instagram">
-            <h2 class="chapter-title">Follow Our Journey</h2>
-            <p class="chapter-sub">Every magical business starts somewhere. Follow along as we build MerMommy.</p>
+            <h2 class="chapter-title">Shell-fies &amp; Sea-nery</h2>
+            <p class="chapter-sub">Follow along as we build MerMommy—one magical detail at a time.<br>
+                <span style="font-size:0.8rem;color:#6a5a7a;">(We provide the shell-fies. You make the memories.)</span>
+            </p>
             <div class="ig-grid">
                 <div class="ig-placeholder"><span class="ig-icon">📷</span><p>@mermommycreations</p><a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a></div>
                 <div class="ig-placeholder"><span class="ig-icon">📷</span><p>@mermommycreations</p><a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a></div>
                 <div class="ig-placeholder"><span class="ig-icon">📷</span><p>@mermommycreations</p><a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a></div>
             </div>
-            <p style="text-align:center;margin-top:1rem;color:#6a5a7a;font-size:0.85rem;font-weight:400;">Follow the journey as we design themes, build experiences, and prepare for our first season.</p>
+            <p style="text-align:center;margin-top:1rem;color:#6a5a7a;font-size:0.85rem;font-weight:400;">Current mood: Mermaid. 🧜‍♀️</p>
         </section>
 
-        <!-- ===== CONTACT ===== -->
+        <!-- ===== SEND A MESSAGE IN A BOTTLE (Contact) ===== -->
         <section class="section" id="contact">
             <div class="contact-card" id="form-container">
-                <h2 class="font-signature" style="font-size:2.8rem;color:#8B6C9E;text-align:center;">Book a Setup</h2>
-                <p class="contact-intro">Let's chat about your celebration! Tell us what you need and we'll handle the rest.</p>
+                <h2 class="font-signature" style="font-size:2.8rem;color:#8B6C9E;text-align:center;">Send a Message in a Bottle</h2>
+                <p class="contact-intro">Let's chat about your celebration! Tell us what you need and we'll handle the rest.<br>
+                    <span style="font-size:0.9rem;color:#6a5a7a;">You bring the kids. We'll bring the "HOW DID YOU THINK OF THIS?!" moments.</span>
+                </p>
                 <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="contact-form">
                     <input type="hidden" name="ip_address" id="inquiry-ip" />
                     <div class="form-row">
@@ -1693,21 +1746,24 @@
                         </div>
                     </div>
                     <div class="form-group"><label for="message">Tell us about your celebration</label><textarea id="message" name="message" rows="3" placeholder="How many guests? What's your vision? Need tables and chairs? We have everything, just let us know what you need!"></textarea></div>
-                    <button type="submit" class="submit-btn">Drop Us A Line ✉️</button>
+                    <button type="submit" class="submit-btn">Dive In ✉️</button>
                 </form>
                 <div id="success-message" style="display:none;text-align:center;padding:2rem 0;">
                     <div style="font-size:2.5rem;">🐚</div>
                     <h2 class="font-signature" style="font-size:2.5rem;color:#8B6C9E;">Inquiry Splashed!</h2>
-                    <p style="font-size:1rem;color:#3a3a4a;font-weight:400;">Thank you! Your party coordinates have drifted safely into our inbox.</p>
+                    <p style="font-size:1rem;color:#3a3a4a;font-weight:400;">Thank you! Your party coordinates have drifted safely into our inbox.<br>
+                        <span style="font-size:0.8rem;color:#6a5a7a;">Fish may judge your dance moves, but we won't.</span></p>
                 </div>
             </div>
         </section>
 
-        <!-- ===== PARTY GUIDE ===== -->
+        <!-- ===== TREASURE MAP (Party Guide) ===== -->
         <section class="section" id="guide">
             <div class="guide-cta">
-                <h3>Party Guide</h3>
-                <p>Get inspired and start planning your magical celebration.</p>
+                <h3>🗺️ Treasure Map</h3>
+                <p>Get inspired and start planning your magical celebration.<br>
+                    <span style="font-size:0.8rem;color:#6a5a7a;">(No pirates were harmed in the making of this guide.)</span>
+                </p>
                 <a href="#" class="guide-btn">Download Now</a>
             </div>
         </section>
@@ -1719,7 +1775,9 @@
         <div class="footer-main">
             <div class="footer-brand">
                 <h3>MerMommy Creations</h3>
-                <p>Curated children's party styling in North County San Diego.</p>
+                <p>Curated children's party styling in North County San Diego.<br>
+                    <span style="font-size:0.7rem;color:#8B6C9E;">Save your clams. Rent the magic.</span>
+                </p>
                 <div class="footer-social">
                     <a href="https://instagram.com/mermommycreations" target="_blank" aria-label="Instagram">📸</a>
                     <a href="#" target="_blank" aria-label="Pinterest">📌</a>
@@ -1729,8 +1787,8 @@
             <div class="footer-links">
                 <a href="#adventure">Adventures</a>
                 <a href="#tail">My Tail</a>
-                <a href="#contact">Book Now</a>
-                <a href="https://instagram.com/mermommycreations" target="_blank">Instagram</a>
+                <a href="#contact">Dive In</a>
+                <a href="https://instagram.com/mermommycreations" target="_blank">Shell-fies</a>
             </div>
         </div>
         <div class="trust-bar">
@@ -1743,8 +1801,13 @@
             <span class="trust-item"><span class="ti-icon">🔄</span> Setup &amp; Breakdown</span>
             <span class="sep">·</span>
             <span class="trust-item"><span class="ti-icon">👨‍👩‍👧‍👦</span> Family Owned</span>
+            <span class="sep">·</span>
+            <span class="trust-item" style="font-size:0.65rem;color:#8B6C9E;">✨ Save your clams. Keep the memories.</span>
         </div>
-        <div class="footer-copy">&copy; 2026 MerMommy Creations. All rights reserved.</div>
+        <div class="footer-copy">
+            &copy; 2026 MerMommy Creations. All rights reserved.<br>
+            <span style="font-size:0.5rem;color:#9a8a9a;">Glitter has been known to travel home with guests. You've been warned.</span>
+        </div>
     </footer>
 
     <!-- ===== SCRIPTS ===== -->
@@ -1806,7 +1869,7 @@
             // 5. INFINITE SLIDER
             const track = document.getElementById('sliderTrack');
             if(track) {
-                const cards = track.querySelectorAll('.treasure-card');
+                const cards = track.querySelectorAll('.shell-card');
                 cards.forEach(c => track.appendChild(c.cloneNode(true)));
                 const half = track.scrollWidth / 2;
                 gsap.to(track, { x: -half, duration: 30, ease: 'none', repeat: -1, onRepeat: () => gsap.set(track, { x: 0 }) });
