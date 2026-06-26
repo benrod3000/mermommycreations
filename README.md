@@ -23,7 +23,6 @@ The site is designed to feel like stepping into an underwater adventure — with
 - **🎞️ GSAP Animations** – Smooth scroll‑triggered reveals, floating logo, and a gentle bobbing effect on Kayte's photo in the "My Tail" section.
 - **🔍 Local SEO Ready** – JSON‑LD schema for `LocalBusiness` + `EventPlanner`, `geo.region` meta tags, and an `<address>` element in the footer.
 - **📱 Fully Responsive** – Grids, cards, and forms adapt from desktop down to 320px wide.
-- **🌐 Sitemap & robots.txt** – Included for search engine discovery (just upload to your root).
 
 ---
 
@@ -99,7 +98,7 @@ Test both forms to ensure submissions reach your inbox. If you change the Formsp
 ## 🙌 Credits
 
 - **Brand & Copy** – Kayte (MerMommy)
-- **Development** – [Your Name / Agency]
+- **Development** – [brod3000.com](https://brod3000.com)
 - **Fonts** – [Grand Hotel](https://fonts.google.com/specimen/Grand+Hotel) & [Fredoka](https://fonts.google.com/specimen/Fredoka) from Google Fonts
 - **SVG Seashells** – Custom‑drawn; clip‑paths generated from Inkscape.
 
