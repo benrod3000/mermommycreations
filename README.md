@@ -1,222 +1,120 @@
-# 🧜‍♀️ MerMommy Creations - Luxury Party Curation
+# 🧜‍♀️ MerMommy Creations
 
-Welcome to the official repository for **MerMommy Creations**, a premium children's party styling and event curation brand based in North County San Diego.
+**Whimsical children's party styling, themed decor, and unforgettable memories in North County San Diego.**
 
----
-
-## ✨ Overview
-
-MerMommy Creations is a boutique children's party design studio that transforms ordinary celebrations into extraordinary memories. From themed decor and custom apparel to full-service event coordination, we bring magical, stress-free experiences to families across North County San Diego.
-
-This website serves as the brand's digital home, a whimsical, storybook-inspired experience that reflects our creative, mom-led approach to party curation.
+[![Live Site](https://img.shields.io/badge/live-site-8B6C9E)](https://mermommycreations.com)
 
 ---
 
-## 🎨 Design Philosophy
+## 📖 About
 
-**Storybook Experience Over Corporate Website**
+MerMommy Creations is a one‑page brand website for a children's party styling and rental business. It blends a playful, storybook aesthetic with practical booking tools, local SEO signals, and a mobile‑first experience.
 
-The site is designed to feel like an underwater adventure, not a business landing page. Key design principles include:
-
-- **Brutalist-lite aesthetic**, Clean, architectural structure with no rounded corners, using bold borders and intentional spacing for a premium, editorial feel
-- **Ocean-inspired color palette**, Soft pastel gradients (lavender to teal to aqua) with accent colors `#8B6C9E` (purple) and `#69DBD3` (teal)
-- **Glass-morphism elements**, Transparent, blurred backgrounds create depth without heaviness
-- **Storybook narrative**, The user follows a mermaid guide through the site, discovering themes and treasures along the way
-- **Premium typography**, Custom Magnolia Sky font for signatures, Fredoka for clean body text
+The site is designed to feel like stepping into an underwater adventure — with hand‑crafted seashell cards, floating animations, hidden treasures, and a tone that's equal parts whimsy and wink.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-### Core Functionality
-
-- **Splash Page Hero**, Large, animated logo with a bold "The Party Starts Soon!" call-to-action
-- **Founding Families Program**, Limited-time offer for early adopters with exclusive benefits
-- **Adventure Themes**, Four signature party themes displayed as destination posters (Lemonade Stand, Palm Trees & Cheeseburgers, Tie-Dye Studio, Sea Shell Spa)
-- **Dream Themes Slider**, Endless carousel showcasing 11 future themes (Flamingo, Watermelon, Pineapple, Taco, Frozen, Enchanted Garden, Farmers Market, Little Deer, Rainbow, Baby Shower, Bridal Shower)
-- **Treasures In Every Adventure**, Infinite card slider highlighting value-added services
-- **More Than Party Decor**, Masonry grid of additional services (Custom Apparel, Party Signage, Birthday Outfits, etc.)
-- **My Tail (About)**, Storybook-style section featuring a personal photo and brand story
-- **Add-On Services**, Four premium add-ons (The MerMommy Stay, Pearl Package, Treasure Trove, Cakesmash Setup)
-- **Waitlist / Launch List**, Formspree-connected signup form with success state
-- **Instagram Section**, Placeholder for Instagram feed integration (coming soon)
-- **Party Guide**, CTA for downloadable PDF guide
-- **How The Magic Happens**, 6-step process displayed as a wave path
-- **Trust Bar**, Cleanly organized credentials (service area, licensing, etc.)
-- **Contact Form**, Fully functional booking inquiry form with Formspree integration
-
-### Interactive & Visual Features
-
-- **MotionPath Guide**, Animated mermaid character swims down the page as you scroll, leading you through the adventure
-- **Particle System**, Floating bubbles and sparkles (✨) create an immersive underwater atmosphere
-- **GSAP Animations**, Scroll-triggered fade-ins, floating icons, and smooth entrances
-- **Hidden Discoveries**, Clickable pearls, stars, and treasure chests reveal surprise messages (small interactive delights for users)
-- **Infinite Sliders**, Two endless carousels for Treasures and Dream Themes
+- **🎨 Immersive Brand Design** – Custom SVG clip‑path shells, conic gradients, and a hand‑illustrated feel with watercolour textures and subtle noise overlays.
+- **🧭 Infinite Shell Slider** – A rotating carousel of "A Little Extra Sparkle" cards with pearl glow effects, sparkles, and touch‑enabled pause/resume.
+- **📝 Inquiry & Waitlist Forms** – Integrated with [Formspree](https://formspree.io) for zero‑backend submissions. Includes styled "Add‑On" cards with checkboxes and "Coming Soon" placeholders.
+- **🏷️ Themed Microcopy** – "Save your clams", "Send a message in a bottle", "Shell‑fies & Sea‑nery" — all copy reinforces the mermaid brand voice.
+- **🎞️ GSAP Animations** – Smooth scroll‑triggered reveals, floating logo, and a gentle bobbing effect on Kayte's photo in the "My Tail" section.
+- **🔍 Local SEO Ready** – JSON‑LD schema for `LocalBusiness` + `EventPlanner`, `geo.region` meta tags, and an `<address>` element in the footer.
+- **📱 Fully Responsive** – Grids, cards, and forms adapt from desktop down to 320px wide.
+- **🌐 Sitemap & robots.txt** – Included for search engine discovery (just upload to your root).
 
 ---
 
-## 🛠️ Technology Stack
+## 🧰 Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| **HTML5** | Semantic markup |
-| **CSS3** | Custom styles, brutalist design, glass-morphism |
-| **JavaScript (ES6)** | Interactivity, animations, form handling |
-| **GSAP 3.12.5** | Advanced animations, ScrollTrigger, MotionPath |
-| **ScrollTrigger** | Scroll-based animations and triggers |
-| **MotionPathPlugin** | Guided mermaid character animation |
-| **Formspree** | Form submission handling (inquiry + waitlist) |
-| **Google Fonts** | Fredoka (body), Grand Hotel (fallback) |
-| **Magnolia Sky** | Custom premium font for signatures |
+| Tool / Library      | Purpose                               |
+|---------------------|---------------------------------------|
+| **HTML5**           | Semantic markup                       |
+| **CSS3**            | Custom properties, Flexbox, Grid      |
+| **GSAP**            | Scroll animations, infinite slider    |
+| **ScrollTrigger**   | GSAP plugin for scroll‑based triggers |
+| **Formspree**       | Forms backend (no server required)    |
+| **Google Fonts**    | Fredoka & Grand Hotel                 |
+| **Schema.org**      | Structured data for local business    |
 
----
-
-## 📁 File Structure
-
-```
-MerMommyCreations/
-├── index.html              # Single-page application (all-in-one)
-├── README.md               # Project documentation
-├── images/
-│   ├── MerMommyCreations.png  # Brand logo (hero)
-│   ├── mommy.png              # Founder photo (My Tail section)
-│   └── [other assets]
-└── Magnolia Sky/           # Custom font folder
-    ├── magnolia_sky.ttf
-    ├── magnolia_sky.otf
-    └── magnolia_sky_alt.ttf
-```
+No front‑end framework – just vanilla JS for a lightweight, fast page.
 
 ---
 
-## 🚀 Getting Started
+## 📁 Project Structure/
+├── index.html # Main page (all styles + scripts inlined)
+├── robots.txt # Search engine crawl instructions
+├── sitemap.xml # XML sitemap for Google/Bing
+├── README.md # This file
+└── images/
+├── MerMommyCreations.png # Hero logo
+├── mommy.png # Kayte's photo (My Tail)
+├── lemonade_stand.png # Adventure poster images
+├── hamburger.png
+├── tye_dye.png
+└── mermaidparty.png
 
-### Prerequisites
-
-- Web browser (Chrome, Safari, Firefox, etc.)
-- Text editor (VS Code, Sublime Text, etc.)
-- Basic knowledge of HTML/CSS for customization
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/benrodriguez/MerMommyCreations.git
-   ```
-
-2. **Open the project**
-   ```bash
-   cd MerMommyCreations
-   ```
-
-3. **Launch locally**
-   - Open `index.html` in your browser
-   - Or use Live Server in VS Code for hot-reload
-
-### Customization
-
-| Element | File Location | How to Change |
-|---------|---------------|---------------|
-| **Logo** | `images/MerMommyCreations.png` | Replace with your own image |
-| **Founder Photo** | `images/mommy.png` | Replace with your own image |
-| **Theme Content** | Search `.poster-card` in `index.html` | Update text, icons, features |
-| **Dream Themes** | Search `.theme-card` in `index.html` | Add/remove themes in the slider |
-| **Brand Colors** | CSS variables `:root` | Update `--purple`, `--teal` |
-| **Formspree Endpoints** | `action="https://formspree.io/f/..."` | Replace with your form IDs |
-| **Font Path** | `@font-face` in `<style>` | Update path if folder name changes |
-
-### Environment Variables / Configuration
-
-**Formspree Setup:**
-1. Create two forms at [Formspree](https://formspree.io):
-   - Inquiry form: `https://formspree.io/f/mrewgzkg`
-   - Waitlist form: `https://formspree.io/f/xlgygvpw`
-2. Replace the `action` URLs in `index.html` if needed
-
-**Magnolia Sky Font:**
-1. Place your font files in a folder named `Magnolia Sky/`
-2. Ensure the path matches the `@font-face` declaration
+text
 
 ---
 
-## 📱 Responsive Breakpoints
+## 🚀 Setup & Deployment
 
-| Breakpoint | Layout | Notes |
-|------------|--------|-------|
-| **Desktop (1024px+)** | 4-column grid (posters), 6-column wave path | Full experience |
-| **Tablet (768px-1024px)** | 2-column grids, 3-column wave path | Adjusted spacing |
-| **Mobile (600px-768px)** | Single-column, stacked sections | Optimized for touch |
-| **Small Mobile (<600px)** | Single-column, smaller typography | Maximum readability |
+### 1. Local development
+Simply open `index.html` in your browser. No build tools, no installs – everything is self‑contained.
 
----
+### 2. Customise content
+- Replace the images in `/images/` with your own.
+- Update placeholder links (`#`) for the "Download Now" guide, Terms, and Privacy pages.
+- Adjust the contact email address in the `action` attributes of the forms (currently using demo Formspree endpoints). Sign up at [Formspree](https://formspree.io) to get your own form IDs.
 
-## 🐛 Known Limitations
+### 3. Deploy to production
+Upload the entire folder to your web host (e.g., Netlify, Vercel, or any static hosting). Make sure `robots.txt` and `sitemap.xml` are placed in the **root** (same level as `index.html`).
 
-- **No e-commerce**, This is a lead-generation site, not a store
-- **No real-time inventory**, All theme packages are informational only
-- **Instagram feed**, Currently placeholder; requires API integration
-- **Party Guide PDF**, Link is placeholder; needs actual PDF file
+### 4. Verify forms
+Test both forms to ensure submissions reach your inbox. If you change the Formspree endpoints, update them in the HTML.
 
 ---
 
-## 📈 Future Roadmap
+## 🔍 SEO Notes
 
-| Phase | Feature | Status |
-|-------|---------|--------|
-| **v2.0** | Current release — Storybook UX, Dream Themes Slider | ✅ Complete |
-| **v2.1** | Real Instagram feed integration | Pending |
-| **v2.2** | Party Guide PDF download | Pending |
-| **v2.3** | Founding Families program launch | Pending |
-| **v3.0** | Real photography & portfolio gallery | Future |
-| **v3.1** | Online booking system | Future |
+- The `<h1>` is keyword‑rich: *"Children's Party Styling in North County San Diego"*
+- The playful tagline is moved to a `<p>` below it – keeping the H1 crawler‑friendly.
+- Structured data includes `serviceArea` with a GeoCircle for local search.
+- Meta tags for `geo.region` and `geo.placename` reinforce location targeting.
 
 ---
 
-## 🤝 Contributing
+## 🎨 Design Highlights
 
-This is a private repository for the MerMommy Creations brand. For any changes or updates, please contact the repository owner.
+- **Shell cards** – Two distinct SVG clip‑paths (original + new) used in the slider, each with its own conic‑gradient background.
+- **Pearl glow** – A bright, multi‑coloured radial gradient behind the card content that intensifies on hover.
+- **Floating elements** – The shell cards, Kayte's image, and background bubbles all have gentle up‑down motions.
+- **Watercolour texture** – A subtle noise overlay on the shells gives them a hand‑painted feel.
 
-**For developers:**
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request for review
+---
+
+## 🙌 Credits
+
+- **Brand & Copy** – Kayte (MerMommy)
+- **Development** – [Your Name / Agency]
+- **Fonts** – [Grand Hotel](https://fonts.google.com/specimen/Grand+Hotel) & [Fredoka](https://fonts.google.com/specimen/Fredoka) from Google Fonts
+- **SVG Seashells** – Custom‑drawn; clip‑paths generated from Inkscape.
 
 ---
 
 ## 📄 License
 
-© 2026 MerMommy Creations. All rights reserved.
-
-This is proprietary software. Unauthorized reproduction, distribution, or modification is strictly prohibited.
+All rights reserved. This website is proprietary to MerMommy Creations. For any reuse, please contact the owner.
 
 ---
 
-## 🌐 Live Site
+## 📬 Questions?
 
-Visit the live site: [mermommycreations.com](https://mermommycreations.com)
-
----
-
-## 👩‍🎨 Credits
-
-| Element | Credit |
-|---------|--------|
-| **GSAP Animation** | [GreenSock](https://greensock.com/) |
-| **Form Handling** | [Formspree](https://formspree.io/) |
-| **Fonts** | Google Fonts & Magnolia Sky (custom) |
-| **Mermaid Guide** | Custom SVG design |
-| **Color Palette** | Adobe Capture — inspired by ocean tones |
+Reach out via the [contact form](https://mermommycreations.com/#contact) on the live site – or open an issue if you're the developer.
 
 ---
 
-## 📝 Version History
-
-| Version | Date | Notes |
-|---------|------|-------|
-| **2.0** | June 2026 | Storybook UX overhaul, Dream Themes slider, Brutalist design |
-| **1.0** | May 2026 | Initial launch — "Coming Soon" splash page |
-
----
-
-*Made with 💜 and a whole lot of imagination.*
+**Made with 💙 and a splash of ocean magic.**
