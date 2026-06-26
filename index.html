@@ -134,6 +134,16 @@
             margin-bottom: 4rem;
         }
 
+        /* ---------- BANNER ---------- */
+        .banner {
+            padding: 2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-left: 4px solid rgba(139, 108, 158, 0.2);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
         /* ---------- CHAPTER DIVIDER ---------- */
         .chapter-divider {
             text-align: center;
@@ -841,53 +851,65 @@
             border-color: #8B6C9E;
         }
 
-        /* ---------- INSTAGRAM ---------- */
-        .ig-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            max-width: 540px;
+        /* ---------- INSTAGRAM SINGLE CTA ---------- */
+        .ig-single-cta {
+            max-width: 500px;
             margin: 0 auto;
         }
 
-        .ig-placeholder {
-            padding: 2rem 1rem;
+        .ig-cta-card {
+            padding: 2.5rem 2rem;
             text-align: center;
             background: rgba(255, 255, 255, 0.15);
-            border: 2px solid rgba(45, 42, 58, 0.05) !important;
-            aspect-ratio: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            border: 2px solid rgba(45, 42, 58, 0.06);
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
-        .ig-placeholder .ig-icon {
-            font-size: 1.8rem;
+        .ig-cta-card:hover {
+            transform: translateY(-4px);
+            border-color: #8B6C9E;
+        }
+
+        .ig-cta-icon {
+            font-size: 3rem;
             display: block;
-            margin-bottom: 0.2rem;
-            opacity: 0.3;
+            margin-bottom: 0.5rem;
+            opacity: 0.6;
         }
 
-        .ig-placeholder p { font-size: 0.7rem; color: #6a5a7a; }
+        .ig-cta-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d2a3a;
+            font-family: 'Grand Hotel', cursive;
+            margin-bottom: 0.3rem;
+        }
 
-        .ig-placeholder .ig-link {
+        .ig-cta-card p {
+            font-size: 0.9rem;
+            color: #3a3a4a;
+            font-weight: 400;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .ig-cta-btn {
             display: inline-block;
-            margin-top: 0.4rem;
-            padding: 0.3rem 1.2rem;
             background: #2d2a3a;
             color: #fff;
+            padding: 0.6rem 2rem;
             text-decoration: none;
-            font-size: 0.7rem;
             font-weight: 600;
             border: 2px solid #2d2a3a;
-            transition: background 0.2s ease;
+            transition: background 0.2s ease, border-color 0.2s ease;
             font-family: 'Fredoka', sans-serif;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            border-radius: 0;
         }
 
-        .ig-placeholder .ig-link:hover {
+        .ig-cta-btn:hover {
             background: #8B6C9E;
             border-color: #8B6C9E;
         }
@@ -1512,7 +1534,6 @@
             .footer-links { justify-content: center; }
             .trust-bar { gap: 0.25rem 1rem; font-size: 0.7rem; }
             .founding-benefits { grid-template-columns: repeat(2, 1fr); }
-            .ig-grid { grid-template-columns: repeat(2, 1fr); }
             .wave-path { grid-template-columns: repeat(3, 1fr); }
             .wave-path::before { display: none; }
             .hero-title { font-size: 2.4rem; }
@@ -1531,7 +1552,6 @@
             .masonry-grid { grid-template-columns: 1fr; }
             .sketchbook-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
             .journal-text .journal-features { grid-template-columns: 1fr; }
-            .ig-grid { grid-template-columns: 1fr; }
             .wave-path { grid-template-columns: repeat(2, 1fr); }
             .hero-title { font-size: 2rem; }
             .hero-title-sub { font-size: 2.8rem; }
@@ -1886,15 +1906,15 @@
         <!-- ===== SHELL-FIES & SEA-NERY (Instagram) ===== -->
         <section class="section" id="instagram">
             <h2 class="chapter-title">Shell-fies &amp; Sea-nery</h2>
-            <p class="chapter-sub">Follow along as we build MerMommy—one enchanting detail at a time.<br>
-                <span style="font-size:0.8rem;color:#6a5a7a;">(We provide the shell-fies. You make the memories.)</span>
-            </p>
-            <div class="ig-grid">
-                <div class="ig-placeholder"><span class="ig-icon">📷</span><p>@mermommycreations</p><a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a></div>
-                <div class="ig-placeholder"><span class="ig-icon">📷</span><p>@mermommycreations</p><a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a></div>
-                <div class="ig-placeholder"><span class="ig-icon">📷</span><p>@mermommycreations</p><a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a></div>
+            <p class="chapter-sub">Follow along as we build MerMommy—one enchanting detail at a time.</p>
+            <div class="ig-single-cta">
+                <div class="ig-cta-card">
+                    <span class="ig-cta-icon">📸</span>
+                    <h3>@mermommycreations</h3>
+                    <p>Behind-the-scenes, theme reveals, and little moments of ocean magic.</p>
+                    <a href="https://instagram.com/mermommycreations" target="_blank" rel="noopener" class="ig-cta-btn">Follow the Journey →</a>
+                </div>
             </div>
-            <p style="text-align:center;margin-top:1rem;color:#6a5a7a;font-size:0.85rem;font-weight:400;">Current mood: Mermaid. 🧜‍♀️</p>
         </section>
 
         <!-- ===== SEND A MESSAGE IN A BOTTLE (Contact) ===== -->
@@ -2088,7 +2108,7 @@
             const sections = [
                 '#banner', '#founding', '.poster-card', '#sketchbook', '#treasures',
                 '#more-than-decor .masonry-item', '#how-it-works .wave-step', '#tail .journal',
-                '#waitlist .waitlist-card', '#instagram .ig-placeholder', '#form-container', '#guide .guide-cta'
+                '#waitlist .waitlist-card', '#instagram', '#form-container', '#guide .guide-cta'
             ];
             sections.forEach(sel => {
                 gsap.from(sel, {
