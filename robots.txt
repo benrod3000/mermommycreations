@@ -1,0 +1,10 @@
+# Allow all search engines to crawl
+User-agent: *
+Allow: /
+
+# Disallow crawling of non-existent or irrelevant paths (if any)
+Disallow: /images/
+Disallow: /css/
+
+# Sitemap location
+Sitemap: https://mermommycreations.com/sitemap.xml
