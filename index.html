@@ -328,7 +328,7 @@
             text-transform: uppercase;
         }
 
-        /* ---------- TREASURES SLIDER ---------- */
+        /* ---------- TREASURES SLIDER (UPDATED) ---------- */
         .slider-section {
             overflow: hidden;
             padding: 1.5rem 0;
@@ -343,128 +343,138 @@
             will-change: transform;
         }
 
+        /* --- Card Outer (Clipped to Shell) --- */
         .treasure-card {
-            flex: 0 0 auto;
-            padding: 1.5rem 1.2rem;
-            text-align: center;
-            background: rgba(255, 248, 240, 0.3);
-            border: 2px solid rgba(45, 42, 58, 0.06);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 0 0 200px;
+            aspect-ratio: 322 / 288;
+            clip-path: url(#shellClip);
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
+            transform: rotate(var(--rot, 0deg));
+            background: linear-gradient(145deg, #fdf8f6, #fce4ec);
+            transition: filter 0.3s ease;
+            position: relative;
+        }
+
+        .treasure-card:hover {
+            filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.15));
+        }
+
+        /* --- Card Inner (Floating Content) --- */
+        .treasure-card-inner {
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 160px;
-            max-width: 200px;
+            text-align: center;
+            padding: 28% 15%;
             position: relative;
+            animation: float 3s ease-in-out infinite;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.9), rgba(255, 220, 240, 0.2) 80%);
+            z-index: 2;
         }
 
-        .treasure-card.map {
-            background: linear-gradient(135deg, #f5e6c8, #e8d5b0);
-            border-color: #c4a882;
-            border-style: solid;
-            transform: rotate(var(--rot, 2deg));
-            padding: 1.8rem 1.2rem;
-            min-height: 180px;
-            border-radius: 4px 12px 4px 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        .treasure-card:hover .treasure-card-inner {
+            animation-play-state: paused;
+            transform: translateY(-6px);
         }
-        .treasure-card.map::after {
+
+        /* --- Iridescent Overlay --- */
+        .treasure-card-inner::before {
             content: '';
             position: absolute;
-            top: 4px; left: 4px; right: 4px; bottom: 4px;
-            border: 1px dashed rgba(139, 108, 158, 0.08);
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle at 60% 30%, rgba(200, 230, 255, 0.4), rgba(255, 200, 220, 0.2) 60%, transparent 100%);
+            opacity: 0.5;
             pointer-events: none;
-            border-radius: 2px 10px 2px 10px;
+            z-index: 0;
         }
 
-        .treasure-card.shell {
-            background: rgba(255, 230, 220, 0.25);
-            border-color: rgba(200, 160, 150, 0.2);
-            border-radius: 50% 50% 40% 40% / 60% 60% 30% 30%;
-            min-height: 170px;
-            max-width: 180px;
-            transform: rotate(var(--rot, -3deg));
-            border-width: 2px;
-            border-style: solid;
-        }
-
-        .treasure-card.bottle {
-            background: rgba(200, 230, 240, 0.15);
-            border-color: rgba(150, 200, 210, 0.2);
-            border-radius: 30% 30% 15% 15% / 40% 40% 20% 20%;
-            min-height: 200px;
-            max-width: 140px;
-            transform: rotate(var(--rot, 4deg));
-            border-width: 2px;
-            border-style: solid;
-            padding: 2rem 0.8rem;
-        }
-        .treasure-card.bottle::before {
+        /* --- Storybook Watercolor Texture --- */
+        .treasure-card-inner::after {
             content: '';
             position: absolute;
-            top: 8px; left: 50%;
-            transform: translateX(-50%);
-            width: 30%; height: 12px;
-            border: 2px solid rgba(150, 200, 210, 0.15);
-            border-radius: 50%;
-        }
-
-        .treasure-card.pearl {
-            background: radial-gradient(circle at 35% 35%, #f5f0f8, #d8cce0);
-            border-color: rgba(180, 160, 190, 0.15);
-            border-radius: 50%;
-            min-height: 150px;
-            max-width: 150px;
-            padding: 1.2rem;
-            transform: rotate(var(--rot, 0deg));
-            border-width: 2px;
-            border-style: solid;
-            box-shadow: inset 0 -8px 20px rgba(139, 108, 158, 0.05);
-        }
-        .treasure-card.pearl .pearl-shine {
-            position: absolute;
-            top: 15%; left: 20%;
-            width: 25%; height: 12%;
-            background: radial-gradient(ellipse, rgba(255, 255, 255, 0.5), transparent 70%);
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
             pointer-events: none;
+            opacity: 0.6;
+            z-index: 1;
         }
 
-        .treasure-card.postcard {
-            background: rgba(255, 248, 240, 0.25);
-            border-color: rgba(180, 160, 150, 0.15);
-            border-radius: 4px;
-            min-height: 150px;
-            max-width: 200px;
-            transform: rotate(var(--rot, -2deg));
-            border-width: 2px;
-            border-style: solid;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-        }
-        .treasure-card.postcard::before {
-            content: '';
-            position: absolute;
-            top: 4px; right: 4px;
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: rgba(139, 108, 158, 0.05);
-        }
-        .treasure-card.postcard::after {
-            content: '';
-            position: absolute;
-            bottom: 4px; left: 4px;
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: rgba(139, 108, 158, 0.05);
+        /* --- Floating Keyframes --- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
         }
 
+        /* --- Pearl Glow --- */
+        .pearl-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65%;
+            aspect-ratio: 1;
+            background: radial-gradient(circle, rgba(255, 220, 240, 0.9), rgba(200, 180, 255, 0.3) 60%, transparent 80%);
+            border-radius: 50%;
+            filter: blur(12px);
+            opacity: 0.6;
+            transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .treasure-card:hover .pearl-glow {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+            filter: blur(8px);
+        }
+
+        /* --- Sparkles --- */
+        .sparkle {
+            position: absolute;
+            font-size: 0.6rem;
+            color: #fff;
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+            transform: scale(0.5);
+            z-index: 3;
+            line-height: 1;
+        }
+
+        .treasure-card:hover .sparkle {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .s1 { top: 12%; left: 10%; animation: sparkleFloat 2s infinite alternate; }
+        .s2 { top: 12%; right: 10%; animation: sparkleFloat 2.5s infinite alternate 0.5s; }
+        .s3 { bottom: 12%; left: 10%; animation: sparkleFloat 1.8s infinite alternate 0.2s; }
+        .s4 { bottom: 12%; right: 10%; animation: sparkleFloat 2.2s infinite alternate 0.8s; }
+
+        @keyframes sparkleFloat {
+            0% { transform: translateY(0px) scale(1); opacity: 0.5; }
+            100% { transform: translateY(-4px) scale(1.2); opacity: 1; }
+        }
+
+        /* --- Treasure Card Typography --- */
         .treasure-card .tc-icon {
             font-size: 2.2rem;
             display: block;
             margin-bottom: 0.2rem;
             line-height: 1;
-            opacity: 0.7;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
         }
 
         .treasure-card h4 {
@@ -473,6 +483,9 @@
             color: #2d2a3a;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
+            margin-top: 0.1rem;
         }
 
         .treasure-card p {
@@ -481,6 +494,8 @@
             font-weight: 400;
             margin-top: 0.1rem;
             max-width: 90%;
+            position: relative;
+            z-index: 2;
         }
 
         /* ---------- SKETCHBOOK ---------- */
@@ -590,7 +605,7 @@
             margin-top: 0.1rem;
         }
 
-        /* ---------- JOURNAL (Sticky image on desktop) ---------- */
+        /* ---------- JOURNAL ---------- */
         .journal {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -599,7 +614,6 @@
             background: rgba(255, 248, 240, 0.5);
             border: 4px solid rgba(45, 42, 58, 0.06);
             position: relative;
-            /* NO align-items: start here – let columns stretch */
         }
 
         .journal::before {
@@ -626,10 +640,9 @@
             height: auto;
             display: block;
             border: 4px solid #2d2a3a;
-            position: static;               /* default for mobile / tablet */
+            position: static;
         }
 
-        /* Sticky only on large screens */
         @media (min-width: 1025px) {
             .journal-illustration .journal-image {
                 position: sticky;
@@ -1047,7 +1060,7 @@
             z-index: 0;
         }
 
-        /* ---------- FOOTER (compact & mobile-friendly) ---------- */
+        /* ---------- FOOTER ---------- */
         .footer {
             background: rgba(255, 255, 255, 0.2);
             padding: 2rem 0 1rem;
@@ -1249,7 +1262,7 @@
             .journal-illustration .journal-image {
                 max-width: 280px;
                 margin-bottom: 1rem;
-                position: static; /* remove sticky on smaller screens */
+                position: static;
             }
             .journal-text .journal-features { grid-template-columns: repeat(2, 1fr); }
             .footer-main { flex-direction: column; text-align: center; }
@@ -1264,6 +1277,7 @@
             .hero-logo { max-width: 420px; }
             .section { margin-bottom: 3rem; }
             .poster-card .poster-icon img { max-height: 250px; }
+            .treasure-card { flex: 0 0 160px; }
         }
 
         @media (max-width: 768px) {
@@ -1285,17 +1299,24 @@
             .trust-bar .sep { display: none; }
             .section { margin-bottom: 2.5rem; }
             .poster-card .poster-icon img { max-height: none; }
+            .treasure-card { flex: 0 0 140px; }
         }
 
-        @media (max-width: 600px) {
-            .founding-benefits { grid-template-columns: 1fr; }
-            .hero-title { font-size: 1.8rem; }
-            .hero-logo { max-width: 350px; }
-            .section { margin-bottom: 2rem; }
+        @media (max-width: 480px) {
+            .treasure-card { flex: 0 0 120px; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ===== SVG CLIP PATH (Hidden) ===== -->
+    <svg width="0" height="0" style="position:absolute;z-index:-1;" aria-hidden="true">
+        <defs>
+            <clipPath id="shellClip" clipPathUnits="objectBoundingBox">
+                <path d="m 65.441299,282.42457 c -2.92498,-0.42658 -3.3047,-0.97428 -5.65227,-8.15248 -3.93539,-12.03336 -5.07492,-18.83035 -5.14611,-30.69517 -0.0738,-12.29982 2.78936,-29.31539 5.08075,-30.19469 2.02099,-0.77552 14.65566,6.82434 24.35325,14.64868 11.93487,9.62946 43.264511,42.41222 44.743971,46.81927 0.13418,0.39971 -3.69494,0.80428 -8.50917,0.89904 -8.15658,0.16057 -13.78311,1.15722 -27.041201,4.78994 -5.56167,1.5239 -22.45866,2.66866 -27.82922,1.88541 z m 86.743951,-0.36895 c -11.6287,-2.44343 -24.15439,-11.33744 -31.50621,-22.37133 -7.69979,-11.55614 -22.25299,-26.10782 -35.960771,-35.95703 -19.86281,-14.27166 -37.75992,-22.28082 -65.25122,-29.20066 -0.61043,-0.15365 -1.41796,-2.60185 -1.79451,-5.44043 -0.97871,-7.37786 -3.97034,-14.31522 -9.64905,-22.37541 -2.7206098,-3.86156 -4.9465698,-8.036 -4.9465698,-9.27654 0,-2.54138 4.85911,-6.71502 9.8390198,-8.45103 4.01887,-1.40098 3.99221,-1.54096 -1.29269,-6.7888 -8.7908898,-8.72925 -8.3525898,-13.11068 1.88746,-18.86802 9.87402,-5.55155 10.5915,-8.27769 5.06621,-19.24945 -5.18497,-10.295988 -5.07947,-10.514125 6.52338,-13.487518 10.63601,-2.725627 11.3484,-3.490101 10.59398,-11.368598 -0.34991,-3.654135 -0.91507,-8.407427 -1.25591,-10.562871 -0.88046,-5.567943 0.91671,-6.58101 11.6747,-6.58101 11.34179,0 12.07973,-0.742689 12.96753,-13.051023 0.80929,-11.219727 1.26776,-11.747679 8.75164,-10.077817 14.62649,3.263577 17.112,2.477213 19.18087,-6.068413 3.41462,-14.104376 4.55811,-14.849298 15.122591,-9.851506 10.45539,4.946183 13.84126,3.580369 18.38103,-7.414643 3.70553,-8.9745323 5.67308,-9.3081164 14.96137,-2.536598 9.61352,7.008624 12.03153,6.627571 19.10693,-3.011052 6.18801,-8.4297563 6.6831,-8.4166786 14.91369,0.393944 8.86262,9.487196 9.93506,9.575146 19.5782,1.605594 7.88905,-6.5198915 9.8614,-6.0773823 13.93242,3.125835 4.7724,10.788807 7.64368,11.850793 18.41406,6.810723 10.31043,-4.824832 10.89607,-4.449983 14.8149,9.482624 0.86409,3.072104 2.37395,5.649476 4.03685,6.891008 2.65305,1.980787 2.66742,1.980593 11.16535,-0.150752 6.90202,-1.731076 11.04542,-2.010819 11.71491,-0.790935 0.0432,0.07866 0.41559,4.324363 0.8276,9.434905 0.99168,12.300512 1.28225,12.567492 14.37501,13.208106 l 10.2189,0.5 -0.0903,4.5 c -0.0497,2.475 -0.44392,7.242102 -0.8761,10.59356 -0.95686,7.420142 0.72228,9.592206 8.82619,11.417202 13.35635,3.007847 13.81155,3.744865 8.64021,13.989235 -4.77434,9.45791 -3.80459,13.51658 4.19682,17.56487 4.53335,2.29364 9.80318,6.33141 9.80318,7.51125 0,0.53588 -2.6485,3.82127 -5.88556,7.30087 -6.84342,7.35616 -8.24603,10.41534 -5.47833,11.94859 5.85956,3.24609 10.10367,11.65636 8.77405,17.38695 -0.79825,3.44045 -5.19432,11.28747 -6.32348,11.28747 -0.45596,0 -1.11674,2.1375 -1.46841,4.75 -1.24945,9.28211 -9.40864,21.58828 -15.06535,22.72243 -1.12911,0.22638 -6.55292,1.12336 -12.05292,1.9933 -34.14466,5.40065 -60.26969,22.55308 -77.37927,50.80346 -5.97393,9.86381 -10.18048,14.87027 -16.21856,19.30262 -9.61734,7.05978 -25.00496,10.67387 -35.79384,8.40689 z m 83.39167,-0.002 c -2.75,-0.42546 -9.5,-1.97123 -15,-3.43504 -7.013,-1.86649 -12.87381,-2.71829 -19.62105,-2.85168 l -9.62105,-0.1902 5.12105,-5.55809 c 2.81658,-3.05695 7.44804,-9.35695 10.29213,-14 8.45061,-13.79582 21.84604,-27.5903 33.86669,-34.87558 6.39478,-3.87564 19.84541,-9.79297 24.27333,-10.67855 l 3.1889,-0.63756 v 9.97978 c 0,22.02555 -2.24274,40.47792 -6.61,54.38438 -2.39119,7.61415 -2.39119,7.61415 -7.03016,8.25 -5.66,0.77579 -12.21209,0.64126 -18.85984,-0.38724 z" transform="scale(0.00310559, 0.00347222)" />
+            </clipPath>
+        </defs>
+    </svg>
 
     <!-- ===== PARTICLES ===== -->
     <div class="sky-decor" id="decor-container"></div>
@@ -1427,20 +1448,108 @@
             <p style="text-align:center;margin-top:1.5rem;color:#6a5a7a;font-size:0.8rem;font-style:italic;opacity:0.6;">✧ More sketches appearing every week ✧</p>
         </section>
 
-        <!-- ===== A LITTLE EXTRA MAGIC ===== -->
+        <!-- ===== A LITTLE EXTRA MAGIC (UPDATED) ===== -->
         <div class="chapter-divider">✦ Chapter Three ✦</div>
         <section class="section slider-section" id="treasures">
             <h2 class="chapter-title">A Little Extra Magic</h2>
             <p class="chapter-sub">Every celebration is filled with small wonders waiting to be discovered.</p>
             <div class="slider-track" id="sliderTrack">
-                <div class="treasure-card map" style="--rot:2deg"><span class="tc-icon">🗺️</span><h4>Personalized Details</h4><p>Every little touch tells your story</p></div>
-                <div class="treasure-card shell" style="--rot:-3deg"><span class="tc-icon">🐚</span><h4>Magical Touches</h4><p>Little moments that sparkle</p></div>
-                <div class="treasure-card bottle" style="--rot:4deg"><span class="tc-icon">🍾</span><h4>Creative Styling</h4><p>Artful design that delights</p></div>
-                <div class="treasure-card pearl" style="--rot:0deg"><span class="pearl-shine"></span><span class="tc-icon">🪸</span><h4>Memory-Making</h4><p>Moments you'll treasure forever</p></div>
-                <div class="treasure-card postcard" style="--rot:-2deg"><span class="tc-icon">📮</span><h4>Surprise Elements</h4><p>Unexpected moments of joy</p></div>
-                <div class="treasure-card map" style="--rot:-1.5deg"><span class="tc-icon">🗺️</span><h4>Mom-Approved Planning</h4><p>Designed with love and care</p></div>
-                <div class="treasure-card shell" style="--rot:2.5deg"><span class="tc-icon">🐚</span><h4>Stress-Free Setup</h4><p>We arrive early and build the magic</p></div>
-                <div class="treasure-card bottle" style="--rot:-3.5deg"><span class="tc-icon">🍾</span><h4>Signature MerMommy Magic</h4><p>That special something only we bring</p></div>
+                <div class="treasure-card" style="--rot: 2deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <span class="tc-icon">🗺️</span>
+                        <h4>Personalized Details</h4>
+                        <p>Every little touch tells your story</p>
+                        <span class="sparkle s1">✦</span>
+                        <span class="sparkle s2">✦</span>
+                        <span class="sparkle s3">✦</span>
+                        <span class="sparkle s4">✦</span>
+                    </div>
+                </div>
+                <div class="treasure-card" style="--rot: -3deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <span class="tc-icon">🐚</span>
+                        <h4>Magical Touches</h4>
+                        <p>Little moments that sparkle</p>
+                        <span class="sparkle s1">✦</span>
+                        <span class="sparkle s2">✦</span>
+                        <span class="sparkle s3">✦</span>
+                        <span class="sparkle s4">✦</span>
+                    </div>
+                </div>
+                <div class="treasure-card" style="--rot: 4deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <span class="tc-icon">🍾</span>
+                        <h4>Creative Styling</h4>
+                        <p>Artful design that delights</p>
+                        <span class="sparkle s1">✦</span>
+                        <span class="sparkle s2">✦</span>
+                        <span class="sparkle s3">✦</span>
+                        <span class="sparkle s4">✦</span>
+                    </div>
+                </div>
+                <div class="treasure-card" style="--rot: 0deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <span class="tc-icon">🪸</span>
+                        <h4>Memory-Making</h4>
+                        <p>Moments you'll treasure forever</p>
+                        <span class="sparkle s1">✦</span>
+                        <span class="sparkle s2">✦</span>
+                        <span class="sparkle s3">✦</span>
+                        <span class="sparkle s4">✦</span>
+                    </div>
+                </div>
+                <div class="treasure-card" style="--rot: -2deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <span class="tc-icon">📮</span>
+                        <h4>Surprise Elements</h4>
+                        <p>Unexpected moments of joy</p>
+                        <span class="sparkle s1">✦</span>
+                        <span class="sparkle s2">✦</span>
+                        <span class="sparkle s3">✦</span>
+                        <span class="sparkle s4">✦</span>
+                    </div>
+                </div>
+                <div class="treasure-card" style="--rot: -1.5deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <span class="tc-icon">🗺️</span>
+                        <h4>Mom-Approved Planning</h4>
+                        <p>Designed with love and care</p>
+                        <span class="sparkle s1">✦</span>
+                        <span class="sparkle s2">✦</span>
+                        <span class="sparkle s3">✦</span>
+                        <span class="sparkle s4">✦</span>
+                    </div>
+                </div>
+                <div class="treasure-card" style="--rot: 2.5deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <span class="tc-icon">🐚</span>
+                        <h4>Stress-Free Setup</h4>
+                        <p>We arrive early and build the magic</p>
+                        <span class="sparkle s1">✦</span>
+                        <span class="sparkle s2">✦</span>
+                        <span class="sparkle s3">✦</span>
+                        <span class="sparkle s4">✦</span>
+                    </div>
+                </div>
+                <div class="treasure-card" style="--rot: -3.5deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <span class="tc-icon">🍾</span>
+                        <h4>Signature MerMommy Magic</h4>
+                        <p>That special something only we bring</p>
+                        <span class="sparkle s1">✦</span>
+                        <span class="sparkle s2">✦</span>
+                        <span class="sparkle s3">✦</span>
+                        <span class="sparkle s4">✦</span>
+                    </div>
+                </div>
             </div>
             <p style="text-align:center;margin-top:1rem;color:#6a5a7a;font-size:0.7rem;opacity:0.5;font-style:italic;">✦ Each treasure holds a little piece of the magic ✦</p>
         </section>
