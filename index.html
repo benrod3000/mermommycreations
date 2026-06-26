@@ -11,6 +11,35 @@
     <meta property="og:url" content="https://mermommycreations.com" />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- Schema Markup for LocalBusiness -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "MerMommy Creations",
+        "description": "Children's party styling, themed decor, and stress-free celebrations in North County San Diego.",
+        "image": "https://mermommycreations.com/images/MerMommyCreations.png",
+        "url": "https://mermommycreations.com",
+        "telephone": "",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "North County San Diego",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 33.1352,
+            "longitude": -117.2719
+        },
+        "priceRange": "$$",
+        "openingHours": "Mo-Fr 09:00-17:00",
+        "sameAs": [
+            "https://instagram.com/mermommycreations"
+        ]
+    }
+    </script>
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Grand+Hotel&display=swap" rel="stylesheet" />
 
@@ -54,7 +83,7 @@
 
         /* ---------- TYPOGRAPHY ---------- */
         .font-signature {
-            font-family: 'Magnolia Sky', 'Grand Hotel', cursive;
+            font-family: 'Grand Hotel', cursive;
             font-weight: 400;
             letter-spacing: 1px;
             color: #5a3a6a;
@@ -653,7 +682,7 @@
             font-size: 1.4rem;
             color: #8B6C9E;
             font-weight: 600;
-            font-family: 'Magnolia Sky', cursive;
+            font-family: 'Grand Hotel', cursive;
             margin-bottom: 0.2rem;
         }
 
@@ -687,7 +716,7 @@
         .journal-text .journal-signoff {
             font-size: 1.3rem;
             color: #8B6C9E;
-            font-family: 'Magnolia Sky', cursive;
+            font-family: 'Grand Hotel', cursive;
             margin-bottom: 2rem;
             line-height: 1.6;
             opacity: 0;
@@ -1069,7 +1098,7 @@
             font-weight: 700;
             color: #8B6C9E;
             margin-bottom: 0.2rem;
-            font-family: 'Magnolia Sky', 'Grand Hotel', cursive;
+            font-family: 'Grand Hotel', cursive;
         }
 
         .footer-brand p {
@@ -1278,6 +1307,7 @@
             .hero-logo { max-width: 420px; }
             .chapter-title { font-size: 2rem; }
             .waitlist-form { flex-direction: column; }
+            .waitlist-form input, .waitlist-form .waitlist-btn { width: 100%; }
             .contact-card { padding: 2rem 1.2rem; }
             .trust-bar { flex-direction: column; align-items: center; gap: 0.3rem; font-size: 0.75rem; }
             .trust-bar .sep { display: none; }
@@ -1288,6 +1318,7 @@
 
         @media (max-width: 480px) {
             .shell-card { flex: 0 0 120px; }
+            .waitlist-form input, .waitlist-form .waitlist-btn { width: 100%; }
         }
     </style>
 </head>
@@ -1321,7 +1352,7 @@
             </div>
             <h1 class="hero-title font-signature">Let's Shell-ebrate!</h1>
             <p class="hero-sub">
-                <strong>Save your clams.</strong> Rent the magic.<br>
+                <strong>Save your clams. Rent the magic.</strong><br>
                 Whimsical children's parties, themed decor, and unforgettable memories across North County San Diego.<br>
                 <span style="font-style:italic;color:#8B6C9E;">We don't plan the party… we just make everyone think you did.</span>
             </p>
@@ -1350,8 +1381,6 @@
             <p>
                 We're looking for a handful of families to help us create our very first MerMommy memories. 
                 As a founding MerFriend, you'll get to shape our first season of wonder — and enjoy perks as deep as the ocean.
-                <br><br>
-                <strong>Save your clams.</strong> Spend them on memories instead.
             </p>
             <div class="founding-benefits">
                 <div class="founding-benefit"><span>💰</span>Launch Pricing</div>
@@ -1370,7 +1399,7 @@
         <section class="section" id="adventure">
             <h2 class="chapter-title">Choose Your Adventure</h2>
             <p class="chapter-sub">Each celebration is a journey waiting to begin. Which one will you choose?<br>
-                <span style="font-size:0.85rem;color:#8B6C9E;">(We already bought the treasure chest. Save your clams.)</span>
+                <span style="font-size:0.85rem;color:#8B6C9E;">(We already bought the treasure chest.)</span>
             </p>
             <div class="poster-grid">
 
@@ -1428,7 +1457,7 @@
                     <strong>🐚 Inside Your Treasure Chest:</strong> All decor, tableware, and setup included.<br>
                     Just bring your guests and the cake!
                 </p>
-                <p style="font-size:0.7rem;color:#6a5a7a;margin-top:0.2rem;">Keep the memories. Return the decorations. Save your clams.</p>
+                <p style="font-size:0.7rem;color:#6a5a7a;margin-top:0.2rem;">Keep the memories. Return the decorations. <strong>Save your clams.</strong></p>
             </div>
         </section>
 
@@ -1586,7 +1615,7 @@
                         <p>So come on in. Let's make it cute, silly, a little ridiculous, and <span class="story-highlight">unforgettable</span>.</p>
                         <p style="font-size:0.85rem;color:#8B6C9E;font-style:italic;">Side effects may include smiling, squealing, and excessive shell-fies.</p>
                     </div>
-                    <p class="journal-signoff">With love from the tide,<br>Kayte</p>
+                    <p class="journal-signoff">With love from the tide,<br>MerMommy</p>
                     <div class="journal-features">
                         <div class="journal-feature"><span class="jf-icon">👗</span><h4>Themed Wardrobes</h4><p>Matching outfits that bring your party theme to life</p></div>
                         <div class="journal-feature"><span class="jf-icon">👕</span><h4>Custom Shirts</h4><p>Cricut &amp; heat press creations for personalized party wear</p></div>
@@ -1604,7 +1633,7 @@
             <div class="waitlist-card">
                 <h3>Not Ready to Dive In?</h3>
                 <p>Join our launch list and <span class="highlight">seas the day</span>—be the first to know when we're officially open.<br>
-                    <span style="font-size:0.9rem;color:#8B6C9E;">Save your clams – join early for exclusive perks.</span></p>
+                    <span style="font-size:0.9rem;color:#8B6C9E;">Join early for exclusive perks.</span></p>
                 <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xlgygvpw" method="POST">
                     <input type="text" name="name" placeholder="Your name" required />
                     <input type="email" name="email" placeholder="Your email" required />
@@ -1684,6 +1713,7 @@
                     <div style="font-size:2.5rem;">🐚</div>
                     <h2 class="font-signature" style="font-size:2.5rem;color:#8B6C9E;">Inquiry Splashed!</h2>
                     <p style="font-size:1rem;color:#3a3a4a;font-weight:400;">Thank you! Your party coordinates have drifted safely into our inbox.<br>
+                        <span style="font-size:0.9rem;color:#8B6C9E;font-weight:500;">🐚 We'll be in touch within 24 hours — get ready for some ocean‑sized fun!</span><br>
                         <span style="font-size:0.8rem;color:#6a5a7a;">Fish may judge your dance moves, but we won't.</span></p>
                 </div>
             </div>
@@ -1708,7 +1738,7 @@
             <div class="footer-brand">
                 <h3>MerMommy Creations</h3>
                 <p>Children's party styling & rentals in North County San Diego.<br>
-                    <span style="font-size:0.7rem;color:#8B6C9E;">Save your clams. Rent the magic.</span>
+                    <span style="font-size:0.7rem;color:#8B6C9E;">Rent the magic. Keep the memories.</span>
                 </p>
                 <div class="footer-social">
                     <a href="https://instagram.com/mermommycreations" target="_blank" aria-label="Instagram">📸</a>
@@ -1734,7 +1764,7 @@
             <span class="sep">·</span>
             <span class="trust-item"><span class="ti-icon">👨‍👩‍👧‍👦</span> Family Owned</span>
             <span class="sep">·</span>
-            <span class="trust-item" style="font-size:0.65rem;color:#8B6C9E;">✨ Save your clams. Keep the memories.</span>
+            <span class="trust-item" style="font-size:0.65rem;color:#8B6C9E;">✨ Rent the magic. Keep the memories.</span>
         </div>
         <div class="footer-copy">
             &copy; 2026 MerMommy Creations. All rights reserved.<br>
