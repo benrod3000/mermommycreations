@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MerMommy Creations | Storybook Children’s Parties North County San Diego</title>
-    <meta name="description" content="Children's party styling, themed decor, and stress-free celebrations in North County San Diego. MerMommy creates magical, ocean-inspired memories." />
+    <meta name="description" content="Curated children's party styling, themed decor, and stress-free celebrations in North County San Diego. MerMommy creates magical, ocean-inspired memories." />
     <meta property="og:title" content="MerMommy Creations | Storybook Celebrations" />
-    <meta property="og:description" content="Children’s parties, themed decor, and unforgettable moments in North County San Diego." />
+    <meta property="og:description" content="Curated children’s parties, themed decor, and unforgettable moments in North County San Diego." />
     <meta property="og:image" content="https://mermommycreations.com/images/MerMommyCreations.png" />
     <meta property="og:url" content="https://mermommycreations.com" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -395,7 +395,7 @@
             mix-blend-mode: multiply;
         }
 
-        /* Card Inner (Floating Content) */
+        /* Card Inner (Floating Content) - NO SPARKLES */
         .treasure-card-inner {
             width: 100%;
             height: 100%;
@@ -445,35 +445,6 @@
             opacity: 1;
             transform: translate(-50%, -50%) scale(1.2);
             filter: blur(6px);
-        }
-
-        /* --- Sparkles --- */
-        .sparkle {
-            position: absolute;
-            font-size: 0.6rem;
-            color: #fff;
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 24px rgba(200, 180, 255, 0.6);
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            pointer-events: none;
-            transform: scale(0.5);
-            z-index: 3;
-            line-height: 1;
-        }
-
-        .shell-card:hover .sparkle {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .s1 { top: 12%; left: 10%; animation: sparkleFloat 2s infinite alternate; }
-        .s2 { top: 12%; right: 10%; animation: sparkleFloat 2.5s infinite alternate 0.5s; }
-        .s3 { bottom: 12%; left: 10%; animation: sparkleFloat 1.8s infinite alternate 0.2s; }
-        .s4 { bottom: 12%; right: 10%; animation: sparkleFloat 2.2s infinite alternate 0.8s; }
-
-        @keyframes sparkleFloat {
-            0% { transform: translateY(0px) scale(1); opacity: 0.5; }
-            100% { transform: translateY(-4px) scale(1.2); opacity: 1; }
         }
 
         /* --- Treasure Card Typography --- */
@@ -653,6 +624,7 @@
             display: block;
             border: 4px solid #2d2a3a;
             position: static;
+            /* Floating animation applied via JS for better control */
         }
 
         @media (min-width: 1025px) {
@@ -1350,7 +1322,7 @@
             <h1 class="hero-title font-signature">Let's Shell-ebrate!</h1>
             <p class="hero-sub">
                 <strong>Save your clams.</strong> Rent the magic.<br>
-                Themed party experiences made easy for families across North County San Diego.<br>
+                Curated children's parties, themed decor, and unforgettable memories across North County San Diego.<br>
                 <span style="font-style:italic;color:#8B6C9E;">We don't plan the party… we just make everyone think you did.</span>
             </p>
             <div class="hero-badge">Dive In!</div>
@@ -1480,7 +1452,7 @@
             <p style="text-align:center;margin-top:1.5rem;color:#6a5a7a;font-size:0.8rem;font-style:italic;opacity:0.6;">✧ More sketches appearing every week ✧</p>
         </section>
 
-        <!-- ===== A LITTLE EXTRA MAGIC (UPDATED WITH TWO SHELL SHAPES) ===== -->
+        <!-- ===== A LITTLE EXTRA MAGIC (Sparkles Back, Icons Removed) ===== -->
         <div class="chapter-divider">✦ Chapter Three ✦</div>
         <section class="section slider-section" id="treasures">
             <h2 class="chapter-title">A Little Extra Magic</h2>
@@ -1488,108 +1460,100 @@
                 <span style="font-size:0.8rem;color:#6a5a7a;">(We provide the shell-fies. You make the memories.)</span>
             </p>
             <div class="slider-track" id="sliderTrack">
-                <!-- Shell 1 -->
+                <!-- Shell 1 - Sparkles, No Emoji -->
                 <div class="shell-card shell-v1" style="--rot: 2deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
-                        <span class="tc-icon">🗺️</span>
-                        <h4>Personalized Details</h4>
-                        <p>Every little touch tells your story</p>
                         <span class="sparkle s1">✦</span>
                         <span class="sparkle s2">✦</span>
                         <span class="sparkle s3">✦</span>
                         <span class="sparkle s4">✦</span>
+                        <h4>Personalized Details</h4>
+                        <p>Every little touch tells your story</p>
                     </div>
                 </div>
-                <!-- Shell 2 -->
+                <!-- Shell 2 - Sparkles, No Emoji -->
                 <div class="shell-card shell-v2" style="--rot: -3deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
-                        <span class="tc-icon">🐚</span>
-                        <h4>Magical Touches</h4>
-                        <p>Little moments that sparkle</p>
                         <span class="sparkle s1">✦</span>
                         <span class="sparkle s2">✦</span>
                         <span class="sparkle s3">✦</span>
                         <span class="sparkle s4">✦</span>
+                        <h4>Magical Touches</h4>
+                        <p>Little moments that sparkle</p>
                     </div>
                 </div>
-                <!-- Shell 1 -->
+                <!-- Shell 1 - Sparkles, No Emoji -->
                 <div class="shell-card shell-v1" style="--rot: 4deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
-                        <span class="tc-icon">🍾</span>
-                        <h4>Creative Styling</h4>
-                        <p>Artful design that delights</p>
                         <span class="sparkle s1">✦</span>
                         <span class="sparkle s2">✦</span>
                         <span class="sparkle s3">✦</span>
                         <span class="sparkle s4">✦</span>
+                        <h4>Creative Styling</h4>
+                        <p>Artful design that delights</p>
                     </div>
                 </div>
-                <!-- Shell 2 -->
+                <!-- Shell 2 - Sparkles, No Emoji -->
                 <div class="shell-card shell-v2" style="--rot: 0deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
-                        <span class="tc-icon">🪸</span>
-                        <h4>Memory-Making</h4>
-                        <p>Moments you'll treasure forever</p>
                         <span class="sparkle s1">✦</span>
                         <span class="sparkle s2">✦</span>
                         <span class="sparkle s3">✦</span>
                         <span class="sparkle s4">✦</span>
+                        <h4>Memory-Making</h4>
+                        <p>Moments you'll treasure forever</p>
                     </div>
                 </div>
-                <!-- Shell 1 -->
+                <!-- Shell 1 - Sparkles, No Emoji -->
                 <div class="shell-card shell-v1" style="--rot: -2deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
-                        <span class="tc-icon">📮</span>
-                        <h4>Surprise Elements</h4>
-                        <p>Unexpected moments of joy</p>
                         <span class="sparkle s1">✦</span>
                         <span class="sparkle s2">✦</span>
                         <span class="sparkle s3">✦</span>
                         <span class="sparkle s4">✦</span>
+                        <h4>Surprise Elements</h4>
+                        <p>Unexpected moments of joy</p>
                     </div>
                 </div>
-                <!-- Shell 2 -->
+                <!-- Shell 2 - Sparkles, No Emoji -->
                 <div class="shell-card shell-v2" style="--rot: -1.5deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
-                        <span class="tc-icon">🗺️</span>
-                        <h4>Mom-Approved Planning</h4>
-                        <p>Designed with love and care</p>
                         <span class="sparkle s1">✦</span>
                         <span class="sparkle s2">✦</span>
                         <span class="sparkle s3">✦</span>
                         <span class="sparkle s4">✦</span>
+                        <h4>Mom-Approved Planning</h4>
+                        <p>Designed with love and care</p>
                     </div>
                 </div>
-                <!-- Shell 1 -->
+                <!-- Shell 1 - Sparkles, No Emoji -->
                 <div class="shell-card shell-v1" style="--rot: 2.5deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
-                        <span class="tc-icon">🐚</span>
-                        <h4>Stress-Free Setup</h4>
-                        <p>We arrive early and build the magic</p>
                         <span class="sparkle s1">✦</span>
                         <span class="sparkle s2">✦</span>
                         <span class="sparkle s3">✦</span>
                         <span class="sparkle s4">✦</span>
+                        <h4>Stress-Free Setup</h4>
+                        <p>We arrive early and build the magic</p>
                     </div>
                 </div>
-                <!-- Shell 2 -->
+                <!-- Shell 2 - Sparkles, No Emoji -->
                 <div class="shell-card shell-v2" style="--rot: -3.5deg;">
                     <div class="treasure-card-inner">
                         <div class="pearl-glow"></div>
-                        <span class="tc-icon">🍾</span>
-                        <h4>Signature MerMommy Magic</h4>
-                        <p>That special something only we bring</p>
                         <span class="sparkle s1">✦</span>
                         <span class="sparkle s2">✦</span>
                         <span class="sparkle s3">✦</span>
                         <span class="sparkle s4">✦</span>
+                        <h4>Signature MerMommy Magic</h4>
+                        <p>That special something only we bring</p>
                     </div>
                 </div>
             </div>
@@ -1628,7 +1592,7 @@
             <p style="text-align:center;margin-top:1rem;color:#6a5a7a;font-size:0.8rem;font-style:italic;">Please return all props. Emotional attachment is understandable.</p>
         </section>
 
-        <!-- ===== CHAPTER 5: MY TAIL ===== -->
+        <!-- ===== CHAPTER 5: MY TAIL (with floating image) ===== -->
         <div class="chapter-divider">✦ Chapter Five ✦</div>
         <section class="section" id="tail">
             <h2 class="chapter-title" style="margin-bottom:1rem;">My Tail</h2>
@@ -1636,22 +1600,22 @@
                 <div class="journal-illustration">
                     <span class="journal-shell journal-shell-1">🐚</span>
                     <span class="journal-shell journal-shell-2">🪸</span>
-                    <img src="images/mommy.png" alt="Kayte, founder of MerMommy Creations" class="journal-image" loading="lazy" />
+                    <img src="images/mommy.png" alt="Kayte, founder of MerMommy Creations" class="journal-image" id="kayteImage" loading="lazy" />
                 </div>
                 <div class="journal-text">
                     <p class="journal-greeting">Dear Friends,</p>
                     <p class="journal-tagline">“I show up like a friend, plan like a pro, and care like a mom.”</p>
                     <div class="journal-story">
-                        <p>Let’s get one thing straight; I’m not here to plan your party like I’m producing a royal wedding in a castle with 47 spreadsheets and a balloon budget that requires a loan officer.</p>
+                        <p>Let's get one thing straight; I'm not here to plan your party like I'm producing a royal wedding in a castle with 47 spreadsheets and a balloon budget that requires a loan officer.</p>
                         <p>No.</p>
-                        <p>I’m the <span class="story-highlight">mood director</span>.<br>The <span class="story-highlight">vibe curator</span>.<br>The “why does this backyard suddenly feel like an <span class="story-highlight">underwater Netflix special</span>?” person.</p>
-                        <p>Because I’ve always been the one adding one more <span class="story-highlight">silly detail</span>. Another shell. Another prop. Another unnecessary-but-actually-necessary moment of magic.</p>
-                        <p>And honestly? Kids don’t need “luxury event planning.” It’s a birthday party, not a Met Gala with juice boxes.</p>
-                        <p>Save the thousands for the wedding. I’m serious. Don’t spend college tuition on a cake that’s going to get smashed into a toddler’s eyebrow in 12 seconds.</p>
-                        <p>So I created MerMommy Creations, where the magic is already done for you.<br>The concepts? Done.<br>The vibe? Locked.<br>The accessories, props, and little ocean-world chaos? Ready to rent like you’re <span class="story-highlight">borrowing Atlantis</span> for the afternoon.</p>
+                        <p>I'm the <span class="story-highlight">mood director</span>.<br>The <span class="story-highlight">vibe curator</span>.<br>The “why does this backyard suddenly feel like an <span class="story-highlight">underwater Netflix special</span>?” person.</p>
+                        <p>Because I've always been the one adding one more <span class="story-highlight">silly detail</span>. Another shell. Another prop. Another unnecessary-but-actually-necessary moment of magic.</p>
+                        <p>And honestly? Kids don't need “luxury event planning.” It's a birthday party, not a Met Gala with juice boxes.</p>
+                        <p>Save the thousands for the wedding. I'm serious. Don't spend college tuition on a cake that's going to get smashed into a toddler's eyebrow in 12 seconds.</p>
+                        <p>So I created MerMommy Creations, where the magic is already done for you.<br>The concepts? Done.<br>The vibe? Locked.<br>The accessories, props, and little ocean-world chaos? Ready to rent like you're <span class="story-highlight">borrowing Atlantis</span> for the afternoon.</p>
                         <p>You just show up and suddenly your backyard is giving “mermaid DJ set, emotional support seagulls, and questionable crab behavior.”</p>
                         <p>Because childhood should feel <span class="story-highlight">magical, not expensive</span>.</p>
-                        <p>So come on in. Let’s make it cute, silly, a little ridiculous, and <span class="story-highlight">unforgettable</span>.</p>
+                        <p>So come on in. Let's make it cute, silly, a little ridiculous, and <span class="story-highlight">unforgettable</span>.</p>
                         <p style="font-size:0.85rem;color:#8B6C9E;font-style:italic;">Side effects may include smiling, squealing, and excessive shell-fies.</p>
                     </div>
                     <p class="journal-signoff">With love from the tide,<br>Kayte</p>
@@ -1703,7 +1667,7 @@
             <p style="text-align:center;margin-top:1rem;color:#6a5a7a;font-size:0.85rem;font-weight:400;">Current mood: Mermaid. 🧜‍♀️</p>
         </section>
 
-        <!-- ===== SEND A MESSAGE IN A BOTTLE (Contact) ===== -->
+        <!-- ===== SEND A MESSAGE IN A BOTTLE (Contact) - Fishing Pole Emoji ===== -->
         <section class="section" id="contact">
             <div class="contact-card" id="form-container">
                 <h2 class="font-signature" style="font-size:2.8rem;color:#8B6C9E;text-align:center;">Send a Message in a Bottle</h2>
@@ -1746,7 +1710,8 @@
                         </div>
                     </div>
                     <div class="form-group"><label for="message">Tell us about your celebration</label><textarea id="message" name="message" rows="3" placeholder="How many guests? What's your vision? Need tables and chairs? We have everything, just let us know what you need!"></textarea></div>
-                    <button type="submit" class="submit-btn">Dive In ✉️</button>
+                    <!-- 🎣 Fishing pole emoji instead of envelope -->
+                    <button type="submit" class="submit-btn">Dive In 🎣</button>
                 </form>
                 <div id="success-message" style="display:none;text-align:center;padding:2rem 0;">
                     <div style="font-size:2.5rem;">🐚</div>
@@ -1775,7 +1740,7 @@
         <div class="footer-main">
             <div class="footer-brand">
                 <h3>MerMommy Creations</h3>
-                <p>Children's party styling in North County San Diego.<br>
+                <p>Curated children's party styling in North County San Diego.<br>
                     <span style="font-size:0.7rem;color:#8B6C9E;">Save your clams. Rent the magic.</span>
                 </p>
                 <div class="footer-social">
@@ -1866,15 +1831,22 @@
                 }
             }
 
-            // 5. INFINITE SLIDER
+            // 5. INFINITE SLIDER WITH TOUCH SUPPORT
             const track = document.getElementById('sliderTrack');
             if(track) {
                 const cards = track.querySelectorAll('.shell-card');
                 cards.forEach(c => track.appendChild(c.cloneNode(true)));
                 const half = track.scrollWidth / 2;
-                gsap.to(track, { x: -half, duration: 30, ease: 'none', repeat: -1, onRepeat: () => gsap.set(track, { x: 0 }) });
-                track.addEventListener('mouseenter', () => gsap.globalTimeline.pause());
-                track.addEventListener('mouseleave', () => gsap.globalTimeline.resume());
+                const tl = gsap.to(track, { x: -half, duration: 30, ease: 'none', repeat: -1, onRepeat: () => gsap.set(track, { x: 0 }) });
+
+                // Pause on hover
+                track.addEventListener('mouseenter', () => tl.pause());
+                track.addEventListener('mouseleave', () => tl.resume());
+
+                // Touch support: pause on touch start, resume on touch end/cancel
+                track.addEventListener('touchstart', () => tl.pause(), { passive: true });
+                track.addEventListener('touchend', () => tl.resume(), { passive: true });
+                track.addEventListener('touchcancel', () => tl.resume(), { passive: true });
             }
 
             // 6. JOURNAL GSAP SHOWCASE
@@ -1898,13 +1870,33 @@
                 });
             }
 
-            // 7. HIDDEN TREASURE POPUP
+            // 7. KAYTE IMAGE FLOATING ANIMATION (My Tale)
+            const kayteImg = document.getElementById('kayteImage');
+            if(kayteImg) {
+                gsap.to(kayteImg, {
+                    y: -8,
+                    duration: 2.5,
+                    ease: 'sine.inOut',
+                    yoyo: true,
+                    repeat: -1
+                });
+                // Also add a subtle rotation for more organic feel
+                gsap.to(kayteImg, {
+                    rotation: 1.5,
+                    duration: 4,
+                    ease: 'sine.inOut',
+                    yoyo: true,
+                    repeat: -1
+                });
+            }
+
+            // 8. HIDDEN TREASURE POPUP
             window.showTreasurePopup = function(el) {
                 const popup = el.querySelector('.treasure-popup');
                 if(popup) { popup.classList.add('show'); setTimeout(() => popup.classList.remove('show'), 2500); }
             };
 
-            // 8. WAITLIST FORM
+            // 9. WAITLIST FORM
             const wlForm = document.getElementById('waitlist-form');
             if(wlForm) {
                 wlForm.addEventListener('submit', async function(e) {
@@ -1926,7 +1918,7 @@
                 });
             }
 
-            // 9. INQUIRY FORM
+            // 10. INQUIRY FORM
             const inqForm = document.getElementById('inquiry-form');
             if(inqForm) {
                 inqForm.addEventListener('submit', async function(e) {
@@ -1951,7 +1943,7 @@
                 });
             }
 
-            // 10. REFRESH
+            // 11. REFRESH
             setTimeout(() => ScrollTrigger.refresh(), 500);
         });
     </script>
