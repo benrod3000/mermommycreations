@@ -44,7 +44,7 @@ No front‑end framework – just vanilla JS for a lightweight, fast page.
 
 ## 📁 Project Structure
 
-```
+```text
 .
 ├── index.html                 # Main page (all styles + scripts inlined)
 ├── robots.txt                 # Search engine crawl instructions
