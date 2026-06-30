@@ -48,12 +48,12 @@ No front‑end framework – just vanilla JS for a lightweight, fast page.
 ├── sitemap.xml # XML sitemap for Google/Bing
 ├── README.md # This file
 └── images/
-├── MerMommyCreations.png # Hero logo
-├── mommy.png # Kayte's photo (My Tail)
-├── lemonade_stand.png # Adventure poster images
-├── hamburger.png
-├── tye_dye.png
-└── mermaidparty.png
+  ├── MerMommyCreations.png # Hero logo
+  ├── mommy.png # Kayte's photo (My Tail)
+  ├── lemonade_stand.png # Adventure poster images
+  ├── hamburger.png
+  ├── tye_dye.png
+  └── mermaidparty.png
 
 text
 
