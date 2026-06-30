@@ -10,7 +10,7 @@
 
 MerMommy Creations is a one‑page brand website for a children's party styling and rental business. It blends a playful, storybook aesthetic with practical booking tools, local SEO signals, and a mobile‑first experience.
 
-The site is designed to feel like stepping into an underwater adventure — with hand‑crafted seashell cards, floating animations, hidden treasures, and a tone that's equal parts whimsy and wink.
+The site is designed to feel like stepping into an underwater adventure with hand‑crafted seashell cards, floating animations, hidden treasures, and a tone that's equal parts whimsy and wink.
 
 ---
 
