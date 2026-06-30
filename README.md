@@ -42,20 +42,22 @@ No front‑end framework – just vanilla JS for a lightweight, fast page.
 
 ---
 
-## 📁 Project Structure/
-├── index.html # Main page (all styles + scripts inlined)
-├── robots.txt # Search engine crawl instructions
-├── sitemap.xml # XML sitemap for Google/Bing
-├── README.md # This file
-└── images/
-  ├── MerMommyCreations.png # Hero logo
-  ├── mommy.png # Kayte's photo (My Tail)
-  ├── lemonade_stand.png # Adventure poster images
-  ├── hamburger.png
-  ├── tye_dye.png
-  └── mermaidparty.png
+## 📁 Project Structure
 
-text
+```
+.
+├── index.html                 # Main page (all styles + scripts inlined)
+├── robots.txt                 # Search engine crawl instructions
+├── sitemap.xml                # XML sitemap for Google/Bing
+├── README.md                  # Project documentation
+└── images/
+    ├── MerMommyCreations.png  # Hero logo
+    ├── mommy.png              # Kayte's photo ("My Tail" section)
+    ├── lemonade_stand.png     # Lemonade Stand adventure
+    ├── hamburger.png          # Hamburger adventure
+    ├── tye_dye.png            # Tie-Dye adventure
+    └── mermaidparty.png       # Mermaid Party adventure
+```
 
 ---
 
