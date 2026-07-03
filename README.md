@@ -1,121 +1,126 @@
-# 🧜‍♀️ MerMommy Creations
+# MerMommy Creations
 
-**Whimsical children's party styling, themed decor, and unforgettable memories in North County San Diego.**
+Source code for the official MerMommy Creations website.
 
-[![Live Site](https://img.shields.io/badge/live-site-8B6C9E)](https://mermommycreations.com)
+MerMommy Creations is a children's party styling business based in North County San Diego, specializing in themed parties, custom decorations, rentals, and hands-on activities. This site was built from scratch to showcase the brand, answer common questions, and make it easy for families to get in touch.
 
----
-
-## 📖 About
-
-MerMommy Creations is a one‑page brand website for a children's party styling and rental business. It blends a playful, storybook aesthetic with practical booking tools, local SEO signals, and a mobile‑first experience.
-
-The site is designed to feel like stepping into an underwater adventure with hand‑crafted seashell cards, floating animations, hidden treasures, and a tone that's equal parts whimsy and wink.
+[![Live Site](https://img.shields.io/badge/live-site-8B6C9E)](https://mermommycreations.com) **Live Site:** https://mermommycreations.com
 
 ---
 
-## ✨ Key Features
+## About
 
-- **🎨 Immersive Brand Design** – Custom SVG clip‑path shells, conic gradients, and a hand‑illustrated feel with watercolour textures and subtle noise overlays.
-- **🧭 Infinite Shell Slider** – A rotating carousel of "A Little Extra Sparkle" cards with pearl glow effects, sparkles, and touch‑enabled pause/resume.
-- **📝 Inquiry & Waitlist Forms** – Integrated with [Formspree](https://formspree.io) for zero‑backend submissions. Includes styled "Add‑On" cards with checkboxes and "Coming Soon" placeholders.
-- **🏷️ Themed Microcopy** – "Save your clams", "Send a message in a bottle", "Shell‑fies & Sea‑nery" — all copy reinforces the mermaid brand voice.
-- **🎞️ GSAP Animations** – Smooth scroll‑triggered reveals, floating logo, and a gentle bobbing effect on Kayte's photo in the "My Tail" section.
-- **🔍 Local SEO Ready** – JSON‑LD schema for `LocalBusiness` + `EventPlanner`, `geo.region` meta tags, and an `<address>` element in the footer.
-- **📱 Fully Responsive** – Grids, cards, and forms adapt from desktop down to 320px wide.
+This is a static website built with plain HTML, CSS, and JavaScript. There are no frameworks or build tools—just a fast-loading site that's easy to maintain and deploy.
+
+The design leans into the mermaid theme without sacrificing usability. Every section was built with mobile users, accessibility, and local SEO in mind.
 
 ---
 
-## 🧰 Tech Stack
+## Features
 
-| Tool / Library      | Purpose                               |
-|---------------------|---------------------------------------|
-| **HTML5**           | Semantic markup                       |
-| **CSS3**            | Custom properties, Flexbox, Grid      |
-| **GSAP**            | Scroll animations, infinite slider    |
-| **ScrollTrigger**   | GSAP plugin for scroll‑based triggers |
-| **Formspree**       | Forms backend (no server required)    |
-| **Google Fonts**    | Fredoka & Grand Hotel                 |
-| **Schema.org**      | Structured data for local business    |
-
-No front‑end framework – just vanilla JS for a lightweight, fast page.
+- Mobile-first responsive design
+- Custom illustrations and themed graphics
+- Interactive "Adventure" cards
+- Inquiry and waitlist forms powered by Formspree
+- Smooth animations with GSAP
+- Structured data for local SEO
+- XML sitemap and robots.txt
+- Optimized for GitHub Pages
 
 ---
 
-## 📁 Project Structure
+## Tech Stack
+
+- HTML5
+- CSS3
+- JavaScript
+- GSAP
+- ScrollTrigger
+- Formspree
+- Google Fonts
+
+No frameworks. No build process.
+
+---
+
+## Project Structure
 
 ```text
-.
-├── index.html                 # Main page (all styles + scripts inlined)
-├── robots.txt                 # Search engine crawl instructions
-├── sitemap.xml                # XML sitemap for Google/Bing
-├── README.md                  # Project documentation
+/
+├── index.html
+├── robots.txt
+├── sitemap.xml
+├── README.md
 └── images/
-    ├── MerMommyCreations.png  # Hero logo
-    ├── mommy.png              # Kayte's photo ("My Tail" section)
-    ├── lemonade_stand.png     # Lemonade Stand adventure
-    ├── hamburger.png          # Hamburger adventure
-    ├── tye_dye.png            # Tie-Dye adventure
-    └── mermaidparty.png       # Mermaid Party adventure
 ```
 
 ---
 
-## 🚀 Setup & Deployment
+## Running Locally
 
-### 1. Local development
-Simply open `index.html` in your browser. No build tools, no installs – everything is self‑contained.
+Clone the repository and open `index.html`, or run a simple local server:
 
-### 2. Customise content
-- Replace the images in `/images/` with your own.
-- Update placeholder links (`#`) for the "Download Now" guide, Terms, and Privacy pages.
-- Adjust the contact email address in the `action` attributes of the forms (currently using demo Formspree endpoints). Sign up at [Formspree](https://formspree.io) to get your own form IDs.
+```bash
+python3 -m http.server 8080
+```
 
-### 3. Deploy to production
-Upload the entire folder to your web host (e.g., Netlify, Vercel, or any static hosting). Make sure `robots.txt` and `sitemap.xml` are placed in the **root** (same level as `index.html`).
+Then visit:
 
-### 4. Verify forms
-Test both forms to ensure submissions reach your inbox. If you change the Formspree endpoints, update them in the HTML.
+```
+http://localhost:8080
+```
 
 ---
 
-## 🔍 SEO Notes
+## Deployment
 
-- The `<h1>` is keyword‑rich: *"Children's Party Styling in North County San Diego"*
-- The playful tagline is moved to a `<p>` below it – keeping the H1 crawler‑friendly.
-- Structured data includes `serviceArea` with a GeoCircle for local search.
-- Meta tags for `geo.region` and `geo.placename` reinforce location targeting.
+The site is deployed as a static website. After making changes, commit and push your updates.
 
----
-
-## 🎨 Design Highlights
-
-- **Shell cards** – Two distinct SVG clip‑paths (original + new) used in the slider, each with its own conic‑gradient background.
-- **Pearl glow** – A bright, multi‑coloured radial gradient behind the card content that intensifies on hover.
-- **Floating elements** – The shell cards, Kayte's image, and background bubbles all have gentle up‑down motions.
-- **Watercolour texture** – A subtle noise overlay on the shells gives them a hand‑painted feel.
+```bash
+git add .
+git commit -m "Describe your changes"
+git push
+```
 
 ---
 
-## 🙌 Credits
+## SEO
 
-- **Brand & Copy** – Kayte (MerMommy)
-- **Development** – [brod3000.com](https://brod3000.com)
-- **Fonts** – [Grand Hotel](https://fonts.google.com/specimen/Grand+Hotel) & [Fredoka](https://fonts.google.com/specimen/Fredoka) from Google Fonts
-- **SVG Seashells** – Custom‑drawn; clip‑paths generated from Inkscape.
+The site includes:
 
----
-
-## 📄 License
-
-All rights reserved. This website is proprietary to MerMommy Creations. For any reuse, please contact the owner.
-
----
-
-## 📬 Questions?
-
-Reach out via the [contact form](https://mermommycreations.com/#contact) on the live site – or open an issue if you're the developer.
+- XML sitemap
+- robots.txt
+- Canonical URLs
+- Open Graph tags
+- Twitter cards
+- Schema.org structured data
+- Local business metadata
 
 ---
 
-**Made with 💙 and a splash of ocean magic.**
+## Goals
+
+A few things I try to keep in mind while working on this project:
+
+- Keep it fast.
+- Keep it simple.
+- Make it easy to navigate.
+- Keep the branding fun without getting in the way.
+- Make it work well on any device.
+
+---
+
+## Credits
+
+**Brand:** MerMommy Creations
+
+**Development:** Ben Rodriguez  
+https://brod3000.com
+
+---
+
+## License
+
+All rights reserved.
+
+This project and its contents are the property of MerMommy Creations and may not be copied or redistributed without permission.
