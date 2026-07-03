@@ -2,7 +2,7 @@
 
 Source code for the official MerMommy Creations website.
 
-MerMommy Creations is a children's party styling business based in North County San Diego, specializing in themed parties, custom decorations, rentals, and hands-on activities. This site was built from scratch to showcase the brand, answer common questions, and make it easy for families to get in touch.
+MerMommy Creations is a children's party styling business based in North County San Diego, specializing in themed parties, custom decorations, rentals, and hands on activities. This site was built from scratch to showcase the brand, answer common questions, and make it easy for families to get in touch.
 
 [![Live Site](https://img.shields.io/badge/live-site-8B6C9E)](https://mermommycreations.com) **Live Site:** https://mermommycreations.com
 
@@ -10,7 +10,7 @@ MerMommy Creations is a children's party styling business based in North County 
 
 ## About
 
-This is a static website built with plain HTML, CSS, and JavaScript. There are no frameworks or build tools—just a fast-loading site that's easy to maintain and deploy.
+This is a static website built with plain HTML, CSS, and JavaScript. There are no frameworks or build tools just a fast loading site that's easy to maintain and deploy.
 
 The design leans into the mermaid theme without sacrificing usability. Every section was built with mobile users, accessibility, and local SEO in mind.
 
