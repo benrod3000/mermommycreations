@@ -3,18 +3,69 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MerMommy Creations | Luxury Children's Party Curation</title>
+    <title>Children's Party Styling | MerMommy Creations North County San Diego</title>
+    <meta name="description" content="Children's party styling, themed decor, and stress-free celebrations in North County San Diego. MerMommy creates enchanting, ocean-inspired memories." />
+    <meta name="geo.region" content="US-CA" />
+    <meta name="geo.placename" content="North County San Diego" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Children's Party Styling | MerMommy Creations North County San Diego" />
+    <meta property="og:description" content="Themed decor, party rentals, and unforgettable moments in North County San Diego." />
+    <meta property="og:image" content="https://mermommycreations.com/images/MerMommyCreations.webp" />
+    <meta property="og:url" content="https://mermommycreations.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Schema Markup for LocalBusiness + EventPlanner -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "EventPlanner"],
+        "name": "MerMommy Creations",
+        "description": "Children's party styling, themed decor, and stress-free celebrations in North County San Diego.",
+        "image": "https://mermommycreations.com/images/MerMommyCreations.webp",
+        "url": "https://mermommycreations.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "North County San Diego",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 33.1352,
+            "longitude": -117.2719
+        },
+        "serviceArea": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": 33.1352,
+                "longitude": -117.2719
+            },
+            "geoRadius": "30000"
+        },
+        "priceRange": "$$",
+        "openingHours": "Mo-Fr 09:00-17:00",
+        "sameAs": [
+            "https://instagram.com/mermommycreations"
+        ]
+    }
+    </script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Grand+Hotel&display=swap" rel="stylesheet" />
 
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
     <style>
         /* ============================================
-           RESET & BASE (Brutalist-lite)
+           STORYBOOK BASE
            ============================================ */
         * {
             box-sizing: border-box;
@@ -28,7 +79,17 @@
 
         body {
             font-family: 'Fredoka', sans-serif;
-            background: linear-gradient(180deg, #f5edf8 0%, #f0eaf5 25%, #e8f5f4 55%, #d4ecea 80%, #c5e3e0 100%);
+            background: linear-gradient(180deg,
+                    #d4c0e8 0%,
+                    #c8b0dd 10%,
+                    #b8a0d0 20%,
+                    #a88bc0 30%,
+                    #b0d0d0 45%,
+                    #a0c8c8 55%,
+                    #80c0c0 65%,
+                    #70b8b8 75%,
+                    #90d0d0 85%,
+                    #b8e0e0 100%);
             color: #2d2a3a;
             min-height: 100vh;
             overflow-x: hidden;
@@ -36,31 +97,37 @@
             line-height: 1.6;
         }
 
-        /* ---------- TYPOGRAPHY ---------- */
-        .font-signature {
-            font-family: 'Magnolia Sky', 'Grand Hotel', cursive;
-            font-weight: 400;
-            letter-spacing: 1px;
+        /* ---------- HIGHLIGHT ---------- */
+        .highlight {
             color: #8B6C9E;
+            font-weight: 500;
         }
 
-        .section-title {
+        /* ---------- TYPOGRAPHY ---------- */
+        .font-signature {
+            font-family: 'Grand Hotel', cursive;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #5a3a6a;
+        }
+
+        .chapter-title {
             font-size: 2.8rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.5rem;
             color: #2d2a3a;
             letter-spacing: -1px;
             text-transform: uppercase;
         }
 
-        .section-sub {
+        .chapter-sub {
             text-align: center;
-            color: #5a5a6a;
+            color: #3a3a4a;
             font-size: 1.05rem;
             max-width: 600px;
             margin: -0.3rem auto 2rem;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .container {
@@ -71,62 +138,77 @@
             z-index: 10;
         }
 
-        /* ---------- BRUTALIST CARD BASE ---------- */
-        .card-soft,
-        .banner,
-        .founding-card,
-        .poster-card,
-        .treasure-card,
-        .theme-card,
-        .masonry-item,
-        .why-item,
-        .addon-card,
-        .waitlist-card,
-        .contact-card,
-        .guide-cta,
-        .ig-placeholder,
-        .footer {
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            border: none !important;
+        /* ---------- CONSISTENT SECTION SPACING ---------- */
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        /* ---------- BANNER ---------- */
+        .banner {
+            padding: 2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-left: 4px solid rgba(139, 108, 158, 0.2);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* ---------- CHAPTER DIVIDER ---------- */
+        .chapter-divider {
+            text-align: center;
+            padding: 1.5rem 0 0.5rem;
+            font-size: 0.7rem;
+            color: #6a5a7a;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-bottom: 2px solid rgba(90, 58, 106, 0.1);
+            margin-bottom: 2rem;
         }
 
         /* ---------- HERO ---------- */
         .hero {
             position: relative;
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 6rem 1rem 3rem;
+            padding: 4rem 1rem 3rem;
         }
 
         .hero-logo-wrapper {
             margin-bottom: 1.5rem;
         }
         .hero-logo {
-            max-width: 440px;
+            max-width: 500px;
             width: 100%;
             display: block;
             margin: 0 auto;
         }
 
         .hero-title {
-            font-size: 4.2rem;
-            margin-bottom: 0.2rem;
-            color: #8B6C9E;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2d2a3a;
             letter-spacing: -1px;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero-title-sub {
+            font-size: 4.2rem;
+            color: #5a3a6a;
+            margin-bottom: 0.2rem;
+            line-height: 1.1;
         }
 
         .hero-sub {
             font-size: 1.15rem;
-            color: #5a5a6a;
+            color: #3a3a4a;
             max-width: 580px;
             margin: 0 auto 1.5rem;
             line-height: 1.7;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .hero-badge {
@@ -139,12 +221,18 @@
             letter-spacing: 0.5px;
             border: 2px solid #2d2a3a;
             text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .hero-badge:hover {
+            background: #8B6C9E;
+            border-color: #8B6C9E;
         }
 
         .scroll-indicator {
             text-align: center;
             padding: 2.5rem 0 0.5rem;
-            color: #9a8aaa;
+            color: #6a5a7a;
             font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -156,48 +244,15 @@
             animation: bounce 2s infinite;
         }
         @keyframes bounce {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(6px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
         }
 
-        /* ---------- SECTION ---------- */
-        .section {
-            margin-bottom: 4rem;
-            width: 100%;
-        }
-
-        /* ---------- BANNER ---------- */
-        .banner {
-            padding: 2rem 0;
-            text-align: center;
-            background: transparent;
-            margin: 1rem 0 3rem;
-            border-top: 6px solid #8B6C9E !important;
-            border-bottom: 6px solid #69DBD3 !important;
-        }
-        .banner p {
-            font-size: 1.15rem;
-            color: #4a4a5a;
-            line-height: 1.8;
-            max-width: 750px;
-            margin: 0 auto;
-            font-weight: 400;
-        }
-        .banner .highlight {
-            color: #8B6C9E;
-            font-weight: 600;
-        }
-
-        /* ---------- FOUNDING FAMILIES ---------- */
+        /* ---------- MAKE A SPLASH ---------- */
         .founding-card {
             padding: 2.5rem 2rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border-top: 8px solid #69DBD3 !important;
             margin: 1rem 0 3rem;
         }
@@ -211,11 +266,11 @@
         }
         .founding-card p {
             font-size: 1rem;
-            color: #5a5a6a;
+            color: #3a3a4a;
             line-height: 1.7;
             max-width: 650px;
             margin: 0 auto 1.2rem;
-            font-weight: 300;
+            font-weight: 400;
         }
         .founding-benefits {
             display: grid;
@@ -228,7 +283,7 @@
             padding: 0.6rem 0.3rem;
             font-size: 0.85rem;
             color: #2d2a3a;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
             border: 2px solid #2d2a3a;
             font-weight: 500;
         }
@@ -238,150 +293,322 @@
             margin-bottom: 0.1rem;
         }
 
-        /* ---------- ADVENTURE POSTERS ---------- */
+        /* ---------- ADVENTURE DESTINATION POSTERS ---------- */
         .poster-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
+
         .poster-card {
-            padding: 1.5rem 1rem;
+            padding: 2rem 1.5rem;
             text-align: center;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.1);
             border-bottom: 4px solid rgba(45, 42, 58, 0.08) !important;
             transition: transform 0.2s ease;
+            position: relative;
         }
         .poster-card:hover {
             transform: translateY(-4px);
             border-bottom-color: #8B6C9E !important;
         }
-        .poster-card .poster-icon {
-            font-size: 3.5rem;
-            display: block;
-            margin-bottom: 0.3rem;
+
+        .poster-card .poster-stamp {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.2rem;
+            opacity: 0.2;
+            transform: rotate(15deg);
         }
+
+        .poster-card .poster-icon {
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .poster-card .poster-icon img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .poster-card .poster-welcome {
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #6a5a7a;
+            display: block;
+            margin-bottom: 0.1rem;
+        }
+
         .poster-card .poster-label {
             font-size: 0.6rem;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #9a8aaa;
+            color: #6a5a7a;
             display: block;
             margin-bottom: 0.2rem;
         }
+
         .poster-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #2d2a3a;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
         }
+
         .poster-card p {
-            font-size: 0.9rem;
-            color: #5a5a6a;
+            font-size: 0.95rem;
+            color: #3a3a4a;
             line-height: 1.5;
-            font-weight: 300;
+            font-weight: 400;
             margin-bottom: 0.5rem;
         }
+
         .poster-card .poster-features {
             display: flex;
             flex-wrap: wrap;
             gap: 0.3rem 0.6rem;
             justify-content: center;
-            margin: 0.3rem 0;
+            margin: 0.5rem 0;
         }
+
         .poster-card .poster-features span {
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             font-weight: 500;
-            color: #4a4a5a;
-            background: rgba(255, 255, 255, 0.3);
-            padding: 0.1rem 0.8rem;
+            color: #3a3a4a;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.15rem 0.9rem;
             border: 1px solid rgba(45, 42, 58, 0.1);
         }
+
         .poster-card .poster-price {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: #8B6C9E;
             display: inline-block;
-            padding: 0.2rem 1.2rem;
+            padding: 0.3rem 1.5rem;
             border: 2px solid #8B6C9E;
-            margin-top: 0.3rem;
+            margin-top: 0.5rem;
             text-transform: uppercase;
         }
 
-        /* ---------- DREAM THEMES SLIDER ---------- */
+        /* ---------- TREASURES SLIDER ---------- */
         .slider-section {
             overflow: hidden;
             padding: 1.5rem 0;
+            position: relative;
         }
+
         .slider-track {
             display: flex;
             gap: 1.5rem;
             width: max-content;
-            animation: slideTreasures 35s linear infinite;
-        }
-        .slider-track:hover {
-            animation-play-state: paused;
+            padding: 0.5rem 0;
+            will-change: transform;
         }
 
-        .theme-card {
-            flex: 0 0 180px;
-            padding: 1.2rem 0.8rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px dashed #2d2a3a !important;
-            transition: all 0.2s ease;
-        }
-        .theme-card:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-style: solid !important;
-        }
-        .theme-card .tc-icon {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-        .theme-card h4 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #2d2a3a;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* ---------- TREASURE CARDS (Infinite Slider) ---------- */
-        .treasure-card {
+        /* Base Shell Card */
+        .shell-card {
             flex: 0 0 200px;
-            padding: 1.5rem 1rem;
+            aspect-ratio: 322 / 288;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
+            transform: rotate(var(--rot, 0deg));
+            transition: filter 0.3s ease;
+            position: relative;
+        }
+
+        .shell-card:hover {
+            filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.15));
+        }
+
+        /* Shell Variants */
+        .shell-v1 {
+            clip-path: url(#shellClip);
+            background: conic-gradient(from 45deg at 50% 50%, #ffd1dc, #b8e0ff, #e0bbff, #ffd1dc);
+        }
+
+        .shell-v2 {
+            clip-path: url(#shellClip2);
+            background: conic-gradient(from 135deg at 50% 50%, #ffd1dc, #b8e0ff, #e0bbff, #ffd1dc);
+        }
+
+        /* Base Shell Background + Texture Overlay */
+        .shell-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), rgba(255, 220, 240, 0.1) 80%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .shell-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            pointer-events: none;
+            opacity: 0.8;
+            z-index: 1;
+            mix-blend-mode: multiply;
+        }
+
+        /* Card Inner (Floating Content) */
+        .treasure-card-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(45, 42, 58, 0.05) !important;
+            padding: 28% 15%;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+            background: radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.6), rgba(255, 220, 240, 0.1) 90%);
+            z-index: 2;
+            backdrop-filter: blur(2px);
         }
-        .treasure-card .tc-icon {
-            font-size: 2.2rem;
-            display: block;
-            margin-bottom: 0.2rem;
+
+        .shell-card:hover .treasure-card-inner {
+            animation-play-state: paused;
+            transform: translateY(-6px);
         }
-        .treasure-card h4 {
-            font-size: 0.95rem;
+
+        /* --- Floating Keyframes --- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+        }
+
+        /* --- Pearl Glow --- */
+        .pearl-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            aspect-ratio: 1;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.9), rgba(200, 180, 255, 0.7) 30%, rgba(100, 200, 255, 0.4) 70%, transparent 100%);
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.9;
+            transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+            pointer-events: none;
+            z-index: 0;
+            mix-blend-mode: screen;
+        }
+
+        .shell-card:hover .pearl-glow {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+            filter: blur(6px);
+        }
+
+        /* --- Treasure Card Typography --- */
+        .treasure-card-inner h4 {
+            font-size: 0.85rem;
             font-weight: 700;
             color: #2d2a3a;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-        }
-        .treasure-card p {
-            font-size: 0.7rem;
-            color: #6a6a7a;
-            font-weight: 300;
+            position: relative;
+            z-index: 2;
             margin-top: 0.1rem;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
         }
 
-        @keyframes slideTreasures {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+        .treasure-card-inner p {
+            font-size: 0.65rem;
+            color: #4a4a5a;
+            font-weight: 400;
+            margin-top: 0.1rem;
+            max-width: 90%;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+        }
+
+        /* ---------- SKETCHBOOK ---------- */
+        .sketchbook-section {
+            padding: 1.5rem 0;
+        }
+
+        .sketchbook-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .sketch-card {
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            background: rgba(255, 248, 240, 0.15);
+            border: 2px dashed rgba(45, 42, 58, 0.08);
+            transform: rotate(var(--rot, 0deg));
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sketch-card:hover {
+            background: rgba(255, 248, 240, 0.25);
+            border-style: solid;
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .sketch-card .sketch-pencil {
+            position: absolute;
+            top: -6px; right: -6px;
+            font-size: 1.2rem;
+            opacity: 0.25;
+            transform: rotate(20deg);
+        }
+
+        .sketch-card .sketch-icon {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 0.1rem;
+            opacity: 0.7;
+        }
+
+        .sketch-card h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #2d2a3a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sketch-card .sketch-note {
+            font-size: 0.55rem;
+            color: #6a5a7a;
+            font-style: italic;
+            margin-top: 0.1rem;
+            opacity: 0.5;
         }
 
         /* ---------- MORE THAN PARTY DECOR ---------- */
@@ -390,22 +617,27 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
+
         .masonry-item {
             padding: 1.8rem 1.2rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.2);
-            border-left: 4px solid rgba(139, 108, 158, 0.2) !important;
+            background: rgba(255, 255, 255, 0.12);
+            border-left: 4px solid rgba(139, 108, 158, 0.15) !important;
             transition: transform 0.2s ease;
         }
+
         .masonry-item:hover {
             transform: translateY(-4px);
             border-left-color: #8B6C9E !important;
         }
+
         .masonry-item .masonry-icon {
-            font-size: 2.2rem;
+            font-size: 2rem;
             display: block;
             margin-bottom: 0.2rem;
+            opacity: 0.7;
         }
+
         .masonry-item h4 {
             font-size: 1rem;
             font-weight: 700;
@@ -413,177 +645,164 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .masonry-item p {
             font-size: 0.8rem;
-            color: #5a5a6a;
-            font-weight: 300;
+            color: #3a3a4a;
+            font-weight: 400;
             margin-top: 0.1rem;
         }
 
-        /* ---------- WHY CHOOSE ---------- */
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-        .why-item {
-            padding: 2rem 1.5rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.2);
-            border-bottom: 4px solid rgba(45, 42, 58, 0.05) !important;
-            transition: transform 0.2s ease;
-        }
-        .why-item:hover {
-            transform: translateY(-4px);
-            border-bottom-color: #69DBD3 !important;
-        }
-        .why-item .wi-icon {
-            font-size: 2.4rem;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-        .why-item h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #2d2a3a;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .why-item p {
-            font-size: 0.8rem;
-            color: #5a5a6a;
-            font-weight: 300;
-            line-height: 1.4;
-        }
-
-        /* ---------- STORYBOOK (My Tail) ---------- */
-        .storybook {
+        /* ---------- JOURNAL ---------- */
+        .journal {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 2.5rem;
-            align-items: center;
-            padding: 2.5rem 0;
+            padding: 2.5rem;
+            background: rgba(255, 248, 240, 0.5);
+            border: 4px solid rgba(45, 42, 58, 0.06);
+            position: relative;
         }
-        .storybook-illustration {
+
+        .journal::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(45deg,
+                    transparent 0px, transparent 20px,
+                    rgba(139, 108, 158, 0.01) 20px, rgba(139, 108, 158, 0.01) 21px);
+            pointer-events: none;
+        }
+
+        .journal-illustration {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            position: relative;
+            padding-top: 0.5rem;
         }
-        .storybook-illustration .mommy-image {
-            max-width: 260px;
+
+        .journal-illustration .journal-image {
+            max-width: 320px;
             width: 100%;
             height: auto;
             display: block;
+            border: 4px solid #2d2a3a;
+            position: static;
         }
-        .storybook-text .sb-tagline {
-            font-size: 1.2rem;
+
+        @media (min-width: 1025px) {
+            .journal-illustration .journal-image {
+                position: sticky;
+                top: 2rem;
+            }
+        }
+
+        .journal-shell {
+            position: absolute;
+            font-size: 1.8rem;
+            opacity: 0.12;
+        }
+
+        .journal-shell-1 { top: -10px; left: -10px; transform: rotate(-20deg); }
+        .journal-shell-2 { bottom: -10px; right: -10px; transform: rotate(30deg); }
+
+        .journal-text {
+            padding: 0.5rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .journal-text .journal-greeting {
+            font-size: 1.4rem;
             color: #8B6C9E;
-            font-weight: 500;
-            font-style: italic;
+            font-weight: 600;
+            font-family: 'Grand Hotel', cursive;
             margin-bottom: 0.2rem;
         }
-        .storybook-text .sb-sub {
-            font-size: 0.7rem;
-            color: #9a8aaa;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-        }
-        .storybook-text .sb-story {
-            font-size: 0.95rem;
-            color: #5a5a6a;
-            line-height: 1.8;
-            font-weight: 300;
+
+        .journal-text .journal-tagline {
+            font-size: 1.1rem;
+            color: #3a3a4a;
+            font-weight: 400;
+            font-style: italic;
             margin-bottom: 1rem;
         }
-        .storybook-text .sb-features {
+
+        .journal-text .journal-story {
+            font-size: 1rem;
+            color: #3a3a4a;
+            line-height: 1.8;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .journal-text .journal-story p {
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .journal-text .journal-story .story-highlight {
+            color: #8B6C9E;
+            font-weight: 500;
+        }
+
+        .journal-text .journal-signoff {
+            font-size: 1.3rem;
+            color: #8B6C9E;
+            font-family: 'Grand Hotel', cursive;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .journal-text .journal-features {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0.8rem;
+            opacity: 0;
+            transform: translateY(20px);
         }
-        .storybook-text .sb-feature {
+
+        .journal-text .journal-feature {
             padding: 0.8rem 0.3rem;
             text-align: center;
             background: rgba(255, 255, 255, 0.15);
-            border-left: 4px solid rgba(139, 108, 158, 0.2);
+            border-left: 4px solid rgba(139, 108, 158, 0.15);
         }
-        .storybook-text .sb-feature .sbf-icon {
+
+        .journal-text .journal-feature .jf-icon {
             font-size: 1.4rem;
             display: block;
             margin-bottom: 0.1rem;
-        }
-        .storybook-text .sb-feature h4 {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #2d2a3a;
-            text-transform: uppercase;
-        }
-        .storybook-text .sb-feature p {
-            font-size: 0.65rem;
-            color: #6a6a7a;
-            font-weight: 300;
+            opacity: 0.7;
         }
 
-        /* ---------- ADD-ONS ---------- */
-        .addon-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-        .addon-card {
-            padding: 2rem 1.2rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.2);
-            border-top: 4px solid rgba(45, 42, 58, 0.05) !important;
-            transition: transform 0.2s ease;
-        }
-        .addon-card:hover {
-            transform: translateY(-4px);
-            border-top-color: #8B6C9E !important;
-        }
-        .addon-card .addon-icon {
-            font-size: 2.8rem;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-        .addon-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #2d2a3a;
-        }
-        .addon-card .addon-tag {
-            font-size: 0.55rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #9a8aaa;
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-        .addon-card p {
-            font-size: 0.85rem;
-            color: #5a5a6a;
-            font-weight: 300;
-            line-height: 1.5;
-        }
-        .addon-price {
+        .journal-text .journal-feature h4 {
             font-size: 0.8rem;
             font-weight: 700;
-            color: #69DBD3;
-            display: inline-block;
-            margin-top: 0.3rem;
-            border-bottom: 2px solid #69DBD3;
+            color: #2d2a3a;
+            text-transform: uppercase;
+        }
+
+        .journal-text .journal-feature p {
+            font-size: 0.65rem;
+            color: #4a4a5a;
+            font-weight: 400;
         }
 
         /* ---------- WAITLIST ---------- */
         .waitlist-card {
             padding: 2.5rem 2rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border: 2px solid #2d2a3a !important;
             max-width: 650px;
-            margin: 0 auto;
+            margin: 2rem auto 0;
         }
+
         .waitlist-card h3 {
             font-size: 1.6rem;
             font-weight: 700;
@@ -592,20 +811,23 @@
             text-transform: uppercase;
             letter-spacing: -0.5px;
         }
+
         .waitlist-card p {
-            color: #5a5a6a;
-            font-weight: 300;
+            color: #3a3a4a;
+            font-weight: 400;
             margin-bottom: 1.2rem;
         }
+
         .waitlist-form {
             display: flex;
             gap: 0.8rem;
             max-width: 480px;
             margin: 0 auto;
         }
+
         .waitlist-form input {
             flex: 1;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.5);
             border: 2px solid #2d2a3a;
             padding: 0.8rem 1rem;
             color: #2d2a3a;
@@ -613,10 +835,12 @@
             font-size: 0.9rem;
             border-radius: 0;
         }
+
         .waitlist-form input:focus {
             outline: none;
             border-color: #8B6C9E;
         }
+
         .waitlist-form .waitlist-btn {
             background: #2d2a3a;
             color: #fff;
@@ -630,56 +854,71 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
         .waitlist-form .waitlist-btn:hover {
             background: #8B6C9E;
             border-color: #8B6C9E;
         }
 
-        /* ---------- INSTAGRAM ---------- */
-        .ig-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            max-width: 540px;
+        /* ---------- INSTAGRAM SINGLE CTA ---------- */
+        .ig-single-cta {
+            max-width: 500px;
             margin: 0 auto;
         }
-        .ig-placeholder {
-            padding: 2rem 1rem;
+
+        .ig-cta-card {
+            padding: 2.5rem 2rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(45, 42, 58, 0.05) !important;
-            aspect-ratio: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(45, 42, 58, 0.06);
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
-        .ig-placeholder .ig-icon {
-            font-size: 1.8rem;
+
+        .ig-cta-card:hover {
+            transform: translateY(-4px);
+            border-color: #8B6C9E;
+        }
+
+        .ig-cta-icon {
+            font-size: 3rem;
             display: block;
-            margin-bottom: 0.2rem;
-            opacity: 0.4;
+            margin-bottom: 0.5rem;
+            opacity: 0.6;
         }
-        .ig-placeholder p {
-            font-size: 0.7rem;
-            color: #9a8aaa;
+
+        .ig-cta-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d2a3a;
+            font-family: 'Grand Hotel', cursive;
+            margin-bottom: 0.3rem;
         }
-        .ig-placeholder .ig-link {
+
+        .ig-cta-card p {
+            font-size: 0.9rem;
+            color: #3a3a4a;
+            font-weight: 400;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .ig-cta-btn {
             display: inline-block;
-            margin-top: 0.4rem;
-            padding: 0.3rem 1.2rem;
             background: #2d2a3a;
             color: #fff;
+            padding: 0.6rem 2rem;
             text-decoration: none;
-            font-size: 0.7rem;
             font-weight: 600;
             border: 2px solid #2d2a3a;
-            transition: background 0.2s ease;
+            transition: background 0.2s ease, border-color 0.2s ease;
             font-family: 'Fredoka', sans-serif;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            border-radius: 0;
         }
-        .ig-placeholder .ig-link:hover {
+
+        .ig-cta-btn:hover {
             background: #8B6C9E;
             border-color: #8B6C9E;
         }
@@ -687,35 +926,42 @@
         /* ---------- CONTACT ---------- */
         .contact-card {
             padding: 3rem 2.5rem;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border: 2px solid rgba(45, 42, 58, 0.05) !important;
+            position: relative;
         }
+
         .contact-intro {
             text-align: center;
-            color: #5a5a6a;
-            font-weight: 300;
+            color: #3a3a4a;
+            font-weight: 400;
             margin-bottom: 2rem;
         }
+
         .contact-form {
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
         }
+
         .form-group {
             display: flex;
             flex-direction: column;
             gap: 0.3rem;
         }
+
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.2rem;
         }
+
         .form-row-3 {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 1.2rem;
         }
+
         label {
             font-size: 0.7rem;
             font-weight: 700;
@@ -723,11 +969,10 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        input,
-        select,
-        textarea {
-            background: rgba(255, 255, 255, 0.6);
-            border: 2px solid rgba(45, 42, 58, 0.2);
+
+        input, select, textarea {
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(45, 42, 58, 0.15);
             padding: 0.8rem 1rem;
             color: #2d2a3a;
             font-family: 'Fredoka', sans-serif;
@@ -736,37 +981,14 @@
             transition: border 0.2s ease;
             border-radius: 0;
         }
-        input:focus,
-        select:focus,
-        textarea:focus {
+
+        input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: #8B6C9E;
         }
-        select option {
-            background: #f7f3f0;
-            color: #2d2a3a;
-        }
-        .checkbox-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.3rem 1rem;
-        }
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: #5a5a6a;
-            font-size: 0.85rem;
-            cursor: pointer;
-            font-weight: 300;
-        }
-        .checkbox-item input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            accent-color: #8B6C9E;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
+
+        select option { background: #f7f3f0; color: #2d2a3a; }
+
         .submit-btn {
             background: #2d2a3a;
             color: #fff;
@@ -781,21 +1003,137 @@
             font-family: 'Fredoka', sans-serif;
             border-radius: 0;
         }
+
         .submit-btn:hover {
             background: #8B6C9E;
             border-color: #8B6C9E;
         }
-        .submit-btn:active {
-            transform: scale(0.98);
+
+        .submit-btn:active { transform: scale(0.98); }
+
+        /* ---------- ADD-ON CARDS ---------- */
+        .addon-intro {
+            font-size: 0.85rem;
+            color: #6a5a7a;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .addon-card {
+            position: relative;
+            cursor: pointer;
+            display: block;
+        }
+
+        .addon-card--soon {
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .addon-card-inner {
+            padding: 1.2rem 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(45, 42, 58, 0.12);
+            transition: all 0.2s ease;
+            text-align: center;
+            height: 100%;
+            position: relative;
+        }
+
+        .addon-card:not(.addon-card--soon):hover .addon-card-inner {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #8B6C9E;
+            transform: translateY(-2px);
+        }
+
+        .addon-checkbox {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .addon-check-indicator {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 20px;
+            height: 20px;
+            background: #8B6C9E;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .addon-checkbox:checked ~ .addon-card-inner {
+            background: rgba(139, 108, 158, 0.15);
+            border-color: #8B6C9E;
+            border-width: 2px;
+        }
+
+        .addon-checkbox:checked ~ .addon-card-inner .addon-check-indicator {
+            opacity: 1;
+        }
+
+        .addon-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .addon-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #2d2a3a;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.4rem;
+        }
+
+        .addon-desc {
+            font-size: 0.78rem;
+            color: #3a3a4a;
+            line-height: 1.5;
+            font-weight: 400;
+            margin-bottom: 0.6rem;
+        }
+
+        .addon-price {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #8B6C9E;
+            border: 1px solid #8B6C9E;
+            padding: 0.2rem 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .addon-price--soon {
+            color: #a090a0;
+            border-color: rgba(160, 144, 160, 0.3);
+            font-size: 0.6rem;
         }
 
         /* ---------- PARTY GUIDE ---------- */
         .guide-cta {
             text-align: center;
             padding: 2.5rem;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border: 2px solid rgba(45, 42, 58, 0.05) !important;
         }
+
         .guide-cta h3 {
             font-size: 1.6rem;
             font-weight: 700;
@@ -804,11 +1142,13 @@
             text-transform: uppercase;
             letter-spacing: -0.5px;
         }
+
         .guide-cta p {
-            color: #5a5a6a;
-            font-weight: 300;
+            color: #3a3a4a;
+            font-weight: 400;
             margin-bottom: 1rem;
         }
+
         .guide-cta .guide-btn {
             display: inline-block;
             background: #2d2a3a;
@@ -823,6 +1163,7 @@
             letter-spacing: 1px;
             border-radius: 0;
         }
+
         .guide-cta .guide-btn:hover {
             background: #8B6C9E;
             border-color: #8B6C9E;
@@ -836,20 +1177,23 @@
             padding: 1rem 0;
             position: relative;
         }
+
         .wave-step {
             padding: 1.2rem 0.3rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12);
             border-top: 4px solid rgba(45, 42, 58, 0.05);
             position: relative;
             z-index: 1;
         }
+
         .wave-step .ws-number {
             font-size: 0.65rem;
             font-weight: 700;
             color: #8B6C9E;
             display: block;
         }
+
         .wave-step h4 {
             font-size: 0.75rem;
             font-weight: 600;
@@ -857,141 +1201,160 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .wave-path::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 10%;
-            right: 10%;
+            top: 50%; left: 10%; right: 10%;
             height: 2px;
             background: repeating-linear-gradient(90deg, #8B6C9E 0px, #8B6C9E 6px, transparent 6px, transparent 12px);
             opacity: 0.2;
             z-index: 0;
         }
 
-        /* ---------- FOOTER & TRUST BAR ---------- */
+        /* ---------- FOOTER ---------- */
         .footer {
-            background: rgba(255, 255, 255, 0.3);
-            padding: 2.5rem 0 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2rem 0 1rem;
             margin-top: 3rem;
             border-top: 6px solid #8B6C9E !important;
             border-bottom: 6px solid #69DBD3 !important;
         }
-        .footer-inner {
+
+        .footer-main {
             max-width: 1100px;
             width: 92%;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
         }
+
         .footer-brand h3 {
             font-size: 1.3rem;
             font-weight: 700;
             color: #8B6C9E;
-            margin-bottom: 0.3rem;
-            font-family: 'Magnolia Sky', 'Grand Hotel', cursive;
+            margin-bottom: 0.2rem;
+            font-family: 'Grand Hotel', cursive;
         }
+
         .footer-brand p {
-            font-size: 0.85rem;
-            color: #5a5a6a;
-            line-height: 1.6;
-            font-weight: 300;
+            font-size: 0.8rem;
+            color: #3a3a4a;
+            line-height: 1.5;
+            font-weight: 400;
             max-width: 280px;
         }
-        .footer-brand .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+
+        .footer-brand address {
+            font-style: normal;
         }
-        .footer-brand .footer-social a {
+
+        .footer-social {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-social a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
+            width: 32px; height: 32px;
             border: 2px solid #8B6C9E;
             color: #8B6C9E;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             font-weight: 700;
         }
-        .footer-brand .footer-social a:hover {
+
+        .footer-social a:hover {
             background: #8B6C9E;
             color: #fff;
         }
-        .footer-col h4 {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #2d2a3a;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.8rem;
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
-        .footer-col ul {
-            list-style: none;
-            padding: 0;
-        }
-        .footer-col ul li {
-            margin-bottom: 0.4rem;
-        }
-        .footer-col ul li a {
-            color: #5a5a6a;
+
+        .footer-links a {
+            color: #3a3a4a;
             text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 400;
-            transition: color 0.2s ease;
             border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
         }
-        .footer-col ul li a:hover {
+
+        .footer-links a:hover {
             color: #8B6C9E;
             border-bottom-color: #8B6C9E;
         }
 
-        /* --- TRUST BAR --- */
         .trust-bar {
             max-width: 1100px;
             width: 92%;
-            margin: 1.5rem auto 0.5rem;
-            padding: 1rem 0 0.5rem;
+            margin: 1rem auto 0.5rem;
+            padding: 0.5rem 0;
             border-top: 2px solid rgba(45, 42, 58, 0.04);
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: baseline;
-            gap: 0.25rem 2rem;
-            font-size: 0.8rem;
-            color: #5a5a6a;
+            gap: 0.25rem 1.5rem;
+            font-size: 0.75rem;
+            color: #3a3a4a;
             font-weight: 400;
         }
+
         .trust-bar .trust-item {
             display: inline-flex;
             align-items: center;
             gap: 0.3rem;
         }
+
         .trust-bar .trust-item .ti-icon {
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0.6;
         }
-        .trust-bar .trust-item .ti-sub {
-            font-size: 0.6rem;
-            color: #9a8aaa;
-            margin-left: 0.1rem;
-        }
+
         .trust-bar .sep {
-            color: #c0b0c0;
+            color: #a090a0;
             font-weight: 300;
-            font-size: 1.2rem;
+            font-size: 1rem;
             line-height: 1;
         }
 
         .footer-copy {
             text-align: center;
-            font-size: 0.65rem;
-            color: #9a8aaa;
-            margin-top: 0.5rem;
+            font-size: 0.6rem;
+            color: #6a5a7a;
+            margin-top: 0.3rem;
             padding-bottom: 0.5rem;
+        }
+
+        .footer-legal {
+            text-align: center;
+            font-size: 0.6rem;
+            color: #6a5a7a;
+            margin-top: 0.2rem;
+            padding-bottom: 0.5rem;
+        }
+        .footer-legal a {
+            color: #6a5a7a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+            margin: 0 0.3rem;
+        }
+        .footer-legal a:hover {
+            color: #8B6C9E;
+            border-bottom-color: #8B6C9E;
         }
 
         /* ---------- HIDDEN TREASURES ---------- */
@@ -1003,14 +1366,16 @@
             margin: 0 0.1rem;
             transition: transform 0.3s ease;
         }
+
         .hidden-treasure:hover {
             transform: scale(1.15) rotate(8deg);
         }
+
         .hidden-treasure .treasure-popup {
             position: absolute;
             bottom: 120%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(6px);
             background: #fff;
             padding: 0.4rem 1rem;
             font-size: 0.75rem;
@@ -1020,235 +1385,265 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s ease, transform 0.3s ease;
-            transform: translateX(-50%) translateY(6px);
             font-family: 'Fredoka', sans-serif;
             font-weight: 500;
         }
-        .hidden-treasure:hover .treasure-popup {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
+
+        .hidden-treasure:hover .treasure-popup,
         .hidden-treasure .treasure-popup.show {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
 
+        /* ---------- LEGAL MODAL ---------- */
+        #legal-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+        }
+
+        #legal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(45, 42, 58, 0.6);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+        }
+
+        #legal-drawer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-height: 82vh;
+            background: linear-gradient(180deg, #d4c0e8 0%, #b0d0d0 60%, #b8e0e0 100%);
+            border-top: 6px solid #8B6C9E;
+            border-radius: 0;
+            overflow: hidden;
+            transform: translateY(100%);
+        }
+
+        #legal-drawer-inner {
+            padding: 2.5rem 2rem 3rem;
+            max-width: 780px;
+            margin: 0 auto;
+            overflow-y: auto;
+            max-height: 82vh;
+            position: relative;
+        }
+
+        #legal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #2d2a3a;
+            color: #fff;
+            border: none;
+            width: 32px;
+            height: 32px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #legal-close:hover {
+            background: #8B6C9E;
+        }
+
+        #legal-content h2 {
+            font-family: 'Grand Hotel', cursive;
+            font-size: 2.2rem;
+            color: #8B6C9E;
+            margin-bottom: 0.3rem;
+            font-weight: 400;
+        }
+
+        #legal-content h3 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #2d2a3a;
+            margin: 1.5rem 0 0.4rem;
+        }
+
+        #legal-content p {
+            font-size: 0.9rem;
+            color: #3a3a4a;
+            line-height: 1.7;
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+        }
+
+        #legal-content .legal-sub {
+            font-size: 0.7rem;
+            color: #6a5a7a;
+            font-style: italic;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            #legal-drawer { max-height: 90vh; }
+            #legal-drawer-inner { max-height: 90vh; padding: 2rem 1.2rem 3rem; }
+        }
+
         /* ===== PARTICLES ===== */
         .sky-decor {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
             overflow: hidden;
         }
+
         .bubble-el {
             position: absolute;
             border-radius: 50%;
-            background: rgba(139, 108, 158, 0.06);
-            border: 1px solid rgba(139, 108, 158, 0.08);
+            background: radial-gradient(circle at 30% 30%, rgba(200, 230, 240, 0.25), rgba(160, 200, 210, 0.08));
+            border: 1px solid rgba(160, 200, 210, 0.15);
             bottom: -30px;
             pointer-events: none;
+            box-shadow: inset 0 -4px 10px rgba(255, 255, 255, 0.1);
+            will-change: transform;
         }
+
         .sparkle-el {
             position: absolute;
             bottom: -30px;
             pointer-events: none;
-            font-size: 18px;
-            opacity: 0.5;
+            font-size: 14px;
+            opacity: 0.25;
             line-height: 1;
+            color: #F5D442;
+            text-shadow: 0 0 12px rgba(245, 212, 66, 0.15);
+            will-change: transform;
         }
 
         /* ---------- RESPONSIVE ---------- */
         @media (max-width: 1024px) {
-            .poster-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .poster-grid { grid-template-columns: repeat(2, 1fr); }
+            .masonry-grid { grid-template-columns: repeat(2, 1fr); }
+            .sketchbook-grid { grid-template-columns: repeat(2, 1fr); }
+            .journal { grid-template-columns: 1fr; text-align: center; padding: 2rem; }
+            .journal-illustration { align-items: center; padding-top: 0; }
+            .journal-illustration .journal-image {
+                max-width: 280px;
+                margin-bottom: 1rem;
+                position: static;
             }
-            .masonry-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .why-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .addon-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .storybook {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .storybook-text .sb-features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .footer-inner {
-                grid-template-columns: 1fr 1fr;
-                gap: 2rem;
-            }
-            .trust-bar {
-                gap: 0.25rem 1rem;
-                font-size: 0.75rem;
-            }
-            .founding-benefits {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .ig-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .wave-path {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .wave-path::before {
-                display: none;
-            }
-            .hero-title {
-                font-size: 3rem;
-            }
-            .hero-logo {
-                max-width: 340px;
-            }
-            .storybook-illustration .mommy-image {
-                max-width: 220px;
-            }
+            .journal-text .journal-features { grid-template-columns: repeat(2, 1fr); }
+            .footer-main { flex-direction: column; text-align: center; }
+            .footer-brand p { max-width: 100%; }
+            .footer-links { justify-content: center; }
+            .trust-bar { gap: 0.25rem 1rem; font-size: 0.7rem; }
+            .founding-benefits { grid-template-columns: repeat(2, 1fr); }
+            .wave-path { grid-template-columns: repeat(3, 1fr); }
+            .wave-path::before { display: none; }
+            .hero-title { font-size: 2.4rem; }
+            .hero-title-sub { font-size: 3.5rem; }
+            .hero-logo { max-width: 420px; }
+            .section { margin-bottom: 3rem; }
+            .poster-card .poster-icon img { max-height: 250px; }
+            .shell-card { flex: 0 0 160px; }
+            .addon-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
-            .form-row-3 {
-                grid-template-columns: 1fr;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            .poster-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-            .masonry-grid {
-                grid-template-columns: 1fr;
-            }
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
-            .addon-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-            .footer-inner {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .footer-brand p {
-                max-width: 100%;
-            }
-            .footer-brand .footer-social {
-                justify-content: center;
-            }
-            .founding-benefits {
-                grid-template-columns: 1fr 1fr;
-            }
-            .storybook-text .sb-features {
-                grid-template-columns: 1fr;
-            }
-            .ig-grid {
-                grid-template-columns: 1fr;
-            }
-            .checkbox-grid {
-                grid-template-columns: 1fr;
-            }
-            .wave-path {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .hero-title {
-                font-size: 2.4rem;
-            }
-            .hero-logo {
-                max-width: 280px;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .waitlist-form {
-                flex-direction: column;
-            }
-            .contact-card {
-                padding: 2rem 1.2rem;
-            }
-            .storybook-illustration .mommy-image {
-                max-width: 200px;
-            }
-            .trust-bar {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.4rem;
-                font-size: 0.85rem;
-            }
-            .trust-bar .sep {
-                display: none;
-            }
+            .poster-grid { grid-template-columns: 1fr; }
+            .form-row-3 { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .masonry-grid { grid-template-columns: 1fr; }
+            .sketchbook-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .journal-text .journal-features { grid-template-columns: 1fr; }
+            .wave-path { grid-template-columns: repeat(2, 1fr); }
+            .hero-title { font-size: 2rem; }
+            .hero-title-sub { font-size: 2.8rem; }
+            .hero-logo { max-width: 420px; }
+            .chapter-title { font-size: 2rem; }
+            .waitlist-form { flex-direction: column; }
+            .waitlist-form input, .waitlist-form .waitlist-btn { width: 100%; }
+            .contact-card { padding: 2rem 1.2rem; }
+            .trust-bar { flex-direction: column; align-items: center; gap: 0.3rem; font-size: 0.75rem; }
+            .trust-bar .sep { display: none; }
+            .section { margin-bottom: 2.5rem; }
+            .poster-card .poster-icon img { max-height: none; }
+            .shell-card { flex: 0 0 140px; }
+            .addon-grid { grid-template-columns: 1fr; }
         }
-        @media (max-width: 600px) {
-            .founding-benefits {
-                grid-template-columns: 1fr;
-            }
-            .hero-title {
-                font-size: 1.8rem;
-            }
-            .hero-logo {
-                max-width: 200px;
-            }
-            .poster-card .poster-icon {
-                font-size: 2.8rem;
-            }
-            .storybook-illustration .mommy-image {
-                max-width: 160px;
-            }
+
+        @media (max-width: 480px) {
+            .shell-card { flex: 0 0 120px; }
+            .waitlist-form { flex-direction: column; }
+            .waitlist-form input, .waitlist-form .waitlist-btn { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== PARTICLES (Bubbles + ✨) ===== -->
+    <!-- ===== SVG CLIP PATHS (Hidden) ===== -->
+    <svg width="0" height="0" style="position:absolute;z-index:-1;" aria-hidden="true">
+        <defs>
+            <!-- Shell 1 (Original) -->
+            <clipPath id="shellClip" clipPathUnits="objectBoundingBox">
+                <path d="m 65.441299,282.42457 c -2.92498,-0.42658 -3.3047,-0.97428 -5.65227,-8.15248 -3.93539,-12.03336 -5.07492,-18.83035 -5.14611,-30.69517 -0.0738,-12.29982 2.78936,-29.31539 5.08075,-30.19469 2.02099,-0.77552 14.65566,6.82434 24.35325,14.64868 11.93487,9.62946 43.264511,42.41222 44.743971,46.81927 0.13418,0.39971 -3.69494,0.80428 -8.50917,0.89904 -8.15658,0.16057 -13.78311,1.15722 -27.041201,4.78994 -5.56167,1.5239 -22.45866,2.66866 -27.82922,1.88541 z m 86.743951,-0.36895 c -11.6287,-2.44343 -24.15439,-11.33744 -31.50621,-22.37133 -7.69979,-11.55614 -22.25299,-26.10782 -35.960771,-35.95703 -19.86281,-14.27166 -37.75992,-22.28082 -65.25122,-29.20066 -0.61043,-0.15365 -1.41796,-2.60185 -1.79451,-5.44043 -0.97871,-7.37786 -3.97034,-14.31522 -9.64905,-22.37541 -2.7206098,-3.86156 -4.9465698,-8.036 -4.9465698,-9.27654 0,-2.54138 4.85911,-6.71502 9.8390198,-8.45103 4.01887,-1.40098 3.99221,-1.54096 -1.29269,-6.7888 -8.7908898,-8.72925 -8.3525898,-13.11068 1.88746,-18.86802 9.87402,-5.55155 10.5915,-8.27769 5.06621,-19.24945 -5.18497,-10.295988 -5.07947,-10.514125 6.52338,-13.487518 10.63601,-2.725627 11.3484,-3.490101 10.59398,-11.368598 -0.34991,-3.654135 -0.91507,-8.407427 -1.25591,-10.562871 -0.88046,-5.567943 0.91671,-6.58101 11.6747,-6.58101 11.34179,0 12.07973,-0.742689 12.96753,-13.051023 0.80929,-11.219727 1.26776,-11.747679 8.75164,-10.077817 14.62649,3.263577 17.112,2.477213 19.18087,-6.068413 3.41462,-14.104376 4.55811,-14.849298 15.122591,-9.851506 10.45539,4.946183 13.84126,3.580369 18.38103,-7.414643 3.70553,-8.9745323 5.67308,-9.3081164 14.96137,-2.536598 9.61352,7.008624 12.03153,6.627571 19.10693,-3.011052 6.18801,-8.4297563 6.6831,-8.4166786 14.91369,0.393944 8.86262,9.487196 9.93506,9.575146 19.5782,1.605594 7.88905,-6.5198915 9.8614,-6.0773823 13.93242,3.125835 4.7724,10.788807 7.64368,11.850793 18.41406,6.810723 10.31043,-4.824832 10.89607,-4.449983 14.8149,9.482624 0.86409,3.072104 2.37395,5.649476 4.03685,6.891008 2.65305,1.980787 2.66742,1.980593 11.16535,-0.150752 6.90202,-1.731076 11.04542,-2.010819 11.71491,-0.790935 0.0432,0.07866 0.41559,4.324363 0.8276,9.434905 0.99168,12.300512 1.28225,12.567492 14.37501,13.208106 l 10.2189,0.5 -0.0903,4.5 c -0.0497,2.475 -0.44392,7.242102 -0.8761,10.59356 -0.95686,7.420142 0.72228,9.592206 8.82619,11.417202 13.35635,3.007847 13.81155,3.744865 8.64021,13.989235 -4.77434,9.45791 -3.80459,13.51658 4.19682,17.56487 4.53335,2.29364 9.80318,6.33141 9.80318,7.51125 0,0.53588 -2.6485,3.82127 -5.88556,7.30087 -6.84342,7.35616 -8.24603,10.41534 -5.47833,11.94859 5.85956,3.24609 10.10367,11.65636 8.77405,17.38695 -0.79825,3.44045 -5.19432,11.28747 -6.32348,11.28747 -0.45596,0 -1.11674,2.1375 -1.46841,4.75 -1.24945,9.28211 -9.40864,21.58828 -15.06535,22.72243 -1.12911,0.22638 -6.55292,1.12336 -12.05292,1.9933 -34.14466,5.40065 -60.26969,22.55308 -77.37927,50.80346 -5.97393,9.86381 -10.18048,14.87027 -16.21856,19.30262 -9.61734,7.05978 -25.00496,10.67387 -35.79384,8.40689 z m 83.39167,-0.002 c -2.75,-0.42546 -9.5,-1.97123 -15,-3.43504 -7.013,-1.86649 -12.87381,-2.71829 -19.62105,-2.85168 l -9.62105,-0.1902 5.12105,-5.55809 c 2.81658,-3.05695 7.44804,-9.35695 10.29213,-14 8.45061,-13.79582 21.84604,-27.5903 33.86669,-34.87558 6.39478,-3.87564 19.84541,-9.79297 24.27333,-10.67855 l 3.1889,-0.63756 v 9.97978 c 0,22.02555 -2.24274,40.47792 -6.61,54.38438 -2.39119,7.61415 -2.39119,7.61415 -7.03016,8.25 -5.66,0.77579 -12.21209,0.64126 -18.85984,-0.38724 z" transform="scale(0.00310559, 0.00347222)" />
+            </clipPath>
+
+            <!-- Shell 2 (New) -->
+            <clipPath id="shellClip2" clipPathUnits="objectBoundingBox">
+                <path d="m 124.08609,289.15755 c -7.42934,-3.39315 -20.23705,-21.63369 -22.14678,-31.5411 -0.57543,-2.98527 -0.43467,-3.29623 1.24937,-2.76005 14.60072,4.64877 54.87051,19.54231 55.15613,20.39917 0.59895,1.79687 -7.82012,9.59264 -13.14177,12.1688 -5.93689,2.874 -16.68721,3.75633 -21.11695,1.73318 z m 78.00045,-0.0756 c -2.2,-0.69577 -5.35,-1.97958 -7,-2.8529 -4.316,-2.28441 -12.11476,-10.55135 -10.95414,-11.61175 1.11682,-1.02038 56.56087,-20.36313 57.02849,-19.89551 0.82844,0.82844 -4.87707,14.64136 -7.97485,19.30696 -9.98447,15.03769 -18.34806,19.08595 -31.0995,15.0532 z m -34.12573,-3.28177 c -3.53724,-0.70877 -6.71542,-4.82401 -5.98209,-7.74586 2.03077,-8.09122 18.60782,-6.77633 18.60782,1.47598 0,4.32661 -6.41797,7.51374 -12.62573,6.26988 z M 150.87169,258.73077 C 136.60566,244.60506 128.89702,235.23658 117.80568,218.54495 86.909151,172.04794 73.257853,113.29836 81.143676,60.766708 82.824039,49.572914 85.795863,43.429421 92.616534,37.049482 104.99051,25.475078 121.10428,23.628239 135.33198,32.153759 c 8.6889,5.206565 8.78705,5.362914 6.357,10.126219 -2.81138,5.510745 -6.82287,19.662341 -8.84099,31.188899 -2.38671,13.631766 -2.34117,54.258473 0.083,74.011893 4.59402,37.43507 15.17151,80.73195 27.12272,111.02151 2.49095,6.31317 4.52987,11.59099 4.53093,11.72849 0.0117,1.52039 -3.7448,-1.62993 -13.71292,-11.5 z m -6.93159,4.14979 C 91.411535,231.77154 54.650151,181.95398 43.656897,126.98077 41.300512,115.19736 39.109162,86.137067 40.045014,79.082269 41.874588,65.290262 51.02673,54.896312 63.270514,52.705418 c 4.752146,-0.850346 13.609022,-0.264984 14.855847,0.981841 0.286358,0.286358 -0.05224,3.844544 -0.752431,7.907081 -0.781884,4.536492 -1.261923,16.067702 -1.24416,29.88643 0.02433,18.92907 0.391321,24.53672 2.312344,35.33312 7.483174,42.0564 23.774206,78.97389 49.162416,111.40808 3.3403,4.26734 11.28711,13.0463 17.65958,19.5088 6.37246,6.4625 11.18903,11.75 10.70348,11.75 -0.48556,0 -5.89793,-2.9701 -12.02749,-6.60021 z m 18.84309,-6.66898 c -20.18482,-53.12097 -31.67661,-120.08875 -28.309,-164.969222 2.26082,-30.130188 9.01444,-50.822197 21.60125,-66.182743 3.76965,-4.600349 10.43228,-8.578845 14.36666,-8.578845 12.74463,0 27.42653,25.282319 32.81059,56.5 2.61947,15.188169 2.35745,52.54357 -0.52607,75 -4.85422,37.8038 -10.70724,65.48227 -19.1334,90.48018 -7.43149,22.04702 -11.15723,30.46008 -13.64925,30.82118 -1.81699,0.26328 -2.7217,-1.38809 -7.16078,-13.07055 z m 13.13755,12.01919 c 5.9841,-13.64553 13.85423,-36.67555 18.19731,-53.25 3.56934,-13.62162 9.23241,-44.90534 12.12854,-67 2.19516,-16.74692 2.50831,-63.254492 0.50163,-74.5 -2.01167,-11.273499 -5.01589,-22.680941 -7.73635,-29.376032 l -2.43278,-5.98713 2.04317,-2.174857 c 3.12238,-3.323622 11.90824,-7.386967 18.7055,-8.651052 11.28382,-2.098446 25.0933,3.212969 32.67715,12.568314 5.80515,7.161173 7.42954,11.600485 9.0581,24.754953 7.09081,57.275304 -9.79085,118.338544 -46.1264,166.845414 -8.68938,11.60006 -33.76593,38.02039 -36.08661,38.02039 -0.81259,0 -1.23076,-0.5625 -0.92926,-1.25 z m 13.81686,-5.5 c 34.33034,-32.23598 60.08182,-79.13452 69.82039,-127.15677 4.56178,-22.49472 5.76792,-50.058073 3.10345,-70.921184 -0.89398,-6.999997 -0.99131,-10.655642 -0.30206,-11.344895 0.55932,-0.559317 4.12137,-1.036374 7.91567,-1.060127 12.00405,-0.07515 21.77651,6.068046 26.44762,16.62558 4.1022,9.271706 3.59913,37.093596 -1.0821,59.844736 -5.53272,26.88948 -18.26208,54.31747 -36.19198,77.98298 -7.79632,10.2903 -25.90392,29.00403 -35.86206,37.06251 -11.39969,9.22504 -37.36258,25.71717 -40.48549,25.71717 -0.30359,0 2.68286,-3.0375 6.63656,-6.75 z m 9.84894,2.30038 c 0,-0.18804 2.3625,-1.82892 5.25,-3.6464 19.35883,-12.18504 44.27197,-35.21747 58.0321,-53.6512 25.03755,-33.5415 37.80253,-68.77597 39.58085,-109.25278 l 0.63704,-14.5 3.41497,0.276178 c 8.1749,0.661128 18.57882,8.390911 23.02558,17.107282 5.57757,10.93295 6.43587,29.68832 2.06466,45.11654 -3.96614,13.99849 -19.4739,39.86425 -34.88698,58.18879 -12.67136,15.06493 -31.00365,30.98826 -47.54777,41.29976 -6.39707,3.98712 -11.76398,6.11329 -44.32045,17.55815 -2.8875,1.01507 -5.25,1.69173 -5.25,1.50368 z m -73,-5.42905 c -4.125,-1.52979 -13.125,-4.71225 -20,-7.07213 C 92.488417,247.6907 83.466837,242.34565 69.086539,230.31219 45.486199,210.56338 26.072443,185.80967 13.142975,158.98077 1.3917448,134.59674 2.3988048,108.60063 15.656599,94.094491 c 5.038977,-5.513444 10.83185,-8.94189 17.093473,-10.116577 l 3.520659,-0.66048 0.671172,14.059907 c 1.549623,32.461929 9.58883,60.683269 24.898774,87.406229 17.702194,30.89853 38.851043,53.26084 71.776453,75.89475 3.5096,2.41261 1.58069,2.11734 -7.03059,-1.07622 z" transform="scale(0.00293255, 0.00340136)" />
+            </clipPath>
+        </defs>
+    </svg>
+
+    <!-- ===== PARTICLES ===== -->
     <div class="sky-decor" id="decor-container"></div>
 
     <!-- ===== MAIN WRAPPER ===== -->
     <div class="container">
 
-        <!-- ===== HERO ===== -->
+        <!-- ===== CHAPTER 1: MEET MERMOMMY ===== -->
         <section class="hero" id="hero">
             <div class="hero-logo-wrapper">
-                <img src="images/MerMommyCreations.png" alt="MerMommy Creations Logo" class="hero-logo" loading="lazy" />
+                <img src="images/MerMommyCreations.webp" alt="MerMommy Creations - storybook children's party styling in North County San Diego" class="hero-logo" />
             </div>
-            <h1 class="hero-title font-signature">Creating Magical Celebrations</h1>
+            <h1 class="hero-title">Children's Party Styling in North County San Diego</h1>
+            <p class="hero-title-sub font-signature">Let's Shell-ebrate!</p>
             <p class="hero-sub">
-                Curated children's parties, themed celebrations,<br />
-                luxury decor rentals, and unforgettable memories across North County San Diego.
+                <strong>Save your clams. Rent the magic.</strong><br>
+                Whimsical parties, themed decor, and unforgettable memories.<br>
+                <span style="font-style:italic;color:#8B6C9E;">We don't plan the party… we just make everyone think you did.</span>
             </p>
-            <div class="hero-badge">The Party Starts Soon!</div>
+            <a href="#contact" class="hero-badge">Book Your Party</a>
             <div class="scroll-indicator">
-                <span>Explore Our World</span>
+                <span>Dive Deeper</span>
                 <span class="arrow">↓</span>
             </div>
         </section>
 
         <!-- ===== BANNER ===== -->
-        <section class="banner" id="banner">
+        <section class="section banner" id="banner">
             <p>
-                We've been <span class="highlight">catching the party waves</span> for years,
+                <span class="highlight">Shello</span> and welcome! We've been <span class="highlight">catching the party waves</span> for years,
                 turning everyday celebrations into <span class="highlight">extraordinary memories</span>.
                 Let us <span class="highlight">sail through the details</span> you wish you'd planned for,
-                so you can <span class="highlight">swim right into</span> every magical moment.
+                so you can <span class="highlight">swim right into</span> every wonderful moment.
+                <br><br>
+                <span style="font-size:0.9rem;color:#6a5a7a;">Mermaid hair? Optional. Mermaid charm? Included.</span>
             </p>
         </section>
 
-        <!-- ===== FOUNDING FAMILIES ===== -->
-        <section class="founding-card" id="founding">
-            <h2>Founding Families Program</h2>
+        <!-- ===== MAKE A SPLASH ===== -->
+        <section class="section founding-card" id="founding">
+            <h2>🐚 Make a Splash! 🐚</h2>
             <p>
-                MerMommy Creations is preparing for our official launch. We're currently accepting a limited number
-                of founding families who would like to help us bring our first season of magical celebrations to life.
+                We're looking for a handful of families to help us create our very first MerMommy memories. 
+                As a founding MerFriend, you'll get to shape our first season of wonder — and enjoy perks as deep as the ocean.
             </p>
             <div class="founding-benefits">
                 <div class="founding-benefit"><span>💰</span>Launch Pricing</div>
@@ -1256,129 +1651,181 @@
                 <div class="founding-benefit"><span>🎁</span>Future Discounts</div>
                 <div class="founding-benefit"><span>✨</span>Exclusive Themes</div>
             </div>
-            <p style="margin-top:1.2rem;font-size:0.8rem;color:#9a8aaa;">
-                In exchange, we ask permission to photograph portions of the event for our portfolio.
+            <p style="margin-top:1.2rem;font-size:0.8rem;color:#6a5a7a;">
+                In exchange, we ask permission to photograph portions of the event for our portfolio.<br>
+                <span style="font-size:0.7rem;">No pirates were harmed during the making of this party.</span>
             </p>
         </section>
 
-        <!-- ===== ADVENTURES ===== -->
+        <!-- ===== CHAPTER 2: CHOOSE YOUR ADVENTURE ===== -->
+        <div class="chapter-divider">✦ Chapter Two ✦</div>
         <section class="section" id="adventure">
-            <h2 class="section-title">Pick Your Adventure</h2>
+            <h2 class="chapter-title">Choose Your Adventure</h2>
+            <p class="chapter-sub">Each celebration is a journey waiting to begin. Which one will you choose?<br>
+                <span style="font-size:0.85rem;color:#8B6C9E;">(We already bought the treasure chest.)</span>
+            </p>
             <div class="poster-grid">
 
                 <div class="poster-card card-lemon">
-                    <span class="poster-icon">🍋</span>
+                    <span class="poster-stamp">✧</span>
+                    <span class="poster-welcome">Welcome To</span>
+                    <span class="poster-icon"><img src="images/lemonade_stand.webp" alt="Lemonade Stand party theme" loading="lazy" /></span>
                     <span class="poster-label">sunny · picnic</span>
                     <h3>Lemonade Stand</h3>
-                    <p>Hand-painted crates, gingham textiles, and fresh citrus garlands for bright backyard celebrations.</p>
-                    <div class="poster-features">
-                        <span>picnic styling</span>
-                        <span>lemon bar</span>
-                        <span>floral accents</span>
-                    </div>
-                    <div class="poster-price">Included</div>
+                    <p>A bright backyard retreat filled with hand-painted crates, gingham textiles, and fresh citrus garlands.</p>
+                    <div class="poster-features"><span>picnic styling</span><span>lemon bar</span><span>floral accents</span></div>
+                    <div class="poster-price">From $199</div>
                 </div>
 
                 <div class="poster-card card-burger">
-                    <span class="poster-icon">🍔</span>
+                    <span class="poster-stamp">✧</span>
+                    <span class="poster-welcome">Welcome To</span>
+                    <span class="poster-icon"><img src="images/hamburger.webp" alt="In-N-Out burger party theme" loading="lazy" /></span>
                     <span class="poster-label">retro · diner</span>
                     <h3>Palm Trees &amp; Cheeseburgers</h3>
-                    <p>Neon checkers, custom palm trees, and a vintage drive-in feel with a classic burger bar.</p>
-                    <div class="poster-features">
-                        <span>checker floor</span>
-                        <span>fry cones</span>
-                        <span>shake station</span>
-                    </div>
-                    <div class="poster-price">Included</div>
+                    <p>A vintage drive-in experience with neon checkers, custom palm trees, and a classic burger bar.</p>
+                    <div class="poster-features"><span>checker floor</span><span>fry cones</span><span>shake station</span></div>
+                    <div class="poster-price">From $199</div>
                 </div>
 
                 <div class="poster-card card-dye">
-                    <span class="poster-icon">🎨</span>
+                    <span class="poster-stamp">✧</span>
+                    <span class="poster-welcome">Welcome To</span>
+                    <span class="poster-icon"><img src="images/tye_dye.webp" alt="Tie-dye party theme" loading="lazy" /></span>
                     <span class="poster-label">colorful · crafty</span>
                     <h3>Tie-Dye Studio</h3>
-                    <p>Rainbow swirls, splatter paint walls, and interactive dye tables for creative fun.</p>
-                    <div class="poster-features">
-                        <span>dye kits</span>
-                        <span>splatter zone</span>
-                        <span>glow accents</span>
-                    </div>
-                    <div class="poster-price">Included</div>
+                    <p>A rainbow explosion of color with splatter paint walls and interactive dye tables for creative fun.</p>
+                    <div class="poster-features"><span>dye kits</span><span>splatter zone</span><span>glow accents</span></div>
+                    <div class="poster-price">From $199</div>
                 </div>
 
                 <div class="poster-card card-mermaid">
-                    <span class="poster-icon">🐚</span>
+                    <span class="poster-stamp">✧</span>
+                    <span class="poster-welcome">Welcome To</span>
+                    <span class="poster-icon"><img src="images/mermaidparty.webp" alt="Sea Shell Spa mermaid party theme" loading="lazy" /></span>
                     <span class="poster-label">oceanic · signature</span>
                     <h3>Sea Shell Spa</h3>
-                    <p>Shimmering oyster shells, pastel scales, and pearl centerpieces in a magical mermaid cove.</p>
-                    <div class="poster-features">
-                        <span>coral decor</span>
-                        <span>pearl accents</span>
-                        <span>wave backdrop</span>
-                    </div>
-                    <div class="poster-price">Included</div>
+                    <p>A relaxing mermaid retreat where little ocean dreamers can unwind, laugh, and <span class="highlight">shellabrate</span> together.</p>
+                    <div class="poster-features"><span>coral decor</span><span>pearl accents</span><span>wave backdrop</span></div>
+                    <div class="poster-price">From $199</div>
                 </div>
 
             </div>
-            <!-- Hidden Discovery: Pearl -->
             <div style="text-align:center;margin-top:1.5rem;">
-                <span class="hidden-treasure" onclick="showTreasurePopup(this)">
-                    🪸
-                    <span class="treasure-popup">✨ You found a magic pearl! ✨</span>
-                </span>
-                <span class="hidden-treasure" onclick="showTreasurePopup(this)">
-                    ⭐
-                    <span class="treasure-popup">🌟 A wish upon a star! 🌟</span>
-                </span>
+                <span class="hidden-treasure" onclick="showTreasurePopup(this)">🪸<span class="treasure-popup">✦ You found a magic pearl! ✦</span></span>
+                <span class="hidden-treasure" onclick="showTreasurePopup(this)">⭐<span class="treasure-popup">✦ A wish upon a star! ✦</span></span>
             </div>
-            <!-- Included note -->
             <div style="text-align:center;margin-top:1.5rem;padding:0.8rem 1.5rem;border:2px solid rgba(45,42,58,0.05);max-width:550px;margin-left:auto;margin-right:auto;">
-                <p style="color:#4a4a5a;font-size:0.95rem;font-weight:500;margin:0;">
-                    ✦ All decor, tableware, and setup included. Just bring your guests and the cake!
+                <p style="color:#3a3a4a;font-size:0.95rem;font-weight:500;margin:0;">
+                    <strong>🐚 Inside Your Treasure Chest:</strong> All decor, tableware, and setup included.<br>
+                    Just bring your guests and the cake!
                 </p>
+                <p style="font-size:0.7rem;color:#6a5a7a;margin-top:0.2rem;">Keep the memories. Return the decorations. <strong>Save your clams.</strong></p>
             </div>
         </section>
 
-        <!-- ===== DREAM THEMES SLIDER (New Section) ===== -->
-        <section class="section slider-section" id="dream-themes">
-            <h2 class="section-title">Dreaming Up New Adventures</h2>
-            <p class="section-sub">More magical themes coming soon to a celebration near you.</p>
-            <div class="slider-track" id="themeSliderTrack">
-                <div class="theme-card"><span class="tc-icon">🦩</span><h4>Flamingo</h4></div>
-                <div class="theme-card"><span class="tc-icon">🍉</span><h4>Watermelon</h4></div>
-                <div class="theme-card"><span class="tc-icon">🍍</span><h4>Pineapple</h4></div>
-                <div class="theme-card"><span class="tc-icon">🌮</span><h4>Taco</h4></div>
-                <div class="theme-card"><span class="tc-icon">❄️</span><h4>Frozen</h4></div>
-                <div class="theme-card"><span class="tc-icon">🌸</span><h4>Enchanted Garden</h4></div>
-                <div class="theme-card"><span class="tc-icon">🧑‍🌾</span><h4>Farmers Market</h4></div>
-                <div class="theme-card"><span class="tc-icon">🦌</span><h4>Little Deer</h4></div>
-                <div class="theme-card"><span class="tc-icon">🌈</span><h4>Rainbow</h4></div>
-                <div class="theme-card"><span class="tc-icon">👶</span><h4>Baby Shower</h4></div>
-                <div class="theme-card"><span class="tc-icon">💍</span><h4>Bridal Shower</h4></div>
+        <!-- ===== SKETCHBOOK ===== -->
+        <section class="section sketchbook-section" id="sketchbook">
+            <div class="chapter-divider">✦ In The Sketchbook ✦</div>
+            <h2 class="chapter-title">Coming Up From The Deep...</h2>
+            <p class="chapter-sub">Concepts we're dreaming up, sketching out, and bringing to life.<br>
+                <span style="font-size:0.8rem;color:#6a5a7a;">(We've already done the deep-sea diving for you.)</span>
+            </p>
+            <div class="sketchbook-grid">
+                <div class="sketch-card" style="--rot:-1.5deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🦄</span><h4>Unicorn Garden</h4><span class="sketch-note">mood board</span></div>
+                <div class="sketch-card" style="--rot:2deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🌸</span><h4>Fairy Forest</h4><span class="sketch-note">sketch</span></div>
+                <div class="sketch-card" style="--rot:-1deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🪩</span><h4>Disco Dream</h4><span class="sketch-note">concept</span></div>
+                <div class="sketch-card" style="--rot:1.8deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🧚</span><h4>Enchanted Tea Party</h4><span class="sketch-note">mood board</span></div>
+                <div class="sketch-card" style="--rot:-0.8deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🚀</span><h4>Space Explorer</h4><span class="sketch-note">sketch</span></div>
+                <div class="sketch-card" style="--rot:1.2deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🎪</span><h4>Vintage Carnival</h4><span class="sketch-note">concept</span></div>
+                <div class="sketch-card" style="--rot:-1.2deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🌿</span><h4>Enchanted Garden</h4><span class="sketch-note">mood board</span></div>
+                <div class="sketch-card" style="--rot:0.5deg"><span class="sketch-pencil">✏️</span><span class="sketch-icon">🦌</span><h4>Little Deer</h4><span class="sketch-note">sketch</span></div>
             </div>
-            <p style="text-align:center;margin-top:0.8rem;color:#9a8aaa;font-size:0.7rem;opacity:0.6;font-weight:500;">Hover to pause • Let the inspiration drift by</p>
+            <p style="text-align:center;margin-top:1.5rem;color:#6a5a7a;font-size:0.8rem;font-style:italic;opacity:0.6;">✧ More sketches appearing every week ✧</p>
         </section>
 
-        <!-- ===== INFINITE SLIDER (Treasures) ===== -->
+        <!-- ===== A LITTLE EXTRA MAGIC ===== -->
+        <div class="chapter-divider">✦ Chapter Three ✦</div>
         <section class="section slider-section" id="treasures">
-            <h2 class="section-title">Treasures In Every Adventure</h2>
-            <p class="section-sub">Each celebration is filled with magical discoveries.</p>
+            <h2 class="chapter-title">A Little Extra Sparkle</h2>
+            <p class="chapter-sub">Every celebration is filled with small wonders waiting to be discovered.<br>
+                <span style="font-size:0.8rem;color:#6a5a7a;">(We provide the shell-fies. You make the memories.)</span>
+            </p>
             <div class="slider-track" id="sliderTrack">
-                <div class="treasure-card"><span class="tc-icon">🫧</span><h4>Personalized Details</h4><p>Every little touch tells your story</p></div>
-                <div class="treasure-card"><span class="tc-icon">🎁</span><h4>Magical Surprises</h4><p>Unexpected moments of joy</p></div>
-                <div class="treasure-card"><span class="tc-icon">🎨</span><h4>Creative Styling</h4><p>Artful design that delights</p></div>
-                <div class="treasure-card"><span class="tc-icon">📸</span><h4>Picture Perfect</h4><p>Moments you'll treasure forever</p></div>
-                <div class="treasure-card"><span class="tc-icon">✨</span><h4>Stress-Free Planning</h4><p>We handle everything so you don't have to</p></div>
-                <div class="treasure-card"><span class="tc-icon">🧜</span><h4>Mom-Approved</h4><p>Designed with love and care</p></div>
-                <div class="treasure-card"><span class="tc-icon">🎉</span><h4>Celebration Setup</h4><p>We arrive early and build the magic</p></div>
-                <div class="treasure-card"><span class="tc-icon">💜</span><h4>Thoughtful Touches</h4><p>Little details that mean so much</p></div>
+                <!-- Shell 1 -->
+                <div class="shell-card shell-v1" style="--rot: 2deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <h4>Personalized Details</h4>
+                        <p>Every little touch tells your story</p>
+                    </div>
+                </div>
+                <!-- Shell 2 -->
+                <div class="shell-card shell-v2" style="--rot: -3deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <h4>Magical Touches</h4>
+                        <p>Little moments that sparkle</p>
+                    </div>
+                </div>
+                <!-- Shell 1 -->
+                <div class="shell-card shell-v1" style="--rot: 4deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <h4>Creative Styling</h4>
+                        <p>Artful design that delights</p>
+                    </div>
+                </div>
+                <!-- Shell 2 -->
+                <div class="shell-card shell-v2" style="--rot: 0deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <h4>Memory-Making</h4>
+                        <p>Moments you'll treasure forever</p>
+                    </div>
+                </div>
+                <!-- Shell 1 -->
+                <div class="shell-card shell-v1" style="--rot: -2deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <h4>Surprise Elements</h4>
+                        <p>Unexpected moments of joy</p>
+                    </div>
+                </div>
+                <!-- Shell 2 -->
+                <div class="shell-card shell-v2" style="--rot: -1.5deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <h4>Mom-Approved Planning</h4>
+                        <p>Designed with love and care</p>
+                    </div>
+                </div>
+                <!-- Shell 1 -->
+                <div class="shell-card shell-v1" style="--rot: 2.5deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <h4>Stress-Free Setup</h4>
+                        <p>We arrive early and build the wonder</p>
+                    </div>
+                </div>
+                <!-- Shell 2 -->
+                <div class="shell-card shell-v2" style="--rot: -3.5deg;">
+                    <div class="treasure-card-inner">
+                        <div class="pearl-glow"></div>
+                        <h4>Signature MerMommy Charm</h4>
+                        <p>That special something only we bring</p>
+                    </div>
+                </div>
             </div>
-            <p style="text-align:center;margin-top:0.8rem;color:#9a8aaa;font-size:0.7rem;opacity:0.6;font-weight:500;">Hover to pause • Let the treasures drift by</p>
+            <p style="text-align:center;margin-top:1rem;color:#6a5a7a;font-size:0.7rem;opacity:0.5;font-style:italic;">✦ Each treasure holds a little piece of the wonder ✦</p>
         </section>
 
         <!-- ===== MORE THAN PARTY DECOR ===== -->
         <section class="section" id="more-than-decor">
-            <h2 class="section-title">More Than Party Decor</h2>
-            <p class="section-sub">Every celebration is an opportunity to create something special.</p>
+            <h2 class="chapter-title">More Than Party Decor</h2>
+            <p class="chapter-sub">Every celebration is an opportunity to create something <span class="highlight">fintastic</span>.<br>
+                <span style="font-size:0.8rem;color:#6a5a7a;">(The only thing you'll need to fish for… is compliments.)</span>
+            </p>
             <div class="masonry-grid">
                 <div class="masonry-item"><span class="masonry-icon">👗</span><h4>Custom Apparel</h4><p>Personalized outfits for the birthday star</p></div>
                 <div class="masonry-item"><span class="masonry-icon">📋</span><h4>Party Signage</h4><p>Hand-crafted signs and welcome boards</p></div>
@@ -1389,534 +1836,514 @@
             </div>
         </section>
 
-        <!-- ===== WHY CHOOSE ===== -->
-        <section class="section" id="why-choose">
-            <h2 class="section-title">Why Families Choose MerMommy</h2>
-            <div class="why-grid">
-                <div class="why-item"><span class="wi-icon">💜</span><h4>Designed By A Mom</h4><p>Every detail is crafted with love and understanding of what families truly need</p></div>
-                <div class="why-item"><span class="wi-icon">🎯</span><h4>Personalized Details</h4><p>Your celebration, your style — we bring your vision to life</p></div>
-                <div class="why-item"><span class="wi-icon">🧘</span><h4>Stress-Free Planning</h4><p>We handle everything so you can actually enjoy the party</p></div>
-                <div class="why-item"><span class="wi-icon">🎨</span><h4>Creative Event Styling</h4><p>Artful design that transforms any space into magic</p></div>
-                <div class="why-item"><span class="wi-icon">👕</span><h4>Custom Apparel Available</h4><p>Personalized outfits and shirts for the birthday star and guests</p></div>
-                <div class="why-item"><span class="wi-icon">🔄</span><h4>Setup &amp; Breakdown</h4><p>Full-service coordination from start to finish</p></div>
+        <!-- ===== HOW THE MAGIC HAPPENS ===== -->
+        <div class="chapter-divider">✦ Chapter Four ✦</div>
+        <section class="section" id="how-it-works">
+            <h2 class="chapter-title">Captain's Notes</h2>
+            <p class="chapter-sub">How the wonder unfolds (we've got it down to a science—with a splash of whimsy).</p>
+            <div class="wave-path">
+                <div class="wave-step"><span class="ws-number">01</span><h4>Submit Inquiry</h4></div>
+                <div class="wave-step"><span class="ws-number">02</span><h4>Dream Together</h4></div>
+                <div class="wave-step"><span class="ws-number">03</span><h4>Design &amp; Plan</h4></div>
+                <div class="wave-step"><span class="ws-number">04</span><h4>Setup Day</h4></div>
+                <div class="wave-step"><span class="ws-number">05</span><h4>Celebrate</h4></div>
+                <div class="wave-step"><span class="ws-number">06</span><h4>We Handle Cleanup</h4></div>
             </div>
+            <p style="text-align:center;margin-top:1rem;color:#6a5a7a;font-size:0.8rem;font-style:italic;">Please return all props. Emotional attachment is understandable.</p>
         </section>
 
-        <!-- ===== MY TAIL ===== -->
+        <!-- ===== CHAPTER 5: MY TAIL ===== -->
+        <div class="chapter-divider">✦ Chapter Five ✦</div>
         <section class="section" id="tail">
-            <h2 class="section-title" style="margin-bottom:1rem;">My Tail</h2>
-            <div class="storybook">
-                <div class="storybook-illustration">
-                    <img src="images/mommy.png" alt="MerMommy" class="mommy-image" loading="lazy" />
+            <h2 class="chapter-title" style="margin-bottom:1rem;">My Tail</h2>
+            <div class="journal">
+                <div class="journal-illustration">
+                    <span class="journal-shell journal-shell-1">🐚</span>
+                    <span class="journal-shell journal-shell-2">🪸</span>
+                    <img src="images/mommy.webp" alt="Kayte, founder of MerMommy Creations" class="journal-image" id="kayteImage" loading="lazy" />
                 </div>
-                <div class="storybook-text">
-                    <p class="sb-tagline">"I show up like a friend, plan like a pro, and care like a mom."</p>
-                    <p class="sb-sub">MOM · CREATIVE · PARTY STYLIST</p>
-                    <p class="sb-story">
-                        I believe every celebration deserves a touch of magic. As a mom and creative at heart,
-                        I've turned my passion for party curation into a full-service experience that takes the
-                        stress off your shoulders and puts the joy front and center. From themed wardrobes that
-                        bring your vision to life to custom-made shirts for every little guest, I pour my heart
-                        into every detail so you can soak in every moment.
-                    </p>
-                    <div class="sb-features">
-                        <div class="sb-feature">
-                            <span class="sbf-icon">👗</span>
-                            <h4>Themed Wardrobes</h4>
-                            <p>Matching outfits that bring your party theme to life</p>
-                        </div>
-                        <div class="sb-feature">
-                            <span class="sbf-icon">👕</span>
-                            <h4>Custom Shirts</h4>
-                            <p>Cricut &amp; heat press creations for personalized party wear</p>
-                        </div>
-                        <div class="sb-feature">
-                            <span class="sbf-icon">🎉</span>
-                            <h4>Full-Service Magic</h4>
-                            <p>Setup, coordination, breakdown — we handle it all</p>
-                        </div>
+                <div class="journal-text">
+                    <p class="journal-greeting">Dear Friends,</p>
+                    <p class="journal-tagline">“I show up like a friend, plan like a pro, and care like a mom.”</p>
+                    <div class="journal-story">
+                        <p>Let's get one thing straight; I'm not here to plan your party like I'm producing a royal wedding in a castle with 47 spreadsheets and a balloon budget that requires a loan officer.</p>
+                        <p>No.</p>
+                        <p>I'm the <span class="story-highlight">mood director</span>.<br>The <span class="story-highlight">vibe curator</span>.<br>The “why does this backyard suddenly feel like an <span class="story-highlight">underwater Netflix special</span>?” person.</p>
+                        <p>Because I've always been the one adding one more <span class="story-highlight">silly detail</span>. Another shell. Another prop. Another unnecessary-but-actually-necessary moment of wonder.</p>
+                        <p>And honestly? Kids don't need “luxury event planning.” It's a birthday party, not a Met Gala with juice boxes.</p>
+                        <p>Save the thousands for the wedding. I'm serious. Don't spend college tuition on a cake that's going to get smashed into a toddler's eyebrow in 12 seconds.</p>
+                        <p>So I created MerMommy Creations, where the charm is already done for you.<br>The concepts? Done.<br>The vibe? Locked.<br>The accessories, props, and little ocean-world chaos? Ready to rent like you're <span class="story-highlight">borrowing Atlantis</span> for the afternoon.</p>
+                        <p>You just show up and suddenly your backyard is giving “mermaid DJ set, emotional support seagulls, and questionable crab behavior.”</p>
+                        <p>Because childhood should feel <span class="story-highlight">enchanted, not expensive</span>.</p>
+                        <p>So come on in. Let's make it cute, silly, a little ridiculous, and <span class="story-highlight">unforgettable</span>.</p>
+                        <p style="font-size:0.85rem;color:#8B6C9E;font-style:italic;">Side effects may include smiling, squealing, and excessive shell-fies.</p>
+                    </div>
+                    <p class="journal-signoff">With love from the tide,<br>MerMommy</p>
+                    <div class="journal-features">
+                        <div class="journal-feature"><span class="jf-icon">👗</span><h4>Themed Wardrobes</h4><p>Matching outfits that bring your party theme to life</p></div>
+                        <div class="journal-feature"><span class="jf-icon">👕</span><h4>Custom Shirts</h4><p>Cricut &amp; heat press creations for personalized party wear</p></div>
+                        <div class="journal-feature"><span class="jf-icon">🎉</span><h4>Full-Service Wonder</h4><p>Setup, coordination, breakdown — we handle it all</p></div>
                     </div>
                 </div>
             </div>
-            <!-- Hidden Discovery -->
             <div style="text-align:center;margin-top:1rem;">
-                <span class="hidden-treasure" onclick="showTreasurePopup(this)">
-                    ⭐
-                    <span class="treasure-popup">🌟 Every star is a wish waiting to come true! 🌟</span>
-                </span>
-            </div>
-        </section>
-
-        <!-- ===== ADD-ONS ===== -->
-        <section class="section" id="addons">
-            <h2 class="section-title">Add-On Services</h2>
-            <p class="section-sub">Make your celebration completely stress-free with our signature add-on services.</p>
-            <div class="addon-grid">
-                <div class="addon-card">
-                    <span class="addon-icon">🧜‍♀️</span>
-                    <h3>The MerMommy Stay</h3>
-                    <span class="addon-tag">full-service coordination</span>
-                    <p>We stay throughout the entire party! From cake cutting to photography, we handle everything.</p>
-                    <span class="addon-price">from $150</span>
-                </div>
-                <div class="addon-card">
-                    <span class="addon-icon">🪸</span>
-                    <h3>Pearl Package</h3>
-                    <span class="addon-tag">setup + breakdown</span>
-                    <p>Full setup and teardown of your entire party vision — you just show up and enjoy!</p>
-                    <span class="addon-price">from $100</span>
-                </div>
-                <div class="addon-card">
-                    <span class="addon-icon">🎁</span>
-                    <h3>Treasure Trove</h3>
-                    <span class="addon-tag">custom goodie bags</span>
-                    <p>Curated ocean-themed treasures and treats for every little guest to take home.</p>
-                    <span class="addon-price">from $8/guest</span>
-                </div>
-                <div class="addon-card">
-                    <span class="addon-icon">🧁</span>
-                    <h3>Cakesmash Setup</h3>
-                    <span class="addon-tag">vintage high chair</span>
-                    <p>Styled vintage high chair with backdrop and props for that perfect first birthday memory.</p>
-                    <span class="addon-price">from $75</span>
-                </div>
+                <span class="hidden-treasure" onclick="showTreasurePopup(this)">⭐<span class="treasure-popup">✦ Every star is a wish waiting to come true ✦</span></span>
             </div>
         </section>
 
         <!-- ===== WAITLIST ===== -->
         <section class="section" id="waitlist">
             <div class="waitlist-card">
-                <h3>Not Ready To Book Yet?</h3>
-                <p>Join our launch list and be the first to know when we're officially open.</p>
+                <h3>Not Ready to Dive In?</h3>
+                <p>Join our launch list and <span class="highlight">seas the day</span>—be the first to know when we're officially open.<br>
+                    <span style="font-size:0.9rem;color:#8B6C9E;">Join early for exclusive perks.</span></p>
                 <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xlgygvpw" method="POST">
                     <input type="text" name="name" placeholder="Your name" required />
                     <input type="email" name="email" placeholder="Your email" required />
                     <button type="submit" class="waitlist-btn">Join List</button>
                 </form>
-                <p style="font-size:0.7rem;color:#9a8aaa;margin-top:0.6rem;font-weight:500;">
-                    First 25 subscribers get a special launch surprise.
+                <p style="font-size:0.7rem;color:#6a5a7a;margin-top:0.6rem;font-weight:400;">
+                    First 25 subscribers get a special launch surprise.<br>
+                    <span style="font-size:0.6rem;">Mermaids not guaranteed. Wonder almost always is.</span>
                 </p>
             </div>
-            <!-- Hidden Discovery -->
             <div style="text-align:center;margin-top:1rem;">
-                <span class="hidden-treasure" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}); showTreasurePopup(this);">
-                    🗝️
-                    <span class="treasure-popup">🗺️ Follow the map to join our launch list! 🗺️</span>
-                </span>
+                <span class="hidden-treasure" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}); showTreasurePopup(this);">🗝️<span class="treasure-popup">✦ Follow the map to join our launch list ✦</span></span>
             </div>
         </section>
 
-        <!-- ===== INSTAGRAM ===== -->
+        <!-- ===== SHELL-FIES & SEA-NERY (Instagram) ===== -->
         <section class="section" id="instagram">
-            <h2 class="section-title">Follow Our Journey</h2>
-            <p class="section-sub">Every magical business starts somewhere. Follow along as we build MerMommy.</p>
-            <div class="ig-grid">
-                <div class="ig-placeholder">
-                    <span class="ig-icon">📷</span>
-                    <p>@mermommycreations</p>
-                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a>
-                </div>
-                <div class="ig-placeholder">
-                    <span class="ig-icon">📷</span>
-                    <p>@mermommycreations</p>
-                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a>
-                </div>
-                <div class="ig-placeholder">
-                    <span class="ig-icon">📷</span>
-                    <p>@mermommycreations</p>
-                    <a href="https://instagram.com/mermommycreations" target="_blank" class="ig-link">Follow</a>
+            <h2 class="chapter-title">Shell-fies &amp; Sea-nery</h2>
+            <p class="chapter-sub">Follow along as we build MerMommy—one enchanting detail at a time.</p>
+            <div class="ig-single-cta">
+                <div class="ig-cta-card">
+                    <span class="ig-cta-icon">📸</span>
+                    <h3>@mermommycreations</h3>
+                    <p>Behind-the-scenes, theme reveals, and little moments of ocean magic.</p>
+                    <a href="https://instagram.com/mermommycreations" target="_blank" rel="noopener" class="ig-cta-btn">Follow the Journey →</a>
                 </div>
             </div>
-            <p style="text-align:center;margin-top:1rem;color:#9a8aaa;font-size:0.85rem;font-weight:300;">
-                Follow the journey as we design themes, build experiences, and prepare for our first season.
-            </p>
         </section>
 
-        <!-- ===== CONTACT ===== -->
+        <!-- ===== SEND A MESSAGE IN A BOTTLE (Contact) ===== -->
         <section class="section" id="contact">
-            <div class="contact-card" id="form-container">
-                <h2 class="font-signature" style="font-size:2.8rem;color:#8B6C9E;text-align:center;">Book a Setup</h2>
-                <p class="contact-intro">Let's chat about your celebration! Tell us what you need and we'll handle the rest.</p>
-
-                <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="contact-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Parent's Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Your name" />
+            <div class="contact-card">
+                <!-- Form Container (hidden on success) -->
+                <div id="form-container">
+                    <h2 class="font-signature" style="font-size:2.8rem;color:#8B6C9E;text-align:center;">Send a Message in a Bottle</h2>
+                    <p class="contact-intro">Let's chat about your celebration! Tell us what you need and we'll handle the rest.<br>
+                        <span style="font-size:0.9rem;color:#6a5a7a;">You bring the kids. We'll bring the "HOW DID YOU THINK OF THIS?!" moments.</span>
+                    </p>
+                    <form id="inquiry-form" action="https://formspree.io/f/mrewgzkg" method="POST" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group"><label for="name">Parent's Name</label><input type="text" id="name" name="name" required placeholder="Your name" /></div>
+                            <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" required placeholder="name@email.com" /></div>
+                        </div>
+                        <div class="form-row-3">
+                            <div class="form-group"><label for="date">Target Date</label><input type="date" id="date" name="event-date" /></div>
+                            <div class="form-group">
+                                <label for="age">Average Age</label>
+                                <select id="age" name="age">
+                                    <option value="1-2">1-2 years</option><option value="3-4">3-4 years</option><option value="5-6">5-6 years</option>
+                                    <option value="7-8">7-8 years</option><option value="9-10">9-10 years</option><option value="10+">10+ years</option>
+                                    <option value="mixed">Mixed ages</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label for="location">Location (North County San Diego)</label><input type="text" id="location" name="location" placeholder="City, ZIP" required /></div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="name@email.com" />
-                        </div>
-                    </div>
-                    <div class="form-row-3">
-                        <div class="form-group">
-                            <label for="date">Target Date</label>
-                            <input type="date" id="date" name="event-date" />
-                        </div>
-                        <div class="form-group">
-                            <label for="age">Average Age</label>
-                            <select id="age" name="age">
-                                <option value="1-2">1-2 years</option>
-                                <option value="3-4">3-4 years</option>
-                                <option value="5-6">5-6 years</option>
-                                <option value="7-8">7-8 years</option>
-                                <option value="9-10">9-10 years</option>
-                                <option value="10+">10+ years</option>
-                                <option value="mixed">Mixed ages</option>
+                            <label for="theme">The Party Curation</label>
+                            <select id="theme" name="theme">
+                                <option value="sea-shell-spa">Sea Shell Spa</option><option value="lemonade">Lemonade Stand</option>
+                                <option value="burger">Palm Trees &amp; Cheeseburgers</option><option value="tie-dye">Tie-Dye Studio</option>
+                                <option value="custom">Something Custom</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="location">Location (North County San Diego)</label>
-                            <input type="text" id="location" name="location" placeholder="City, ZIP" required />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="theme">The Party Curation</label>
-                        <select id="theme" name="theme">
-                            <option value="sea-shell-spa">Sea Shell Spa</option>
-                            <option value="lemonade">Lemonade Stand</option>
-                            <option value="burger">Palm Trees &amp; Cheeseburgers</option>
-                            <option value="tie-dye">Tie-Dye Studio</option>
-                            <option value="custom">Something Custom</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Add-On Services</label>
-                        <div class="checkbox-grid">
-                            <label class="checkbox-item"><input type="checkbox" name="addons" value="mermommy-stay" /> MerMommy Stay</label>
-                            <label class="checkbox-item"><input type="checkbox" name="addons" value="pearl-package" /> Pearl Package</label>
-                            <label class="checkbox-item"><input type="checkbox" name="addons" value="treasure-trove" /> Treasure Trove</label>
-                            <label class="checkbox-item"><input type="checkbox" name="addons" value="cakesmash" /> Cakesmash Setup</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Tell us about your celebration</label>
-                        <textarea id="message" name="message" rows="3" placeholder="How many guests? What's your vision? Need tables and chairs? We have everything — just let us know what you need!"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Inquiry</button>
-                </form>
 
+                        <!-- ===== ADD-ON CARDS ===== -->
+                        <div class="form-group">
+                            <label>Add-On Services</label>
+                            <p class="addon-intro">Enhance your celebration with a little extra magic.</p>
+                            <div class="addon-grid">
+
+                                <!-- ADD-ON 1: MerMommy Stay -->
+                                <label class="addon-card" for="addon-stay">
+                                    <input type="checkbox" id="addon-stay" name="addons" value="mermommy-stay" class="addon-checkbox" />
+                                    <div class="addon-card-inner">
+                                        <div class="addon-check-indicator">✓</div>
+                                        <span class="addon-icon">🧜‍♀️</span>
+                                        <h4 class="addon-name">MerMommy Stay</h4>
+                                        <p class="addon-desc">We handle every detail so you can be present for every moment — not running around missing the magic you planned.</p>
+                                        <span class="addon-price">Ask for pricing</span>
+                                    </div>
+                                </label>
+
+                                <!-- ADD-ON 2: Cakesmash Chair -->
+                                <label class="addon-card" for="addon-cakesmash">
+                                    <input type="checkbox" id="addon-cakesmash" name="addons" value="cakesmash" class="addon-checkbox" />
+                                    <div class="addon-card-inner">
+                                        <div class="addon-check-indicator">✓</div>
+                                        <span class="addon-icon">🎂</span>
+                                        <h4 class="addon-name">Cakesmash Chair</h4>
+                                        <p class="addon-desc">A vintage highchair styled for the perfect first birthday moment. Just add cake and a camera.</p>
+                                        <span class="addon-price">Ask for pricing</span>
+                                    </div>
+                                </label>
+
+                                <!-- ADD-ON 3: Coming Soon -->
+                                <div class="addon-card addon-card--soon">
+                                    <div class="addon-card-inner">
+                                        <span class="addon-icon" style="opacity:0.3;">🐚</span>
+                                        <h4 class="addon-name" style="opacity:0.4;">Coming Soon</h4>
+                                        <p class="addon-desc" style="opacity:0.35;">Something magical is brewing in the depths...</p>
+                                        <span class="addon-price addon-price--soon">✦ Dropping Soon ✦</span>
+                                    </div>
+                                </div>
+
+                                <!-- ADD-ON 4: Coming Soon -->
+                                <div class="addon-card addon-card--soon">
+                                    <div class="addon-card-inner">
+                                        <span class="addon-icon" style="opacity:0.3;">⭐</span>
+                                        <h4 class="addon-name" style="opacity:0.4;">Coming Soon</h4>
+                                        <p class="addon-desc" style="opacity:0.35;">Another treasure is almost ready to surface...</p>
+                                        <span class="addon-price addon-price--soon">✦ Dropping Soon ✦</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group"><label for="message">Tell us about your celebration</label><textarea id="message" name="message" rows="3" placeholder="How many guests? What's your vision? Need tables and chairs? We have everything, just let us know what you need!"></textarea></div>
+                        <button type="submit" class="submit-btn">Drop Us A Line 🎣</button>
+                    </form>
+                </div>
+
+                <!-- Success Message -->
                 <div id="success-message" style="display:none;text-align:center;padding:2rem 0;">
                     <div style="font-size:2.5rem;">🐚</div>
                     <h2 class="font-signature" style="font-size:2.5rem;color:#8B6C9E;">Inquiry Splashed!</h2>
-                    <p style="font-size:1rem;color:#5a5a6a;font-weight:300;">Thank you! Your party coordinates have drifted safely into our inbox.</p>
+                    <p style="font-size:1rem;color:#3a3a4a;font-weight:400;">Thank you! Your party coordinates have drifted safely into our inbox.<br>
+                        <span style="font-size:0.9rem;color:#8B6C9E;font-weight:500;">🐚 We'll be in touch within 24 hours — get ready for some ocean‑sized fun!</span><br>
+                        <span style="font-size:0.8rem;color:#6a5a7a;">Fish may judge your dance moves, but we won't.</span></p>
                 </div>
             </div>
         </section>
 
-        <!-- ===== PARTY GUIDE ===== -->
+        <!-- ===== TREASURE MAP (Party Guide) ===== -->
         <section class="section" id="guide">
             <div class="guide-cta">
-                <h3>Party Guide</h3>
-                <p>Get inspired and start planning your magical celebration.</p>
-                <a href="#" class="guide-btn">Download Now</a>
-            </div>
-        </section>
-
-        <!-- ===== HOW THE MAGIC HAPPENS ===== -->
-        <section class="section" id="how-it-works">
-            <h2 class="section-title">How The Magic Happens</h2>
-            <div class="wave-path">
-                <div class="wave-step">
-                    <span class="ws-number">01</span>
-                    <h4>Submit Inquiry</h4>
-                </div>
-                <div class="wave-step">
-                    <span class="ws-number">02</span>
-                    <h4>Dream Together</h4>
-                </div>
-                <div class="wave-step">
-                    <span class="ws-number">03</span>
-                    <h4>Design &amp; Plan</h4>
-                </div>
-                <div class="wave-step">
-                    <span class="ws-number">04</span>
-                    <h4>Setup Day</h4>
-                </div>
-                <div class="wave-step">
-                    <span class="ws-number">05</span>
-                    <h4>Celebrate</h4>
-                </div>
-                <div class="wave-step">
-                    <span class="ws-number">06</span>
-                    <h4>We Handle Cleanup</h4>
-                </div>
+                <h3>🗺️ Treasure Map</h3>
+                <p>Get inspired and start planning your celebration.<br>
+                    <span style="font-size:0.8rem;color:#6a5a7a;">(No pirates were harmed in the making of this guide.)</span>
+                </p>
+                <a href="images/Mermommy_Creations_The_Sea_Shell_Spa_Manual.pdf" target="_blank" rel="noopener" class="guide-btn">View the Guide</a>
             </div>
         </section>
 
     </div><!-- /container -->
 
-    <!-- ===== FOOTER & TRUST BAR ===== -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer" id="footer">
-        <div class="footer-inner">
+        <div class="footer-main">
             <div class="footer-brand">
                 <h3>MerMommy Creations</h3>
-                <p>Luxury children's party styling and event curation throughout North County San Diego. Creating magical celebrations with love.</p>
+                <address style="font-style:normal;">
+                    Children's party styling &amp; rentals in North County San Diego.
+                </address>
+                <p style="font-size:0.7rem;color:#8B6C9E;margin-top:0.2rem;">Rent the magic. Keep the memories.</p>
                 <div class="footer-social">
                     <a href="https://instagram.com/mermommycreations" target="_blank" aria-label="Instagram">📸</a>
-                    <a href="#" target="_blank" aria-label="Pinterest">📌</a>
-                    <a href="#" target="_blank" aria-label="Facebook">👍</a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="#adventure">Adventures</a></li>
-                    <li><a href="#tail">My Tail</a></li>
-                    <li><a href="#addons">Add-Ons</a></li>
-                    <li><a href="#contact">Book Now</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="#more-than-decor">Custom Apparel</a></li>
-                    <li><a href="#more-than-decor">Event Design</a></li>
-                    <li><a href="#more-than-decor">Party Signage</a></li>
-                    <li><a href="#more-than-decor">Creative Styling</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Connect</h4>
-                <ul>
-                    <li><a href="https://instagram.com/mermommycreations" target="_blank">Instagram</a></li>
-                    <li><a href="#">Email Us</a></li>
-                    <li><a href="#guide">Party Guide</a></li>
-                    <li><a href="#waitlist">Launch List</a></li>
-                </ul>
+            <div class="footer-links">
+                <a href="#adventure">Adventures</a>
+                <a href="#tail">My Tail</a>
+                <a href="#contact">Dive In</a>
+                <a href="https://instagram.com/mermommycreations" target="_blank">Shell-fies</a>
             </div>
         </div>
-
-        <!-- === TRUST BAR === -->
         <div class="trust-bar">
             <span class="trust-item"><span class="ti-icon">📍</span> North County San Diego</span>
             <span class="sep">·</span>
-            <span class="trust-item"><span class="ti-icon">📋</span> Licensed &amp; Insured<span class="ti-sub">*</span></span>
+            <span class="trust-item"><span class="ti-icon">📋</span> Licensed &amp; Insured</span>
             <span class="sep">·</span>
             <span class="trust-item"><span class="ti-icon">🎨</span> Custom Event Design</span>
             <span class="sep">·</span>
             <span class="trust-item"><span class="ti-icon">🔄</span> Setup &amp; Breakdown</span>
             <span class="sep">·</span>
             <span class="trust-item"><span class="ti-icon">👨‍👩‍👧‍👦</span> Family Owned</span>
+            <span class="sep">·</span>
+            <span class="trust-item" style="font-size:0.65rem;color:#8B6C9E;">✨ Rent the magic. Keep the memories.</span>
         </div>
-
         <div class="footer-copy">
             &copy; 2026 MerMommy Creations. All rights reserved.
-            <span style="display:block;font-size:0.6rem;color:#b0a0b8;">*When applicable</span>
+        </div>
+        <div class="footer-legal">
+            <a href="#" data-legal="terms">Terms &amp; Conditions</a> <span style="color:#a090a0;">·</span>
+            <a href="#" data-legal="privacy">Privacy Policy</a>
         </div>
     </footer>
 
+    <!-- ===== LEGAL MODAL ===== -->
+    <div id="legal-modal" style="display:none;">
+        <div id="legal-backdrop"></div>
+        <div id="legal-drawer">
+            <div id="legal-drawer-inner">
+                <button id="legal-close" aria-label="Close">✕</button>
+                <div id="legal-content">
+                    <!-- Content injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // =========================================
-            // REGISTER GSAP PLUGINS
-            // =========================================
             gsap.registerPlugin(ScrollTrigger);
 
-            // =========================================
             // 1. HERO ENTRANCE
-            // =========================================
-            gsap.from('.hero-title, .hero-sub, .hero-badge, .hero-logo', {
-                opacity: 0,
-                y: 20,
-                duration: 0.9,
-                stagger: 0.1,
-                ease: 'power2.out',
-                delay: 0.2,
+            gsap.from('.hero-title, .hero-title-sub, .hero-sub, .hero-badge, .hero-logo', {
+                opacity: 0, y: 20, duration: 0.9, stagger: 0.1, ease: 'power2.out', delay: 0.2
             });
-            gsap.from('.scroll-indicator', {
-                opacity: 0,
-                duration: 0.6,
-                delay: 0.8,
-                ease: 'power2.out',
-            });
+            gsap.from('.scroll-indicator', { opacity: 0, duration: 0.6, delay: 0.8, ease: 'power2.out' });
 
-            // =========================================
-            // 2. SCROLL-TRIGGERED FADE-INS
-            // =========================================
+            // 2. SCROLL FADE-INS
             const sections = [
-                '#banner',
-                '#founding',
-                '.poster-card',
-                '#dream-themes',
-                '#treasures',
-                '#more-than-decor .masonry-item',
-                '#why-choose .why-item',
-                '#tail .storybook',
-                '.addon-card',
-                '#waitlist .waitlist-card',
-                '.ig-placeholder',
-                '.contact-card',
-                '#guide .guide-cta',
-                '.wave-step',
+                '#banner', '#founding', '.poster-card', '#sketchbook', '#treasures',
+                '#more-than-decor .masonry-item', '#how-it-works .wave-step', '#tail .journal',
+                '#waitlist .waitlist-card', '#instagram', '#form-container', '#guide .guide-cta'
             ];
-
-            sections.forEach(function(sel) {
+            sections.forEach(sel => {
                 gsap.from(sel, {
-                    opacity: 0,
-                    y: 30,
-                    duration: 0.8,
-                    stagger: 0.08,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: sel,
-                        start: 'top 88%',
-                        toggleActions: 'play none none none',
-                    },
+                    opacity: 0, y: 30, duration: 0.8, stagger: 0.08, ease: 'power2.out',
+                    scrollTrigger: { trigger: sel, start: 'top 88%', toggleActions: 'play none none none' }
                 });
             });
 
-            // =========================================
-            // 3. PARTICLES (Bubbles + ✨)
-            // =========================================
-            const decorContainer = document.getElementById('decor-container');
-            if (decorContainer) {
-                for (let i = 0; i < 25; i++) {
-                    const el = document.createElement('div');
-                    const isSparkle = Math.random() > 0.6;
-                    if (isSparkle) {
-                        el.className = 'sparkle-el';
-                        el.textContent = '✨';
-                        const size = Math.random() * 14 + 16;
-                        el.style.fontSize = size + 'px';
-                        el.style.opacity = 0.3 + Math.random() * 0.4;
-                    } else {
-                        el.className = 'bubble-el';
-                        const size = Math.random() * 12 + 6;
-                        el.style.width = size + 'px';
-                        el.style.height = size + 'px';
-                    }
-                    el.style.left = Math.random() * 100 + 'vw';
-                    decorContainer.appendChild(el);
+            // 3. PARTICLES
+            const decor = document.getElementById('decor-container');
+            if(decor) {
+                for(let i=0;i<22;i++) {
+                    const el = document.createElement('div'); el.className = 'bubble-el';
+                    const s = Math.random()*24+10;
+                    el.style.width = s+'px'; el.style.height = s+'px'; el.style.left = Math.random()*100+'vw';
+                    el.style.opacity = 0.2+Math.random()*0.25;
+                    el.style.background = `radial-gradient(circle at 30% 30%, rgba(200,230,240,${0.2+Math.random()*0.15}), rgba(160,200,210,0.05))`;
+                    decor.appendChild(el);
+                    gsap.to(el, { y: -(innerHeight+150), x: '+= '+(Math.random()*60-30), duration: Math.random()*20+14, repeat: -1, delay: Math.random()*18, ease: 'none' });
+                }
+                for(let i=0;i<14;i++) {
+                    const el = document.createElement('div'); el.className = 'sparkle-el'; el.textContent = '✦';
+                    const s = Math.random()*12+12;
+                    el.style.fontSize = s+'px'; el.style.opacity = 0.15+Math.random()*0.2; el.style.left = Math.random()*100+'vw';
+                    decor.appendChild(el);
+                    gsap.to(el, { y: -(innerHeight+150), x: '+= '+(Math.random()*80-40), duration: Math.random()*22+16, repeat: -1, delay: Math.random()*20, ease: 'none' });
+                }
+            }
 
-                    gsap.to(el, {
-                        y: -(window.innerHeight + 100),
-                        x: '+= ' + (Math.random() * 80 - 40),
-                        duration: Math.random() * 18 + 14,
-                        repeat: -1,
-                        delay: Math.random() * 20,
-                        ease: 'none',
+            // 4. INFINITE SLIDER WITH TOUCH SUPPORT
+            const track = document.getElementById('sliderTrack');
+            if(track) {
+                const cards = track.querySelectorAll('.shell-card');
+                cards.forEach(c => track.appendChild(c.cloneNode(true)));
+                const half = track.scrollWidth / 2;
+                const tl = gsap.to(track, { x: -half, duration: 30, ease: 'none', repeat: -1, onRepeat: () => gsap.set(track, { x: 0 }) });
+
+                track.addEventListener('mouseenter', () => tl.pause());
+                track.addEventListener('mouseleave', () => tl.resume());
+                track.addEventListener('touchstart', () => tl.pause(), { passive: true });
+                track.addEventListener('touchend', () => tl.resume(), { passive: true });
+                track.addEventListener('touchcancel', () => tl.resume(), { passive: true });
+            }
+
+            // 5. JOURNAL GSAP SHOWCASE
+            const story = document.querySelector('.journal-story');
+            if(story) {
+                story.querySelectorAll('p').forEach(p => {
+                    gsap.fromTo(p, { opacity:0, y:20 }, { opacity:1, y:0, duration:0.6, ease:'power2.out',
+                        scrollTrigger: { trigger: p, start: 'top 85%', toggleActions: 'play none none none' }
                     });
-                }
+                });
+                story.querySelectorAll('.story-highlight').forEach(h => {
+                    gsap.fromTo(h, { color:'#3a3a4a', scale:0.95 }, { color:'#8B6C9E', scale:1, duration:0.4, ease:'back.out(1.7)',
+                        scrollTrigger: { trigger: h, start: 'top 90%', toggleActions: 'play none none none' }
+                    });
+                });
+                gsap.fromTo('.journal-signoff', { opacity:0, y:20 }, { opacity:1, y:0, duration:0.6,
+                    scrollTrigger: { trigger: '.journal-signoff', start: 'top 85%', toggleActions: 'play none none none' }
+                });
+                gsap.fromTo('.journal-features', { opacity:0, y:20 }, { opacity:1, y:0, duration:0.6,
+                    scrollTrigger: { trigger: '.journal-features', start: 'top 85%', toggleActions: 'play none none none' }
+                });
             }
 
-            // =========================================
-            // 4. INFINITE SLIDERS
-            // =========================================
-            function setupSlider(trackId) {
-                const track = document.getElementById(trackId);
-                if (track) {
-                    const items = track.innerHTML;
-                    track.innerHTML = items + items + items;
-                }
+            // 6. KAYTE IMAGE FLOATING ANIMATION (My Tale)
+            const kayteImg = document.getElementById('kayteImage');
+            if(kayteImg) {
+                gsap.to(kayteImg, {
+                    y: -8,
+                    duration: 2.5,
+                    ease: 'sine.inOut',
+                    yoyo: true,
+                    repeat: -1
+                });
+                gsap.to(kayteImg, {
+                    rotation: 1.5,
+                    duration: 4,
+                    ease: 'sine.inOut',
+                    yoyo: true,
+                    repeat: -1
+                });
             }
-            setupSlider('sliderTrack');
-            setupSlider('themeSliderTrack');
 
-            // =========================================
-            // 5. HIDDEN TREASURE POPUP
-            // =========================================
+            // 7. HIDDEN TREASURE POPUP
             window.showTreasurePopup = function(el) {
                 const popup = el.querySelector('.treasure-popup');
-                if (popup) {
-                    popup.classList.add('show');
-                    setTimeout(function() {
-                        popup.classList.remove('show');
-                    }, 2500);
+                if(popup) { popup.classList.add('show'); setTimeout(() => popup.classList.remove('show'), 2500); }
+            };
+
+            // 8. WAITLIST FORM
+            const wlForm = document.getElementById('waitlist-form');
+            if(wlForm) {
+                wlForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const btn = this.querySelector('.waitlist-btn');
+                    const orig = btn.textContent;
+                    btn.textContent = 'Adding...'; btn.disabled = true;
+                    try {
+                        const res = await fetch(this.action, { method:'POST', body: new FormData(this), headers:{ 'Accept':'application/json' } });
+                        if(res.ok) {
+                            btn.textContent = 'Added! ✓'; btn.style.background = '#69DBD3'; btn.style.borderColor = '#69DBD3';
+                            this.reset();
+                            setTimeout(() => { btn.textContent = orig; btn.style.background = '#2d2a3a'; btn.style.borderColor = '#2d2a3a'; btn.disabled = false; }, 3000);
+                        } else {
+                            alert('Oops! There was a problem. Please try again.');
+                            btn.textContent = orig; btn.disabled = false;
+                        }
+                    } catch { alert('Network error. Please try again.'); btn.textContent = orig; btn.disabled = false; }
+                });
+            }
+
+            // 9. INQUIRY FORM
+            const inqForm = document.getElementById('inquiry-form');
+            const formContainer = document.getElementById('form-container');
+            const successMsg = document.getElementById('success-message');
+
+            if(inqForm && formContainer && successMsg) {
+                inqForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const btn = this.querySelector('.submit-btn');
+                    const orig = btn.textContent;
+                    btn.textContent = 'Dropping...'; btn.disabled = true;
+                    try {
+                        const res = await fetch(this.action, { method:'POST', body: new FormData(this), headers:{ 'Accept':'application/json' } });
+                        if(res.ok) {
+                            gsap.to(formContainer, { duration:0.4, opacity:0, onComplete: () => {
+                                formContainer.style.display = 'none';
+                                successMsg.style.display = 'block';
+                                gsap.fromTo(successMsg, { opacity:0, y:20 }, { duration:0.5, opacity:1, y:0 });
+                            }});
+                        } else {
+                            alert('Oops! There was a problem. Please try again.');
+                            btn.textContent = orig; btn.disabled = false;
+                        }
+                    } catch { alert('Network error. Please try again.'); btn.textContent = orig; btn.disabled = false; }
+                });
+            }
+
+            // 10. LEGAL MODAL
+            const legalModal = document.getElementById('legal-modal');
+            const legalBackdrop = document.getElementById('legal-backdrop');
+            const legalDrawer = document.getElementById('legal-drawer');
+            const legalContent = document.getElementById('legal-content');
+            const legalClose = document.getElementById('legal-close');
+
+            const legalText = {
+                terms: {
+                    title: 'Terms & Conditions',
+                    sub: 'Last updated: 2026 · No pirates were harmed in the making of these terms.',
+                    body: `
+                        <h3>1. Bookings & Deposits</h3>
+                        <p>A deposit is required to secure your event date. Deposits are non-refundable but may be applied to a rescheduled date with at least 14 days notice.</p>
+                        <h3>2. Cancellations</h3>
+                        <p>Cancellations made within 7 days of the event are subject to full payment. We understand life happens — please contact us as early as possible.</p>
+                        <h3>3. Prop Returns</h3>
+                        <p>All rented items must be returned in their original condition. Damaged or missing items will be charged at replacement cost. Emotional attachment is understandable but not billable.</p>
+                        <h3>4. Photography</h3>
+                        <p>Founding MerFriend bookings include permission for MerMommy Creations to photograph portions of the event for portfolio use. All other bookings require written consent for us to use your event photos.</p>
+                        <h3>5. Liability</h3>
+                        <p>MerMommy Creations is not liable for injuries, damages, or incidents occurring during the event. We are licensed and insured for our setup and breakdown activities only.</p>
+                        <h3>6. Changes</h3>
+                        <p>These terms may be updated at any time. Continued use of our services constitutes acceptance of the current terms.</p>
+                    `
+                },
+                privacy: {
+                    title: 'Privacy Policy',
+                    sub: 'Your data swims safely with us. No sharing with sea creatures.',
+                    body: `
+                        <h3>1. Information We Collect</h3>
+                        <p>We collect information you provide directly — your name, email address, event details, and any other information submitted through our inquiry or waitlist forms.</p>
+                        <h3>2. How We Use It</h3>
+                        <p>Your information is used solely to respond to your inquiry, send you booking confirmations, and (if you joined the waitlist) notify you of our launch and exclusive offers.</p>
+                        <h3>3. We Do Not Sell Your Data</h3>
+                        <p>MerMommy Creations will never sell, rent, or trade your personal information to third parties. Ever.</p>
+                        <h3>4. Third-Party Services</h3>
+                        <p>We use Formspree to process form submissions. Their privacy policy applies to data processed through their platform. We do not use advertising trackers or analytics beyond basic site visits.</p>
+                        <h3>5. California Residents (CCPA)</h3>
+                        <p>As a California-based business, we respect your right to know what data we collect, request deletion, and opt out of any sale of your data (which we don't do anyway).</p>
+                        <h3>6. Contact</h3>
+                        <p>Questions about your data? Reach us through the contact form on this page.</p>
+                    `
                 }
             };
 
-            // =========================================
-            // 6. WAITLIST FORM (Connected to Formspree)
-            // =========================================
-            const waitlistForm = document.getElementById('waitlist-form');
-            if (waitlistForm) {
-                waitlistForm.addEventListener('submit', async function(e) {
+            function openLegal(type) {
+                const data = legalText[type];
+                legalContent.innerHTML = `
+                    <h2>${data.title}</h2>
+                    <span class="legal-sub">${data.sub}</span>
+                    ${data.body}
+                `;
+                legalModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+
+                gsap.to(legalBackdrop, { opacity: 1, duration: 0.35, ease: 'power2.out' });
+                gsap.to(legalDrawer, { translateY: '0%', duration: 0.5, ease: 'power3.out', delay: 0.05 });
+            }
+
+            function closeLegal() {
+                gsap.to(legalDrawer, { translateY: '100%', duration: 0.4, ease: 'power3.in' });
+                gsap.to(legalBackdrop, { opacity: 0, duration: 0.3, delay: 0.15, ease: 'power2.in', onComplete: () => {
+                    legalModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                    legalDrawer.style.transform = '';
+                }});
+            }
+
+            legalClose.addEventListener('click', closeLegal);
+            legalBackdrop.addEventListener('click', closeLegal);
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeLegal();
+            });
+
+            // Wire up footer links
+            document.querySelectorAll('.footer-legal a').forEach(link => {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const btn = this.querySelector('.waitlist-btn');
-                    const originalText = btn.textContent;
-                    btn.textContent = 'Adding...';
-                    btn.disabled = true;
-
-                    const data = new FormData(this);
-
-                    try {
-                        const response = await fetch(this.action, {
-                            method: this.method,
-                            body: data,
-                            headers: { 'Accept': 'application/json' },
-                        });
-
-                        if (response.ok) {
-                            btn.textContent = 'Added! ✓';
-                            btn.style.background = '#69DBD3';
-                            btn.style.borderColor = '#69DBD3';
-                            this.reset();
-                            setTimeout(function() {
-                                btn.textContent = originalText;
-                                btn.style.background = '#2d2a3a';
-                                btn.style.borderColor = '#2d2a3a';
-                                btn.disabled = false;
-                            }, 3000);
-                        } else {
-                            alert('Oops! There was a problem. Please try again.');
-                            btn.textContent = originalText;
-                            btn.disabled = false;
-                        }
-                    } catch (error) {
-                        alert('Network error. Please try again.');
-                        btn.textContent = originalText;
-                        btn.disabled = false;
-                    }
+                    const type = this.dataset.legal;
+                    if (type) openLegal(type);
                 });
-            }
+            });
 
-            // =========================================
-            // 7. INQUIRY FORM
-            // =========================================
-            const form = document.getElementById('inquiry-form');
-            if (form) {
-                form.addEventListener('submit', async function(event) {
-                    event.preventDefault();
-                    const submitBtn = this.querySelector('.submit-btn');
-                    const originalText = submitBtn.textContent;
-                    submitBtn.textContent = 'Sending...';
-                    submitBtn.disabled = true;
-                    const data = new FormData(this);
-                    try {
-                        const response = await fetch(this.action, {
-                            method: this.method,
-                            body: data,
-                            headers: { Accept: 'application/json' },
-                        });
-                        if (response.ok) {
-                            gsap.to('#form-container', {
-                                duration: 0.4,
-                                opacity: 0,
-                                onComplete: function() {
-                                    document.getElementById('form-container').style.display = 'none';
-                                    var successMsg = document.getElementById('success-message');
-                                    successMsg.style.display = 'block';
-                                    gsap.fromTo(successMsg, { opacity: 0, y: 20 }, { duration: 0.5,
-                                        opacity: 1, y: 0 });
-                                },
-                            });
-                        } else {
-                            alert('Oops! There was a problem. Please try again.');
-                            submitBtn.textContent = originalText;
-                            submitBtn.disabled = false;
-                        }
-                    } catch (error) {
-                        alert('Network error. Please try again.');
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    }
-                });
-            }
-
+            // 11. REFRESH
+            setTimeout(() => ScrollTrigger.refresh(), 500);
         });
     </script>
 </body>
